@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Camp:</b>
+  <%= @camp_offering.camp_id %>
+</p>
+
+<p>
+  <b>Teacher:</b>
+  <%= @camp_offering.teacher %>
+</p>
+
+<p>
+  <b>Assistant:</b>
+  <%= @camp_offering.assistant %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @camp_offering.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @camp_offering.end_date %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @camp_offering.location_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_camp_offering_path(@camp_offering) %> |
+<%= link_to 'Back', camp_offerings_path %>

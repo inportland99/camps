@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @camp.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @camp.description %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @camp.capacity %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @camp.age %>
+</p>
+
+
+<%= link_to 'Edit', edit_camp_path(@camp) %> |
+<%= link_to 'Back', camps_path %>

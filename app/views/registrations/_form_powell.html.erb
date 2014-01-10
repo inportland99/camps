@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+  </br>
+  <%= simple_form_for(@registration) do |f| %>
+    <% if @registration.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+        <ul>
+        <% @registration.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <%= f.input :parent_first_name, label: "Parent/Gaurdian First Name" %>
+      <%= f.input :parent_last_name, label: "Last Name" %>
+      <%= f.input :parent_address_1, label: "Address 1" %>
+      <%= f.input :parent_address_2, label: "Address 2" %>
+      <%= f.input :parent_email, label: "Email" %>
+      <%= f.input :parent_phone, label: "Phone" %>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    </br>
+      <%= f.input :student_first_name, label: "Student First Name" %>
+      <%= f.input :student_last_name, label: "Student Last Name" %>
+      <%= f.input :student_grade, label: "Grade" %>
+      <%= f.input :student_allergies, label: "Allergies" %>
+      <%= f.input :emergency_contact_name %>
+      <%= f.input :emergency_contact_phone %>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <h3>Payment Information</h3>
+    <div class="form-group string optional">
+      <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>
+      <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+    <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
+    </div>
+    <div class="form-group">
+    <%= label_tag :card_month, "Card Expiration" %>
+    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control"} %>
+    </br>
+    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "form-control"} %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <p>Select all of the summer camps you are registering your student for!</p>
+      <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right" %>
+  <% end %>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+  <% if params[:location] == "Powell" %>
+
+  <h1>Powell Summer Camp Registration</h1>
+  <p style="color:red;">You must complete multiple registrations if you are registering multiple students.</p>
+
+  <%= render 'form_powell' %>
+
+  <% elsif params[:location] == "New Albany" %>
+
+  <h1>Powell Summer Camp Registration</h1>
+  <p style="color:red;">You must complete multiple registrations if you are registering multiple students.</p>
+
+  <%= render 'form_new_albany' %>
+
+  <% end %>
+</div>

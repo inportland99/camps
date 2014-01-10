@@ -5,10 +5,15 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
+<%= render 'layouts/navbar' %>
+
 <%= yield %>
 
+<hr>
+<p class="centered">Created by BlackTie.co - Attribution License 3.0 - 2013</p>
 </body>
 </html>

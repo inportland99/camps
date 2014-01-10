@@ -55,16 +55,17 @@ gem "timecop"
 gem "ranked-model"
 gem "squeel"
 gem "rspec-rails", :group => ["development", "test"]
-gem "factory_girl_rails", :group => ["development", "test"]
-gem "bootstrap-sass", :group => :assets
-gem "font-awesome-sass-rails", :group => :assets
+gem "factory_girl_rails", "~> 4.0", :group => ["development", "test"]
+gem "bootstrap-sass"
+gem "font-awesome-sass-rails"
 gem "underscore-rails"
 gem "gritter"
 gem "chosen-rails"
 gem "carrierwave"
+gem "faker"
 gem "fog"
 gem "rack-cache", :require => "rack/cache"
-gem "dragonfly"
+gem "dragonfly", "~>1.0.2"
 gem "remotipart"
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem "simple_form"
