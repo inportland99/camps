@@ -3,7 +3,7 @@
 
     <table class="table table-bordered table-hover">
       <tr>
-        <th>ID</th>
+        <th>Status</th>
         <th>Camp</th>
         <th>Teacher</th>
         <th>Assistant</th>
@@ -18,7 +18,11 @@
 
     <% @camp_offerings.each do |camp_offering| %>
       <tr>
-        <td><%= camp_offering.id %></td>
+        <td class="camp_offeringtered">
+            <%=
+                camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe
+            %>
+        </td>
         <td><%= camp_offering.name %></td>
         <td><%= camp_offering.teacher %></td>
         <td><%= camp_offering.assistant %></td>

@@ -24,4 +24,8 @@ class CampOffering < ActiveRecord::Base
   def open_spots
     camp.capacity - registrations.count
   end
+
+  def at_capacity?
+    open_spots == 0 ? true : false
+  end
 end
