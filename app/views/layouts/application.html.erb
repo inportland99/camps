@@ -13,7 +13,14 @@
 
 <%= yield %>
 
-<hr>
-<p class="centered">Created by BlackTie.co - Attribution License 3.0 - 2013</p>
-</body>
+  <hr>
+  <p class="centered">Created by BlackTie.co - Attribution License 3.0 - 2013</p>
+  <p class="centered">
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path %>
+    <% end %>
+  </p>
+  </body>
 </html>

@@ -1,27 +1,32 @@
+<% if user_signed_in? %>
+<div class="container">
+  <h1>Admin Page</h1>
+</div>
+<% else %>
 <div id="headerwrap">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
         <h1>Summer is comming,<br/>
           thankfully :)</h1>
-        <div class="row header_buttons">
-          <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-            <p><%= link_to "Powell Registration", new_registration_path(location: "Powell"), class: "btn btn-warning btn-lg"  %></br></br>
-              <%= link_to "Powell Schedule", root_path(location: "Powell"), class: "btn btn-success btn-lg"  %></p>
-          </div>
-          <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
-            <p><%= link_to "New Albany Registration", new_registration_path(location: "New Albany"), class: "btn btn-warning btn-lg" %></br></br>
-              <%= link_to "New Albany Schedule", root_path(location: "New Albany"), class: "btn btn-success btn-lg" %></p>
-          </div>
-        </div><!-- /row -->
-      </div><!-- /col-lg-6 -->
-      <div class="col-lg-6 sun">
+          <div class="row header_buttons">
+            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+              <p><%= link_to "Powell Registration", new_registration_path(location: "Powell"), class: "btn btn-warning btn-lg"  %></br></br>
+                <%= link_to "Powell Schedule", root_path(location: "Powell"), class: "btn btn-success btn-lg"  %></p>
+              </div>
+              <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                <p><%= link_to "New Albany Registration", new_registration_path(location: "New Albany"), class: "btn btn-warning btn-lg" %></br></br>
+                  <%= link_to "New Albany Schedule", root_path(location: "New Albany"), class: "btn btn-success btn-lg" %></p>
+                </div>
+              </div><!-- /row -->
+            </div><!-- /col-lg-6 -->
+            <div class="col-lg-6 sun">
               <i class="glyphicon glyphicon-certificate glyphicon-white"></i>
-      </div><!-- /col-lg-6 -->
+            </div><!-- /col-lg-6 -->
 
-    </div><!-- /row -->
-  </div><!-- /container -->
-</div><!-- /headerwrap -->
+          </div><!-- /row -->
+        </div><!-- /container -->
+      </div><!-- /headerwrap -->
 
 
       <div class="container">
@@ -169,3 +174,4 @@
           <div class="col-lg-3"></div>
         </div><!-- /row -->
       </div>
+<% end %>

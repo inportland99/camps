@@ -4,25 +4,53 @@ namespace :db do
     require 'faker'
 
     Rake::Task['db:reset'].invoke
-    # make_users
+    make_roles
+    make_users
     make_camps
     make_camp_offerings
     make_locations
+    make_registrations
   end
 end
 
-# def make_users
-#   admin = User.create!(first_name:            "Travis",
-#                        last_name:             "Sperry",
-#                        role:                  "Admin",
-#                        phone:                 "(614) 260-6162",
-#                        location_id:           "2",
-#                        email:                 "tkendalls@aol.com",
-#                        password:              "password",
-#                        password_confirmation: "password")
-#   admin.toggle!(:admin)
-#   admin.toggle!(:active)
-# end
+def make_roles
+    Role.create!(name: "SuperAdmin")
+    Role.create!(name: "Admin")
+    Role.create!(name: "Employee")
+    Role.create!(name: "Customer")
+    Role.create!(name: "Guest")
+end
+
+def make_users
+    user1 = User.create!(first_name:            "Travis",
+                         last_name:             "Sperry",
+                         location_id:           "2",
+                         email:                 "director@mathplusacademy.com",
+                         password:              "password",
+                         password_confirmation: "password")
+    user1.roles << Role.find(1)
+    user1.save
+
+    user2 = User.create!(first_name:            "Madison",
+                         last_name:             "Corna",
+                         location_id:           "1",
+                         email:                 "madison@mathplusacademy.com",
+                         password:              "password",
+                         password_confirmation: "password")
+    user2.roles << Role.find(1)
+    user2.save
+
+    user3 = User.create!(first_name:            "Raj",
+                         last_name:             "Shah",
+                         location_id:           "1",
+                         email:                 "raj@mathplusacademy.com",
+                         password:              "password",
+                         password_confirmation: "password")
+    user2.roles << Role.find(1)
+    user2.save
+end
+
+
 
 def make_camps
   8.times do |n|
@@ -36,10 +64,26 @@ end
 
 def make_camp_offerings
   20.times do |n|
-  CampOffering.create!(camp_id:           Array(1..8).sample,
-               teacher:           Faker::Name.name,
-               assistant:         Faker::Name.name,
-               location_id:       [1, 2].sample)
+    CampOffering.create!(camp_id:           Array(1..8).sample,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       [1, 2].sample)
+  end
+end
+
+def make_registrations
+  16.times do |n|
+    r = Registration.create!(parent_first_name:      Faker::Name.first_name,
+                         parent_last_name:       Faker::Name.last_name,
+                         parent_address_1:       Faker::Address.street_address,
+                         parent_email:           Faker::Internet.email,
+                         parent_phone:           Faker::PhoneNumber.cell_phone,
+                         student_first_name:     Faker::Name.first_name,
+                         student_last_name:      Faker::Name.last_name,
+                         student_grade:          ["KG", 1, 2, 3, 4, 5].sample
+      )
+    r.camp_offerings << CampOffering.find(((n+1)%2)+1)
+    r.save
   end
 end
 

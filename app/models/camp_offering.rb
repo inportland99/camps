@@ -8,4 +8,20 @@ class CampOffering < ActiveRecord::Base
   def name
     camp.title
   end
+
+  def students
+    students = Array.new
+    registrations.each do |r|
+      students << "#{r.student_first_name} #{r.student_last_name}"
+    end
+    return students
+  end
+
+  def price
+    camp.price
+  end
+
+  def open_spots
+    camp.capacity - registrations.count
+  end
 end
