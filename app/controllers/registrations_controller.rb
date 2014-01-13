@@ -18,6 +18,9 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @registration }
+      format.pdf do
+        render :pdf => "invoice"
+      end
     end
   end
 
