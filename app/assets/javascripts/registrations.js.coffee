@@ -27,4 +27,6 @@ registration_payment =
       $('#new_registration')[0].submit()
     else
       $('#stripe_error').text(response.error.message)
+      $('html, body').animate({scrollTop:0}, 'slow')
+      $('#cc_field').addClass('has-error')
       $('input[type=submit]').attr('disabled', false)

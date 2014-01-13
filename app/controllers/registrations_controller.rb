@@ -25,6 +25,8 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
+    @powell_camps = CampOffering.where("location_id=?", 1)
+    @new_albany_camps = CampOffering.where("location_id=?", 2)
 
     respond_to do |format|
       format.html # new.html.erb

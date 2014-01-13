@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.registration > p{
+.registration{
     color: #ff0000;
 }
 
 #stripe_error{
   color: #ff0000;
+}
+
+.camp_offerings{
+  border: solid 1px gray;
+  max-height: 200px;
+  padding-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  overflow: auto;
 }
