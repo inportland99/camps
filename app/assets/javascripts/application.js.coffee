@@ -10,9 +10,11 @@
 //= require bootstrap/popover
 //= require bootstrap/collapse
 //= require bootstrap/carousel
+//= require bootstrap/alert
 //= require underscore
 //= require gritter
 //= require chosen-jquery
 //= require jquery.remotipart
 //= require jquery_nested_form
+//= require registrations
 

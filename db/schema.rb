@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140111165257) do
+ActiveRecord::Schema.define(:version => 20140112234108) do
 
   create_table "camp_offerings", :force => true do |t|
     t.integer  "camp_id"
@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20140111165257) do
     t.string   "emergency_contact_phone"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
+    t.string   "stripe_customer_token"
+    t.string   "stripe_charge_token"
   end
 
   create_table "roles", :force => true do |t|

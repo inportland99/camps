@@ -1,3 +1,4 @@
+source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
@@ -70,3 +71,4 @@ gem "remotipart"
 gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
 gem "simple_form"
 gem "country_select"
+gem "stripe"
