@@ -1,46 +1,47 @@
 <div class='container'>
-  <p id="notice"><%= notice %></p>
+  <div class"row">
+    <div class="col-lg-6 col-mg-6 col-sm-6 col-xs-12">
+        <p>
+          <b>Camp:</b>
+          <%= @camp_offering.name %>
+        </p>
 
-  <p>
-    <b>Camp:</b>
-    <%= @camp_offering.name %>
-  </p>
+        <p>
+          <b>Teacher:</b>
+          <%= @camp_offering.teacher %>
+        </p>
 
-  <p>
-    <b>Teacher:</b>
-    <%= @camp_offering.teacher %>
-  </p>
+        <p>
+          <b>Assistant:</b>
+          <%= @camp_offering.assistant %>
+        </p>
 
-  <p>
-    <b>Assistant:</b>
-    <%= @camp_offering.assistant %>
-  </p>
+        <p>
+          <b>Start date:</b>
+          <%= @camp_offering.start_date %>
+        </p>
 
-  <p>
-    <b>Start date:</b>
-    <%= @camp_offering.start_date %>
-  </p>
+        <p>
+          <b>End date:</b>
+          <%= @camp_offering.end_date %>
+        </p>
 
-  <p>
-    <b>End date:</b>
-    <%= @camp_offering.end_date %>
-  </p>
+        <p>
+          <b>Location:</b>
+          <%= @camp_offering.location.name %>
+        </p>
 
-  <p>
-    <b>Location:</b>
-    <%= @camp_offering.location.name %>
-  </p>
+        <p>
+          <b>Camp Roster</b>
+          <ul>
+          <%= @camp_offering.students.each do |student| %>
+            <li><%= student %></li>
+          <% end %>
+          </ul>
+        </p>
 
-  <p>
-    <b>Camp Roster</b>
-    <ul>
-    <%= @camp_offering.students.each do |student| %>
-      <li><%= student %></li>
-    <% end %>
-    </ul>
-  </p>
-
-  <%= link_to 'Edit', edit_camp_offering_path(@camp_offering) %> |
-  <%= link_to 'Back', camp_offerings_path %>
+        <%= link_to 'Edit', edit_camp_offering_path(@camp_offering) %> |
+        <%= link_to 'Back', camp_offerings_path %></div>
+    </div>
   </div>
 </div>

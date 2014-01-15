@@ -47,13 +47,17 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    respond_to do |format|
-      if @registration.save_with_payment
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
-        format.json { render json: @registration, status: :created, location: @registration }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @registration.errors, status: :unprocessable_entity }
+    if @registration.camp_offerings == []
+        redirect_to :back, flash: { error: "You have not selected any camps." }
+    else
+      respond_to do |format|
+        if @registration.save_with_payment
+          format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
+          format.json { render json: @registration, status: :created, location: @registration }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @registration.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

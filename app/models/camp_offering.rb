@@ -5,6 +5,33 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
+  OFFERING_WEEKS_RANGE = {
+                          1 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          },
+                          2 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          },
+                          3 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          },
+                          4 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          },
+                          5 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          },
+                          6 => {
+                                  :start => Date.new(2014,6,16),
+                                  :end => Date.new(2014,6,20)
+                          }
+  }
+
   def name
     camp.title
   end

@@ -30,3 +30,12 @@ registration_payment =
       $('html, body').animate({scrollTop:0}, 'slow')
       $('#cc_field').addClass('has-error')
       $('input[type=submit]').attr('disabled', false)
+
+jQuery ->
+  $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
+    total = 0
+    $('input[type=checkbox]').each ->
+      if $(this).is(":checked")
+        total += $(this).data('price')
+    console.log total
+    $('#registration_total > p').children('span').text("$#{total}.00")

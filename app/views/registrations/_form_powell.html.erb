@@ -1,7 +1,7 @@
 
 <%= simple_form_for(@registration) do |f| %>
 <div class="row">
-  <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
   </br>
   <% if @registration.errors.any? %>
     <div id="error_explanation">
@@ -32,21 +32,7 @@
   <%= f.input :emergency_contact_phone %>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <h3>Payment Information</h3>
-    <div id="cc_field" class="form-group string optional">
-      <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>
-      <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
-    </div>
-    <div id="code_field" class="form-group">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
-    </div>
-    <div id="exp_field" class="form-group">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control"} %>
-    </br>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "form-control"} %>
-    </div>
+    <%= render 'credit_card_form' %>
   </div>
 </div>
 <div class="row">

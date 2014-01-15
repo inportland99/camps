@@ -1,6 +1,6 @@
 <%= simple_form_for(@registration) do |f| %>
 <div class="row">
-  <div class="col-lg-4 col-md-3 col-sm-12 col-xs-12">
+  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
   </br>
   <% if @registration.errors.any? %>
     <div id="error_explanation">
@@ -31,32 +31,20 @@
   <%= f.input :emergency_contact_phone %>
   </div>
   <div id="credit_card_info" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <h3>Payment Information</h3>
-    <div id="cc_field" class="form-group string optional">
-      <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>
-      <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
-    </div>
-    <div id="code_field" class="form-group">
-      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-      <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
-    </div>
-    <div id="exp_field" class="form-group">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control"} %>
-    </br>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "form-control"} %>
-    </div>
-    <div id="stripe_error">
-      <noscript> JavaScript is not enabled and is required for this form. You can enable JavaScript in your
-        browser settings. Or call (614) 792-6284 to register over the phone. </noscript>
-    </div>
+    <%= render 'credit_card_form' %>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <p>Select all of the summer camps you are registering your student for!</p>
     <div class="camp_offerings">
-      <%= f.association :camp_offerings, collection: @new_albany_camps, as: :check_boxes, label_method: :name, label: false %>
+    <div class="form-group check_boxes optional registration_camp_offerings">
+        <% @new_albany_camps.each do |offering| %>
+        <label class="checkbox">
+          <%= check_box_tag "registration[camp_offering_ids][]", offering.id, false, id: "registration_camp_offering_ids_#{offering.id}", class: "check_boxes optional", data: { price: "#{offering.camp.price}"} %> <%= offering.name %></label>
+        <% end %>
+        <input name="registration[camp_offering_ids][]" type="hidden" value="">
+      </div>
     </div>
     <%= f.input :stripe_card_token, as: :hidden %>
     <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right" %>
