@@ -16,5 +16,6 @@
 //= require chosen-jquery
 //= require jquery.remotipart
 //= require jquery_nested_form
+//= require jquery.ui.all
 //= require registrations
 

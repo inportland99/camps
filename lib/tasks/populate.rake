@@ -58,29 +58,136 @@ def make_camps
                description:     Faker::Lorem.sentences,
                capacity:        8,
                age:             "K-8",
-               price:           197)
+               price:           n == 0 ? 394 : 197)
   end
 end
 
 def make_camp_offerings
-  20.times do |n|
-    CampOffering.create!(camp_id:           Array(1..8).sample,
+  3.times do |n|
+    CampOffering.create!(camp_id:           1,
                          teacher:           Faker::Name.name,
                          assistant:         Faker::Name.name,
-                         location_id:       [1, 2].sample)
+                         location_id:       1,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "All Day",
+                         classroom:         1,
+                         week:              n+1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           1,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       2,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "All Day",
+                         classroom:         1,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           2,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       1,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "AM",
+                         classroom:         2,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           3,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       1,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "AM",
+                         classroom:         3,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           2,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       2,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "AM",
+                         classroom:         2,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           3,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       2,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "AM",
+                         classroom:         3,
+                         week:              n + 1)
+  end
+  #begin PM
+  3.times do |n|
+    CampOffering.create!(camp_id:           4,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       1,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "PM",
+                         classroom:         2,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           5,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       1,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "PM",
+                         classroom:         3,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           4,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       2,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "PM",
+                         classroom:         2,
+                         week:              n + 1)
+  end
+  3.times do |n|
+    CampOffering.create!(camp_id:           5,
+                         teacher:           Faker::Name.name,
+                         assistant:         Faker::Name.name,
+                         location_id:       2,
+                         start_date:        Date.new(2014,6,9) + n.weeks,
+                         end_date:          Date.new(2014,6,13) + n.weeks,
+                         time:              "PM",
+                         classroom:         3,
+                         week:              n + 1)
   end
 end
 
 def make_registrations
   16.times do |n|
-    r = Registration.create!(parent_first_name:      Faker::Name.first_name,
-                         parent_last_name:       Faker::Name.last_name,
-                         parent_address_1:       Faker::Address.street_address,
-                         parent_email:           Faker::Internet.email,
-                         parent_phone:           Faker::PhoneNumber.cell_phone,
-                         student_first_name:     Faker::Name.first_name,
-                         student_last_name:      Faker::Name.last_name,
-                         student_grade:          ["KG", 1, 2, 3, 4, 5].sample
+    r = Registration.create!(parent_first_name:       Faker::Name.first_name,
+                             parent_last_name:        Faker::Name.last_name,
+                             parent_address_1:        Faker::Address.street_address,
+                             parent_email:            Faker::Internet.email,
+                             parent_phone:            Faker::PhoneNumber.cell_phone,
+                             student_first_name:      Faker::Name.first_name,
+                             student_last_name:       Faker::Name.last_name,
+                             student_grade:           ["KG", 1, 2, 3, 4, 5].sample,
+                             emergency_contact_name:  Faker::Name.first_name,
+                             emergency_contact_phone: Faker::PhoneNumber.cell_phone
       )
     r.camp_offerings << CampOffering.find(((n+1)%2)+1)
     r.save

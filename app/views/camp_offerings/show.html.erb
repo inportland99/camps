@@ -3,7 +3,7 @@
     <div class="col-lg-6 col-mg-6 col-sm-6 col-xs-12">
         <p>
           <b>Camp:</b>
-          <%= @camp_offering.name %>
+          <%= @camp_offering.id %>: <%= @camp_offering.name %>
         </p>
 
         <p>
@@ -28,7 +28,7 @@
 
         <p>
           <b>Location:</b>
-          <%= @camp_offering.location.name %>
+          <%= @camp_offering.location.name if @camp_offering.location %>
         </p>
 
         <p>

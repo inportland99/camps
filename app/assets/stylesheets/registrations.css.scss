@@ -11,10 +11,19 @@
 }
 
 .camp_offerings{
-  border: solid 1px gray;
-  max-height: 200px;
-  padding-left: 20px;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  overflow: auto;
+  .checkbox{
+    span{
+      font-weight: 100;
+      color: green;
+    }
+  }
+}
+
+
+#registration_total{
+  p{
+    span{
+      color: red;
+    }
+  }
 }

@@ -5,8 +5,9 @@
       <tr>
         <th>Status</th>
         <th>Camp</th>
-        <th>Teacher</th>
-        <th>Assistant</th>
+        <!-- <th>Teacher</th>
+        <th>Assistant</th> -->
+        <th>Camp Time</th>
         <th>Start date</th>
         <th>End date</th>
         <th>Location</th>
@@ -24,11 +25,12 @@
             %>
         </td>
         <td><%= camp_offering.name %></td>
-        <td><%= camp_offering.teacher %></td>
-        <td><%= camp_offering.assistant %></td>
+        <!-- <td><%# camp_offering.teacher %></td>
+        <td><%# camp_offering.assistant %></td> -->
+        <td><%= camp_offering.offering_time %></td>
         <td><%= camp_offering.start_date %></td>
         <td><%= camp_offering.end_date %></td>
-        <td><%= camp_offering.location.name %></td>
+        <td><%= camp_offering.location.name  if camp_offering.location %></td>
         <td><%= camp_offering.open_spots %></td>
         <td><%= link_to 'Show', camp_offering %></td>
         <td><%= link_to 'Edit', edit_camp_offering_path(camp_offering) %></td>

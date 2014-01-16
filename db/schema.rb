@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112234108) do
+ActiveRecord::Schema.define(:version => 20140116160130) do
 
   create_table "camp_offerings", :force => true do |t|
     t.integer  "camp_id"
@@ -20,8 +20,12 @@ ActiveRecord::Schema.define(:version => 20140112234108) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "location_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "offering_time"
+    t.integer  "classroom"
+    t.integer  "week"
+    t.string   "time"
   end
 
   create_table "camp_offerings_registrations", :id => false, :force => true do |t|
@@ -71,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20140112234108) do
     t.datetime "updated_at",              :null => false
     t.string   "stripe_customer_token"
     t.string   "stripe_charge_token"
+    t.integer  "total"
   end
 
   create_table "roles", :force => true do |t|
