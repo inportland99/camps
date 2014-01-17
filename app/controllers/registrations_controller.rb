@@ -28,7 +28,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-    @camp_offerings = CampOffering.order("location_id", "ASC")
+    @camp_offerings = CampOffering.order("week asc, location_id asc")
     @powell_camps = CampOffering.where("location_id=?", 1)
     @new_albany_camps = CampOffering.where("location_id=?", 2)
 
@@ -36,7 +36,6 @@ class RegistrationsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @registration }
     end
-    kk
   end
 
   # GET /registrations/1/edit
@@ -61,9 +60,8 @@ class RegistrationsController < ApplicationController
     end
 
     rescue Stripe::CardError => e
-      @registration.camp_offering_ids = @registration.camp_offering_ids - ["", nil]
-      flash[:error] = e.message
-      render action: :new, location: params[:location]
+      flash.now[:error] = e.message + " Please enter a valid credit card and reselect your camps."
+      render action: :new, location: @registration.location
   end
 
   # PATCH/PUT /registrations/1
@@ -100,6 +98,6 @@ class RegistrationsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def registration_params
-      params.require(:registration).permit(:emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_address_2, :parent_email, :parent_first_name, :parent_last_name, :parent_phone, :student_allergies, :student_first_name, :student_grade, :student_last_name, :total, {camp_offering_ids: []}, :stripe_card_token)
+      params.require(:registration).permit(:emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_address_2, :parent_email, :parent_first_name, :parent_last_name, :parent_phone, :student_allergies, :student_first_name, :student_grade, :student_last_name, :total, {camp_offering_ids: []}, :stripe_card_token, :location)
     end
 end

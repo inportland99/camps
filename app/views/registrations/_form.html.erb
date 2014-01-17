@@ -37,8 +37,6 @@
   </div>
   <div id="credit_card_info" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <%= render 'credit_card_form' %>
-    <%= link_to "Powell Camps", "#", class: "btn btn-info"%>
-    <%= link_to "New Albany Camps", "#", class: "btn btn-info"%>
   </div>
 </div>
 <div class="row">
@@ -46,14 +44,18 @@
     <p>Select all of the summer camps you are registering your student for!</p>
     <div class="camp_offerings">
       <div class="powell_camp_offerings">
-        <%= render 'powell_camp_calendar' %>
+        <%= render 'powell_camp_calendar' if params[:location] == "1" || @registration.location == "1" %>
       </div>
       <div class="new_albany_camp_offerings">
-        <%= render 'new_albany_camp_calendar' if params[:location] == "2" %>
+        <%= render 'new_albany_camp_calendar' if params[:location] == "2" || @registration.location == "2" %>
+      <% unless params[:location] || @registration.location %>
+        <%= f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
+        <% end %>
       </div>
     </div>
     <%= f.input :stripe_card_token, as: :hidden %>
-    <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right", location: params[:location] %>
+    <%= f.input :location, as: :hidden, :input_html => { :value => params[:location] } %>
+    <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right", id: "registration_button" %>
   </div>
 </div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116160130) do
+ActiveRecord::Schema.define(:version => 20140117215559) do
 
   create_table "camp_offerings", :force => true do |t|
     t.integer  "camp_id"
@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(:version => 20140116160130) do
     t.string   "stripe_customer_token"
     t.string   "stripe_charge_token"
     t.integer  "total"
+    t.string   "parent_city"
+    t.string   "parent_state"
+    t.integer  "parent_zip"
   end
 
   create_table "roles", :force => true do |t|

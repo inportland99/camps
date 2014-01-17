@@ -9,9 +9,9 @@ jQuery ->
     $('input[type=checkbox]').each ->
       if $(this).is(":checked")
         total += $(this).data('price')
-    $('#registration_total > p').children('span').text("$#{total}.00")
 
     $('#registration_total > p').children('span').text("$#{total}.00")
+
 
   $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
     total = 0
@@ -19,7 +19,7 @@ jQuery ->
       if $(this).is(":checked")
         total += $(this).data('price')
     $('#registration_total > p').children('span').text("$#{total}.00")
-
+    $('#registration_button').val("Submit Registration $#{total}")
 
 jQuery ->
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))

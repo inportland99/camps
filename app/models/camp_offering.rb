@@ -39,6 +39,10 @@ class CampOffering < ActiveRecord::Base
     camp.title
   end
 
+  def edit_name
+    camp.title + " " + location.name + " Week: " + week.to_s + " " + time
+  end
+
   def students
     students = Array.new
     registrations.each do |r|
