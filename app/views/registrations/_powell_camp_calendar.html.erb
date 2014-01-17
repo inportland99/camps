@@ -1,0 +1,73 @@
+<h2>Powell Camp Schedule</h2>
+<div class="form-group check_boxes optional registration_camp_offerings">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Dates</th>
+      <th>Time</th>
+      <th>Classroom 1</th>
+      <th>Classroom 2</th>
+      <th>Classroom 3</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% 3.times do |n| %>
+      <tr>
+        <td rowspan=2><%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %></td>
+        <td>AM (9 - 12)</td>
+        <td rowspan=2 style="vertical-align:middle;">
+          <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "All Day" %>
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+              </label>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "AM" && co.classroom == 2 %>
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+              </label>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "AM" && co.classroom == 3 %>
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+              </label>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td>PM (12:30 - 3:30)</td>
+        <td>
+          <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "PM" && co.classroom == 2 %>
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+              </label>
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "PM" && co.classroom == 3 %>
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+              </label>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    <input name="registration[camp_offering_ids][]" type="hidden" value="">
+
+  </tbody>
+</table>
+</div>

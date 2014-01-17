@@ -36,6 +36,7 @@ class RegistrationsController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @registration }
     end
+    kk
   end
 
   # GET /registrations/1/edit
@@ -58,6 +59,11 @@ class RegistrationsController < ApplicationController
         format.json { render json: @registration.errors, status: :unprocessable_entity }
       end
     end
+
+    rescue Stripe::CardError => e
+      @registration.camp_offering_ids = @registration.camp_offering_ids - ["", nil]
+      flash[:error] = e.message
+      render action: :new, location: params[:location]
   end
 
   # PATCH/PUT /registrations/1

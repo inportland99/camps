@@ -59,7 +59,7 @@ gem "squeel"
 gem "rspec-rails", :group => ["development", "test"]
 gem "factory_girl_rails", "~> 4.0", :group => ["development", "test"]
 gem "bootstrap-sass"
-gem "font-awesome-sass-rails"
+gem "font-awesome-rails", "~> 4.0.3.1"
 gem "underscore-rails"
 gem "gritter"
 gem "chosen-rails"
