@@ -51,7 +51,8 @@ class RegistrationsController < ApplicationController
 
     respond_to do |format|
       if @registration.save_with_payment
-        format.html { redirect_to @registration, notice: 'Registration was successfully created.' }
+        format.html { redirect_to @registration, notice: 'Registration created!
+          Please print this page for your records. An email has been sent confirming this transaction.' }
         format.json { render json: @registration, status: :created, location: @registration }
       else
         format.html { render action: "new" }

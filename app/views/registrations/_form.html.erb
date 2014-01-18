@@ -18,15 +18,15 @@
     </div>
   <% end %>
 
-  <%= f.input :parent_first_name, label: "Parent/Gaurdian First Name" %>
-  <%= f.input :parent_last_name, label: "Last Name" %>
-  <%= f.input :parent_address_1, label: "Address 1" %>
-  <%= f.input :parent_address_2, label: "Address 2" %>
-  <%= f.input :parent_city, label: "City" %>
-  <%= f.input :parent_state, label: "State" %>
-  <%= f.input :parent_zip, label: "Zip" %>
-  <%= f.input :parent_email, label: "Email" %>
-  <%= f.input :parent_phone, label: "Phone" %>
+  <%= f.input :parent_first_name, label: "Parent/Gaurdian First Name", input_html: { value: params[:parent_first_name]} %>
+  <%= f.input :parent_last_name, label: "Last Name", input_html: { value: params[:parent_last_name]} %>
+  <%= f.input :parent_address_1, label: "Address 1", input_html: { value: params[:parent_address_1]} %>
+  <%= f.input :parent_address_2, label: "Address 2", input_html: { value: params[:parent_address]} %>
+  <%= f.input :parent_city, label: "City", input_html: { value: params[:parent_city]} %>
+  <%= f.input :parent_state, label: "State", input_html: { value: params[:parent_state]} %>
+  <%= f.input :parent_zip, label: "Zip", input_html: { value: params[:parent_zip]} %>
+  <%= f.input :parent_email, label: "Email", input_html: { value: params[:parent_email]} %>
+  <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:parent_phone]} %>
   </div>
   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
   </br>
@@ -34,9 +34,10 @@
   <%= f.input :student_last_name, label: "Student Last Name" %>
   <%= f.input :student_grade, label: "Grade" %>
   <%= f.input :student_allergies, label: "Allergies" %>
-  <%= f.input :emergency_contact_name %>
-  <%= f.input :emergency_contact_phone %>
+  <%= f.input :emergency_contact_name, input_html: { value: params[:emergency_contact_name]} %>
+  <%= f.input :emergency_contact_phone, input_html: { value: params[:emergency_contact_phone]} %>
   <%= f.input :total, as: :hidden %>
+  <%= f.association :location, label_method: :name, selected: params[:location] %>
   </div>
   <div id="credit_card_info" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <%= render 'credit_card_form' %>
@@ -47,17 +48,16 @@
     <p>Select all of the summer camps you are registering your student for!</p>
     <div class="camp_offerings">
       <div class="powell_camp_offerings">
-        <%= render 'powell_camp_calendar' if params[:location] == "1" || @registration.location == "1" %>
+        <%= render 'powell_camp_calendar' if params[:location] == "1" || @registration.location_id == 1 %>
       </div>
       <div class="new_albany_camp_offerings">
-        <%= render 'new_albany_camp_calendar' if params[:location] == "2" || @registration.location == "2" %>
+        <%= render 'new_albany_camp_calendar' if params[:location] == "2" || @registration.location_id == 2 %>
       <% unless params[:location] || @registration.location %>
         <%= f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
         <% end %>
       </div>
     </div>
     <%= f.input :stripe_card_token, as: :hidden %>
-    <%= f.input :location, as: :hidden, :input_html => { :value => params[:location] } %>
     <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right", id: "registration_button" %>
   </div>
 </div>

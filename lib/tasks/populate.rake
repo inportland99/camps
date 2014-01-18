@@ -190,7 +190,8 @@ def make_registrations
                              student_last_name:       Faker::Name.last_name,
                              student_grade:           ["KG", 1, 2, 3, 4, 5].sample,
                              emergency_contact_name:  Faker::Name.first_name,
-                             emergency_contact_phone: Faker::PhoneNumber.cell_phone
+                             emergency_contact_phone: Faker::PhoneNumber.cell_phone,
+                             location_id:             ((n+1)%2)+1
       )
     r.camp_offerings << CampOffering.find(((n+1)%2)+1)
     r.save

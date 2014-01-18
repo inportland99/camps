@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117215559) do
+ActiveRecord::Schema.define(:version => 20140118153217) do
 
   create_table "camp_offerings", :force => true do |t|
     t.integer  "camp_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20140117215559) do
     t.string   "parent_city"
     t.string   "parent_state"
     t.integer  "parent_zip"
+    t.integer  "location_id"
   end
 
   create_table "roles", :force => true do |t|

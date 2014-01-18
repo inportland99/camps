@@ -3,11 +3,12 @@ class Registration < ActiveRecord::Base
                   :parent_address_2, :parent_email, :parent_first_name, :parent_last_name,
                   :parent_phone, :student_allergies, :student_first_name, :student_grade,
                   :student_last_name, :camp_offering_ids, :stripe_charge_token, :stripe_card_token,
-                  :total, :location, :parent_city, :parent_state, :parent_zip
+                  :total, :location_id, :parent_city, :parent_state, :parent_zip
 
   attr_accessor :stripe_card_token, :location
 
   has_and_belongs_to_many :camp_offerings
+  belongs_to :location
 
   validates :emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_email,
             :parent_first_name, :parent_last_name, :parent_phone, :student_first_name, :student_grade,
@@ -30,5 +31,13 @@ class Registration < ActiveRecord::Base
       self.stripe_charge_token = charge.id
       save!
     end
+  end
+
+  def parent_name
+    parent_first_name + " " + parent_last_name
+  end
+
+  def student_name
+    student_first_name + " " + student_last_name
   end
 end

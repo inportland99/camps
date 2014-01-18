@@ -36,7 +36,7 @@ class CampOffering < ActiveRecord::Base
   }
 
   def name
-    camp.title
+    camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
   end
 
   def edit_name
