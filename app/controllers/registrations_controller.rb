@@ -52,6 +52,7 @@ class RegistrationsController < ApplicationController
     if current_user.role?('super_admin') && params[:process_without_payment] == "yes"
       respond_to do |format|
         if @registration.save_without_payment
+          PonyExpress.registration_confirmation(@registration).deliver
           format.html { redirect_to @registration, notice: 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
@@ -62,6 +63,7 @@ class RegistrationsController < ApplicationController
     else
       respond_to do |format|
         if @registration.save_with_payment
+          PonyExpress.registration_confirmation(@registration).deliver
           format.html { redirect_to @registration, notice: 'Registration created!
             Please print this page for your records. An email has been sent confirming this transaction.' }
           format.json { render json: @registration, status: :created, location: @registration }
