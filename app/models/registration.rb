@@ -3,9 +3,9 @@ class Registration < ActiveRecord::Base
                   :parent_address_2, :parent_email, :parent_first_name, :parent_last_name,
                   :parent_phone, :student_allergies, :student_first_name, :student_grade,
                   :student_last_name, :camp_offering_ids, :stripe_charge_token, :stripe_card_token,
-                  :total, :location_id, :parent_city, :parent_state, :parent_zip
+                  :total, :location_id, :parent_city, :parent_state, :parent_zip, :process_without_payment
 
-  attr_accessor :stripe_card_token, :location
+  attr_accessor :stripe_card_token, :location, :process_without_payment
 
   has_and_belongs_to_many :camp_offerings
   belongs_to :location
@@ -29,6 +29,12 @@ class Registration < ActiveRecord::Base
                                       description: "#{camp_location}: Registration #{student_first_name} for #{camp_names.join}."
                                     )
       self.stripe_charge_token = charge.id
+      save!
+    end
+  end
+
+  def save_without_payment
+    if valid?
       save!
     end
   end

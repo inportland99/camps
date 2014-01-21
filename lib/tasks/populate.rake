@@ -191,7 +191,8 @@ def make_registrations
                              student_grade:           ["KG", 1, 2, 3, 4, 5].sample,
                              emergency_contact_name:  Faker::Name.first_name,
                              emergency_contact_phone: Faker::PhoneNumber.cell_phone,
-                             location_id:             ((n+1)%2)+1
+                             location_id:             ((n+1)%2)+1,
+                             total:                   CampOffering.find(((n+1)%2)+1).price
       )
     r.camp_offerings << CampOffering.find(((n+1)%2)+1)
     r.save

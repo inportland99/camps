@@ -49,14 +49,26 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    respond_to do |format|
-      if @registration.save_with_payment
-        format.html { redirect_to @registration, notice: 'Registration created!
-          Please print this page for your records. An email has been sent confirming this transaction.' }
-        format.json { render json: @registration, status: :created, location: @registration }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @registration.errors, status: :unprocessable_entity }
+    if current_user.role?('super_admin') && params[:process_without_payment] == "yes"
+      respond_to do |format|
+        if @registration.save_without_payment
+          format.html { redirect_to @registration, notice: 'Registration created' }
+          format.json { render json: @registration, status: :created, location: @registration }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @registration.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @registration.save_with_payment
+          format.html { redirect_to @registration, notice: 'Registration created!
+            Please print this page for your records. An email has been sent confirming this transaction.' }
+          format.json { render json: @registration, status: :created, location: @registration }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @registration.errors, status: :unprocessable_entity }
+        end
       end
     end
 
@@ -99,6 +111,6 @@ class RegistrationsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def registration_params
-      params.require(:registration).permit(:emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_address_2, :parent_city, :parent_state, :parent_zip, :location_id, :parent_email, :parent_first_name, :parent_last_name, :parent_phone, :student_allergies, :student_first_name, :student_grade, :student_last_name, :total, {camp_offering_ids: []}, :stripe_card_token)
+      params.require(:registration).permit(:emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_address_2, :parent_city, :parent_state, :parent_zip, :location_id, :parent_email, :parent_first_name, :parent_last_name, :parent_phone, :student_allergies, :student_first_name, :student_grade, :student_last_name, :total, {camp_offering_ids: []}, :stripe_card_token, :process_without_payment)
     end
 end

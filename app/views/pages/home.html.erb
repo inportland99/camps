@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
 <div class="container">
   <h1>Admin Page</h1>
+  <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
+  <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
 </div>
 <% else %>
 <div id="headerwrap">

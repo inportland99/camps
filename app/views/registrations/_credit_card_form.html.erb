@@ -1,6 +1,11 @@
 <div class="hidden-lg hidden-md visible-sm visible-xs">
   <h3>Payment Information</h3>
 </div>
+<% if current_user && current_user.role?("super_admin") %>
+  <label class="checkbox">
+    <%= check_box_tag "process_without_payment", "yes", false, class: "check_boxes optional"  %> Process Without Payment
+  </label>
+<% end %>
 
 <div id="cc_field" class="form-group string optional">
   <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>

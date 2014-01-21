@@ -57,10 +57,17 @@
         <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
           <%= render 'new_albany_camp_calendar' %>
         </div>
+        <% else %>
+        <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
+          <%= render 'powell_camp_calendar' %>
+        </div>
+        <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
+          <%= render 'new_albany_camp_calendar' %>
+        </div>
         <% end %>
-        <% unless params[:location] || @registration.location %>
-          <%= f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
-        <% end %>
+        <%# unless params[:location] || @registration.location %>
+          <%# f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
+        <%# end %>
       </div>
     </div>
   </div>
@@ -107,3 +114,91 @@
   <% end %>
 </div>
 </br>
+
+<!-- registrationModal -->
+<div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Would you like help finding the right camps?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Answer these quick questions and we'll highlight some suggestions. Otherwise click close to continue your registration.</p>
+        <p>
+          <!-- Age -->
+          <b>Age:</b>
+            <%= text_field_tag :age %>
+        </p>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <!-- Interests -->
+            <h4>Interests:</h4>
+            <label class="category-select">
+              <%= check_box_tag :math %>
+              Math
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :technology %>
+              Technology
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :programming %>
+              Programming
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :art %>
+              Art
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :strategy_games %>
+              Strategy Games
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :business %>
+              Business
+            </label></br></br>
+          </div><!-- col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
+          <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <!-- Goals -->
+            <h4>Goals for your student:</h4>
+            <label class="category-select">
+              <%= check_box_tag :problem_solving %>
+              Become a better problem solver.
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :technology %>
+              Learn more about technology.
+            </label></br>
+            <label class="category-select">
+              <%= check_box_tag :life_long_skill %>
+              Begin to learn a life long skill.
+            </label></br>
+          </div><!-- col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
+        </div><!-- row -->
+      </div><!-- .modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" id="highlight" class="btn btn-primary">Highlight Selections</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- confirmationModal -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Hope this helps!</h4>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <h4>We've highlighted some suggestions for you!</h4>
+      </div><!-- .modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

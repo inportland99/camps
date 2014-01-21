@@ -1,0 +1,80 @@
+<%= simple_form_for(@registration) do |f| %>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    </br>
+    <% if @registration.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+
+        <ul>
+          <% @registration.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.association :location, label_method: :name, selected: params[:location] %>
+    </div>
+  </div>
+  <div class='row'>
+    <h3>Student Information</h3>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= f.input :student_first_name, label: "Student First Name" %>
+    <%= f.input :student_last_name, label: "Student Last Name" %>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= f.input :student_grade, label: "Grade" %>
+    <%= f.input :student_allergies, label: "Allergies" %>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= f.input :emergency_contact_name %>
+    <%= f.input :emergency_contact_phone %>
+    <%= f.input :total, as: :hidden %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <p>Camps this student is registered for.</p>
+      <div class="camp_offerings">
+        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), as: :check_boxes  if @registration.location_id == 1 %>
+        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), as: :check_boxes if @registration.location_id == 2 %>
+        <%= f.association :camp_offerings, collection: CampOffering..order("location_id asc").order("start_date asc"), as: :check_boxes unless @registration.location_id %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <h3>Parent/Gaurdian Information</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= f.input :parent_first_name, label: "Parent/Gaurdian First Name" %>
+    <%= f.input :parent_last_name, label: "Last Name" %>
+    <%= f.input :parent_address_1, label: "Address 1" %>
+    <%= f.input :parent_address_2, label: "Address 2" %>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+    <%= f.input :parent_city, label: "City" %>
+    <%= f.input :parent_state, label: "State" %>
+    <%= f.input :parent_zip, label: "Zip" %>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <%= f.input :parent_email, label: "Email" %>
+    <%= f.input :parent_phone, label: "Phone" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    </div>
+    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 button_col">
+    <div class="registration_button"><%= f.button :submit, "Edit Registration", class: "btn btn-lg btn-success pull-right", id: "registration_edit_button" %></div>
+    </div>
+  <% end %>
+</div>
+</br>
