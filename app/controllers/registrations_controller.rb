@@ -49,7 +49,7 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    if current_user.role?('super_admin') && params[:process_without_payment] == "yes"
+    if current_user && current_user.role?('super_admin') && params[:process_without_payment] == "yes"
       respond_to do |format|
         if @registration.save_without_payment
           PonyExpress.registration_confirmation(@registration).deliver
