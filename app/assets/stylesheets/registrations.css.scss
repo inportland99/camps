@@ -4,6 +4,7 @@
 
 .registration{
     color: blue;
+    margin-bottom: -10px;
 }
 
 .show{
@@ -23,6 +24,21 @@
   }
 }
 
+#camp_registrations{
+  margin-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  border: solid 1px gray;
+}
+.button_col{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.registration_button{
+    display: block;
+    vertical-align: middle;
+  }
 
 #registration_total{
   p{

@@ -4,15 +4,16 @@
 
 #Calcualte total for selected camps.
 jQuery ->
-  $(document).ready ->
+  $(document).ready -> #calculate total on page load (incase of redirect)
     total = 0
     $('input[type=checkbox]').each ->
       if $(this).is(":checked")
         total += $(this).data('price')
 
     $('#registration_total > p').children('span').text("$#{total}.00")
+    $("#camp_registrations ul").text("You have not selected any camps.")
 
-
+  #calculate total change of selection
   $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
     total = 0
     $('input[type=checkbox]').each ->
@@ -20,6 +21,24 @@ jQuery ->
         total += $(this).data('price')
     $('#registration_total > p').children('span').text("$#{total}.00")
     $('#registration_button').val("Submit Registration $#{total}")
+
+  #add selected camp to list for registration confirmation
+  $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
+    $("#camp_registrations ul").text('')
+    $('input[type=checkbox]').each ->
+      if $(this).is(":checked")
+        name = $(this).data('name')
+        $("#camp_registrations ul").append("<li>#{name}</li>")
+
+  #toggle calendar view based on location select field
+  $('#registration_location_id').trigger('blur') #lose focus to trigger .on 'change'
+  $('#registration_location_id').on 'change', ->
+    $('#powell_camp_offerings').css('display','none')
+    $('#new_albany_camp_offerings').css('display','none')
+    if $('#registration_location_id').val() is "1"
+      $('#powell_camp_offerings').css('display','inline-block')
+    if $('#registration_location_id').val() is "2"
+      $('#new_albany_camp_offerings').css('display','inline-block')
 
 jQuery ->
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
@@ -66,6 +85,6 @@ registration_payment =
         $('input[type=submit]').attr('disabled', false)
     else
       $('#stripe_error').text(response.error.message)
-      $('html, body').animate({scrollTop:0}, 'slow')
+      # $('html, body').animate({scrollTop:0}, 'slow')
       $('#cc_field').addClass('has-error')
       $('input[type=submit]').attr('disabled', false)
