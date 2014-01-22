@@ -4,33 +4,32 @@
 
 #Calcualte total for selected camps.
 jQuery ->
+  $registrationModal = $('#registrationModal')
+  $inputCheckbox = $('input[type=checkbox]')
+
   if $(".camp_offerings").length > 0
     $(document).ready ->
       #collect params
-      vars = []
+      params = []
       hash = undefined
       hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
       i = 0
       while i < hashes.length
         hash = hashes[i].split("=")
-        vars.push hash[0]
-        vars[hash[0]] = hash[1]
+        params.push hash[0]
+        params[hash[0]] = hash[1]
         i++
 
       #calculate total on page load (incase of redirect)
       total = 0
-      $('input[type=checkbox]').each ->
+      $inputCheckbox.each ->
         if $(this).is(":checked")
           total += $(this).data('price')
-
-      #show modal questionaire on page load.
-      if vars.questionaire
-        $('#registrationModal').modal('show')
 
       #update total if camps are selected
       $('#registration_total > p').children('span').text("$#{total}.00")
       count = 0
-      $('input[type=checkbox]').each ->
+      $inputCheckbox.each ->
         if $(this).is(":checked")
           count += 1
           name = $(this).data('name')
@@ -40,23 +39,24 @@ jQuery ->
 
   #questionaire modal
   $('#highlight').on 'click', ->
-    $('#registrationModal').modal('hide')
+    $registrationModal.modal('hide')
     $('#confirmationModal').modal('show')
 
   #calculate total change of selection
-  $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
+  $registration_camp_offerings = $('.registration_camp_offerings')
+  $registration_camp_offerings.on 'change', 'input[type="checkbox"]', ->
     total = 0
-    $('input[type=checkbox]').each ->
+    $inputCheckbox.each ->
       if $(this).is(":checked")
         total += $(this).data('price')
     $('#registration_total > p').children('span').text("$#{total}.00")
     $('#registration_button').val("Submit Registration $#{total}")
 
   #add selected camp to list for registration confirmation
-  $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->
+  $registration_camp_offerings.on 'change', 'input[type="checkbox"]', ->
     $("#camp_registrations ul").text('')
     count = 0
-    $('input[type=checkbox]').each ->
+    $inputCheckbox.each ->
       if $(this).is(":checked")
         count += 1
         name = $(this).data('name')
@@ -65,14 +65,17 @@ jQuery ->
       $("#camp_registrations ul").text("You have not selected any camps.")
 
   #toggle calendar view based on location select field
-  $('#registration_location_id').trigger('blur') #lose focus to trigger .on 'change'
-  $('#registration_location_id').on 'change', ->
-    $('#powell_camp_offerings').css('display','none')
-    $('#new_albany_camp_offerings').css('display','none')
-    if $('#registration_location_id').val() is "1"
-      $('#powell_camp_offerings').css('display','inline-block')
-    if $('#registration_location_id').val() is "2"
-      $('#new_albany_camp_offerings').css('display','inline-block')
+  $registration_location_id = $('#registration_location_id')
+  $powell_camp_offerings = $('#powell_camp_offerings')
+  $new_albany_camp_offerings = $('#new_albany_camp_offerings')
+  $registration_location_id.trigger('blur') #lose focus to trigger .on 'change'
+  $registration_location_id.on 'change', ->
+    $powell_camp_offerings.css('display','none')
+    $new_albany_camp_offerings.css('display','none')
+    if $registration_location_id.val() is "1"
+      $powell_camp_offerings.css('display','inline-block')
+    if $registration_location_id.val() is "2"
+      $new_albany_camp_offerings.css('display','inline-block')
 
 jQuery ->
   Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'))
