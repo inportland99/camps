@@ -4,30 +4,44 @@
 
 #Calcualte total for selected camps.
 jQuery ->
-  $(document).ready -> #calculate total on page load (incase of redirect)
-    total = 0
-    $('input[type=checkbox]').each ->
-      if $(this).is(":checked")
-        total += $(this).data('price')
-    $('#registrationModal').modal('show') #show modal questionaire on page load.
-    $('#registration_total > p').children('span').text("$#{total}.00") #update total if camps are selected
-    count = 0
-    $('input[type=checkbox]').each ->
-      if $(this).is(":checked")
-        count += 1
-        name = $(this).data('name')
-        $("#camp_registrations ul").append("<li>#{name}</li>")
-    if count < 1
-      $("#camp_registrations ul").text("You have not selected any camps.")
+  if $(".camp_offerings").length > 0
+    $(document).ready ->
+      #collect params
+      vars = []
+      hash = undefined
+      hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
+      i = 0
+      while i < hashes.length
+        hash = hashes[i].split("=")
+        vars.push hash[0]
+        vars[hash[0]] = hash[1]
+        i++
+
+      #calculate total on page load (incase of redirect)
+      total = 0
+      $('input[type=checkbox]').each ->
+        if $(this).is(":checked")
+          total += $(this).data('price')
+
+      #show modal questionaire on page load.
+      if vars.questionaire
+        $('#registrationModal').modal('show')
+
+      #update total if camps are selected
+      $('#registration_total > p').children('span').text("$#{total}.00")
+      count = 0
+      $('input[type=checkbox]').each ->
+        if $(this).is(":checked")
+          count += 1
+          name = $(this).data('name')
+          $("#camp_registrations ul").append("<li>#{name}</li>")
+      if count < 1
+        $("#camp_registrations ul").text("You have not selected any camps.")
 
   #questionaire modal
   $('#highlight').on 'click', ->
     $('#registrationModal').modal('hide')
     $('#confirmationModal').modal('show')
-
-  #process without payment
-  $('#process_without_payment').on 'change', ->
-    alert $('#process_without_payment').is(":checked")
 
   #calculate total change of selection
   $('.registration_camp_offerings').on 'change', 'input[type="checkbox"]', ->

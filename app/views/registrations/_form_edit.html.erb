@@ -14,7 +14,11 @@
       </div>
     <% end %>
 
-    <%= f.association :location, label_method: :name, selected: params[:location] %>
+    <% if params[:location] %>
+      <%= f.association :location, label_method: :name, selected: params[:location] %>
+    <% else %>
+      <%= f.association :location, label_method: :name %>
+    <% end %>
     </div>
   </div>
   <div class='row'>
@@ -39,9 +43,9 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <p>Camps this student is registered for.</p>
       <div class="camp_offerings">
-        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), as: :check_boxes  if @registration.location_id == 1 %>
-        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), as: :check_boxes if @registration.location_id == 2 %>
-        <%= f.association :camp_offerings, collection: CampOffering..order("location_id asc").order("start_date asc"), as: :check_boxes unless @registration.location_id %>
+        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), as: :check_boxes, input_html: { style: "display:none;"}  if @registration.location_id == 1 %>
+        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), as: :check_boxes, input_html: { style: "display:none;"} if @registration.location_id == 2 %>
+        <%= f.association :camp_offerings, collection: CampOffering.order("location_id asc").order("start_date asc"), as: :check_boxes unless @registration.location_id %>
       </div>
     </div>
   </div>
