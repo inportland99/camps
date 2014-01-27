@@ -1,3 +1,60 @@
-// Place all the styles related to the pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin_dashboard{
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.todays_sales{
+  padding-top:15px;
+  padding-bottom:15px;
+}
+
+.todays_registrations{
+  border: solid 1px lightgray;
+  border-radius:2px;
+  text-align: center;
+  min-height: 120px;
+  height: 200px;
+
+  .header{
+    min-height: 60px;
+    position: relative;
+    text-align: center;
+    border-bottom: solid 1px lightgray;
+    width: 98%;
+
+    h2{
+      margin-top: 0;
+      margin-bottom:  0;
+      padding-top: 10px;
+    }
+  }
+  span{
+    font-size: 5em;
+  }
+}
+
+.todays_sales{
+  border: solid 1px lightgray;
+  border-radius:2px;
+  text-align: center;
+  height: 200px;
+
+  .header{
+    min-height: 60px;
+    position: relative;
+    text-align: center;
+    border-bottom: solid 1px lightgray;
+    width: 98%;
+
+    h2{
+      margin-top: 0;
+      margin-bottom:  0;
+      padding-top: 10px;
+    }
+  }
+  span{
+    padding-top: 20px;
+    font-size: 3em;
+  }
+}

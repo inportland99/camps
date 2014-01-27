@@ -1,9 +1,38 @@
 <% if user_signed_in? %>
 <div class="container">
   <h1>Admin Page</h1>
-  <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
-  <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
-</div>
+  <div class="row">
+    <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
+    <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
+  </div> <!-- /.row -->
+  <div class="row">
+    <div class="admin_dashboard">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='todays_registrations'>
+          <div class="header">
+            <h2> Registrations today.</h2>
+          </div>
+          <span><%= @todays_registrations.count %></span>
+        </div>
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='todays_sales'>
+          <div class="header">
+            <h2>Monthly Sales</h2>
+          </div>
+          <span>$<%= @todays_sales %>.00</span>
+        </div>
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='todays_registrations'>
+          <div class="header">
+            <h2><%= @todays_registrations.count %> Registrations today.</h2>
+          </div>
+        </div>
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      </div> <!-- admin_dashboard -->
+  </div><!-- /.row -->
+</div><!-- /.container -->
 <% else %>
 <div id="headerwrap">
   <div class="container">

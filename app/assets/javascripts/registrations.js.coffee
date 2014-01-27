@@ -68,6 +68,7 @@ jQuery ->
   $registration_location_id = $('#registration_location_id')
   $powell_camp_offerings = $('#powell_camp_offerings')
   $new_albany_camp_offerings = $('#new_albany_camp_offerings')
+
   $registration_location_id.trigger('blur') #lose focus to trigger .on 'change'
   $registration_location_id.on 'change', ->
     $powell_camp_offerings.css('display','none')
