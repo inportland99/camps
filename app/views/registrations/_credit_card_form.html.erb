@@ -7,6 +7,9 @@
   </label>
 <% end %>
 
+<% if @registration.stripe_card_token %>
+ <h4>Card has already been provided.</h4>
+<% else %>
 <div id="cc_field" class="form-group string optional">
   <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>
   <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
@@ -20,6 +23,7 @@
   <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: "form-control"} %>
 </br>
 <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class: "form-control"} %>
+<% end %>
 <div id="stripe_error">
   <noscript>
     JavaScript is not enabled and is required for this form. You can enable JavaScript in your browser settings. Or call (614) 792-6284 to register over the phone.
