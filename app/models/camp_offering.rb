@@ -44,6 +44,10 @@ class CampOffering < ActiveRecord::Base
   }
 
   def name
+    camp.title + " " + "(Ages: #{camp.age})"
+  end
+
+  def confirmation_name
     camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
   end
 
