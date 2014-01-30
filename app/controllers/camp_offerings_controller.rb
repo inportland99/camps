@@ -63,7 +63,7 @@ class CampOfferingsController < ApplicationController
 
     respond_to do |format|
       if @camp_offering.update_attributes(camp_offering_params)
-        format.html { redirect_to @camp_offering, notice: 'Camp offering was successfully updated.' }
+        format.html { redirect_to camp_offerings_path, notice: 'Camp offering was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
