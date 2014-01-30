@@ -13,58 +13,112 @@
   </thead>
   <tbody>
 
-    <% 3.times do |n| %>
+    <% 8.times do |n| %>
       <tr>
-        <td rowspan=2><%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %></td>
-        <td>AM (9 - 12)</td>
-        <td rowspan=2 style="vertical-align:middle;">
-          <% CampOffering.by_week(1, n+1).each do |co| %>
-            <% if co.time == "All Day" %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
-            <% end %>
+        <td rowspan=2 style="vertical-align:middle;"><%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %></td>
+        <td>AM (9:00 - 12:00)</td>
+        <!-- classroom 1 -->
+        <% CampOffering.by_week(1, n+1).each do |co| %>
+          <% if co.time == "AM" && co.classroom == 1 %>
+          <td>
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
+          <% elsif co.time == "All Day" && co.classroom == 1 %>
+          <td rowspan=2 style="vertical-align:middle;">
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
           <% end %>
-        </td>
-        <td>
-          <% CampOffering.by_week(1, n+1).each do |co| %>
-            <% if co.time == "AM" && co.classroom == 2 %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
-            <% end %>
+        <% end %>
+        <!-- classroom 2 -->
+        <% CampOffering.by_week(1, n+1).each do |co| %>
+          <% if co.time == "AM" && co.classroom == 2 %>
+          <td>
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
+          <% elsif co.time == "All Day" && co.classroom == 2 %>
+          <td rowspan=2 style="vertical-align:middle;">
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
           <% end %>
-        </td>
-        <td>
-          <% CampOffering.by_week(1, n+1).each do |co| %>
-            <% if co.time == "AM" && co.classroom == 3 %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
-            <% end %>
+        <% end %>
+        <!-- classroom 3 -->
+        <% CampOffering.by_week(1, n+1).each do |co| %>
+          <% if co.time == "AM" && co.classroom == 3 %>
+          <td>
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
+          <% elsif co.time == "All Day" && co.classroom == 3 %>
+          <td rowspan=2 style="vertical-align:middle;">
+            <label class="checkbox">
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+            </label>
+          </td>
           <% end %>
-        </td>
+        <% end %>
       </tr>
       <tr>
         <td>PM (12:30 - 3:30)</td>
-        <td>
-          <% CampOffering.by_week(1, n+1).each do |co| %>
+        <!-- classroom 1 -->
+        <% pm_camp = false %>
+        <% CampOffering.by_week(1, n+1).each do |co| %>
+            <% if co.time == "PM" && co.classroom == 1 %>
+              <% pm_camp = true %>
+              <td>
+                <label class="checkbox">
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                </label>
+              </td>
+            <% elsif co.time == "All Day" && co.classroom == 1 %>
+              <% pm_camp = true %>
+            <% end %>
+        <% end %>
+        <% if !pm_camp %>
+          <td></td>
+        <% end %>
+        <!-- classroom 2 -->
+        <% pm_camp = false %>
+        <% CampOffering.by_week(1, n+1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
+              <% pm_camp = true %>
+              <td>
+                <label class="checkbox">
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                </label>
+              </td>
+            <% elsif co.time == "All Day" && co.classroom == 2 %>
+              <% pm_camp = true %>
             <% end %>
-          <% end %>
-        </td>
-        <td>
-          <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% end %>
+        <% if !pm_camp %>
+          <td></td>
+        <% end %>
+        <!-- classroom 3 -->
+        <% pm_camp = false %>
+        <% CampOffering.by_week(1, n+1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 3 %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
+              <% pm_camp = true %>
+              <td>
+                <label class="checkbox">
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %> <%= co.name %> <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                </label>
+              </td>
+            <% elsif co.time == "All Day" && co.classroom == 3 %>
+              <% pm_camp = true %>
             <% end %>
-          <% end %>
-        </td>
+        <% end %>
+        <% if !pm_camp %>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
     <input name="registration[camp_offering_ids][]" type="hidden" value="">
