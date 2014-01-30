@@ -6,11 +6,13 @@ namespace :db do
     Rake::Task['db:reset'].invoke
     make_roles
     make_users
-    make_camps
-    make_camp_offerings
-    make_locations
-    make_registrations
-    make_coupon_codes
+    if Rails.env.development?
+      make_camps
+      make_camp_offerings
+      make_locations
+      make_registrations
+      make_coupon_codes
+    end
   end
 end
 
