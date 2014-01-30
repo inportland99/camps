@@ -1,6 +1,9 @@
 class CouponCodesController < ApplicationController
   # GET /coupon_codes
   # GET /coupon_codes.json
+
+  before_filter :authenticate_user!, except: :code_lookup
+
   def index
     @coupon_codes = CouponCode.all
 

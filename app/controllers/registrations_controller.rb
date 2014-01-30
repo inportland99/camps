@@ -1,6 +1,8 @@
 class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
+  before_filter :authenticate_user!, :except => [:new, :create]
+
   def index
     @registrations = Registration.all
 
@@ -64,8 +66,8 @@ class RegistrationsController < ApplicationController
       respond_to do |format|
         if @registration.save_with_payment
           PonyExpress.registration_confirmation(@registration).deliver
-          format.html { redirect_to @registration, notice: 'Registration created!
-            Please print this page for your records. An email has been sent confirming this transaction.' }
+          format.html { redirect_to root_url, notice: 'Registration created!
+            An email has been sent confirming this transaction.' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
           format.html { render action: "new" }

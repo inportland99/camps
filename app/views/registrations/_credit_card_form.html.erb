@@ -8,7 +8,7 @@
 <% end %>
 
 <% if @registration.stripe_card_token %>
- <h4>Card has already been provided.</h4>
+  <h4>Card has already been provided.</h4>
 <% else %>
 <div id="cc_field" class="form-group string optional">
   <%= label_tag :card_number, "Credit Card Number", class: "string optional" %>

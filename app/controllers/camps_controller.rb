@@ -1,4 +1,7 @@
 class CampsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   # GET /camps
   # GET /camps.json
   def index

@@ -66,4 +66,21 @@ class CampOffering < ActiveRecord::Base
   def at_capacity?
     open_spots <= 0 ? true : false
   end
+
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      camp_offering = find_by_id(row["id"]) || new
+      camp_offering.attributes = row.to_hash.slice(*accessible_attributes)
+      camp_offering.save!
+    end
+  end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |camp_offering|
+        csv << camp_offering.attributes.values_at(*column_names)
+      end
+    end
+  end
 end

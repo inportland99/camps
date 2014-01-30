@@ -8,7 +8,9 @@ Camps::Application.routes.draw do
   resources :locations
 
 
-  resources :camp_offerings
+  resources :camp_offerings do
+    collection { post :import }
+  end
 
 
   resources :camps

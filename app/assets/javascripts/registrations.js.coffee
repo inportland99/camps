@@ -6,7 +6,6 @@
 jQuery ->
   $registrationModal = $('#registrationModal')
   $inputCheckbox = $('input[type=checkbox]')
-  $camp_registrations_ul = $("#camp_registrations ul")
 
   if $(".camp_offerings").length > 0
     $(document).ready ->
@@ -25,14 +24,7 @@ jQuery ->
       camps.selected_total()
 
       #update total if camps are selected
-      count = 0
-      $(':checkbox:checked', '#camp_offerings').each ->
-        if $(this).is(":checked")
-          count += 1
-          name = $(this).data('name')
-          $camp_registrations_ul.append("<li>#{name}</li>")
-      if count < 1
-        $camp_registrations_ul.text("You have not selected any camps.")
+      camps.selected_camps()
 
   #questionaire modal
   $('#highlight').on 'click', ->
@@ -47,14 +39,7 @@ jQuery ->
 
   #add selected camp to list for registration confirmation
   $registration_camp_offerings.on 'change', 'input[type="checkbox"]', ->
-    $camp_registrations_ul.text('')
-    count = 0
-    $(':checkbox:checked', '#camp_offerings').each ->
-      count += 1
-      name = $(this).data('name')
-      $camp_registrations_ul.append("<li>#{name}</li>")
-    if count < 1
-      $camp_registrations_ul.text("You have not selected any camps.")
+    camps.selected_camps()
 
   #toggle calendar view based on location select field
   $registration_location_id = $('#registration_location_id')
@@ -105,6 +90,17 @@ coupon_code =
         camps.selected_total()
 
 camps =
+  selected_camps: ->
+    $camp_registrations_ul = $("#camp_registrations ul")
+    $camp_registrations_ul.text('')
+    count = 0
+    $(':checkbox:checked', '#camp_offerings').each ->
+      count += 1
+      name = $(this).data('name')
+      $camp_registrations_ul.append("<li>#{name}</li>")
+    if count < 1
+      $camp_registrations_ul.text("You have not selected any camps.")
+
   selected_total: ->
     total = 0
     #loop through checked camps to calculate total
@@ -166,15 +162,15 @@ registration_payment =
           $('input[type=submit]').attr('disabled', false)
           false
         else
-          console.log $('#card_number').length()
-          false
-          # if $('#card_number').length()
-          #   registration_payment.processCard()
-          #   false
-          # else if not $('#card_number').length() and $('#registration_stripe_card_token').val()
-          #   true
-          # else
-          #   alert "You have not entered a credit card."
+          if $('#card_number').val()
+            registration_payment.processCard()
+            false
+          else if not $('#card_number').val() and $('#registration_stripe_card_token').val()
+            true
+          else
+            alert "You have not entered a credit card."
+            $('input[type=submit]').attr('disabled', false)
+            false
 
   amountUpdate: ->
     str = $('#registration_total > p').children('span').text()
@@ -195,7 +191,6 @@ registration_payment =
   handleStripeResponse: (status, response) ->
     if status == 200
       registration_payment.amountUpdate()
-      $('#registration_total').val(amount)
       $('#registration_stripe_card_token').val(response.id)
       console.log $('#registration_total').val()
       if confirm('Your information has been validated. Click OK to complete the transaction (this will bill your card).')

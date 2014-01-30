@@ -30,7 +30,7 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       Select all of the summer camps you are registering your student for!
-      <div class="camp_offerings">
+      <div id="camp_offerings">
         <% if params[:location] == "1" || @registration.location_id == 1 %>
         <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
           <%= render 'powell_camp_calendar' %>
@@ -53,9 +53,6 @@
           <%= render 'new_albany_camp_calendar' %>
         </div>
         <% end %>
-        <%# unless params[:location] || @registration.location %>
-          <%# f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
-        <%# end %>
       </div>
     </div>
   </div>
@@ -108,7 +105,7 @@
       <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
     </div>
     <div id="coupon_error"></div>
-    <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-default btn-xs', id: :coupon_code %>
+    <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-default btn-xs', id: :coupon_code_button %>
   </br>
     </div>
   </div>
@@ -174,9 +171,6 @@
           <%= render 'new_albany_camp_calendar' %>
         </div>
         <% end %>
-        <%# unless params[:location] || @registration.location %>
-          <%# f.association :camp_offerings, collection: @camp_offerings, as: :check_boxes, label_method: :edit_name %>
-        <%# end %>
       </div>
     </div>
   </div>

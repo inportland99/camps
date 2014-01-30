@@ -1,12 +1,15 @@
 class CampOfferingsController < ApplicationController
   # GET /camp_offerings
   # GET /camp_offerings.json
+  before_filter :authenticate_user!
+
   def index
     @camp_offerings = CampOffering.order("location_id ASC")
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @camp_offerings }
+      format.csv { send_data @camp_offerings.to_csv }
     end
   end
 
