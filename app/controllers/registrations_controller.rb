@@ -77,6 +77,10 @@ class RegistrationsController < ApplicationController
     rescue Stripe::CardError => e
       flash.now[:error] = e.message + " Please enter a valid credit card and reselect your camps."
       render action: :new, location: @registration.location
+
+    rescue Stripe::InvalidRequestError
+      flash.now[:error] = "Please enter a valid credit card and reselect your camps."
+      render action: :new, location: @registration.location
   end
 
   # PATCH/PUT /registrations/1

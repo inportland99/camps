@@ -152,6 +152,7 @@ jQuery ->
 registration_payment =
   setupForm: ->
     $('#new_registration').submit ->
+      registration_payment.amountUpdate()
       if $('#process_without_payment').is(":checked")
         true
       else
@@ -165,8 +166,23 @@ registration_payment =
           $('input[type=submit]').attr('disabled', false)
           false
         else
-          registration_payment.processCard()
+          console.log $('#card_number').length()
           false
+          # if $('#card_number').length()
+          #   registration_payment.processCard()
+          #   false
+          # else if not $('#card_number').length() and $('#registration_stripe_card_token').val()
+          #   true
+          # else
+          #   alert "You have not entered a credit card."
+
+  amountUpdate: ->
+    str = $('#registration_total > p').children('span').text()
+    str = str.replace(",","")
+    str = str.replace("$","")
+    str = str.replace(".","")
+    amount = parseInt(str)
+    $('#registration_total').val(amount)
 
   processCard: ->
     card =
@@ -178,13 +194,9 @@ registration_payment =
 
   handleStripeResponse: (status, response) ->
     if status == 200
-      str = $('#registration_total > p').children('span').text()
-      str = str.replace(",","")
-      str = str.replace("$","")
-      str = str.replace(".","")
-      amount = parseInt(str)
-      $('#registration_stripe_card_token').val(response.id)
+      registration_payment.amountUpdate()
       $('#registration_total').val(amount)
+      $('#registration_stripe_card_token').val(response.id)
       console.log $('#registration_total').val()
       if confirm('Your information has been validated. Click OK to complete the transaction (this will bill your card).')
         $('#new_registration')[0].submit()
