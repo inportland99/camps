@@ -1,3 +1,5 @@
 <%= @registration.parent_name %>,
 
+<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
+
 Thank you for registering!

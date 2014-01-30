@@ -1,5 +1,8 @@
 Camps::Application.routes.draw do
 
+  resources :coupon_codes
+
+
   devise_for :users
 
   resources :locations
@@ -15,6 +18,8 @@ Camps::Application.routes.draw do
 
 
   root :to => 'pages#home'
+
+  post 'coupon_codes/code_lookup', to: 'coupon_codes#code_lookup'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

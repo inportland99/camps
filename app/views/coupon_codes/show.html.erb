@@ -1,0 +1,30 @@
+<div class="container">
+  <p>
+    <b>Name:</b>
+    <%= @coupon_code.name %>
+  </p>
+
+  <p>
+    <b>Type:</b>
+    <%= @coupon_code.coupon_type %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%= @coupon_code.description %>
+  </p>
+
+  <p>
+    <b>Amount:</b>
+    <%= @coupon_code.amount %>
+  </p>
+
+  <p>
+    <b>Active:</b>
+    <%= @coupon_code.active %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_coupon_code_path(@coupon_code) %> |
+  <%= link_to 'Back', coupon_codes_path %>
+</div>

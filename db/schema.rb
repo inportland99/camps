@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140118153217) do
+ActiveRecord::Schema.define(:version => 20140127194532) do
 
   create_table "camp_offerings", :force => true do |t|
     t.integer  "camp_id"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(:version => 20140118153217) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "price"
+  end
+
+  create_table "coupon_codes", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "amount"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "coupon_type"
+    t.boolean  "active"
   end
 
   create_table "locations", :force => true do |t|
@@ -80,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20140118153217) do
     t.string   "parent_state"
     t.integer  "parent_zip"
     t.integer  "location_id"
+    t.string   "coupon_code"
   end
 
   create_table "roles", :force => true do |t|

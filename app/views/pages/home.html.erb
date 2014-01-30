@@ -4,6 +4,7 @@
   <div class="row">
     <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
     <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
+    <%= link_to "New Coupon Code", new_coupon_code_path, class: 'btn btn-default btn-lg' %>
   </div> <!-- /.row -->
   <div class="row">
     <div class="admin_dashboard">
@@ -18,15 +19,15 @@
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class='todays_sales'>
           <div class="header">
-            <h2>Monthly Sales</h2>
+            <h2>Header 2</h2>
           </div>
-          <span>$<%= @todays_sales %>.00</span>
+          <span></span>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <div class='todays_registrations'>
           <div class="header">
-            <h2><%= @todays_registrations.count %> Registrations today.</h2>
+            <h2>Header 3</h2>
           </div>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->

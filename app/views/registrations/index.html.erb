@@ -1,19 +1,15 @@
+<div class="container">
 <h1>Listing registrations</h1>
 
 <table class="table table-bordered table-hover">
   <tr>
     <th>Parent First name</th>
     <th>Parent Last name</th>
-    <th>Parent address 1</th>
-    <th>Parent address 2</th>
     <th>Parent email</th>
     <th>Parent phone</th>
     <th>Student first name</th>
     <th>Student last name</th>
     <th>Student grade</th>
-    <th>Student allergies</th>
-    <th>Emergency contact name</th>
-    <th>Emergency contact phone</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,16 +19,11 @@
   <tr>
     <td><%= registration.parent_first_name %></td>
     <td><%= registration.parent_last_name %></td>
-    <td><%= registration.parent_address_1 %></td>
-    <td><%= registration.parent_address_2 %></td>
     <td><%= registration.parent_email %></td>
     <td><%= registration.parent_phone %></td>
     <td><%= registration.student_first_name %></td>
     <td><%= registration.student_last_name %></td>
     <td><%= registration.student_grade %></td>
-    <td><%= registration.student_allergies %></td>
-    <td><%= registration.emergency_contact_name %></td>
-    <td><%= registration.emergency_contact_phone %></td>
     <td><%= link_to 'Show', registration %></td>
     <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
     <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -43,3 +34,4 @@
 <br />
 
 <%= link_to 'New Registration', new_registration_path %>
+</div>

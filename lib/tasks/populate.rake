@@ -10,6 +10,7 @@ namespace :db do
     make_camp_offerings
     make_locations
     make_registrations
+    make_coupon_codes
   end
 end
 
@@ -72,7 +73,7 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "All Day",
                          classroom:         1,
-                         week:              n+1)
+                         week:              n + 1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           1,
@@ -213,12 +214,16 @@ def make_locations
                    zip:           "43230",)
 end
 
+def make_coupon_codes
+  coupon = CouponCode.create!(name: "10DOLLARSOFF",
+                     coupon_type: "0",
+                     amount: 10,
+                     description: "Dollar amount off.")
+  coupon.toggle!(:active)
 
-# def make_relationships
-#   users = User.all
-#   user  = users.first
-#   followed_users = users[2..50]
-#   followers      = users[3..40]
-#   followed_users.each { |followed| user.follow!(followed) }
-#   followers.each      { |follower| follower.follow!(user) }
-# end
+  coupon1 = CouponCode.create!(name: "10PERCENTOFF",
+                     coupon_type: "1",
+                     amount: 10,
+                     description: "Percentage off.")
+  coupon1.toggle!(:active)
+end
