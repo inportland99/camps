@@ -84,6 +84,11 @@ class CampOfferingsController < ApplicationController
     end
   end
 
+  def import
+    CampOffering.import(params[:file])
+    redirect_to camp_offering_path, notice: "Camp offerings imported."
+  end
+
   private
 
     # Use this method to whitelist the permissible parameters. Example:
