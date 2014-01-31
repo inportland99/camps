@@ -20,7 +20,7 @@
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "All Day" %>
               <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} unless co.at_capacity? %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
               </label>
             <% end %>
           <% end %>
@@ -29,7 +29,7 @@
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "AM" && co.classroom == 2 %>
               <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} unless co.at_capacity? %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
               </label>
             <% end %>
           <% end %>
@@ -38,7 +38,7 @@
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "AM" && co.classroom == 2 %>
               <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} unless co.at_capacity? %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
               </label>
             <% end %>
           <% end %>
@@ -50,7 +50,7 @@
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
               <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} unless co.at_capacity? %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
               </label>
             <% end %>
           <% end %>
@@ -59,7 +59,7 @@
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
               <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} %> <%= co.name %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}"} unless co.at_capacity? %> <%= co.name %> <%= co.name %> <span class="pull-right">($<%= co.price %>)</span>
               </label>
             <% end %>
           <% end %>

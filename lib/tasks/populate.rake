@@ -49,8 +49,8 @@ def make_users
                          email:                 "raj@mathplusacademy.com",
                          password:              "password",
                          password_confirmation: "password")
-    user2.roles << Role.find(1)
-    user2.save
+    user3.roles << Role.find(1)
+    user3.save
 end
 
 
