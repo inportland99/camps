@@ -14,18 +14,9 @@
         </div>
       </div><!-- /col-lg-9 col-md-9 col-sm-12 col-xs-12 -->
     </div><!-- /row -->
-    <div class="button-group">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 centered md-lg-buttons hidden-xs">
-            <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
-            <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons" %>
-        </div>
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 centered visible-xs">
-            <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons mobile-buttons"  %>
-            <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile-buttons" %>
-        </div>
-      </div> <!-- /.row -->
-    </div><!-- /.button-group -->
+    <div class="row">
+      <%= render 'registration_buttons' %>
+    </div>
   </div><!-- /.container -->
 </div><!-- /.headerwrap -->
 
@@ -94,6 +85,13 @@
 
     <!-- ** Camp Information ** -->
     <div class="row mt centered">
+      <div class="col-lg-6 col-lg-offset-3">
+        <h1>Our Camps.</h1>
+      </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
+    </div><!-- /row -->
+
+    <!-- ** Row 1 ** -->
+    <div class="row mt centered">
       <div class="col-lg-4">
         <div class="circle_base type_1">
           <%= image_tag('http://www.mathplusacademy.com/wp-content/uploads/2012/02/life-size-choc-fix-150x150.jpg')%>
@@ -108,12 +106,13 @@
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
         <div class="circle_base type_1">
-          <%= image_tag('programming.png', size: '150x150')%>
+          <%= image_tag('video_game.png', size: '150x150')%>
         </div>
         <h1>Video Game Design</h1>
       </div><!--/col-lg-4 -->
     </div>
 
+    <!-- ** Row 2 ** -->
     <div class="row mt centered">
       <div class="col-lg-4">
         <div class="circle_base type_1">
@@ -133,5 +132,32 @@
         </div>
         <h1>Chess</h1>
       </div><!--/col-lg-4 -->
-    </div
+    </div>
+
+    <!-- ** Row 3 ** -->
+    <div class="row mt centered">
+      <div class="col-lg-4">
+        <div class="circle_base type_1">
+          <%= image_tag('programming.png', size: '150x150')%>
+        </div>
+        <h1>Computer Programming</h1>
+      </div><!--/col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="circle_base type_1">
+          <%= image_tag('web_design.png', size: '150x150')%>
+        </div>
+        <h1>Web Design</h1>
+      </div><!--/col-lg-4 -->
+      <div class="col-lg-4">
+        <div class="circle_base type_1">
+          <%= image_tag('inventors.png', size: '150x150')%>
+        </div>
+        <h1>Inventors Workshop</h1>
+      </div><!--/col-lg-4 -->
+    </div>
+
+    <div class="row mt centered">
+      <h1>Register now!</h1>
+      <%= render 'registration_buttons' %>
+    </div>
 </div><!-- /container -->
