@@ -187,25 +187,32 @@ i {
   .md-lg-buttons:first-child{
     margin-top: 70px
   }
-  .header_buttons{
+  .button_group{
     margin-top: 10px;
-
-    .registration_buttons{
-      margin-right: 5px;
-      margin-left: 5px;
-    }
-  }
-  .button-group{
-    margin-bottom: 25px;
+    display: table-cell;
+    vertical-align: bottom;
+    float: none;
   }
 
   .mobile-buttons{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 0;
+    margin-bottom: 15px;
   }
 }
 
+.registration_buttons{
+  margin: 10px;
+}
 
+.mobile-header{
+  background-color: rgba(255,255,255,0.8);
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  h1{
+    padding: 30px
+  }
+}
 
 #headerwrap h1 {
   margin-top: 60px;
@@ -214,4 +221,22 @@ i {
   font-size: 45px;
   font-weight: 200;
   letter-spacing: 1px;
+}
+
+.divider{
+  border-bottom: solid 1px gray;
+  margin-bottom: 50px;
+}
+
+.circle_base {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+}
+
+.type_1 {
+  overflow: hidden;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  background: yellow;
 }
