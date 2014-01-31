@@ -13,7 +13,7 @@
   <tbody>
 
     <% 3.times do |n| %>
-      <tr>
+      <tr <% n%2 == 0 ? "style=color:red;" : "" %>>
         <td rowspan=2><%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %></td>
         <td>AM (9 - 12)</td>
         <td rowspan=2 style="vertical-align:middle;">
