@@ -76,3 +76,5 @@ gem "country_select"
 gem "stripe"
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'lodash-rails'

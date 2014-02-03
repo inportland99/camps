@@ -1,34 +1,37 @@
 <div class="container">
 <h1>Listing registrations</h1>
 
-<table class="table table-bordered table-hover">
-  <tr>
-    <th>Parent First name</th>
-    <th>Parent Last name</th>
-    <th>Parent email</th>
-    <th>Parent phone</th>
-    <th>Student first name</th>
-    <th>Student last name</th>
-    <th>Student grade</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @registrations.each do |registration| %>
-  <tr>
-    <td><%= registration.parent_first_name %></td>
-    <td><%= registration.parent_last_name %></td>
-    <td><%= registration.parent_email %></td>
-    <td><%= registration.parent_phone %></td>
-    <td><%= registration.student_first_name %></td>
-    <td><%= registration.student_last_name %></td>
-    <td><%= registration.student_grade %></td>
-    <td><%= link_to 'Show', registration %></td>
-    <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
-    <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="table table-bordered table-hover datatable">
+  <thead>
+      <tr>
+        <th>Parent First name</th>
+        <th>Parent Last name</th>
+        <th>Parent email</th>
+        <th>Parent phone</th>
+        <th>Student first name</th>
+        <th>Student last name</th>
+        <th>Student grade</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+  </thead>
+    <tbody>
+        <% @registrations.each do |registration| %>
+          <tr>
+            <td><%= registration.parent_first_name %></td>
+            <td><%= registration.parent_last_name %></td>
+            <td><%= registration.parent_email %></td>
+            <td><%= registration.parent_phone %></td>
+            <td><%= registration.student_first_name %></td>
+            <td><%= registration.student_last_name %></td>
+            <td><%= registration.student_grade %></td>
+            <td><%= link_to 'Show', registration %></td>
+            <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
+            <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </tbody>
 </table>
 
 <br />

@@ -60,6 +60,11 @@ jQuery ->
     $(this).attr('disabled', true)
     coupon_code.look_up()
 
+  #registration index table datatables
+  $('.datatable').dataTable
+    sPaginationType: "bootstrap"
+
+
 coupon_code =
   look_up: ->
     $coupon_code_button = $('#coupon_code_button')

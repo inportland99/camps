@@ -18,4 +18,6 @@
 //= require jquery_nested_form
 //= require jquery.ui.all
 //= require registrations
-
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap3
+//= require dataTables/jquery.dataTables.responsive

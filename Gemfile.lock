@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/rweng/jquery-datatables-rails.git
+  revision: 788a7b24caf8fe58a5493aa3f6a065879a9f752a
+  specs:
+    jquery-datatables-rails (1.12.2)
+      jquery-rails
+      sass-rails
+
+GIT
   remote: git://github.com/ryanb/nested_form.git
   revision: 1b0689dfb4d230ceabd278eba159fcb02f23c68a
   specs:
@@ -121,6 +129,8 @@ GEM
     letter_opener (1.2.0)
       launchy (~> 2.2)
     libv8 (3.16.14.3)
+    lodash-rails (2.4.0)
+      railties (>= 3.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -258,9 +268,11 @@ DEPENDENCIES
   gritter
   has_scope
   high_voltage
+  jquery-datatables-rails!
   jquery-rails
   jquery-ui-rails
   letter_opener
+  lodash-rails
   nested_form!
   nifty-generators
   pg
