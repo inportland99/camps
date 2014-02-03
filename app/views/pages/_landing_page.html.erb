@@ -173,6 +173,26 @@
       </div><!--/col-lg-4 -->
     </div>
 
+    <!-- ** Row 4 ** -->
+    <div class="row mt centered">
+      <div class="col-lg-6">
+        <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
+        <div class="circle_base type_1">
+          <%= image_tag('prealgebraprep.png', size: '150x150')%>
+        </div>
+        <h2>Pre-Algebra Prep</h2>
+        <% end %>
+      </div><!--/col-lg-6 -->
+      <div class="col-lg-6">
+        <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
+        <div class="circle_base type_1">
+          <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
+        </div>
+        <h2>Kickstart Kindergarten</h2>
+        <% end %>
+      </div><!--/col-lg-6 -->
+    </div>
+
     <div class="row mt centered">
       <h1>Register now!</h1>
       <%= render 'registration_buttons' %>
