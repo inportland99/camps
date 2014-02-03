@@ -4,7 +4,7 @@ class RegistrationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
 
   def index
-    @registrations = Registration.all
+    @registrations = Registration.order('created_at DESC').all
 
     respond_to do |format|
       format.html # index.html.erb
