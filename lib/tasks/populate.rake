@@ -56,7 +56,7 @@ end
 
 
 def make_camps
-  8.times do |n|
+  16.times do |n|
   Camp.create!(title:           "Camp #{n+1}",
                description:     Faker::Lorem.sentences,
                capacity:        8,
