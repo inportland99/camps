@@ -182,6 +182,11 @@ registration_payment =
 
   processCard: ->
     card =
+      name: $('#registration_parent_first_name').val() + ' ' + $('#registration_parent_last_name').val()
+      address_line1: $('#registration_parent_address_1').val()
+      address_city: $('#registration_parent_city').val()
+      address_state: $('#registration_parent_state').val()
+      address_zip: $('#registration_parent_zip').val()
       number: $('#card_number').val()
       cvc: $('#card_code').val()
       expMonth: $('#card_month').val()
