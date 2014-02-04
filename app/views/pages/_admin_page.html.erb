@@ -6,6 +6,7 @@
     <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons mobile" %>
     <%= link_to "New Coupon Code", new_coupon_code_path, class: 'btn btn-default btn-lg' %>
   </div> <!-- /.row -->
+  <!-- ** Row One ** -->
   <div class="row">
     <div class="admin_dashboard">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -14,6 +15,39 @@
             <h2> Registrations today.</h2>
           </div>
           <span><%= @todays_registrations.count %></span>
+        </div>
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='todays_sales'>
+          <div class="header">
+            <h2>Regsitrations this month.</h2>
+          </div>
+          <span><%= @months_registrations.count %></span>
+        </div> <!-- .todays_sales -->
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='todays_registrations'>
+          <div class="header">
+            <h2>Number of Camps Sold</h2>
+          </div>
+          <span><%= @camp_off_reg_count %></span>
+        </div>
+      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+    </div> <!-- admin_dashboard -->
+  </div><!-- /.row -->
+  <!-- ** Row Two ** -->
+  <div class="row">
+    <div class="admin_dashboard">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class='week_at_a_glance'>
+          <div class="header">
+            <h2>Week at a glance.</h2>
+          </div>
+          <%= simple_form_for(:info, url: camp_offerings_week_at_a_glance_path) do |f| %>
+            <%= f.input :week, as: :select, collection: (1..8).to_a %>
+            <%= f.input :location, collection: Location.all %>
+            <%= f.submit "Go", class: 'btn btn-sm btn-success' %>
+          <% end %>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

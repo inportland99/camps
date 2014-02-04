@@ -37,6 +37,32 @@
   }
 }
 
+.week_at_a_glance{
+  border: solid 1px lightgray;
+  margin-top:15px;
+  margin-bottom:15px;
+  border-radius:2px;
+  min-height: 120px;
+  height: auto;
+
+  .header{
+    min-height: 60px;
+    position: relative;
+    text-align: center;
+    border-bottom: solid 1px lightgray;
+    width: 98%;
+
+    h2{
+      margin-top: 0;
+      margin-bottom:  0;
+      padding-top: 10px;
+    }
+  }
+  form{
+    padding:20px;
+  }
+}
+
 .todays_sales{
   border: solid 1px lightgray;
   border-radius:2px;

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Week <%= @week %> in <%= @location.name %></h2>
+
+  <% @camp_offerings.each do |co| %>
+    <h4><%= co.name %></h4>
+    <ol>
+    <% co.registrations.each do |reg| %>
+      <li>
+        <p>
+          <b>Student:</b> <%= reg.student_name %> </br>
+          <b>Parent/Gaurdian:</b> <%= reg.parent_name %></br>
+          <b>Phone:</b> <%= reg.parent_phone %></br>
+          <b>Emergency Contact:</b> <%= reg.emergency_contact_name %></br>
+          <b>Emergency Contact Phone:</b> <%= reg.emergency_contact_phone %>
+        </p>
+      </li>
+    <% end %>
+    </ol>
+  <% end %>
+</div>

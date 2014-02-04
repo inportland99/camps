@@ -89,6 +89,12 @@ class CampOfferingsController < ApplicationController
     redirect_to camp_offering_path, notice: "Camp offerings imported."
   end
 
+  def week_at_a_glance
+    @location = Location.where('id = ?', "#{params[:info][:location]}").first
+    @week = params[:info][:week]
+    @camp_offerings = CampOffering.where('week = ? AND location_id = ?', "#{params[:info][:week]}","#{params[:info][:location]}")
+  end
+
   private
 
     # Use this method to whitelist the permissible parameters. Example:
