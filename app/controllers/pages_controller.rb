@@ -10,4 +10,7 @@ class PagesController < ApplicationController
       @camp_off_reg_count += reg.camp_offerings.count
     end
   end
+
+  def faq
+  end
 end
