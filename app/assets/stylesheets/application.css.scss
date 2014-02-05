@@ -192,15 +192,16 @@ i {
   }
   .button_group{
     margin-top: 10px;
-    display: table-cell;
-    vertical-align: bottom;
-    float: none;
   }
 
   .mobile-buttons{
     margin-top: 0;
     margin-bottom: 15px;
   }
+}
+
+.modal-footer{
+  border-top: 0;
 }
 
 .registration_buttons{
