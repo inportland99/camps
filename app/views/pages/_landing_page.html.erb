@@ -242,7 +242,7 @@
           <p>
             <h4>Offerings of this camp:</h4>
             <ul>
-            <% CampOffering.where("camp_id is ? OR camp_id is ?", 15, 16).each do |co| %>
+            <% CampOffering.where("camp_id is ? OR camp_id is ?", '15', '16').each do |co| %>
               <li><%= co.confirmation_name %></li>
             <% end %>
             </ul>
