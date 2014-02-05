@@ -159,6 +159,16 @@
       </div>
     </div>
   </div>
+  <!-- ** Camps Your Registering For ** -->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h3>Camps you are registering for:</h3>
+      <div id="camp_registrations">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div><!-- /.row -->
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h3>Student Information</h3>
@@ -216,21 +226,32 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-      <h3>Camps you are registering for:</h3>
-      <div id="camp_registrations">
-        <ul>
-        </ul>
-      </div>
-    </div>
-    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-    </div>
-    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 button_col">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 button_col">
       <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success pull-right", id: "registration_button" %>
     </div>
   <% end %>
   </div><!-- /.row -->
 </br>
+<hr>
+<form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/3e93836302b43a68f3e0d36b400fd1d4" class="infusion-form" method="POST">
+    <fieldset>
+      <legend>Couldn't find what you were looking for? We'll keep you updated on camp additions and updates.</legend>
+      <input name="inf_form_xid" type="hidden" value="3e93836302b43a68f3e0d36b400fd1d4" />
+      <input name="inf_form_name" type="hidden" value="Sign up for newsletter" />
+      <input name="infusionsoft_version" type="hidden" value="1.29.9.21" />
+      <div class="form-group">
+          <label for="inf_field_FirstName">First Name *</label>
+          <input class="form-control" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
+      </div>
+      <div class="form-group">
+          <label for="inf_field_Email">Email *</label>
+          <input class="form-control" id="inf_field_Email" name="inf_field_Email" type="text" />
+      </div>
+      <div class="infusion-submit">
+          <input type="submit" value="Submit" class="btn btn-sm btn-primary" />
+      </div>
+    </fieldset>
+  </form>
 <% end %>
 
 <%= render 'registration_modal' %>

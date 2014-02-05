@@ -60,6 +60,9 @@
       <div class="col-lg-4">
         <i class="fa fa-comments-o fa-5x"></i>
         <h2>97% Satisfaction</h2>
+        <p>
+          Over 1,000 students registered.
+        </p>
       </div><!--/col-lg-4 -->
 
       <div class="col-lg-4">
@@ -72,9 +75,9 @@
 
       <div class="col-lg-4">
         <i class="fa fa-usd fa-5x"></i>
-        <h2>Money Back Guarantee</h2>
+        <h2>Satisfaction Guarantee</h2>
         <p>
-          100% refund if you're not satisfied.
+          If your child is not happy with the camp we'll happily issue a full refund.
         </p>
       </div><!--/col-lg-4 -->
     </div><!-- /row -->
@@ -86,7 +89,9 @@
     <!-- ** Camp Information ** -->
     <div class="row mt centered">
       <div class="col-lg-6 col-lg-offset-3">
-        <h2>Our Camps.</h2>
+        <h2>Our Camps</h2>
+        <h3>Duration: 1 Week (M-F)</h3>
+        <p>Check schedule for start and end times.</p>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
     <!-- ** Row 1 ** -->
@@ -97,6 +102,7 @@
             <%= image_tag('http://www.mathplusacademy.com/wp-content/uploads/2012/02/life-size-choc-fix-150x150.jpg')%>
           </div>
           <h2>Brain Games</h2>
+        <p>Ages: 6-8 & 9-12 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -105,6 +111,7 @@
           <%= image_tag('robotics.png', size: '150x150')%>
         </div>
         <h2>LEGO Robotics</h2>
+        <p>Ages: 9-14 Full-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -113,6 +120,7 @@
           <%= image_tag('video_game.png', size: '150x150')%>
         </div>
         <h2>Video Game Design</h2>
+        <p>Ages: 9-14 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
@@ -125,6 +133,7 @@
           <%= image_tag('engineering.png', size: '150x150')%>
         </div>
         <h2>LEGO Engineering</h2>
+        <p>Ages: 10-14 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -133,6 +142,7 @@
           <%= image_tag('shark_tank.jpg', size: '150x150')%>
         </div>
         <h2>Shark Tank</h2>
+        <p>Ages: 10-14 Full-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -141,6 +151,7 @@
           <%= image_tag('chess.png', size: '150x150')%>
         </div>
         <h2>Chess</h2>
+        <p>Ages: 5-14 Full-Day and Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
@@ -153,6 +164,7 @@
           <%= image_tag('programming.png', size: '150x150')%>
         </div>
         <h2>Computer Programming</h2>
+        <p>Ages: 9-13 Full-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -161,6 +173,7 @@
           <%= image_tag('web_design.png', size: '150x150')%>
         </div>
         <h2>Web Design</h2>
+        <p>Ages: 10-14 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -169,28 +182,42 @@
           <%= image_tag('inventors.png', size: '150x150')%>
         </div>
         <h2>Inventor's Workshop</h2>
+        <p>Ages: 10-14 Full-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
 
     <!-- ** Row 4 ** -->
     <div class="row mt centered">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
         <div class="circle_base type_1">
           <%= image_tag('prealgebraprep.png', size: '150x150')%>
         </div>
         <h2>Pre-Algebra Prep</h2>
+        <p>Ages: 11-13 Half-Day</p>
+        <p></p>
         <% end %>
-      </div><!--/col-lg-6 -->
-      <div class="col-lg-6">
+      </div><!--/col-lg-4 -->
+      <div class="col-lg-4">
         <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
         <div class="circle_base type_1">
           <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
         </div>
         <h2>Kickstart Kindergarten</h2>
+        <p>Ages: 4-5 Half-Day</p>
+        <p></p>
         <% end %>
-      </div><!--/col-lg-6 -->
+      </div><!--/col-lg-4 -->
+      <div class="col-lg-4">
+        <%= link_to("#girlsOnlyModal", :data => {:toggle=>"modal"}) do %>
+        <div class="circle_base type_1">
+          <%= image_tag('prealgebraprep.png', size: '150x150')%>
+        </div>
+        <h2>Girls Only Camps</h2>
+        <p>Ages: 10-14 Half-Day</p>
+        <% end %>
+      </div><!--/col-lg-4 -->
     </div>
 
     <div class="row mt centered">
@@ -199,5 +226,33 @@
     </div>
 
     <%= render '/registrations/camp_modals' %>
+
+  <!-- girlsOnlyModal -->
+  <div class="modal fade" id="girlsOnlyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">Girls Only Camps</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            We offer girls only camps for both Website Design and Programming with SCRATCH.
+          </p>
+          <p>
+            <h4>Offerings of this camp:</h4>
+            <ul>
+            <% CampOffering.where("camp_id is ? OR camp_id is ?", 15, 16).each do |co| %>
+              <li><%= co.confirmation_name %></li>
+            <% end %>
+            </ul>
+          </p>
+        </div><!-- .modal-body -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div>
 <!-- /container -->

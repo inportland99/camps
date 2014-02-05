@@ -7,24 +7,12 @@ jQuery ->
   $registrationModal = $('#registrationModal')
   $inputCheckbox = $('input[type=checkbox]')
 
-  if $(".camp_offerings").length > 0
-    $(document).ready ->
-      #collect params
-      params = []
-      hash = undefined
-      hashes = window.location.href.slice(window.location.href.indexOf("?") + 1).split("&")
-      i = 0
-      while i < hashes.length
-        hash = hashes[i].split("=")
-        params.push hash[0]
-        params[hash[0]] = hash[1]
-        i++
+  if !(document.getElementById("camp_offerings") is null)
+    #calculate total on page load (incase of redirect)
+    camps.selected_total()
 
-      #calculate total on page load (incase of redirect)
-      camps.selected_total()
-
-      #update total if camps are selected
-      camps.selected_camps()
+    #update total if camps are selected
+    camps.selected_camps()
 
   #questionaire modal
   $('#highlight').on 'click', ->
@@ -121,7 +109,7 @@ camps =
       count += 1
       name = $(this).data('name')
       $camp_registrations_ul.append("<li>#{name}</li>")
-    if count < 1
+    if count is 0
       $camp_registrations_ul.text("You have not selected any camps.")
 
   selected_total: ->
