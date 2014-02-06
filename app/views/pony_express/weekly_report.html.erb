@@ -1,0 +1,46 @@
+<h2>Math Plus Summer Camp Weekly Report (Week of <%= Time.now.beginning_of_week.strftime("%b %d") %>)</h2>
+
+<h2># of Powell Camp Registrations This Week</h2>
+<%= @powell_camp_offering_registrations.count %>
+
+<h2># of New Albany Camp Registration This Week</h2>
+<%= @new_albany_camp_offering_registrations.count %>
+
+</br>
+
+<hr>
+
+<h2>Enrollment Overview (by location)</h2>
+
+<% @locations.each do |location| %>
+
+<h3><u><%= location.name %></u></h3>
+
+  <table>
+    <tr>
+      <th>Status</th>
+      <th>Camp</th>
+      <th>Camp Time</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Open Spots</th>
+    </tr>
+
+  <% location.camp_offerings.each do |camp_offering| %>
+    <tr>
+      <td class="camp_offeringtered">
+          <%=
+              camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe
+          %>
+      </td>
+      <td><%= camp_offering.name %></td>
+      <td align="center"><%= camp_offering.time %></td>
+      <td align="center"><%= camp_offering.start_date.strftime("%b %d") %></td>
+      <td align="center"><%= camp_offering.end_date.strftime("%b %d") %></td>
+      <td align="center"><%= camp_offering.open_spots %></td>
+    </tr>
+  <% end %>
+  </table>
+  </br>
+  <hr>
+<% end %>
