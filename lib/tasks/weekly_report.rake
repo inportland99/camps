@@ -1,7 +1,9 @@
 namespace :mail do
   desc "Send weekly registration report."
   task weekly_report: :environment do
-    send_weekly_report
+    if Time.now.sunday?
+      send_weekly_report
+    end
   end
 end
 

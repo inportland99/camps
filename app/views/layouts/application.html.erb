@@ -29,5 +29,7 @@
       <%= link_to "Sign In", new_user_session_path %>
     <% end %>
   </p>
+
+  <%= render 'layouts/ga' if Rails.env.production? %>
   </body>
 </html>
