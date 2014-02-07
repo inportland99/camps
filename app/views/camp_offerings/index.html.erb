@@ -6,40 +6,43 @@
       <%= link_to "CSV", camp_offerings_path(format: "csv") %>
     </p>
 
-    <table class="table table-bordered table-hover">
-      <tr>
-        <th>Status</th>
-        <th>Camp</th>
-        <!-- <th>Teacher</th>
-        <th>Assistant</th> -->
-        <th>Camp Time</th>
-        <th>Start date</th>
-        <th>End date</th>
-        <th>Location</th>
-        <th>Open Spots</th>
-        <th></th>
-        <th></th>
-      </tr>
-
-    <% @camp_offerings.each do |camp_offering| %>
-      <tr>
-        <td class="camp_offeringtered">
-            <%=
-                camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe
-            %>
-        </td>
-        <td><%= camp_offering.name %></td>
-        <!-- <td><%# camp_offering.teacher %></td>
-        <td><%# camp_offering.assistant %></td> -->
-        <td><%= camp_offering.time %></td>
-        <td><%= camp_offering.start_date %></td>
-        <td><%= camp_offering.end_date %></td>
-        <td><%= camp_offering.location.name  if camp_offering.location %></td>
-        <td><%= camp_offering.open_spots %></td>
-        <td><%= link_to 'Show', camp_offering %></td>
-        <td><%= link_to 'Edit', edit_camp_offering_path(camp_offering) %></td>
-      </tr>
-    <% end %>
+    <table class="table table-bordered table-hover datatable">
+      <thead>
+          <tr>
+            <th>Status</th>
+            <th data-class="expand">Camp</th>
+            <th data-hide="phone, tablet">Teacher</th>
+            <th data-hide="phone, tablet">Assistant</th>
+            <th data-hide="phone, tablet">Camp Time</th>
+            <th>Start date</th>
+            <th data-hide="phone, tablet">End date</th>
+            <th>Location</th>
+            <th data-hide="phone, tablet">Open Spots</th>
+            <th data-hide="phone, tablet"></th>
+            <th data-hide="phone, tablet"></th>
+          </tr>
+      </thead>
+        <tbody>
+            <% @camp_offerings.each do |camp_offering| %>
+              <tr>
+                <td class="camp_offeringtered">
+                    <%=
+                        camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe
+                    %>
+                </td>
+                <td><%= camp_offering.name %></td>
+                <td><%= camp_offering.teacher %></td>
+                <td><%= camp_offering.assistant %></td>
+                <td><%= camp_offering.time %></td>
+                <td><%= camp_offering.start_date.strftime('%b %d') %></td>
+                <td><%= camp_offering.end_date %></td>
+                <td><%= camp_offering.location.name  if camp_offering.location %></td>
+                <td><%= camp_offering.open_spots %></td>
+                <td><%= link_to 'Show', camp_offering %></td>
+                <td><%= link_to 'Edit', edit_camp_offering_path(camp_offering) %></td>
+              </tr>
+            <% end %>
+        </tbody>
     </table>
 <p>
     <h3> Import Camp Offerings</h3>
