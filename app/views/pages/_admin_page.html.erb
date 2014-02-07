@@ -1,11 +1,14 @@
 <div class="container">
   <h1>Admin Page</h1>
-  <div class="row">
+  <div class="row hidden-sm hidden-xs">
     <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
-    <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
-    <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons mobile" %>
-    <%= link_to "New Coupon Code", new_coupon_code_path, class: 'btn btn-default btn-lg registration_buttons mobile' %>
-    <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-success btn-lg registration_buttons mobile' %>
+    <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons" %>
+    <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons" %>
+    <%= link_to "New Coupon Code", new_coupon_code_path, class: 'btn btn-default btn-lg registration_buttons' %>
+    <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-success btn-lg registration_buttons' %>
+  </div> <!-- /.row -->
+  <div class="hidden-lg hidden-md admin-mobile">
+    <%= render 'admin_mobile_buttons' %>
   </div> <!-- /.row -->
   <!-- ** Row One ** -->
   <div class="row">
@@ -44,11 +47,15 @@
           <div class="header">
             <h2>Week at a glance.</h2>
           </div>
-          <%= simple_form_for(:info, url: camp_offerings_week_at_a_glance_path) do |f| %>
-            <%= f.input :week, as: :select, collection: (1..8).to_a %>
-            <%= f.input :location, collection: Location.all %>
-            <%= f.submit "Go", class: 'btn btn-sm btn-success' %>
-          <% end %>
+          <div class="row">
+            <div class="col-sm-2 col-xs-2">
+              <%= simple_form_for(:info, url: camp_offerings_week_at_a_glance_path) do |f| %>
+                <%= f.input :week, as: :select, collection: (1..8).to_a, required: false %>
+                <%= f.input :location, collection: Location.all, required: false %>
+                <%= f.submit "Go", class: 'btn btn-sm btn-success' %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

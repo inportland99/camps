@@ -1,6 +1,6 @@
 
 .admin_dashboard{
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 40px;
 }
 
@@ -61,6 +61,10 @@
   form{
     padding:20px;
   }
+
+  select{
+    width: 250px;
+  }
 }
 
 .todays_sales{
@@ -89,4 +93,15 @@
 
 .modal_buttons{
   margin-bottom: 10px;
+}
+
+.admin-mobile{
+  .btn{
+    width: 100%
+  }
+  .registration_buttons{
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }

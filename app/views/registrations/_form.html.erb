@@ -84,7 +84,7 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <%= f.input :parent_city, label: "City", input_html: { value: params[:parent_city]} %>
     <%= f.input :parent_state, label: "State", input_html: { value: params[:parent_state]} %>
-    <%= f.input :parent_zip, label: "Zip", input_html: { value: params[:parent_zip]} %>
+    <%= f.input :parent_zip, label: "Zip", as: :string, input_html: { value: params[:parent_zip]} %>
     <%= f.input :parent_email, label: "Email", input_html: { value: params[:parent_email]} %>
     <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:parent_phone]} %>
     <%= f.input :stripe_card_token, as: :hidden %>
@@ -209,7 +209,7 @@
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <%= f.input :parent_city, label: "City" %>
       <%= f.input :parent_state, collection: Registration::US_STATES, label: "State" %>
-      <%= f.input :parent_zip, label: "Zip" %>
+      <%= f.input :parent_zip, as: :string, label: "Zip" %>
       <%= f.input :parent_email, label: "Email" %>
       <%= f.input :parent_phone, label: "Phone" %>
       <%= f.input :stripe_card_token, as: :hidden %>
