@@ -65,7 +65,7 @@
           </div>
           <div class="body">
             <ol>
-              <% @coupon_codes_by_count.sort_by{ |name,count| count }.reverse.take(5).each do |code| %>
+              <% @coupon_codes_by_count.sort_by{ |name,count| count }.reverse.each do |code| %>
               <li> <%= code[:name] %> (Count: <%= code[:count] %> ) </li>
               <% end %>
             </ol>
