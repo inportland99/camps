@@ -15,7 +15,7 @@ class PagesController < ApplicationController
       name = coupon.name
       count = 0
       Registration.all.each do |reg|
-        if reg.coupon_code && reg.coupon_code == name
+        if reg.coupon_code && reg.coupon_code.upcase == name
           count += 1
         end
       end
