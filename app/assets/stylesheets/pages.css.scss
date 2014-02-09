@@ -37,6 +37,26 @@
   }
 }
 
+.coupon_codes{
+  border: solid 1px lightgray;
+  margin-top:15px;
+  margin-bottom:15px;
+  border-radius:2px;
+  min-height: 120px;
+  height: 200px;
+
+  .header{
+    min-height: 60px;
+    position: relative;
+    text-align: center;
+    border-bottom: solid 1px lightgray;
+    width: 98%;
+  }
+  .body{
+    padding-top: 20px;
+  }
+}
+
 .week_at_a_glance{
   border: solid 1px lightgray;
   margin-top:15px;

@@ -59,11 +59,17 @@
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='todays_sales'>
+        <div class='coupon_codes'>
           <div class="header">
-            <h2>Feature 5</h2>
+            <h2>Top Coupons</h2>
           </div>
-          <span></span>
+          <div class="body">
+            <ol>
+              <% @coupon_codes_by_count.sort_by{ |name,count| count }.reverse.take(5).each do |code| %>
+              <li> <%= code[:name] %> (Count: <%= code[:count] %> ) </li>
+              <% end %>
+            </ol>
+          </div>
         </div> <!-- .todays_sales -->
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">

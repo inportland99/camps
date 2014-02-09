@@ -9,6 +9,18 @@ class PagesController < ApplicationController
     @registrations.each do |reg|
       @camp_off_reg_count += reg.camp_offerings.count
     end
+
+    @coupon_codes_by_count = Array.new
+    CouponCode.all.each do |coupon|
+      name = coupon.name
+      count = 0
+      Registration.all.each do |reg|
+        if reg.coupon_code && reg.coupon_code == name
+          count += 1
+        end
+      end
+      @coupon_codes_by_count.push({name: name, count: count})
+    end
   end
 
   def faq

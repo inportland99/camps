@@ -43,9 +43,13 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <p>Camps this student is registered for.</p>
       <div class="camp_offerings">
-        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), as: :check_boxes, input_html: { style: "display:none;"}  if @registration.location_id == 1 %>
-        <%= f.association :camp_offerings, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), as: :check_boxes, input_html: { style: "display:none;"} if @registration.location_id == 2 %>
-        <%= f.association :camp_offerings, collection: CampOffering.order("location_id asc").order("start_date asc"), as: :check_boxes unless @registration.location_id %>
+        <% if @registration.location_id == "1" %>
+          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), input_html: { style: "display:none;"} %>
+        <% elsif @registration.location_id == "2" %>
+          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), input_html: { style: "display:none;"} %>
+        <% else %>
+          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.order("location_id asc").order("start_date asc") %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -68,7 +72,8 @@
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <%= f.input :parent_email, label: "Email" %>
-    <%= f.input :parent_phone, label: "Phone" %>
+      <%= f.input :parent_phone, label: "Phone" %>
+      <%= f.input :coupon_code, label: "Code" %>
     </div>
   </div>
   <div class="row">
