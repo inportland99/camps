@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       count = 0
       Registration.all.each do |reg|
         if reg.coupon_code && reg.coupon_code.upcase == name
-          count += 1
+          count += reg.camp_offerings.count
         end
       end
       @coupon_codes_by_count.push({name: name, count: count})
