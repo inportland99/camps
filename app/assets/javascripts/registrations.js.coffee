@@ -56,6 +56,7 @@ jQuery ->
   tableContainer = $('.datatable')
 
   tableContainer.dataTable
+    aaSorting: [[0,'desc']]
     sPaginationType: "bootstrap"
     # Setup for responsive datatables helper.
     bAutoWidth: false
