@@ -22,6 +22,7 @@ Camps::Application.routes.draw do
   root :to => 'pages#home'
 
   get '/faq', to: 'pages#faq'
+  get '/comparison', to: 'pages#comparison'
   post 'coupon_codes/code_lookup', to: 'coupon_codes#code_lookup'
   post 'camp_offerings/week_at_a_glance', to: 'camp_offerings#week_at_a_glance'
 

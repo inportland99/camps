@@ -25,4 +25,7 @@ class PagesController < ApplicationController
 
   def faq
   end
+
+  def comparison
+  end
 end
