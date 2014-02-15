@@ -116,7 +116,7 @@ camps =
   selected_total: ->
     total = 0
     #loop through checked camps to calculate total
-    $('input[type=checkbox]').each ->
+    $(':checkbox:checked', '#camp_offerings').each ->
       if $(this).is(":checked")
         total += $(this).data('price')
     coupon_type = parseInt($('#coupon_total').attr('data-coupon'))
