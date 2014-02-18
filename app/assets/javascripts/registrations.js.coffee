@@ -212,6 +212,7 @@ registration_payment =
       console.log $('#registration_total').val()
       if confirm('Your information has been validated. Click OK to complete the transaction (this will bill your card).')
         $('#new_registration')[0].submit()
+        googleAnalytics.addTrans($('#registration_stripe_card_token').val(), $('#registration_total').val())
       else
         false
         $('input[type=submit]').attr('disabled', false)
@@ -219,3 +220,17 @@ registration_payment =
       $('#stripe_error').text(response.error.message)
       $('#cc_field').addClass('has-error')
       $('input[type=submit]').attr('disabled', false)
+
+googleAnalytics =
+  addTrans: (transaction_id, total) ->
+    _gaq = _gaq || []
+    _gaq.push ['_setAccount', 'UA-19803817-1']
+    _gaq.push ['_addTrans',
+      transaction_id,
+      'Math Plus Academy',"#{total/100}" + ".00",
+      '0.00',
+      '0',
+      'Powell',
+      'Ohio',
+      'USA']
+    _gaq.push(['_trackTrans'])
