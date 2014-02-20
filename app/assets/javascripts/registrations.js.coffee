@@ -224,7 +224,6 @@ registration_payment =
 googleAnalytics =
   addTrans: (transaction_id, total) ->
     _gaq = _gaq || []
-    _gaq.push ['_setAccount', 'UA-19803817-1']
     _gaq.push ['_addTrans',
       transaction_id,
       'Math Plus Academy',"#{total/100}" + ".00",
