@@ -224,6 +224,7 @@ registration_payment =
 googleAnalytics =
   addTrans: (transaction_id, total) ->
     _gaq = _gaq || []
+    _gaq.push(['_setAccount', 'UA-19803817-1']);
     _gaq.push ['_addTrans',
       transaction_id,
       'Math Plus Academy',"#{total/100}" + ".00",
@@ -233,3 +234,10 @@ googleAnalytics =
       'Ohio',
       'USA']
     _gaq.push(['_trackTrans'])
+    ->
+      ga = document.createElement("script")
+      ga.type = "text/javascript"
+      ga.async = true
+      ga.src = ((if "https:" is document.location.protocol then "https://ssl" else "http://www")) + ".google-analytics.com/ga.js"
+      s = document.getElementsByTagName("script")[0]
+      s.parentNode.insertBefore ga, s
