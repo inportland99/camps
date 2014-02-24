@@ -33,4 +33,12 @@ class PagesController < ApplicationController
 
   def testimonials
   end
+
+  def reg_confirmation
+    @registration = Registration.find(params[:id])
+
+    unless params[:token] == @registration.stripe_charge_token
+      redirect_to { redirect_to root_url, notice: 'Invalid id or token.' }
+    end
+  end
 end

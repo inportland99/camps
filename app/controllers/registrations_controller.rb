@@ -66,8 +66,7 @@ class RegistrationsController < ApplicationController
       respond_to do |format|
         if @registration.save_with_payment
           PonyExpress.registration_confirmation(@registration).deliver
-          format.html { redirect_to root_url, notice: 'Registration created!
-            An email has been sent confirming this transaction.' }
+          format.html { redirect_to reg_confirmation_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
         else
           format.html { render action: "new" }

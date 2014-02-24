@@ -1,11 +1,6 @@
 <div class"production" hidden=true>Production</div>
 <div class="container">
   <h1>Summer Camp Registration</h1>
-  <!-- <p>< Button trigger modal >
-    <button class="btn btn-warning btn-lg" data-toggle="modal" data-target="#registrationModal">
-      Need help finding a camp? Click here.
-    </button>
-  </p> -->
 <% if params[:parent_first_name] %>
   <%= simple_form_for(@registration) do |f| %>
   <div class="row">
