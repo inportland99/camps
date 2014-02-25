@@ -72,7 +72,10 @@ class CampOffering < ActiveRecord::Base
   end
 
   def open_spots
-    camp.capacity - registrations.count
+    if camp.capacity
+      camp.capacity - registrations.count
+    else
+      0
   end
 
   def at_capacity?
