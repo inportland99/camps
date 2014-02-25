@@ -76,6 +76,7 @@ class CampOffering < ActiveRecord::Base
       camp.capacity - registrations.count
     else
       0
+    end
   end
 
   def at_capacity?
