@@ -13,9 +13,9 @@
     <tr>
       <th>Dates</th>
       <th>Time</th>
-      <th>Classroom 1</th>
-      <th>Classroom 2</th>
-      <th>Classroom 3</th>
+      <th>Offering 1</th>
+      <th>Offering 2</th>
+      <th>Offering 3</th>
     </tr>
   </thead>
   <tbody>
@@ -34,8 +34,13 @@
           <td style="vertical-align:middle;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% elsif co.time == "All Day" && co.classroom == 1 %>
@@ -43,8 +48,13 @@
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% end %>
@@ -60,8 +70,13 @@
           <td style="vertical-align:middle;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% elsif co.time == "All Day" && co.classroom == 2 %>
@@ -69,8 +84,13 @@
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% end %>
@@ -86,8 +106,13 @@
           <td>
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% elsif co.time == "All Day" && co.classroom == 3 %>
@@ -95,8 +120,13 @@
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
             </label>
           </td>
           <% end %>
@@ -115,8 +145,13 @@
               <td style="vertical-align:middle;">
                 <label class="checkbox">
                   <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                  <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                  <% if co.at_capacity? %>
+                    <span style='color:red;' class="pull-right">Sold Out</span>
+                  <% else %>
+                    <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                    <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                  <% end %>
                 </label>
               </td>
             <% elsif co.time == "All Day" && co.classroom == 1 %>
@@ -134,8 +169,13 @@
               <td style="vertical-align:middle;">
                 <label class="checkbox">
                   <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
                 </label>
               </td>
             <% elsif co.time == "All Day" && co.classroom == 2 %>
@@ -153,8 +193,13 @@
               <td style="vertical-align:middle;">
                 <label class="checkbox">
                   <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} %>
-              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+              <% if co.at_capacity? %>
+                <span style='color:red;' class="pull-right">Sold Out</span>
+              <% else %>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              <% end %>
                 </label>
               </td>
             <% elsif co.time == "All Day" && co.classroom == 3 %>

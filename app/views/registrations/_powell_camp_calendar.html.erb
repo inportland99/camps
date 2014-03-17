@@ -38,7 +38,7 @@
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
               <% else %>
-                <span class="pull-left"><%= co.open_spots %></span>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
                 <span style='color:green;' class="pull-right">$<%= co.price %></span>
               <% end %>
             </label>
@@ -52,7 +52,7 @@
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
               <% else %>
-                <span class="pull-left"><%= co.open_spots %></span>
+                <span class="pull-left"><%= open_spots(co).html_safe %></span>
                 <span style='color:green;' class="pull-right">$<%= co.price %></span>
               <% end %>
             </label>
