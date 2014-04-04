@@ -84,6 +84,18 @@ class RegistrationsController < ApplicationController
       render action: :new, location: @registration.location
   end
 
+  def email_confirmation
+    if params[:id]
+      @registration = Registration.find(params[:id])
+
+      if PonyExpress.registration_confirmation(@registration).deliver
+        redirect_to root_url, notice: "Confirmation Sent"
+      end
+    else
+      redirect_to root_url
+    end
+  end
+
   # PATCH/PUT /registrations/1
   # PATCH/PUT /registrations/1.json
   def update
@@ -118,7 +130,8 @@ class RegistrationsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def registration_params
-      params.require(:registration).permit(:emergency_contact_name,
+      params.require(:registration).permit(:id,
+                                           :emergency_contact_name,
                                            :emergency_contact_phone,
                                            :parent_address_1,
                                            :parent_address_2,
