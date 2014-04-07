@@ -51,4 +51,12 @@ class Registration < ActiveRecord::Base
   def student_name
     student_first_name + " " + student_last_name
   end
+
+  def camp_count
+    camp_offerings.count
+  end
+
+  def one_camp_halfday?
+    camp_count == 1 && ( camp_offerings.first.time == "AM" || camp_offerings.first.time == "PM" )
+  end
 end
