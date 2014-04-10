@@ -90,7 +90,7 @@
     </div>
   </div>
   <div class="row">
-    <% if current_user && current_user.role?(:super_admin)%>
+    <% if current_user && ( current_user.role?(:super_admin) || current_user.role?(:admin))%>
       <%= link_to 'Edit', edit_registration_path(@registration) %> |
       <%= link_to 'Send Confirmation', email_confirmation_path(id: @registration.id) %>
     <% end %>
