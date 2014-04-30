@@ -20,9 +20,7 @@
     <%= f.input :location_id %>
     <%= f.input :classroom, collection: (1..3).to_a %>
     <%= f.input :time, collection: CampOffering::OFFERING_TIMES %>
+    <%= f.input :hidden %>
 
-    <%# @camp_offering.each do |o| %> <!-- To help order times -->
-        <%# CampOffering::OFFERING_TIMES[o.offering_time.to_i] %>
-    <%# end %>
     <%= f.button :submit, class: "btn btn-lg btn-success" %>
 <% end %>
