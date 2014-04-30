@@ -44,11 +44,11 @@
       <p>Camps this student is registered for.</p>
       <div class="camp_offerings">
         <% if @registration.location_id == "1" %>
-          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), input_html: { style: "display:none;"} %>
+          <%= f.association :camp_offerings, as: :check_boxes, label_method: :confirmation_name, collection: CampOffering.where("location_id = ?", "1").order("start_date asc"), input_html: { style: "display:none;"} %>
         <% elsif @registration.location_id == "2" %>
-          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), input_html: { style: "display:none;"} %>
+          <%= f.association :camp_offerings, as: :check_boxes, label_method: :confirmation_name, collection: CampOffering.where("location_id = ?", "2").order("start_date asc"), input_html: { style: "display:none;"} %>
         <% else %>
-          <%= f.association :camp_offerings, as: :check_boxes, collection: CampOffering.order("location_id asc").order("start_date asc") %>
+          <%= f.association :camp_offerings, as: :check_boxes, label_method: :confirmation_name, collection: CampOffering.order("location_id asc").order("start_date asc") %>
         <% end %>
       </div>
     </div>
