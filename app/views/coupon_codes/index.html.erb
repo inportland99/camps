@@ -1,12 +1,18 @@
 <div class="container">
   <h1>Coupon Codes</h1>
 
+  <%= link_to 'New Coupon code', new_coupon_code_path, class: "btn btn-lg btn-success" %>
+
+  </br>
+  </br>
+
   <table class="table table-striped">
     <tr>
       <th>Name</th>
       <th>Type</th>
       <th>Description</th>
       <th>Amount</th>
+      <th>Uses</th>
       <th>Active</th>
       <th></th>
       <th></th>
@@ -19,6 +25,7 @@
       <td><%= CouponCode::DISCOUNT_TYPE[coupon_code.coupon_type.to_i] %></td>
       <td><%= coupon_code.description %></td>
       <td><%= coupon_code.amount %></td>
+      <td><%= coupon_code.how_many_used? %></td>
       <td><%= coupon_code.active %></td>
       <td><%= link_to 'Show', coupon_code %></td>
       <td><%= link_to 'Edit', edit_coupon_code_path(coupon_code) %></td>
@@ -26,8 +33,4 @@
     </tr>
   <% end %>
   </table>
-
-  <br />
-
-  <%= link_to 'New Coupon code', new_coupon_code_path, class: "btn btn-lg btn-success" %>
 </div>
