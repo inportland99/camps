@@ -16,6 +16,11 @@ $baseFontFamily: 'FontAwesome';
 @import "bootstrap";
 @import "gritter";
 
+.checkbox input[type="checkbox"] {
+  float: none;
+  margin-left: 0;
+}
+
 /*
  * Author: Carlos Alvarez
  * URL: http://alvarez.is

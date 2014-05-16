@@ -1,5 +1,4 @@
 class CouponCode < ActiveRecord::Base
-  attr_accessible :amount, :description, :name, :coupon_type, :active
 
   validates :name, uniqueness: true
 

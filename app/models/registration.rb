@@ -1,10 +1,4 @@
 class Registration < ActiveRecord::Base
-  attr_accessible :emergency_contact_name, :emergency_contact_phone, :parent_address_1,
-                  :parent_address_2, :parent_email, :parent_first_name, :parent_last_name,
-                  :parent_phone, :student_allergies, :student_first_name, :student_grade,
-                  :student_last_name, :camp_offering_ids, :stripe_charge_token, :stripe_card_token,
-                  :total, :location_id, :parent_city, :parent_state, :parent_zip,
-                  :process_without_payment, :coupon_code
 
   attr_accessor :stripe_card_token, :location, :process_without_payment
 

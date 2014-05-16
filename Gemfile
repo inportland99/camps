@@ -1,7 +1,9 @@
 source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+ruby '2.0.0'
+
+gem 'rails', '4.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -12,15 +14,13 @@ gem 'pg', :group => :production
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails', '~> 4.0.3'
+gem 'coffee-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -47,7 +47,6 @@ gem "therubyracer"
 gem "compass-rails"
 gem "has_scope"
 gem "responders"
-gem "strong_parameters"
 gem "will_paginate"
 gem "bootstrap-will_paginate"
 gem "chronic"
@@ -56,7 +55,6 @@ gem "nifty-generators", :group => :development
 gem "whenever", :require => false
 gem "timecop"
 gem "ranked-model"
-gem "squeel"
 gem "rspec-rails", :group => ["development", "test"]
 gem "factory_girl_rails", "~> 4.0", :group => ["development", "test"]
 gem "bootstrap-sass"

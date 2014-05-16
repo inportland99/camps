@@ -4,7 +4,5 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :first_name, :last_name, :email, :location_id, :password, :password_confirmation
-
   belongs_to :location
 end
