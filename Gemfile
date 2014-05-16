@@ -76,3 +76,4 @@ gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'lodash-rails'
+gem 'rails_12factor', group: :production
