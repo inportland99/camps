@@ -33,7 +33,7 @@
           <% am_camp = true %>
           <td style="vertical-align:middle;">
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -47,7 +47,7 @@
           <% am_camp = true %>
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -69,7 +69,7 @@
           <% am_camp = true %>
           <td style="vertical-align:middle;">
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -83,7 +83,7 @@
           <% am_camp = true %>
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -105,7 +105,7 @@
           <% am_camp = true %>
           <td>
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -119,7 +119,7 @@
           <% am_camp = true %>
           <td rowspan=2 style="vertical-align:middle;">
             <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -144,7 +144,7 @@
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
                 <label class="checkbox">
-                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
                   <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
                   <% if co.at_capacity? %>
                     <span style='color:red;' class="pull-right">Sold Out</span>
@@ -168,7 +168,7 @@
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
                 <label class="checkbox">
-                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
@@ -192,7 +192,7 @@
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
                 <label class="checkbox">
-                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? || ( !user_signed_in? && co.hidden )  %>
+                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
               <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
               <% if co.at_capacity? %>
                 <span style='color:red;' class="pull-right">Sold Out</span>
