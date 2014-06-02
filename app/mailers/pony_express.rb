@@ -9,6 +9,14 @@ class PonyExpress < ActionMailer::Base
       )
   end
 
+  def camp_reminder(registration)
+    @registration = registration
+
+    mail(
+      to: @registration.parent_email
+      )
+  end
+
   def weekly_report
     @registrations = Registration.where('created_at > ?', Time.now.beginning_of_week)
     @powell_camp_offering_registrations = []

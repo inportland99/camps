@@ -1,0 +1,34 @@
+<%= @registration.parent_name %>,
+
+PLEASE READ!
+
+This is a reminder that <%= @registration.student_first_name %> is registered for
+the following camp(s) next week at Math Plus:
+<% @registration.camp_offerings.each do |offering| %>
+  <% if offering.start_date > Date.today && offering.start_date < Date.today + 7.days %>
+    - <%= offering.confirmation_name %>
+    <% if offering.camp_id == 2 %>
+      *It will be helpful if your student either has, or has access to an Gmail account.
+      This is only necessary for the Web Design Camp. We will be setting them up with
+      an account on a coding website and are planning to do some work with Google Docs.
+    <% end %>
+  <% end %>
+<% end %>
+
+Additional things to note:
+
+-Full-day and AM camps start at 9 AM and PM camps start at 12:30 PM
+
+-If your student is registered for a full-day camp or two half-day camps they will
+need to bring a packed lunch. Lunch will not be provided.
+
+-We will be providing healthy snacks periodically throughout all camps.
+
+-There is no need to arrive early or bring anything with you (aside from a lunch for
+all-day campers).
+
+-Please mark your calendar to pick your child up about 20 minutes early on the
+last day for a short presentation of what they've learned.
+
+
+Let us know if you have any questions!
