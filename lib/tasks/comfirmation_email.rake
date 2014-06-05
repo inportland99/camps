@@ -12,7 +12,7 @@ def send_camp_reminder
 
   @registrations.each do |r|
     if r.parent_email
-      PonyExpress.camp_reminder(@registration).deliver
+      PonyExpress.camp_reminder(r).deliver
     end
   end
 end
