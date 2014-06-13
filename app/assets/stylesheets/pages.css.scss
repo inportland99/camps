@@ -44,6 +44,7 @@
   margin-top:15px;
   margin-bottom:15px;
   border-radius:2px;
+  min-height:200px;
   height: auto;
 
   .header{
@@ -121,8 +122,8 @@
   margin-bottom:15px;
   border-radius:2px;
   text-align: center;
-  min-height: 120px;
-  height: 200px;
+  min-height: 200px;
+  height: auto;
 
   .header{
     min-height: 60px;
@@ -138,8 +139,12 @@
       padding-top: 10px;
     }
   }
+  p{
+    margin-bottom:0;
+  }
   span{
     font-size: 3em;
+    margin-bottom: 80px;
   }
 }
 

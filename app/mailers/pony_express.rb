@@ -58,7 +58,7 @@ class PonyExpress < ActionMailer::Base
     @powell_camp_offering_registrations = []
     @new_albany_camp_offering_registrations = []
     @locations = Location.order(:id)
-    @admins = User.find(:all, :joins => :roles, :conditions => ["roles_users.role_id = ?", 1])
+    @admins = User.joins(:roles).where(:roles_users => {:role_id => 1})
     @admins_emails = []
 
     @admins.each do |a|

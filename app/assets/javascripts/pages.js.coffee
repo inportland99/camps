@@ -16,3 +16,12 @@ jQuery ->
 			, 45000
 
 	#document.cookie = 'summerpopup' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;'
+
+	$("#revenue_link").on "click", ->
+		orig_text = $(this).text()
+		$(".revenue span").show()
+		if orig_text is "Show"
+			$(this).text("Hide")
+		else
+			$(this).text("Show")
+			$(".revenue span").hide()

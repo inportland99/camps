@@ -77,7 +77,8 @@
           <div class="header">
             <h2>Revenue</h2>
           </div>
-          <span>$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
+          <p><%= link_to "Show", "javaScript:void(0)", id: "revenue_link" %></p>
+          <span style="display:none;">$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
     </div> <!-- admin_dashboard -->
