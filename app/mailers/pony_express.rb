@@ -17,6 +17,42 @@ class PonyExpress < ActionMailer::Base
       )
   end
 
+  def year_round_enrichment(registration)
+    @registration = registration
+
+    mail(
+      to: @registration.parent_email,
+      subject: '[MPA Camp] Did You Know We Offer Year-Round Enrichment?'
+      )
+  end
+
+  def like_us_on_facebook(registration)
+    @registration = registration
+
+    mail(
+      to: @registration.parent_email,
+      subject: '[MPA Camp] Earn $25 for Connecting with us on Facebook'
+      )
+  end
+
+  def excel_at_math(registration)
+    @registration = registration
+
+    mail(
+      to: @registration.parent_email,
+      subject: '[MPA Camp] Do You Know Someone Who Wants Their Child to Excel at Academically?'
+      )
+  end
+
+  def camp_follow_up(registration)
+    @registration = registration
+
+    mail(
+      to: @registration.parent_email,
+      subject: '[MPA Camp] Hope You Enjoyed Camp, Please Leave a Review Online'
+      )
+  end
+
   def weekly_report
     @registrations = Registration.where('created_at > ?', Time.now.beginning_of_week)
     @powell_camp_offering_registrations = []

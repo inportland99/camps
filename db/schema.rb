@@ -9,19 +9,19 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140430204011) do
+ActiveRecord::Schema.define(version: 20140430204011) do
 
-  create_table "camp_offerings", :force => true do |t|
+  create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
     t.string   "teacher"
     t.string   "assistant"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "location_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "offering_time"
     t.integer  "classroom"
     t.integer  "week"
@@ -29,34 +29,34 @@ ActiveRecord::Schema.define(:version => 20140430204011) do
     t.boolean  "hidden"
   end
 
-  create_table "camp_offerings_registrations", :id => false, :force => true do |t|
-    t.integer "camp_offering_id", :null => false
-    t.integer "registration_id",  :null => false
+  create_table "camp_offerings_registrations", id: false, force: true do |t|
+    t.integer "camp_offering_id", null: false
+    t.integer "registration_id",  null: false
   end
 
-  add_index "camp_offerings_registrations", ["camp_offering_id", "registration_id"], :name => "camp_off_reg", :unique => true
+  add_index "camp_offerings_registrations", ["camp_offering_id", "registration_id"], name: "camp_off_reg", unique: true
 
-  create_table "camps", :force => true do |t|
+  create_table "camps", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "capacity"
     t.string   "age"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "price"
   end
 
-  create_table "coupon_codes", :force => true do |t|
+  create_table "coupon_codes", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "amount"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "coupon_type"
     t.boolean  "active"
   end
 
-  create_table "locations", :force => true do |t|
+  create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "address_1"
     t.string   "address_2"
@@ -65,11 +65,11 @@ ActiveRecord::Schema.define(:version => 20140430204011) do
     t.integer  "zip"
     t.string   "telephone"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "registrations", :force => true do |t|
+  create_table "registrations", force: true do |t|
     t.string   "parent_first_name"
     t.string   "parent_last_name"
     t.string   "parent_address_1"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20140430204011) do
     t.string   "student_allergies"
     t.string   "emergency_contact_name"
     t.string   "emergency_contact_phone"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "stripe_customer_token"
     t.string   "stripe_charge_token"
     t.integer  "total"
@@ -94,36 +94,36 @@ ActiveRecord::Schema.define(:version => 20140430204011) do
     t.string   "coupon_code"
   end
 
-  create_table "roles", :force => true do |t|
+  create_table "roles", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "roles_users", :id => false, :force => true do |t|
+  create_table "roles_users", id: false, force: true do |t|
     t.integer "role_id"
     t.integer "user_id"
   end
 
-  create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "location_id"
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
