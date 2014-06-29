@@ -19,7 +19,7 @@
           <%= f.input :grade_completed %>
           <%= f.input :phone %>
           <%= f.input :email %>
-          <%= f.input :contact_time, as: :string, input_html: { :id => 'time'} %>
+          <%= f.input :contact_time, label: "Best Time To Contact", as: :string, input_html: { :id => 'time'} %>
           <%= f.input :preferred_contact, as: :select, collection: CampSurvey::CONTACT_METHOD, label: "Preferred Method of Contact" %>
           <%= f.input :contact_fall, label: "Contact in the fall" %>
         </div>
