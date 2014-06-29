@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629165924) do
+ActiveRecord::Schema.define(version: 20140629193102) do
 
   create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20140629165924) do
     t.datetime "updated_at"
     t.integer  "satisfaction"
     t.integer  "camp_id"
+    t.integer  "location_id"
   end
 
   create_table "camp_surveys_weekly_programs", id: false, force: true do |t|

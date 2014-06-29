@@ -24,7 +24,7 @@ class CampSurveysController < ApplicationController
     @camp_survey.save
     respond_with @camp_survey do |format|
       format.html {
-        redirect_to new_camp_survey_path(camp_id: @camp_survey.camp_id),
+        redirect_to new_camp_survey_path(camp_id: @camp_survey.camp_id, location_id: @camp_survey.location_id),
         notice: "Survey Added. If you are adding a survey for a different camp
         please be sure to change the selected camp."}
     end
@@ -60,6 +60,7 @@ class CampSurveysController < ApplicationController
                                           :preferred_contact,
                                           :contact_fall,
                                           {weekly_program_ids: []},
-                                          :camp_id)
+                                          :camp_id,
+                                          :location_id)
     end
 end

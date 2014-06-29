@@ -5,6 +5,8 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <%= f.association :camp, label_method: :title, selected: params[:camp_id] if params[:camp_id] %>
           <%= f.association :camp, label_method: :title unless params[:camp_id] %>
+          <%= f.association :location, label_method: :name, selected: params[:location_id] if params[:location_id] %>
+          <%= f.association :location, label_method: :name unless params[:location_id] %>
           <%= f.input :satisfaction, as: :select, collection: CampSurvey::SATISFACTION_LEVELS.zip((0..3).to_a) %>
           <%= f.input :comment %>
           <%= f.input :improvements %>
