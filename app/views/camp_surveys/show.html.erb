@@ -1,0 +1,64 @@
+<div class="container">
+  <p>
+    <strong>Staisfaction:</strong>
+    <%= @camp_survey.satisfaction %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= @camp_survey.comment %>
+  </p>
+
+  <p>
+    <strong>Improvements:</strong>
+    <%= @camp_survey.improvements %>
+  </p>
+
+  <p>
+    <strong>Parent first name:</strong>
+    <%= @camp_survey.parent_first_name %>
+  </p>
+
+  <p>
+    <strong>Parent last name:</strong>
+    <%= @camp_survey.parent_last_name %>
+  </p>
+
+  <p>
+    <strong>Student name:</strong>
+    <%= @camp_survey.student_name %>
+  </p>
+
+  <p>
+    <strong>Grade completed:</strong>
+    <%= @camp_survey.grade_completed %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= @camp_survey.phone %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @camp_survey.email %>
+  </p>
+
+  <p>
+    <strong>Contact time:</strong>
+    <%= @camp_survey.contact_time %>
+  </p>
+
+  <p>
+    <strong>Preferred contact:</strong>
+    <%= @camp_survey.preferred_contact %>
+  </p>
+
+  <p>
+    <strong>Contact fall:</strong>
+    <%= @camp_survey.contact_fall %>
+  </p>
+
+  <%= link_to 'Edit', edit_camp_survey_path(@camp_survey) %> |
+  <%= link_to 'Back', camp_surveys_path %>
+</div>

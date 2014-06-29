@@ -1,0 +1,29 @@
+<%= simple_form_for(@camp_survey) do |f| %>
+  <%= f.error_notification %>
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <%= f.association :camp, label_method: :title, selected: params[:camp_id] if params[:camp_id] %>
+          <%= f.association :camp, label_method: :title unless params[:camp_id] %>
+          <%= f.input :satisfaction, as: :select, collection: CampSurvey::SATISFACTION_LEVELS.zip((0..3).to_a) %>
+          <%= f.input :comment %>
+          <%= f.input :improvements %>
+          <%= f.association :weekly_programs, label: "Weekly Programs Interest", as: :check_boxes %>
+          <%= f.input :parent_first_name %>
+          <%= f.input :parent_last_name %>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+          <%= f.input :student_name %>
+          <%= f.input :grade_completed %>
+          <%= f.input :phone %>
+          <%= f.input :email %>
+          <%= f.input :contact_time, html_input: { id: "timepicker" } %>
+          <%= f.input :preferred_contact, as: :select, collection: CampSurvey::CONTACT_METHOD, label: "Preferred Method of Contact" %>
+          <%= f.input :contact_fall, label: "Contact in the fall" %>
+        </div>
+      </div>
+    </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-lg btn-success" %>
+  </div>
+<% end %>

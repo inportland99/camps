@@ -77,3 +77,5 @@ gem 'wicked_pdf'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 gem 'lodash-rails'
 gem 'rails_12factor', group: :production
+gem 'bootstrap-timepicker-rails-addon', :require => 'bootstrap-timepicker-rails-addon',
+                                        :git => 'git://github.com/ywjno/bootstrap-timepicker-rails-addon.git'

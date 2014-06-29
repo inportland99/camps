@@ -14,6 +14,11 @@ namespace :db do
       make_coupon_codes
     end
   end
+
+  desc "Fill database with sample data"
+  task weekly_programs: :environment do
+    make_weekly_programs
+  end
 end
 
 def make_roles
@@ -228,4 +233,12 @@ def make_coupon_codes
                      amount: 10,
                      description: "Percentage off.")
   coupon1.toggle!(:active)
+end
+
+def make_weekly_programs
+  WeeklyProgram.create!(name: "Math Enrichment (KG - Algebra)")
+  WeeklyProgram.create!(name: "Math Team")
+  WeeklyProgram.create!(name: "LEGO Robotics")
+  WeeklyProgram.create!(name: "Programming Lab")
+  WeeklyProgram.create!(name: "Chess")
 end

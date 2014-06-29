@@ -1,5 +1,9 @@
 Camps::Application.routes.draw do
 
+  resources :weekly_programs
+
+  resources :camp_surveys
+
   resources :coupon_codes
 
   devise_for :users, :skip => [:registrations]

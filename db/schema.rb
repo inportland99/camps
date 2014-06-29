@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140430204011) do
+ActiveRecord::Schema.define(version: 20140629165924) do
 
   create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
@@ -35,6 +35,31 @@ ActiveRecord::Schema.define(version: 20140430204011) do
   end
 
   add_index "camp_offerings_registrations", ["camp_offering_id", "registration_id"], name: "camp_off_reg", unique: true
+
+  create_table "camp_surveys", force: true do |t|
+    t.text     "comment"
+    t.text     "improvements"
+    t.string   "parent_first_name"
+    t.string   "parent_last_name"
+    t.string   "student_name"
+    t.string   "grade_completed"
+    t.string   "phone"
+    t.string   "email"
+    t.time     "contact_time"
+    t.string   "preferred_contact"
+    t.boolean  "contact_fall"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "satisfaction"
+    t.integer  "camp_id"
+  end
+
+  create_table "camp_surveys_weekly_programs", id: false, force: true do |t|
+    t.integer "camp_survey_id",    null: false
+    t.integer "weekly_program_id", null: false
+  end
+
+  add_index "camp_surveys_weekly_programs", ["camp_survey_id", "weekly_program_id"], name: "samp_survery_prog"
 
   create_table "camps", force: true do |t|
     t.string   "title"
@@ -125,5 +150,11 @@ ActiveRecord::Schema.define(version: 20140430204011) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "weekly_programs", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

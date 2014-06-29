@@ -11,6 +11,7 @@
 //= require bootstrap/collapse
 //= require bootstrap/carousel
 //= require bootstrap/alert
+//= require bootstrap-timepicker
 //= require underscore
 //= require pages
 //= require gritter
