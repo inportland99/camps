@@ -11,7 +11,8 @@
 //= require bootstrap/collapse
 //= require bootstrap/carousel
 //= require bootstrap/alert
-//= require bootstrap-timepicker
+//= require moment
+//= require bootstrap-datetimepicker
 //= require underscore
 //= require pages
 //= require gritter
@@ -20,6 +21,7 @@
 //= require jquery_nested_form
 //= require jquery.ui.all
 //= require registrations
+//= require camp_surveys
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require dataTables/jquery.dataTables.responsive

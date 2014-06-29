@@ -5,4 +5,13 @@
 #add date picker to contact time field
 
 jQuery ->
-  $('#camp_survey_contact ').timepicker()
+  $('#time').datetimepicker({
+    minuteStepping:30,
+    pickDate: false,
+    icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+    }
+  })
