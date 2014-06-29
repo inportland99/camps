@@ -1,5 +1,6 @@
 class CampSurveysController < ApplicationController
   before_action :set_camp_survey, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   def index
     @camp_surveys = CampSurvey.all
