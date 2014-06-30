@@ -4,5 +4,5 @@ class CampSurvey < ActiveRecord::Base
   belongs_to :location
 
   SATISFACTION_LEVELS = ["Very Satisfied", "Satisfied", "Somewhat Satisfied", "Not Sure"]
-  CONTACT_METHOD = ["PHONE", "EMAIL"]
+  CONTACT_METHOD = ["Phone", "Email"]
 end

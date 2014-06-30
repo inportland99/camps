@@ -53,4 +53,8 @@ class Registration < ActiveRecord::Base
   def one_camp_halfday?
     camp_count == 1 && ( camp_offerings.first.time == "AM" || camp_offerings.first.time == "PM" )
   end
+
+  def campaign_finished
+    update_attribute :camp_campaign, true
+  end
 end

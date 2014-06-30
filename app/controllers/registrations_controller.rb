@@ -151,6 +151,7 @@ class RegistrationsController < ApplicationController
                                            :coupon_code,
                                            {camp_offering_ids: []},
                                            :stripe_card_token,
-                                           :process_without_payment)
+                                           :process_without_payment,
+                                           :camp_campaign)
     end
 end

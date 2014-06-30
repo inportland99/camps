@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629193102) do
+ActiveRecord::Schema.define(version: 20140630145312) do
 
   create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20140629193102) do
     t.string   "student_allergies"
     t.string   "emergency_contact_name"
     t.string   "emergency_contact_phone"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.string   "stripe_customer_token"
     t.string   "stripe_charge_token"
     t.integer  "total"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140629193102) do
     t.integer  "parent_zip"
     t.integer  "location_id"
     t.string   "coupon_code"
+    t.boolean  "camp_campaign",           default: false
   end
 
   create_table "roles", force: true do |t|
