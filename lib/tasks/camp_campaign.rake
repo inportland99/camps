@@ -20,7 +20,7 @@ namespace :mail do
 end
 
 def send_tuesday_email
-  @registrations = Registration.joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
+  @registrations = Registration.where("camp_campaign = ?", false).joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
   parent_emails = []
 
   @registrations.each do |r|
@@ -32,7 +32,7 @@ def send_tuesday_email
 end
 
 def send_wednesday_email
-  @registrations = Registration.joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
+  @registrations = Registration.where("camp_campaign = ?", false).joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
   parent_emails = []
 
   @registrations.each do |r|
@@ -44,7 +44,7 @@ def send_wednesday_email
 end
 
 def send_thursday_email
-  @registrations = Registration.joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
+  @registrations = Registration.where("camp_campaign = ?", false).joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
   parent_emails = []
 
   @registrations.each do |r|
@@ -56,13 +56,14 @@ def send_thursday_email
 end
 
 def send_friday_email
-  @registrations = Registration.joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
+  @registrations = Registration.where("camp_campaign = ?", false).joins(:camp_offerings).where("start_date >= ? AND start_date < ?", Date.today - 7.days, Date.today)
   parent_emails = []
 
   @registrations.each do |r|
     if r.parent_email && !parent_emails.include?(r.parent_email)
       parent_emails << r.parent_email
       PonyExpress.camp_follow_up(r).deliver
+      r.campaign_finished
     end
   end
 end
