@@ -1,6 +1,6 @@
 <h1>Listing camp_surveys</h1>
 
-<table>
+<table class="datatable">
   <thead>
     <tr>
       <th>Satisfaction</th>
@@ -15,14 +15,14 @@
       <th>Contact time</th>
       <th>Preferred contact</th>
       <th>Contact fall</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @camp_surveys.each do |camp_survey| %>
       <tr>
-        <td><%= camp_survey.satisfaction %></td>
+        <td><%= CampSurvey::SATISFACTION_LEVELS[camp_survey.satisfaction.to_i] %></td>
         <td><%= camp_survey.comment %></td>
         <td><%= camp_survey.improvements %></td>
         <td><%= camp_survey.parent_first_name %></td>
@@ -35,9 +35,7 @@
         <td><%= camp_survey.preferred_contact %></td>
         <td><%= camp_survey.contact_fall %></td>
         <td><%= link_to 'Show', camp_survey %></td>
-        <td><%= link_to 'Edit', edit_camp_survey_path(camp_survey) %></td>
-        <td><%= link_to 'Destroy', camp_survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        </tr>
     <% end %>
   </tbody>
 </table>
