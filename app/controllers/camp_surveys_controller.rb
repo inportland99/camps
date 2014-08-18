@@ -55,7 +55,7 @@ class CampSurveysController < ApplicationController
 
   def import
     CampSurvey.import(params[:file])
-    redirect_to camp_survey_path, notice: "Camp Surveys imported."
+    redirect_to camp_surveys_path, notice: "Camp Surveys imported."
   end
 
   private

@@ -7,13 +7,13 @@ class CampSurvey < ActiveRecord::Base
   CONTACT_METHOD = ["Phone", "Email"]
 
   def accessible_attributes
-    %w(id comment improvements parent_first_name parent_last_name student_name grade_completed phone email contact_time preferred_contact contact_fall created_at updated_at satisfaction camp_id location_id)]
+    %w(id comment improvements parent_first_name parent_last_name student_name grade_completed phone email contact_time preferred_contact contact_fall created_at updated_at satisfaction camp_id location_id)
   end
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       camp_survey = find_by_id(row["id"]) || new
-      camp_survey.attributes = row.to_hash.slice(*accessible_attributes)
+      camp_survey.attributes = row.to_hash.slice(*attribute_names)
       camp_survey.save!
     end
   end
