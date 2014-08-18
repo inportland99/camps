@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630145312) do
+ActiveRecord::Schema.define(version: 20140818145804) do
 
   create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140630145312) do
     t.integer  "satisfaction"
     t.integer  "camp_id"
     t.integer  "location_id"
+    t.boolean  "contacted",         default: false
   end
 
   create_table "camp_surveys_weekly_programs", id: false, force: true do |t|

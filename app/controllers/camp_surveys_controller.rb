@@ -3,8 +3,12 @@ class CampSurveysController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @camp_surveys = CampSurvey.all
-    respond_with(@camp_surveys)
+    @camp_surveys = CampSurvey.order(:id)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @camp_surveys }
+      format.csv { send_data @camp_surveys.to_csv }
+    end
   end
 
   def show
@@ -35,9 +39,23 @@ class CampSurveysController < ApplicationController
     respond_with(@camp_survey)
   end
 
+  def contacted
+    set_camp_survey
+    if @camp_survey.update_attribute :contacted, true
+      respond_with @camp_survey do |format|
+        format.html { redirect_to @camp_survey, notice: 'Marked as contacted.' }
+      end
+    end
+  end
+
   def destroy
     @camp_survey.destroy
     respond_with(@camp_survey)
+  end
+
+  def import
+    CampSurvey.import(params[:file])
+    redirect_to camp_survey_path, notice: "Camp Surveys imported."
   end
 
   private

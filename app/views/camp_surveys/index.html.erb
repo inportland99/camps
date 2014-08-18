@@ -1,45 +1,62 @@
-<h1>Listing camp_surveys</h1>
+<div class="container">
+  <h1>Camp Surveys</h1>
 
-<table class="datatable">
-  <thead>
-    <tr>
-      <th>Satisfaction</th>
-      <th>Comment</th>
-      <th>Improvements</th>
-      <th>Parent first name</th>
-      <th>Parent last name</th>
-      <th>Student name</th>
-      <th>Grade completed</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Contact time</th>
-      <th>Preferred contact</th>
-      <th>Contact fall</th>
-      <th></th>
-    </tr>
-  </thead>
+  <p>
+    Download:
+    <%= link_to "CSV", camp_surveys_path(format: "csv") %>
+  </p>
 
-  <tbody>
-    <% @camp_surveys.each do |camp_survey| %>
+  <table class="datatable">
+    <thead>
       <tr>
-        <td><%= CampSurvey::SATISFACTION_LEVELS[camp_survey.satisfaction.to_i] %></td>
-        <td><%= camp_survey.comment %></td>
-        <td><%= camp_survey.improvements %></td>
-        <td><%= camp_survey.parent_first_name %></td>
-        <td><%= camp_survey.parent_last_name %></td>
-        <td><%= camp_survey.student_name %></td>
-        <td><%= camp_survey.grade_completed %></td>
-        <td><%= camp_survey.phone %></td>
-        <td><%= camp_survey.email %></td>
-        <td><%= camp_survey.contact_time %></td>
-        <td><%= camp_survey.preferred_contact %></td>
-        <td><%= camp_survey.contact_fall %></td>
-        <td><%= link_to 'Show', camp_survey %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+        <th>Contacted?</th>
+        <th>Parent first name</th>
+        <th>Parent last name</th>
+        <th>Student name</th>
+        <th>Grade completed</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Contact time</th>
+        <th>Preferred contact</th>
+        <th>Contact fall</th>
+        <th></th>
+      </tr>
+    </thead>
 
-<br>
+    <tbody>
+      <% @camp_surveys.each do |camp_survey| %>
+        <tr>
+          <td>
+            <% if camp_survey.contacted %>
+              <span style="color:green;"><%= camp_survey.contacted %></span>
+            <% else %>
+              <span style="color:red;"><%= camp_survey.contacted %></span>
+            <% end %>
+          </td>
+          <td><%= camp_survey.parent_first_name %></td>
+          <td><%= camp_survey.parent_last_name %></td>
+          <td><%= camp_survey.student_name %></td>
+          <td><%= camp_survey.grade_completed %></td>
+          <td><%= camp_survey.phone %></td>
+          <td><%= camp_survey.email %></td>
+          <td><%= camp_survey.contact_time %></td>
+          <td><%= camp_survey.preferred_contact %></td>
+          <td><%= camp_survey.contact_fall %></td>
+          <td><%= link_to 'Show', camp_survey, :target => "_blank" %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Camp survey', new_camp_survey_path %>
+  <p>
+    <h3> Import Camp Surveys</h3>
+      <%= form_tag import_camp_surveys_path, multipart: true do %>
+        <%= file_field_tag :file %><br />
+        <%= submit_tag "Import", class: 'btn btn-sm btn-default' %>
+      <% end %>
+  </p>
+
+  <br>
+
+  <%= link_to 'New Camp survey', new_camp_survey_path %>
+</div>
