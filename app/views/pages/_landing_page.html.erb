@@ -1,23 +1,28 @@
 <div id="headerwrap">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="hidden-sm hidden-xs">
-          <h1>
-            Enlightening<br/>
-            Summer Camps</br>
-            For Kids Ages 4-14
-            <h2>Camp Updates Coming Feb 2015</h2>
-          </h1>
+    <div class="row" style="border-bottom:solid 9px black;padding:0 0 50px 0 ;">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <%= image_tag('sc_logo.png') %>
+      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
+      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="text-center">
+          <h3 style="font-weight:bold;">
+            Robotics, Programming, Chess, Video Games, 3-D Printing, and MORE ...
+          </h3>
+          <h4 style="color:red;">Registration beginning in February.</h4>
+          <p><b><u>enter you information below to be notified when registration opens</u></b></p>
         </div>
-        <div class="visible-sm visible-xs centered mobile-header">
-          <h1>Summer Camps For Kids Ages 4-14</h1>
-          <h2>Camp Updates Coming Feb 2015</h2>
-        </div>
-      </div><!-- /col-lg-9 col-md-9 col-sm-12 col-xs-12 -->
+        <%= simple_form_for @camp_interest do |f| %>
+          <%= f.input :year, as: :hidden, input_html: { value: 2015 } %>
+          <%= f.input :name %>
+          <%= f.input :email %>
+          <%= f.input :newsletter, label: "Send me more info from MPA." %>
+          <%= f.button :submit, "Submit", class: "btn btn-lg btn-default" %>
+        <% end %>
+      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
     </div><!-- /row -->
     <div class="row">
-      <%= render 'registration_buttons' %>
+      <%# render 'registration_buttons' %>
     </div>
   </div><!-- /.container -->
 </div><!-- /.headerwrap -->

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @camp_interest.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @camp_interest.email %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @camp_interest.year %>
+</p>
+
+<p>
+  <strong>Newsletter:</strong>
+  <%= @camp_interest.newsletter %>
+</p>
+
+<%= link_to 'Edit', edit_camp_interest_path(@camp_interest) %> |
+<%= link_to 'Back', camp_interests_path %>

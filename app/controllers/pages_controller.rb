@@ -4,6 +4,7 @@ class PagesController < ApplicationController
     @registrations = Registration.all
     @months_registrations = Registration.where("created_at > ?", Time.now.beginning_of_month)
     @todays_registrations = Registration.where("created_at > ?", Time.now.beginning_of_day)
+    @camp_interest = CampInterest.new
     @camp_off_reg_count = 0
     @camp_revenue = 0
 

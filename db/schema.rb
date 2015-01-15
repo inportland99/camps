@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818145804) do
+ActiveRecord::Schema.define(version: 20150115220142) do
+
+  create_table "camp_interests", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "year"
+    t.boolean  "newsletter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "camp_offerings", force: true do |t|
     t.integer  "camp_id"
