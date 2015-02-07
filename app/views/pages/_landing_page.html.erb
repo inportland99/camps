@@ -12,17 +12,10 @@
           <h4 style="color:red;">Registration beginning in February.</h4>
           <p><b><u>enter you information below to be notified when registration opens</u></b></p>
         </div>
-        <%= simple_form_for @camp_interest do |f| %>
-          <%= f.input :year, as: :hidden, input_html: { value: 2015 } %>
-          <%= f.input :name %>
-          <%= f.input :email %>
-          <%= f.input :newsletter, label: "Send me more info from MPA." %>
-          <%= f.button :submit, "Submit", class: "btn btn-lg btn-default" %>
-        <% end %>
+        <%= render 'registration_buttons' %>
       </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
     </div><!-- /row -->
     <div class="row">
-      <%= render 'registration_buttons' %>
     </div>
   </div><!-- /.container -->
 </div><!-- /.headerwrap -->
