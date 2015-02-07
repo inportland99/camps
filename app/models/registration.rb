@@ -7,11 +7,9 @@ class Registration < ActiveRecord::Base
 
   validates :emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_email,
             :parent_first_name, :parent_last_name, :parent_phone, :student_first_name, :student_grade,
-            :student_last_name, :presence => {:message => ' cannot be blank, Task not saved'}
+            :student_last_name, :presence => {:message => ' cannot be blank, Registration not saved'}
 
-  US_STATES = %w(AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN
-                 MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA
-                 WI WV WY)
+  US_STATES = %w(AK AL AR AZ CA CO CT DC DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY)
 
   def save_with_payment
     if valid?

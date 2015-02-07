@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150115220142) do
+ActiveRecord::Schema.define(version: 20150207151447) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150115220142) do
     t.integer  "week"
     t.string   "time"
     t.boolean  "hidden"
+    t.integer  "year"
   end
 
   create_table "camp_offerings_registrations", id: false, force: true do |t|
