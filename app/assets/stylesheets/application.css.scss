@@ -35,6 +35,10 @@ $baseFontFamily: 'FontAwesome';
   border: 3px solid gray;
 }
 
+.navbar-toggle {
+  border: 3px solid transparent;
+}
+
 /*
  * Author: Carlos Alvarez
  * URL: http://alvarez.is
@@ -169,7 +173,6 @@ a:after {
 .form-control {
   height: 42px;
   font-size: 18px;
-  width: 280px;
 }
 
 i {

@@ -6,6 +6,7 @@ class CampOffering < ActiveRecord::Base
 
   OFFERING_TIMES = ["All Day","AM","PM"]
 
+  if Rails.env.development?
   OFFERING_WEEKS = {
                           1 => {
                                   :start => Date.new(2014,6,9),
@@ -40,6 +41,38 @@ class CampOffering < ActiveRecord::Base
                                   :end => Date.new(2014,8,8)
                           }
   }
+  elsif Rails.env.production?
+  OFFERING_WEEKS = {
+                          1 => {
+                                  :start => Date.new(2015,6,8),
+                                  :end => Date.new(2015,6,12)
+                          },
+                          2 => {
+                                  :start => Date.new(2015,6,15),
+                                  :end => Date.new(2015,6,19)
+                          },
+                          3 => {
+                                  :start => Date.new(2015,6,22),
+                                  :end => Date.new(2015,6,26)
+                          },
+                          4 => {
+                                  :start => Date.new(2015,7,13),
+                                  :end => Date.new(2015,7,17)
+                          },
+                          5 => {
+                                  :start => Date.new(2015,7,20),
+                                  :end => Date.new(2015,7,24)
+                          },
+                          6 => {
+                                  :start => Date.new(2015,7,21),
+                                  :end => Date.new(2015,7,25)
+                          },
+                          7 => {
+                                  :start => Date.new(2015,8,3),
+                                  :end => Date.new(2015,8,7)
+                          }
+  }
+  end
 
   def name
     camp.title + " " + "(Ages: #{camp.age})"
