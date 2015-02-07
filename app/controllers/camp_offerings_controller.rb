@@ -86,7 +86,7 @@ class CampOfferingsController < ApplicationController
 
   def import
     CampOffering.import(params[:file])
-    redirect_to camp_offering_path, notice: "Camp offerings imported."
+    redirect_to camp_offerings_path, notice: "Camp offerings imported."
   end
 
   def week_at_a_glance
