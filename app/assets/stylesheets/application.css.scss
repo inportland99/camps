@@ -22,6 +22,19 @@ $baseFontFamily: 'FontAwesome';
   margin-left: 0;
 }
 
+.table-bordered > thead > tr > th,
+.table-bordered > thead > tr > td,
+.table-bordered > tbody > tr > th,
+.table-bordered > tbody > tr > td,
+.table-bordered > tfoot > tr > th,
+.table-bordered > tfoot > tr > td {
+  border: 3px solid gray;
+}
+
+.table-bordered {
+  border: 3px solid gray;
+}
+
 /*
  * Author: Carlos Alvarez
  * URL: http://alvarez.is
@@ -33,7 +46,7 @@ $baseFontFamily: 'FontAwesome';
 
 body {
   background-color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -44,8 +57,8 @@ body {
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
+    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    font-weight: 200;
     color: #333;
 }
 
@@ -55,12 +68,12 @@ h1 {
 
 h3 {
   color: #555;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 h4 {
   color: #95a5a6;
-  font-weight: 400;
+  font-weight: 200;
   font-size: 20px;
 }
 
@@ -110,8 +123,7 @@ a:after {
  hr {
     display: block;
     height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 9px solid #ccc;
     margin: 1em 0;
     padding: 0;
 }
@@ -241,6 +253,7 @@ i {
 
 .circle_base {
     border-radius: 50%;
+    border: solid black 3px;
     behavior: url(PIE.htc); /* remove if you don't care about IE8 */
 }
 
@@ -250,4 +263,12 @@ i {
   width: 150px;
   height: 150px;
   background: yellow;
+}
+
+.btn{
+  border: solid 3px black;
+}
+
+.form-control{
+  border: solid 3px black;
 }

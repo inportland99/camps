@@ -6,15 +6,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://www.mathplusacademy.com"><%= image_tag('http://www.mathplusacademy.com/wp-content/uploads/2014/01/title_logo-1.png', size: "179x33")%></a>
+      <a style="font-weight:bold;" class="navbar-brand" href="http://www.mathplusacademy.com">
+        <i class="fa fa-arrow-left"></i>
+        to MPA.com
+      </a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Camps", root_path %></li>
-        <li><%= link_to "How We Compare", comparison_path %></li>
+        <li class="hidden-md hidden-sm"><%= link_to "How We Compare", comparison_path %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
-          <ul class="dropdown-menu">        
+          <ul class="dropdown-menu">
+            <li class="hidden-lg hidden-xs">
+              <%= link_to "How We Compare", comparison_path %>
+            </li>
             <li><%= link_to "Testimonials", testimonials_path %></li>
             <li><%= link_to "FAQ", faq_path %></li>
             <li><%= link_to("#signUpModal", :data => {:toggle=>"modal"}) do %>Help<% end %></li>
