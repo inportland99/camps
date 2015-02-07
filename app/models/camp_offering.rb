@@ -119,7 +119,7 @@ class CampOffering < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       camp_offering = find_by_id(row["id"]) || new
-      camp_offering.attributes = row.to_hash.slice(*accessible_attributes)
+      camp_offering.attributes = row.to_hash.slice(attribute_names)
       camp_offering.save!
     end
   end
