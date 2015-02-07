@@ -43,7 +43,7 @@ class CampOffering < ActiveRecord::Base
                                   :end => Date.new(2014,8,8)
                           }
   }
-  elsif Rails.env.production?
+  else
   OFFERING_WEEKS = {
                           1 => {
                                   :start => Date.new(2015,6,8),
