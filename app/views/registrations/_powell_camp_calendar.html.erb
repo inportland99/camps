@@ -28,7 +28,7 @@
         <td style="vertical-align:middle;">AM (9:00 - 12:00)</td>
         <!-- classroom 1 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
           <% if co.time == "AM" && co.classroom == 1 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -64,7 +64,7 @@
         <% end %>
         <!-- classroom 2 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
           <% if co.time == "AM" && co.classroom == 2 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -100,7 +100,7 @@
         <% end %>
         <!-- classroom 3 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
           <% if co.time == "AM" && co.classroom == 3 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -139,7 +139,7 @@
         <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
         <!-- classroom 1 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 1 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
@@ -163,7 +163,7 @@
         <% end %>
         <!-- classroom 2 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
@@ -187,7 +187,7 @@
         <% end %>
         <!-- classroom 3 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(1, n+1).each do |co| %>
+        <% CampOffering.by_week(1, n+1, 1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 3 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">

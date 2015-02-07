@@ -96,8 +96,8 @@ class CampOffering < ActiveRecord::Base
     students
   end
 
-  def self.by_week(location, week)
-    where("location_id=? AND week=?", location, week)
+  def self.by_week(location, week, year)
+    where("location_id=? AND week=? AND year=?", location, week, year)
   end
 
   def price

@@ -30,9 +30,9 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-    @camp_offerings = CampOffering.order("week asc, location_id asc")
-    @powell_camps = CampOffering.where("location_id=?", 1)
-    @new_albany_camps = CampOffering.where("location_id=?", 2)
+    @camp_offerings = CampOffering.where(year: 1).order("week asc, location_id asc")
+    @powell_camps = CampOffering.where("location_id=? AND year=?", 1, 1)
+    @new_albany_camps = CampOffering.where("location_id=? AND year=?", 2, 1)
 
     respond_to do |format|
       format.html # new.html.erb
