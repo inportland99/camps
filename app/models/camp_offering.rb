@@ -43,7 +43,7 @@ class CampOffering < ActiveRecord::Base
                                   :end => Date.new(2014,8,8)
                           }
   }
-  else
+  elsif Rails.env.production?
   OFFERING_WEEKS = {
                           1 => {
                                   :start => Date.new(2015,6,8),
@@ -119,7 +119,7 @@ class CampOffering < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       camp_offering = find_by_id(row["id"]) || new
-      camp_offering.attributes = row.to_hash.slice(*attribute_names)
+      camp_offering.attributes = row.to_hash.slice(attribute_names)
       camp_offering.save!
     end
   end

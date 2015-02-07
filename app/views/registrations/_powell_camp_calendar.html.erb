@@ -20,7 +20,7 @@
   </thead>
   <tbody>
 
-    <% 8.times do |n| %>
+    <% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
       <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
         <td rowspan=2 style="vertical-align:middle;">
           <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %>
