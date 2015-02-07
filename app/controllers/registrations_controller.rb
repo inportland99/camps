@@ -149,6 +149,7 @@ class RegistrationsController < ApplicationController
                                            :student_last_name,
                                            :total,
                                            :coupon_code,
+                                           :year,
                                            {camp_offering_ids: []},
                                            :stripe_card_token,
                                            :process_without_payment,

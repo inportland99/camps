@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207151447) do
+ActiveRecord::Schema.define(version: 20150207172947) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20150207151447) do
     t.integer  "location_id"
     t.string   "coupon_code"
     t.boolean  "camp_campaign",           default: false
+    t.integer  "year"
   end
 
   create_table "roles", force: true do |t|

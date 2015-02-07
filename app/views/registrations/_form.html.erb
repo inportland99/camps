@@ -73,18 +73,19 @@
   </div>
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <%= f.input :parent_first_name, label: "Parent/Guardian First Name", input_html: { value: params[:parent_first_name]} %>
-    <%= f.input :parent_last_name, label: "Last Name", input_html: { value: params[:parent_last_name]} %>
-    <%= f.input :parent_address_1, label: "Address 1", input_html: { value: params[:parent_address_1]} %>
-    <%= f.input :parent_address_2, label: "Address 2", input_html: { value: params[:parent_address]} %>
+      <%= f.input :parent_first_name, label: "Parent/Guardian First Name", input_html: { value: params[:parent_first_name]} %>
+      <%= f.input :parent_last_name, label: "Last Name", input_html: { value: params[:parent_last_name]} %>
+      <%= f.input :parent_address_1, label: "Address 1", input_html: { value: params[:parent_address_1]} %>
+      <%= f.input :parent_address_2, label: "Address 2", input_html: { value: params[:parent_address]} %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <%= f.input :parent_city, label: "City", input_html: { value: params[:parent_city]} %>
-    <%= f.input :parent_state, label: "State", input_html: { value: params[:parent_state]} %>
-    <%= f.input :parent_zip, label: "Zip", as: :string, input_html: { value: params[:parent_zip]} %>
-    <%= f.input :parent_email, label: "Email", input_html: { value: params[:parent_email]} %>
-    <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:parent_phone]} %>
-    <%= f.input :stripe_card_token, as: :hidden %>
+      <%= f.input :parent_city, label: "City", input_html: { value: params[:parent_city]} %>
+      <%= f.input :parent_state, label: "State", input_html: { value: params[:parent_state]} %>
+      <%= f.input :parent_zip, label: "Zip", as: :string, input_html: { value: params[:parent_zip]} %>
+      <%= f.input :parent_email, label: "Email", input_html: { value: params[:parent_email]} %>
+      <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:parent_phone]} %>
+      <%= f.input :stripe_card_token, as: :hidden %>
+      <%= f.input :year, as: :hidden, input_html: { value: 1 } %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <%= render 'credit_card_form' %>
@@ -212,6 +213,7 @@
       <%= f.input :parent_email, label: "Email" %>
       <%= f.input :parent_phone, label: "Phone" %>
       <%= f.input :stripe_card_token, as: :hidden %>
+      <%= f.input :year, as: :hidden, input_html: { value: 1 } %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
       <%= render 'credit_card_form' %>
