@@ -1,28 +1,30 @@
 class PagesController < ApplicationController
 
   def home
-    @registrations = Registration.where(year: 1)
-    @months_registrations = Registration.where("created_at > ? AND year=?", Time.now.beginning_of_month, 1)
-    @todays_registrations = Registration.where("created_at > ? AND year=?", Time.now.beginning_of_day, 1)
-    @camp_interest = CampInterest.new
-    @camp_off_reg_count = 0
-    @camp_revenue = 0
+    if current_user
+      @registrations = Registration.where(year: 1)
+      @months_registrations = Registration.where("created_at > ? AND year=?", Time.now.beginning_of_month, 1)
+      @todays_registrations = Registration.where("created_at > ? AND year=?", Time.now.beginning_of_day, 1)
+      @camp_interest = CampInterest.new
+      @camp_off_reg_count = 0
+      @camp_revenue = 0
 
-    @registrations.each do |reg|
-      @camp_off_reg_count += reg.camp_offerings.count
-      @camp_revenue += reg.total
-    end
-
-    @coupon_codes_by_count = Array.new
-    CouponCode.all.each do |coupon|
-      name = coupon.name
-      count = 0
       @registrations.each do |reg|
-        if reg.coupon_code && reg.coupon_code.upcase == name
-          count += reg.camp_offerings.count
-        end
+        @camp_off_reg_count += reg.camp_offerings.count
+        @camp_revenue += reg.total
       end
-      @coupon_codes_by_count.push({name: name, count: count})
+
+      @coupon_codes_by_count = Array.new
+      CouponCode.all.each do |coupon|
+        name = coupon.name
+        count = 0
+        @registrations.each do |reg|
+          if reg.coupon_code && reg.coupon_code.upcase == name
+            count += reg.camp_offerings.count
+          end
+        end
+        @coupon_codes_by_count.push({name: name, count: count})
+      end
     end
   end
 
