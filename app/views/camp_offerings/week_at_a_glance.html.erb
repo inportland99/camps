@@ -4,7 +4,7 @@
   <% @camp_offerings.each do |co| %>
     <h4><%= co.name %></h4>
     <ol>
-    <% co.registrations.each do |reg| %>
+    <% co.registrations.where(year: 1).each do |reg| %>
       <li>
         <p>
           <b>Student:</b> <%= reg.student_name %> </br>
