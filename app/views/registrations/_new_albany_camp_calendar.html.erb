@@ -137,16 +137,16 @@
         <% end %>
         <!-- extended care -->
         <% CampOffering.extended_care(2, n+1, 1).each do |co| %>
-        <%= if co %>
-          <td rowspan=2 style="vertical-align:middle;width:50px;">
-            <label class="checkbox">
-              <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-              <%= link_to "#{co.extended_care_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-              <span style='color:green;' class="pull-right">$<%= co.price %></span>
-            </label>
-          </td>
+          <% if co %>
+            <td rowspan=2 style="vertical-align:middle;width:50px;">
+              <label class="checkbox">
+                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                <%= link_to "#{co.extended_care_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                <span style='color:green;' class="pull-right">$<%= co.price %></span>
+              </label>
+            </td>
           <% else %>
-          <td rowspan=2></td>
+            <td rowspan=2></td>
           <% end %>
         <% end %>
       </tr>
