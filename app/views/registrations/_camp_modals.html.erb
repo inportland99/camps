@@ -8,17 +8,19 @@
           <h4 class="modal-title" id="myModalLabel"><%= camp.title %></h4>
         </div>
         <div class="modal-body">
-          <p>
-            <%= camp.description.html_safe %>
+          <p style="color:red;">
+            <em><%= camp.description.html_safe %></em>
           </p>
-          <p>
-            <h4>Offerings of this camp:</h4>
-            <ul>
-            <% camp.camp_offerings.where( year: 1 ).each do |co| %>
-              <li><%= co.confirmation_name %></li>
-            <% end %>
-            </ul>
-          </p>
+          <%= unless camp.is == 20 %>
+            <p>
+              <h4>Offerings of this camp:</h4>
+              <ul>
+              <% camp.camp_offerings.where( year: 1 ).each do |co| %>
+                <li><%= co.confirmation_name %></li>
+              <% end %>
+              </ul>
+            </p>
+          <% end %>
             <h3>Register now!</h3>
             <%= render '/pages/registration_buttons' %>
         </div><!-- .modal-body -->
