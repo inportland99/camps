@@ -1,7 +1,6 @@
 class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
-  force_ssl
   before_filter :authenticate_user!, :except => [:new, :create]
 
   def index
