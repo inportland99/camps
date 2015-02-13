@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207172947) do
+ActiveRecord::Schema.define(version: 20150213144408) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 20150207172947) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "location_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "offering_time"
     t.integer  "classroom"
     t.integer  "week"
     t.string   "time"
     t.boolean  "hidden"
     t.integer  "year"
+    t.boolean  "extended_care", default: false
   end
 
   create_table "camp_offerings_registrations", id: false, force: true do |t|

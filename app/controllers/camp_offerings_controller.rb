@@ -4,7 +4,7 @@ class CampOfferingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @camp_offerings = CampOffering.where(year: 1).order("location_id ASC")
+    @camp_offerings = CampOffering.order("location_id ASC").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -101,6 +101,6 @@ class CampOfferingsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def camp_offering_params
-      params.require(:camp_offering).permit(:assistant, :camp_id, :end_date, :location_id, :start_date, :teacher, :classroom, :time, :week, :hidden, :year)
+      params.require(:camp_offering).permit(:assistant, :camp_id, :end_date, :location_id, :start_date, :teacher, :classroom, :time, :week, :hidden, :year, :extended_care)
     end
 end

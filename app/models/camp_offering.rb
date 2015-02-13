@@ -80,6 +80,10 @@ class CampOffering < ActiveRecord::Base
     camp.title + " " + "(Ages: #{camp.age})"
   end
 
+  def extended_care_name
+    camp.title
+  end
+
   def confirmation_name
     camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
   end
@@ -100,20 +104,30 @@ class CampOffering < ActiveRecord::Base
     where("location_id=? AND week=? AND year=?", location, week, year)
   end
 
+  def self.extended_care(location, week, year)
+    where("location_id=? AND week=? AND year=? AND extended_care = ?", location, week, year, true)
+  end
+
   def price
-    camp.price
+    camp.price if camp
   end
 
   def open_spots
-    if camp.capacity == 0
+    if camp && camp.capacity < 1
       0
-    else
+    elsif camp && camp.capacity >= 1
       camp.capacity - registrations.count
+    else
+      "no capacity"
     end
   end
 
   def at_capacity?
-    open_spots <= 0 ? true : false
+    if open_spots == "no capacity"
+      true
+    else
+      open_spots <= 0 ? true : false
+    end
   end
 
   def self.import(file)

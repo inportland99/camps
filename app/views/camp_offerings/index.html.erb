@@ -27,14 +27,14 @@
               <tr>
                 <td class="camp_offeringtered">
                     <%=
-                        camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe
+                        camp_offering.at_capacity? ? "<span class='label label-danger'>Full</span>".html_safe : "<span class='label label-success'>Open</span>".html_safe if camp_offering
                     %>
                 </td>
                 <td><%= camp_offering.name %></td>
                 <td><%= camp_offering.teacher %></td>
                 <td><%= camp_offering.assistant %></td>
                 <td><%= camp_offering.time %></td>
-                <td><%= camp_offering.start_date.strftime('%b %d') %></td>
+                <td><%= camp_offering.start_date.strftime('%b %d') if camp_offering.start_date %></td>
                 <td><%= camp_offering.end_date %></td>
                 <td><%= camp_offering.location.name  if camp_offering.location %></td>
                 <td><%= camp_offering.open_spots %></td>
