@@ -8,8 +8,8 @@
           <h4 class="modal-title" id="myModalLabel"><%= camp.title %></h4>
         </div>
         <div class="modal-body">
-          <p style="color:red;">
-            <em><%= camp.description.html_safe %></em>
+          <p>
+            <%= camp.description.html_safe %>
           </p>
           <% unless camp.id == 20 %>
             <p>
