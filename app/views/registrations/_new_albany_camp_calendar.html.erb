@@ -137,6 +137,7 @@
         <% end %>
         <!-- extended care -->
         <% CampOffering.extended_care(2, n+1, 1).each do |co| %>
+        <%= if co %>
           <td rowspan=2 style="vertical-align:middle;width:50px;">
             <label class="checkbox">
               <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
@@ -144,6 +145,9 @@
               <span style='color:green;' class="pull-right">$<%= co.price %></span>
             </label>
           </td>
+          <% else %>
+          <td rowspan=2></td>
+          <% end %>
         <% end %>
       </tr>
       <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
