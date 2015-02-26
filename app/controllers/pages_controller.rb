@@ -4,8 +4,8 @@ class PagesController < ApplicationController
     if current_user
       @registrations = Registration.where(year: 1)
       @months_registrations = Registration.where("created_at >= ? AND year=?", Time.now.beginning_of_month, 1)
-      @months_registrations_last_year = Registration.where("created_at >= ? AND created_at <= ? AND year = ?", (Time.now - 1.year).beginning_of_month, (Time.now - 1.year).end_of_month, 0)
-      @percent_different = ((@months_registrations.to_a.sum{ |reg| reg.camp_offerings.count } - @months_registrations_last_year.to_a.sum{ |reg| reg.camp_offerings.count }).to_f/(@months_registrations_last_year.to_a.sum{ |reg| reg.camp_offerings.count }).to_f).round(3)
+      @months_registrations_last_year = Registration.where("created_at >= ? AND created_at <= ?", (Time.now - 1.year).beginning_of_month, (Time.now - 1.year).end_of_month)
+      @percent_different = ((@months_registrations.to_a.sum{ |reg| reg.total } - @months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f/(@months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f).round(3)
       @todays_registrations = Registration.where("created_at > ? AND year =?", Time.now.beginning_of_day, 1)
       @camp_interest = CampInterest.new
       @camp_off_reg_count = 0
