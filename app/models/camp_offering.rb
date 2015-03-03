@@ -66,8 +66,8 @@ class CampOffering < ActiveRecord::Base
                                   :end => Date.new(2015,7,24)
                           },
                           6 => {
-                                  :start => Date.new(2015,7,21),
-                                  :end => Date.new(2015,7,25)
+                                  :start => Date.new(2015,7,27),
+                                  :end => Date.new(2015,7,31)
                           },
                           7 => {
                                   :start => Date.new(2015,8,3),
