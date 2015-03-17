@@ -90,15 +90,17 @@
           </div>
         </div> <!-- .todays_sales -->
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='revenue'>
-          <div class="header">
-            <h2>Revenue</h2>
+      <% if current_user.roles.any?{ |role| role.name == "SuperAdmin"} %>
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class='revenue'>
+            <div class="header">
+              <h2>Revenue</h2>
+            </div>
+            <p><%= link_to "Show", "javaScript:void(0)", id: "revenue_link" %></p>
+            <span style="display:none;">$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
           </div>
-          <p><%= link_to "Show", "javaScript:void(0)", id: "revenue_link" %></p>
-          <span style="display:none;">$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
-        </div>
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+        </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
+      <% end %>
     </div> <!-- admin_dashboard -->
   </div><!-- /.row -->
 </div><!-- /.container -->
