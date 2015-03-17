@@ -8,11 +8,11 @@ class PagesController < ApplicationController
       @percent_different = ((@months_registrations.to_a.sum{ |reg| reg.total } - @months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f/(@months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f).round(2) * 100
       @todays_registrations = Registration.where("created_at > ? AND year =?", Time.now.beginning_of_day, 1)
       @camp_interest = CampInterest.new
-      @camp_off_reg_count = 0
       @camp_revenue = @registrations.sum(:total)
 
+      @camp_off_reg_count = 0
       @registrations.each do |reg|
-        @camp_off_reg_count += reg.camp_offerings.count
+        @camp_off_reg_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
       end
 
       @coupon_codes_by_count = Array.new
