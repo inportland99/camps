@@ -29,6 +29,7 @@ def make_roles
     Role.create!(name: "Guest")
 end
 
+#this is where we add the user information
 def make_users
     user1 = User.create!(first_name:            "Travis",
                          last_name:             "Sperry",
