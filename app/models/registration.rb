@@ -44,9 +44,9 @@ class Registration < ActiveRecord::Base
     student_first_name + " " + student_last_name
   end
 
-  def camp_count
-    sum{|reg| reg.camp_offerings.count{|co| unless co.extended_care?}}
-  end
+  # def camp_count
+  #   sum{|reg| reg.camp_offerings.count{|co| unless co.extended_care?}}
+  # end
 
   def one_camp_halfday?
     camp_count == 1 && ( camp_offerings.first.time == "AM" || camp_offerings.first.time == "PM" )
