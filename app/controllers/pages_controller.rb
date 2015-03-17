@@ -9,11 +9,10 @@ class PagesController < ApplicationController
       @todays_registrations = Registration.where("created_at > ? AND year =?", Time.now.beginning_of_day, 1)
       @camp_interest = CampInterest.new
       @camp_off_reg_count = 0
-      @camp_revenue = 0
+      @camp_revenue = @registrations.sum(:total)
 
       @registrations.each do |reg|
         @camp_off_reg_count += reg.camp_offerings.count
-        @camp_revenue += reg.total
       end
 
       @coupon_codes_by_count = Array.new

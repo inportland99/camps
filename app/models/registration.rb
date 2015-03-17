@@ -45,7 +45,7 @@ class Registration < ActiveRecord::Base
   end
 
   def camp_count
-    camp_offerings.count
+    sum{|reg| reg.camp_offerings.count{|co| unless co.extended_care?}}
   end
 
   def one_camp_halfday?
