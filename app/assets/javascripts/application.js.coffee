@@ -19,7 +19,7 @@
 //= require chosen-jquery
 //= require jquery.remotipart
 //= require jquery_nested_form
-//= require jquery.ui.all
+//= require jquery-ui
 //= require registrations
 //= require camp_surveys
 //= require dataTables/jquery.dataTables
