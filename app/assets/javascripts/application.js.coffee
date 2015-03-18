@@ -23,5 +23,5 @@
 //= require registrations
 //= require camp_surveys
 //= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap3
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/jquery.dataTables.responsive
