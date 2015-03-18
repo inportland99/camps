@@ -55,6 +55,8 @@ class RegistrationsController < ApplicationController
       respond_to do |format|
         if @registration.save_without_payment
           PonyExpress.registration_confirmation(@registration).deliver
+          #add to infusionsoft if not already added and tag as purchasing a summer camp.
+          @registration.infusionsoft_actions
           format.html { redirect_to @registration, notice: 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
@@ -66,6 +68,8 @@ class RegistrationsController < ApplicationController
       respond_to do |format|
         if @registration.save_with_payment
           PonyExpress.registration_confirmation(@registration).deliver
+          #add to infusionsoft if not already added and tag as purchasing a summer camp.
+          @registration.infusionsoft_actions
           format.html { redirect_to reg_confirmation_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
         else

@@ -55,4 +55,26 @@ class Registration < ActiveRecord::Base
   def campaign_finished
     update_attribute :camp_campaign, true
   end
+
+  def infusionsoft_actions
+    result = Infusionsoft.data_query_order_by('Contact', 50, 0, {:Email=> '%'+"#{self.parent_email}"+'%'}, [:Id, :FirstName, :LastName, :ContactType, :Email], :FirstName, true)
+    if result.empty?
+      #create new contact
+      data = { :FirstName => self.parent_first_name, :LastName => self.parent_last_name, :Email => self.parent_email, :Phone1 => self.parent_phone }
+      if contact = Infusionsoft.contact_add(data)
+        contacts_added += 1
+        Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
+      end
+    else
+      contact = result.first["Id"].to_i
+    end
+
+    if Rails.env.production?
+      #add to group when in production
+      Infusionsoft.contact_add_to_group(contact, 1836)
+    elsif Rails.env.development?
+      #add to group when in development
+      Infusionsoft.contact_add_to_group(contact, 107)
+    end
+  end
 end
