@@ -6,31 +6,34 @@
   </br>
   </br>
 
-  <table class="table table-striped">
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Uses</th>
-      <th>Active</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% @coupon_codes.each do |coupon_code| %>
-    <tr>
-      <td><%= coupon_code.name %></td>
-      <td><%= CouponCode::DISCOUNT_TYPE[coupon_code.coupon_type.to_i] %></td>
-      <td><%= coupon_code.description %></td>
-      <td><%= coupon_code.amount %></td>
-      <td><%= coupon_code.how_many_used? %></td>
-      <td><%= coupon_code.active %></td>
-      <td><%= link_to 'Show', coupon_code %></td>
-      <td><%= link_to 'Edit', edit_coupon_code_path(coupon_code) %></td>
-      <td><%= link_to 'Destroy', coupon_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
+  <table class="table table-bordered table-hover datatable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Uses</th>
+        <th>Active</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @coupon_codes.each do |coupon_code| %>
+        <tr>
+          <td><%= coupon_code.name %></td>
+          <td><%= CouponCode::DISCOUNT_TYPE[coupon_code.coupon_type.to_i] %></td>
+          <td><%= coupon_code.description %></td>
+          <td><%= coupon_code.amount %></td>
+          <td><%= coupon_code.how_many_used? %></td>
+          <td><%= coupon_code.active %></td>
+          <td><%= link_to 'Show', coupon_code %></td>
+          <td><%= link_to 'Edit', edit_coupon_code_path(coupon_code) %></td>
+          <td><%= link_to 'Destroy', coupon_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
 </div>

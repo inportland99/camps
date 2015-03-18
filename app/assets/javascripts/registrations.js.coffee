@@ -55,7 +55,7 @@ jQuery ->
     phone: 480
   tableContainer = $('.datatable')
 
-  tableContainer.dataTable
+  tableContainer.DataTable
     aaSorting: [[0,'desc']]
     sPaginationType: "bootstrap"
     # Setup for responsive datatables helper.

@@ -9,7 +9,7 @@
     phone: 480
   tableContainer = $('.datatable_offering')
 
-  tableContainer.dataTable
+  tableContainer.DataTable
     sPaginationType: "bootstrap"
     # Setup for responsive datatables helper.
     bSort: false
