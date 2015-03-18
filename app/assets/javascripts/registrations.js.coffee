@@ -48,30 +48,6 @@ jQuery ->
     $(this).attr('disabled', true)
     coupon_code.look_up()
 
-  #registration index table datatables
-  responsiveHelper = undefined
-  breakpointDefinition =
-    tablet: 1024
-    phone: 480
-  tableContainer = $('.datatable')
-
-  tableContainer.DataTable
-    aaSorting: [[0,'desc']]
-    sPaginationType: "bootstrap"
-    # Setup for responsive datatables helper.
-    bAutoWidth: false
-    bStateSave: false
-
-    fnPreDrawCallback: ->
-      responsiveHelper = new ResponsiveDatatablesHelper(tableContainer, breakpointDefinition) unless responsiveHelper
-
-    fnRowCallback: (nRow, aData, iDisplayIndex, iDisplayIndexFull) ->
-      responsiveHelper.createExpandIcon nRow
-
-    fnDrawCallback: (oSettings) ->
-      responsiveHelper.respond()
-
-
 coupon_code =
   look_up: ->
     $coupon_code_button = $('#coupon_code_button')

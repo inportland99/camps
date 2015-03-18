@@ -280,3 +280,10 @@ i {
 .form-control{
   border: solid 3px black;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: none;
+  background-color: none;
+  background: none;
+}
