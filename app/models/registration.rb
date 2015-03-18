@@ -62,7 +62,6 @@ class Registration < ActiveRecord::Base
       #create new contact
       data = { :FirstName => self.parent_first_name, :LastName => self.parent_last_name, :Email => self.parent_email, :Phone1 => self.parent_phone }
       if contact = Infusionsoft.contact_add(data)
-        contacts_added += 1
         Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
       end
     else
