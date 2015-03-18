@@ -19,8 +19,15 @@ $baseFontFamily: 'FontAwesome';
 
 .checkbox input[type="checkbox"] {
   float: none;
-  margin-left: 0;
+  position: relative;
+  margin: 0;
 }
+
+// .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+//   /* position: absolute; */
+//   /* margin-left: -20px; */
+//   margin-top: 4px \9;
+// }
 
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td,
