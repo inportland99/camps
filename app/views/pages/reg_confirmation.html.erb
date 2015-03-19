@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Thank you for registering!</h1>
   <p>You have been sent an email confirming the details of this transaction.</p>
-
+  <hr>
   <h2>Do you follow us on Facebook or Twitter?</h2>
   <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
   <p>
@@ -11,6 +11,11 @@
   <a href="https://twitter.com/mathplusacademy" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @mathplusacademy</a>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </p>
+  <hr>
+  <div class="row mt centered">
+    <h1>Register For More</h1>
+    <%= render 'registration_buttons' %>
+  </div>
 </div>
 
 <% if Rails.env.production? %>
