@@ -71,6 +71,7 @@ class Registration < ActiveRecord::Base
     if Rails.env.production?
       #add to group when in production
       Infusionsoft.contact_add_to_group(contact, 1836)
+      Infusionsoft.contact_add_to_group(contact, 91) if newsletter?
     elsif Rails.env.development?
       #add to group when in development
       Infusionsoft.contact_add_to_group(contact, 107)
