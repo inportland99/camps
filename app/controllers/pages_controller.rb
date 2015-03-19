@@ -42,7 +42,7 @@ class PagesController < ApplicationController
     @registration = Registration.find(params[:id])
 
     unless params[:token] == @registration.stripe_charge_token
-      redirect_to { redirect_to root_url, notice: 'Invalid id or token.' }
+      redirect_to { redirect_to root_url, notice: 'No need to go there :)' }
     end
   end
 end
