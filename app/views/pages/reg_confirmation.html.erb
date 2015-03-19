@@ -1,17 +1,29 @@
 <div class="container">
   <h1>Thank you for registering!</h1>
-  <h2>You have been sent an email confirming the details of this transaction.</h2>
+  <p>You have been sent an email confirming the details of this transaction.</p>
+
+  <h2>Do you follow us on Facebook or Twitter?</h2>
+  <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
+  <p>
+    <div class="fb-follow" data-href="https://www.facebook.com/mathplusacademy" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
+  </p>
+  <p>
+  <a href="https://twitter.com/mathplusacademy" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @mathplusacademy</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  </p>
 </div>
 
-<script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-19803817-1']);
-    _gaq.push(['_addTrans', <%= @registration.id %>, 'Math Plus Academy', "" + (<%= @registration.total %>)/100 + ".00" , '0.00', '0', 'Powell', 'Ohio', 'USA']);
-    _gaq.push(['_trackTrans']);
+<% if Rails.env.production? %>
+  <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-19803817-1']);
+      _gaq.push(['_addTrans', <%= @registration.id %>, 'Math Plus Academy', "" + (<%= @registration.total %>)/100 + ".00" , '0.00', '0', 'Powell', 'Ohio', 'USA']);
+      _gaq.push(['_trackTrans']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+  </script>
+<% end %>
