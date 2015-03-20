@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
+  force_ssl if: :ssl_configured?
   before_filter :authenticate_user!, :except => [:new, :create]
 
   def index
@@ -158,5 +159,9 @@ class RegistrationsController < ApplicationController
                                            :stripe_card_token,
                                            :process_without_payment,
                                            :camp_campaign)
+    end
+
+    def ssl_configured?
+      !Rails.env.development?
     end
 end
