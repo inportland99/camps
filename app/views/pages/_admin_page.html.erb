@@ -36,15 +36,6 @@
             <h2>Registrations this month.</h2>
           </div>
           <span><%= @months_registrations.count %></span>
-          <span style="font-size: 1em;
-            <% if @percent_different <= 0.to_f %>
-              color:red;
-            <% elsif @percent_different == 0 || @percent_different.nan? %>
-
-            <% else %>
-              color:green;
-            <% end %>
-          "><%= @percent_different.round(2) %>%</span>
         </div> <!-- .todays_sales -->
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -98,6 +89,15 @@
             </div>
             <p><%= link_to "Show", "javaScript:void(0)", id: "revenue_link" %></p>
             <span style="display:none;">$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
+            <span style="font-size: 1em;
+            <% if @percent_different <= 0.to_f %>
+              color:red;
+            <% elsif @percent_different == 0 || @percent_different.nan? %>
+
+            <% else %>
+              color:green;
+            <% end %>
+          "><%= @percent_different.round(2) %>%</span>
           </div>
         </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <% end %>
