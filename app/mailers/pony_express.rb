@@ -54,7 +54,7 @@ class PonyExpress < ActionMailer::Base
   end
 
   def weekly_report
-    @registrations = Registration.where('created_at > ?', Time.now.beginning_of_week)
+    @registrations = Registration.where('created_at > ? AND year = ?', Time.now.beginning_of_week, 1)
     @powell_camp_offering_registrations = []
     @new_albany_camp_offering_registrations = []
     @locations = Location.order(:id)
