@@ -4,6 +4,11 @@
 
 #Calcualte total for selected camps.
 jQuery ->
+  $('.reg-datatable').DataTable
+    responsive: true,
+    pagingType: 'simple'
+    order:      [[ 1, "desc" ]]
+
   $registrationModal = $('#registrationModal')
   $inputCheckbox = $('input[type=checkbox]')
 
