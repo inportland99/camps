@@ -56,7 +56,7 @@ class Registration < ActiveRecord::Base
     update_attribute :camp_campaign, true
   end
 
-  def infusionsoft_actions
+  def self.infusionsoft_actions
     result = Infusionsoft.data_query_order_by('Contact', 50, 0, {:Email=> '%'+"#{self.parent_email}"+'%'}, [:Id, :FirstName, :LastName, :ContactType, :Email], :FirstName, true)
     if result.empty?
       #create new contact
