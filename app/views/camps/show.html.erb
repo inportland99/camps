@@ -1,25 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <b>Title:</b>
-  <%= @camp.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @camp.description %>
-</p>
+<h1><%= @camp.title %></h1>
 
 <p>
   <b>Capacity:</b>
-  <%= @camp.capacity %>
-</p>
-
-<p>
+  <%= @camp.capacity %></br>
   <b>Age:</b>
   <%= @camp.age %>
 </p>
 
+<p>
+  <%= simple_format(@camp.description) %>
+</p>
 
-<%= link_to 'Edit', edit_camp_path(@camp) %> |
-<%= link_to 'Back', camps_path %>
+<% if current_user && current_user.role?("SuperAdmin") %>
+  <%= link_to 'Edit', edit_camp_path(@camp) %> |
+  <%= link_to 'Back', camps_path %>
+<% end %>
+
+</div>
