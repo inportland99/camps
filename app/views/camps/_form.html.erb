@@ -1,15 +1,24 @@
-<%= simple_form_for(@camp) do |f| %>
-  <% if @camp.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
+<div class="container">
+  <%= simple_form_for(@camp) do |f| %>
+    <% if @camp.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@camp.errors.count, "error") %> prohibited this camp from being saved:</h2>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <%= f.input :title %>
+        <%= f.input :price %>
+        <%= f.input :capacity %>
+        <%= f.input :age %>
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <%= f.input :description, input_html: { rows: 8 } %>
+        <%= f.input :show_description, input_html: { rows: 8 } %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.button :submit, class: 'btn btn-lg btn-success pull-right' %>
     </div>
   <% end %>
-
-    <%= f.input :title %>
-    <%= f.input :price %>
-    <%= f.input :description %>
-    <%= f.input :show_description %>
-    <%= f.input :capacity %>
-    <%= f.input :age %>
-    <%= f.button :submit, class: 'btn btn-lg btn-success' %>
-<% end %>
+</div>
