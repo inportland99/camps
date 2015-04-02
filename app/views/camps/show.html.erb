@@ -2,13 +2,12 @@
 
 <h1><%= @camp.title %></h1>
 
-<p>
-  <%= simple_format(@camp.show_description) %>
-</p>
+
+<%= simple_format(@camp.show_description) %>
 
 <% if current_user && current_user.role?("SuperAdmin") %>
   <%= link_to 'Edit', edit_camp_path(@camp) %> |
-  <%= link_to 'Back', camps_path %>
+  <%= link_to 'Back', camps_path %><br>
 <% end %>
 
 </div>
