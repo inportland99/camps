@@ -3,7 +3,7 @@
 <h1><%= @camp.title %></h1>
 
 <p>
-  <%= simple_format(@camp.description) %>
+  <%= simple_format(@camp.show_description) %>
 </p>
 
 <% if current_user && current_user.role?("SuperAdmin") %>

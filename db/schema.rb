@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "location_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "offering_time"
     t.integer  "classroom"
     t.integer  "week"
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.text     "description"
     t.integer  "capacity"
     t.string   "age"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "price"
   end
 
@@ -88,8 +88,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.string   "name"
     t.text     "description"
     t.integer  "amount"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "coupon_type"
     t.boolean  "active"
   end
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.integer  "zip"
     t.string   "telephone"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "registrations", force: true do |t|
@@ -120,8 +120,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.string   "student_allergies"
     t.string   "emergency_contact_name"
     t.string   "emergency_contact_phone"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "stripe_customer_token"
     t.string   "stripe_charge_token"
     t.integer  "total"
@@ -137,8 +137,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles_users", id: false, force: true do |t|
@@ -157,8 +157,8 @@ ActiveRecord::Schema.define(version: 20150319125319) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "location_id"

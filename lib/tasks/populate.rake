@@ -3,7 +3,6 @@ namespace :db do
   task populate: :environment do
     require 'faker'
 
-    Rake::Task['db:reset'].invoke
     make_roles
     make_users
     if Rails.env.development?
@@ -64,7 +63,7 @@ end
 def make_camps
   16.times do |n|
   Camp.create!(title:           "Camp #{n+1}",
-               description:     Faker::Lorem.sentences,
+               description:     Faker::Lorem.sentences.first,
                capacity:        8,
                age:             "K-8",
                price:           n == 0 ? 394 : 197)
@@ -81,7 +80,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "All Day",
                          classroom:         1,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           1,
@@ -92,7 +92,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "All Day",
                          classroom:         1,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           2,
@@ -103,7 +104,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "AM",
                          classroom:         2,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           3,
@@ -114,7 +116,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "AM",
                          classroom:         3,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           2,
@@ -125,7 +128,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "AM",
                          classroom:         2,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           3,
@@ -136,7 +140,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "AM",
                          classroom:         3,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   #begin PM
   3.times do |n|
@@ -148,7 +153,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "PM",
                          classroom:         2,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           5,
@@ -159,7 +165,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "PM",
                          classroom:         3,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           4,
@@ -170,7 +177,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "PM",
                          classroom:         2,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
   3.times do |n|
     CampOffering.create!(camp_id:           5,
@@ -181,7 +189,8 @@ def make_camp_offerings
                          end_date:          Date.new(2014,6,13) + n.weeks,
                          time:              "PM",
                          classroom:         3,
-                         week:              n + 1)
+                         week:              n + 1,
+                         year:              1)
   end
 end
 
