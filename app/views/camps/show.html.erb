@@ -1,7 +1,5 @@
 <div class="container">
 
-<h1><%= @camp.title %></h1>
-
 <%= raw @camp.show_description %>
 
 <% if current_user && current_user.role?("SuperAdmin") %>
