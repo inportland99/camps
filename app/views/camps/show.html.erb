@@ -2,7 +2,7 @@
 
 <h1><%= @camp.title %></h1>
 
-<%= simple_format(@camp.show_description) %>
+<%= raw @camp.show_description %>
 
 <% if current_user && current_user.role?("SuperAdmin") %>
   <%= link_to 'Edit', edit_camp_path(@camp) %> |
