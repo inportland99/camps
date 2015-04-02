@@ -1,10 +1,11 @@
 <div style="margin-top:20px;" class="container">
 
-<%= raw @camp.show_description %>
+  <%= raw @camp.show_description %>
 
-<% if current_user && current_user.role?("SuperAdmin") %>
-  <%= link_to 'Edit', edit_camp_path(@camp) %> |
-  <%= link_to 'Back', camps_path %><br>
-<% end %>
-
+  <% if current_user && current_user.role?("SuperAdmin") %>
+    <p>
+      <%= link_to 'Edit', edit_camp_path(@camp) %> |
+      <%= link_to 'Back', camps_path %><br>
+    </p>
+  <% end %>
 </div>
