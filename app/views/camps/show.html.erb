@@ -2,6 +2,11 @@
 
   <%= raw @camp.show_description %>
 
+  <div class="text-center">
+    <h3>Schedules:</h3>
+    <%= render '/pages/registration_buttons' %>
+  </div>
+
   <% if current_user && current_user.role?("SuperAdmin") %>
     <p>
       <%= link_to 'Edit', edit_camp_path(@camp) %> |
