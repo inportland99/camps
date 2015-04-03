@@ -25,7 +25,6 @@ Camps::Application.routes.draw do
 
   resources :camps
 
-
   resources :registrations
 
 

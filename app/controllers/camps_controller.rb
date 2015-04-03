@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :show
 
   # GET /camps
   # GET /camps.json
