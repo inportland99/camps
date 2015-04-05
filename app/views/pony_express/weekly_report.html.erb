@@ -26,7 +26,7 @@
       <th>Open Spots</th>
     </tr>
 
-  <% location.camp_offerings.each do |camp_offering| %>
+  <% location.camp_offerings.where(year: 1).each do |camp_offering| %>
     <tr>
       <td class="camp_offeringtered">
           <%=
