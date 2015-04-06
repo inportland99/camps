@@ -3,7 +3,7 @@ class CampsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :descriptions]
 
   def descriptions
-    @camps = Camp.order(:title, :asc).all
+    @camps = Camp.order(title: :asc).all
     @camps = @camps.to_a.delete_if{ |camp| [2].includes?(camp.id) }
 
     respond_to do |format|
