@@ -1,7 +1,15 @@
 class CampsController < ApplicationController
 
-  before_filter :authenticate_user!, except: :show
+  before_filter :authenticate_user!, except: [:show, :descriptions]
 
+  def descriptions
+    @camps = Camp.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @camps }
+    end
+  end
   # GET /camps
   # GET /camps.json
   def index
