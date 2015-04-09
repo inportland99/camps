@@ -7,7 +7,7 @@ jQuery ->
   $('.reg-datatable').DataTable
     responsive: true,
     pagingType: 'simple'
-    order:      [[ 1, "desc" ]]
+    order:      [[ 0, "desc" ]]
 
   $registrationModal = $('#registrationModal')
   $inputCheckbox = $('input[type=checkbox]')
