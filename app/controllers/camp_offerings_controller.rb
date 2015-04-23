@@ -92,7 +92,7 @@ class CampOfferingsController < ApplicationController
   def week_at_a_glance
     @location = Location.where('id = ?', "#{params[:info][:location]}").first
     @week = params[:info][:week]
-    @camp_offerings = CampOffering.where('week = ? AND location_id = ?', "#{params[:info][:week]}","#{params[:info][:location]}")
+    @camp_offerings = CampOffering.where('week = ? AND location_id = ? AND year = ?', "#{params[:info][:week]}","#{params[:info][:location]}", 1)
   end
 
   private
