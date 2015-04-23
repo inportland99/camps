@@ -1,7 +1,7 @@
 <div class="hidden-lg hidden-md visible-sm visible-xs">
   <h3>Payment Information</h3>
 </div>
-<% if current_user && current_user.role?("super_admin") %>
+<% if current_user && (current_user.role?("super_admin")||current_user.role?("admin")) %>
   <label class="checkbox">
     <%= check_box_tag "process_without_payment", "yes", false, class: "check_boxes optional"  %> Process Without Payment
   </label>
@@ -15,7 +15,7 @@
   <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
 </div>
 <div id="code_field" class="form-group">
-  <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+  <%= label_tag :card_code, "Security Code on Card (CVC)" %>
   <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
 </div>
 <div id="exp_field" class="form-group">
