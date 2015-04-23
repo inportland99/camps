@@ -145,9 +145,10 @@
                 <span style='color:green;' class="pull-right">$<%= co.price %></span>
               </label>
             </td>
-          <% else %>
-            <td rowspan=2></td>
           <% end %>
+        <% end %>
+        <% if CampOffering.extended_care(1, n+1, 1).empty? %>
+          <td rowspan=2 style="vertical-align:middle;width:50px;"></td>
         <% end %>
       </tr>
       <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
