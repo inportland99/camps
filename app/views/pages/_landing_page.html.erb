@@ -1,6 +1,6 @@
 <div id="headerwrap">
   <div class="container">
-    <div class="row" style="border-bottom:solid 9px black;padding:0 0 50px 0 ;">
+    <div class="row" style="border-bottom:solid 9px black;padding:0 0 50px 0;">
       <div class="col-lg-6 hidden-md hidden-sm hidden-xs">
         <%= image_tag('sc_logo.png') %>
       </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
@@ -19,11 +19,12 @@
           </h3>
           <h2 style="color:lightgreen;">Register now!</h2>
           <%= render 'registration_buttons' %>
-          </br>
-          </hr>
+          <div>
+              <%= link_to "Camp Desctiptions", descriptions_camps_path, class: "btn btn-danger btn-lg registration_buttons"  %>
+          </div>
           <%= link_to("#advantage") do  %>
           <h3 style="color:white;">More Information!</h3>
-          <i class="fa fa-chevron-down fa-4x"></i>
+          <i style="color:white;" class="fa fa-chevron-down fa-4x"></i>
           <% end %>
         </div>
       </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
