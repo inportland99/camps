@@ -5,6 +5,15 @@
 
   table{
     font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714302062988px;
+  }
+
+  p{
+    font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
     font-size: 13px;
     font-style: normal;
     font-variant: normal;
@@ -26,7 +35,7 @@
   }
 </style>
 
-<h3 style='margin:0;'>Week <%= @week %> in <%= @location.name %></h3>
+<p style='margin:0;'>Week <%= @week %> in <%= @location.name %></p>
 
 <% @camp_offerings.each do |co| %>
 
