@@ -22,20 +22,22 @@
     <thead>
       <tr>
         <th>Student Name</th>
-        <th>Parent Name</th>
+        <th>Parent/Gaurd. Name</th>
         <th>Phone</th>
         <th>Emergency Information</th>
       </tr>
     </thead>
     <tbody>
       <% co.registrations.where(year: 1).each do |reg| %>
-          <p>
-            <b>Student:</b> <%= reg.student_name %> </br>
-            <b>Parent/Gaurdian:</b> <%= reg.parent_name %></br>
-            <b>Phone:</b> <%= reg.parent_phone %></br>
-            <b>Emergency Contact:</b> <%= reg.emergency_contact_name %></br>
-            <b>Emergency Contact Phone:</b> <%= reg.emergency_contact_phone %>
-          </p>
+      <tr>
+        <td><%= reg.student_name %></td>
+        <td><%= reg.parent_name %></td>
+        <td><%= reg.parent_phone %></td>
+        <td>
+          <%= reg.emergency_contact_name %> <br>
+          <%= reg.emergency_contact_phone %>
+        </td>
+      </tr>
       <% end %>
     </tbody>
   </table>
