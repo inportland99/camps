@@ -40,14 +40,16 @@ class Registration < ActiveRecord::Base
     coupon = CouponCode.find_by_name(coupon_code)
     camp_count = camp_offerings.count
     if coupon
-      case coupon.type
+      case coupon.coupon_type
       when 0
-        camp_count * 10
+        camp_count.to_f * 10.0
       when 1
         (total/100).to_f * 0.1
       else
-        0
+        0.0
       end
+    else
+      0.0
     end
   end
 
