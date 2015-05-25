@@ -37,7 +37,7 @@ class Registration < ActiveRecord::Base
   end
 
   def discount_amount
-    coupon = CouponCode.find_by_name(coupon_code)
+    coupon = CouponCode.find_by_name(coupon_code.upcase)
     camp_count = camp_offerings.count
     if coupon
       case coupon.coupon_type.to_i
