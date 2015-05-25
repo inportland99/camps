@@ -60,7 +60,6 @@ class Registration < ActiveRecord::Base
       total_discounts += reg.discount_amount
     end
     total_discounts
-    end
   end
 
   def parent_name
