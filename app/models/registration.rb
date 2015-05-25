@@ -53,6 +53,16 @@ class Registration < ActiveRecord::Base
     end
   end
 
+  def self.total_discounts_by_year(year)
+    regs = where(year: year)
+    total_discounts = 0
+    regs.each do |reg|
+      total_discounts += reg.discount_amount
+    end
+    total_discounts
+    end
+  end
+
   def parent_name
     parent_first_name + " " + parent_last_name
   end
