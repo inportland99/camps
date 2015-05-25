@@ -36,6 +36,21 @@ class Registration < ActiveRecord::Base
     end
   end
 
+  def discount_amount
+    coupon = CouponCode.find_by_name(coupon_code)
+    camp_count = camp_offerings.count
+    if coupon
+      case coupon.type
+      when 0
+        camp_count * 10
+      when 1
+        (total/100).to_f * 0.1
+      else
+        0
+      end
+    end
+  end
+
   def parent_name
     parent_first_name + " " + parent_last_name
   end
