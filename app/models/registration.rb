@@ -53,7 +53,7 @@ class Registration < ActiveRecord::Base
       when 0
         camp_count.to_f * 10.0
       when 1
-        (total/100).to_f * 0.1
+        (camp_subtotal).to_f * 0.1
       else
         0.0
       end
