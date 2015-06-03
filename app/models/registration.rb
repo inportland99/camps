@@ -53,7 +53,7 @@ class Registration < ActiveRecord::Base
       when 0
         camp_count.to_f * 10.0
       when 1
-        (camp_subtotal).to_f * 0.1
+        ((camp_subtotal).to_f * 0.1).round(2)
       else
         0.0
       end
@@ -78,10 +78,6 @@ class Registration < ActiveRecord::Base
   def student_name
     student_first_name + " " + student_last_name
   end
-
-  # def camp_count
-  #   sum{|reg| reg.camp_offerings.count{|co| unless co.extended_care?}}
-  # end
 
   def one_camp_halfday?
     camp_count == 1 && ( camp_offerings.first.time == "AM" || camp_offerings.first.time == "PM" )
