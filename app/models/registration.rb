@@ -63,10 +63,10 @@ class Registration < ActiveRecord::Base
   end
 
   def self.total_discounts_by_year(year)
-    regs = where(year: year)
+    registrations = where(year: year)
     total_discounts = 0
-    regs.each do |reg|
-      total_discounts += reg.discount_amount
+    registrations.each do |registration|
+      total_discounts += registration.discount_amount
     end
     total_discounts
   end
