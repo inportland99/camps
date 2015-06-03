@@ -36,6 +36,15 @@ class Registration < ActiveRecord::Base
     end
   end
 
+  def camp_subtotal
+    subtotal = 0.0
+    camp_offerings.each do |camp_offering|
+      subtotal += camp_offering.camp.price.to_f
+    end
+
+    subtotal
+  end
+
   def discount_amount
     coupon = CouponCode.find_by_name(coupon_code.upcase)
     camp_count = camp_offerings.count
