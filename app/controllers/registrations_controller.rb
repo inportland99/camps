@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   force_ssl if: :ssl_configured?
-  before_filter :authenticate_user!, :except => [:new, :create]
+  before_filter :authenticate_user!, :except => [:new, :create, :total_discount]
 
   def index
     @registrations = Registration.where(year: 1).order('created_at DESC')
@@ -126,6 +126,24 @@ class RegistrationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to registrations_url }
       format.json { head :no_content }
+    end
+  end
+
+  def total_discounts
+    if params[:token] = 'OGGfBcPNINciwXYJRx4ccNW0'
+      total_discounts = Registration.total_discounts_by_year(1)
+
+      respond_with do |format|
+        format.text {
+          render :text => "#{total_discounts}"
+        }
+      end
+    else
+      respond_with do |format|
+        format.text {
+          render :text => "error"
+        }
+      end
     end
   end
 

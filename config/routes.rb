@@ -27,7 +27,9 @@ Camps::Application.routes.draw do
     collection { get :descriptions }
   end
 
-  resources :registrations
+  resources :registrations do
+    collection { get :total_discounts }
+  end
 
 
   root :to => 'pages#home'
