@@ -130,7 +130,7 @@ class RegistrationsController < ApplicationController
   end
 
   def total_discounts
-    if params[:token] = 'OGGfBcPNINciwXYJRx4ccNW0'
+    if params[:token] == 'OGGfBcPNINciwXYJRx4ccNW0'
       total_discounts = Registration.total_discounts_by_year(1)
 
       render plain: "#{total_discounts}"
