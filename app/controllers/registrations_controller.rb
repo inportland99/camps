@@ -133,17 +133,10 @@ class RegistrationsController < ApplicationController
     if params[:token] = 'OGGfBcPNINciwXYJRx4ccNW0'
       total_discounts = Registration.total_discounts_by_year(1)
 
-      respond_with do |format|
-        format.text {
-          render :text => "#{total_discounts}"
-        }
-      end
+      render plain: "#{total_discounts}"
+
     else
-      respond_with do |format|
-        format.text {
-          render :text => "error"
-        }
-      end
+      render nothing: true
     end
   end
 
