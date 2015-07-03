@@ -4,17 +4,17 @@
 <table class="reg-datatable display responsive no-wrap"  width="100%">
   <thead>
       <tr>
-        <th data-class="expand">Registration Date</th>
-        <th data-class="expand">Parent First Name</th>
+        <th class="control">Registration Date</th>
+        <th>Parent First Name</th>
         <th>Parent Last name</th>
-        <th data-hide="phone, tablet">Parent Email</th>
-        <th data-hide="phone, tablet">Parent Phone</th>
-        <th data-hide="phone">Student First Name</th>
-        <th data-hide="phone, tablet">Student Last Name</th>
-        <th data-hide="phone, tablet">Student Grade</th>
-        <th data-hide="phone, tablet"></th>
-        <th data-hide="phone, tablet"></th>
-        <th data-hide="phone, tablet"></th>
+        <th class="all">Parent Email</th>
+        <th class="all">Parent Phone</th>
+        <th class="all">Student First Name</th>
+        <th class="tablet-l tablet-p desktop">Student Last Name</th>
+        <th class="tablet-l tablet-p desktop">Student Grade</th>
+        <th class="tablet-l tablet-p desktop"></th>
+        <th class="tablet-l tablet-p desktop"></th>
+        <th class="desktop"></th>
       </tr>
   </thead>
     <tbody>
@@ -28,8 +28,8 @@
             <td><%= registration.student_first_name %></td>
             <td><%= registration.student_last_name %></td>
             <td><%= registration.student_grade %></td>
-            <td><%= link_to 'Show', registration %></td>
-            <td><%= link_to 'Edit', edit_registration_path(registration) %></td>
+            <td><%= link_to 'Show', registration, target: '_blank' %></td>
+            <td><%= link_to 'Edit', edit_registration_path, target: '_blank' %></td>
             <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
