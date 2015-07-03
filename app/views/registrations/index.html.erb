@@ -29,7 +29,7 @@
             <td><%= registration.student_last_name %></td>
             <td><%= registration.student_grade %></td>
             <td><%= link_to 'Show', registration, target: '_blank' %></td>
-            <td><%= link_to 'Edit', edit_registration_path, target: '_blank' %></td>
+            <td><%= link_to 'Edit', edit_registration_path(registration), target: '_blank' %></td>
             <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
