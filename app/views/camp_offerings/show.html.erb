@@ -39,8 +39,8 @@
         <p>
           <b>Camp Roster</b>
           <ul>
-          <% @camp_offering.students.each do |student| %>
-            <li><%= student %></li>
+          <% @camp_offering.registrations.each do |registration| %>
+            <li><%= link_to "#{registration.student_first_name} #{registration.student_last_name}", registration %></li>
           <% end %>
           </ul>
         </p>
