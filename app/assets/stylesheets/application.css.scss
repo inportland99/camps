@@ -287,3 +287,11 @@ i {
   background-color: none;
   background: none;
 }
+
+.paginate_button.previous {
+  padding-right: 0;
+}
+
+.paginate_button.next {
+  padding-left: 0;
+}
