@@ -7,11 +7,10 @@
         <th class="control">Registration Date</th>
         <th class="all">Parent First Name</th>
         <th class="all">Parent Last name</th>
-        <th class="all">Parent Email</th>
+        <th class="tablet-l tablet-p desktop">Parent Email</th>
         <th class="tablet-l tablet-p desktop">Parent Phone</th>
-        <th class="tablet-l tablet-p desktop">Student First Name</th>
-        <th class="tablet-l tablet-p desktop">Student Last Name</th>
-        <th class="tablet-l tablet-p desktop">Student Grade</th>
+        <th class="all">Student First Name</th>
+        <th class="tablet-l tablet-p desktop">Camps</th>
         <th class="tablet-l tablet-p desktop"></th>
         <th class="tablet-l tablet-p desktop"></th>
         <th class="desktop"></th>
@@ -20,14 +19,19 @@
     <tbody>
         <% @registrations.each do |registration| %>
           <tr>
-            <td><%= registration.created_at.strftime('%m/%d/%Y') %></td>
+            <td><%= registration.created_at.strftime('%b, %d') %></td>
             <td><%= registration.parent_first_name %></td>
             <td><%= registration.parent_last_name %></td>
             <td><%= registration.parent_email %></td>
             <td><%= registration.parent_phone %></td>
             <td><%= registration.student_first_name %></td>
-            <td><%= registration.student_last_name %></td>
-            <td><%= registration.student_grade %></td>
+            <td>
+              <ul>
+                <% registration.camp_offerings.each do |camp_offering| %>
+                  <li><%= camp_offering.confirmation_name %></li>
+                <% end %>
+              <ul>
+            </td>
             <td><%= link_to 'Show', registration, target: '_blank' %></td>
             <td><%= link_to 'Edit', edit_registration_path(registration), target: '_blank' %></td>
             <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
