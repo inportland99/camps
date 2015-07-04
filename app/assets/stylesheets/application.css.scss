@@ -287,3 +287,7 @@ i {
   background-color: none;
   background: none;
 }
+
+table.dataTable.dtr-inline.collapsed tbody td:first-child, table.dataTable.dtr-inline.collapsed tbody th:first-child {
+  top: 20px;
+}
