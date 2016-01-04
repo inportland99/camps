@@ -46,6 +46,9 @@ class PagesController < ApplicationController
   def testimonials
   end
 
+  def thank_you
+  end
+
   def reg_confirmation
     @registration = Registration.find(params[:id])
 

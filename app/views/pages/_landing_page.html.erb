@@ -17,11 +17,35 @@
           <h3 style="font-weight:bold;color:white;">
             Robotics, Programming, Chess, Video Games, 3-D Printing, and MORE ...
           </h3>
-          <h2 style="color:lightgreen;">Register now!</h2>
-          <%= render 'registration_buttons' %>
-          <div>
-              <%= link_to "Camp Descriptions", descriptions_camps_path, class: "btn btn-danger btn-lg registration_buttons"  %>
+          <div style="padding-left:30px;">
+            <h4 style="text-align:left;color:black;margin-top:40px;">
+              Fill out this form if you would like to be notified about 2016 Summer Camp updates.
+            </h4>
+            <div class="row">
+              <div class="col-lg-8 col-md-8 col-sm-8 col xs-8">
+                <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/705ad893a8de44b5bd795adfa19f3811" class="infusion-form" style="text-align:left;margin-top:20px;" method="POST">
+                  <input name="inf_form_xid" type="hidden" value="705ad893a8de44b5bd795adfa19f3811" />
+                  <input name="inf_form_name" type="hidden" value="Summer Camp Interest Form" />
+                  <input name="infusionsoft_version" type="hidden" value="1.48.0.48" />
+                  <div class="form-group">
+                    <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/>
+                  </div>
+                  <div class="infusion-submit">
+                    <input type="submit" value="Submit" style="margin-top:20px;" class="btn btn-lg btn-success" />
+                  </div>
+                </form>
+                <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
+              </div>
+            </div>
           </div>
+          <!-- <h2 style="color:lightgreen;">Register now!</h2>
+          <%# render 'registration_buttons' %>
+          <div>
+              <%# link_to "Camp Descriptions", descriptions_camps_path, class: "btn btn-danger btn-lg registration_buttons"  %>
+          </div> -->
           <%= link_to("#advantage") do  %>
           <h3 style="color:white;">More Information!</h3>
           <i style="color:white;" class="fa fa-chevron-down fa-4x"></i>
