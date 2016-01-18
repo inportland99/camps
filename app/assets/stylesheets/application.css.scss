@@ -16,6 +16,7 @@ $baseFontFamily: 'FontAwesome';
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
 @import "gritter";
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 .checkbox input[type="checkbox"] {
   float: none;
@@ -56,25 +57,37 @@ $baseFontFamily: 'FontAwesome';
  */
 
 body {
-  background-color: #f2f2f2;
-    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    color: #555;
-    padding-top: 62px;
-    -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
+  background-color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #555;
+  padding-top: 62px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-    font-weight: bold;
-    color: #333;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: #333;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 69px;
+  font-weight : bold;
+  font-size : 69px;
+  letter-spacing : -4.14px;
+  color : #000000;
+  color : rgb(0, 0, 0);
+}
+
+h2{
+  font-size : 49px;
+  letter-spacing : -3.92px;
+  color : #666666;
+  color : rgb(102, 102, 102);
 }
 
 h3 {
@@ -190,25 +203,9 @@ i {
 
 /* HeaderWrap */
 #headerwrap {
-  background: light-gray;
-  background-color: light-gray;
   margin-top: -20px;
-  padding-top:90px;
-  background: url('http://www.mathplusacademy.com/wp-content/uploads/2014/01/Free-Spring-Wallpaper.jpg');
-  background-attachment: relative;
-  background-position: center center;
-  min-height: 500px;
+  min-height: 100vh;
   width: 100%;
-
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 100%;
-
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
 
   .glyphicon-white{
     color: yellow;
@@ -273,10 +270,6 @@ i {
   background: yellow;
 }
 
-.btn{
-  border: solid 3px black;
-}
-
 .form-control{
   border: solid 3px black;
 }
@@ -294,4 +287,149 @@ i {
 
 .paginate_button.next {
   padding-left: 0;
+}
+
+// Main Section Styling\
+.main{
+  background-image: url('home_page/summercamp_2016_identity_11.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right top;
+}
+
+.main-image{
+  margin-top: 50px;
+}
+
+.main-title{
+  font-weight : bold;
+  font-size : 62px;
+  letter-spacing : -4.14px;
+  line-height: 50px;
+  color : #000000;
+  color : rgb(0, 0, 0);
+  margin: 10px 0 0 0;
+}
+
+.main-sub-title{
+  font-size : 49px;
+  font-weight: 300;
+  letter-spacing : -3.92px;
+  color : #666666;
+  color : rgb(102, 102, 102);
+  margin-top: 10px;
+  margin-bottom: 10%;
+}
+
+.main-grades{
+  font-size : 35px;
+  font-weight: 300;
+  letter-spacing : -2.8px;
+  color : #666666;
+  color : rgb(102, 102, 102);
+  margin-bottom: 30px
+}
+
+.after_main_section{
+  font-weight : bold;
+  font-size : 41px;
+  line-height : 43.79px;
+  color : #000000;
+  color : rgb(0, 0, 0);
+  margin-top: 30px;
+  text-align: center;
+}
+
+.main-location{
+  background-image: url('home_page/summercamp_2016_identity_10.png');
+  background-position: center;
+  height:90px;
+  margin-top:40px;
+}
+
+.locations{
+  margin: 0 0 70px 0;
+  
+  .hilliard{
+    border-bottom:solid 9px #FF0063;
+  }
+  .new-albany{
+    border-bottom:solid 9px #7497B1;
+  }
+  .powell{
+    border-bottom:solid 9px #FFAF10;
+  }
+}
+// Button Styling
+
+.btn{
+  color:#000000;
+  border-style : Solid;
+  border-color : #000000;
+  border-color : rgba(0, 0, 0, 1);
+  border-width : 5px;
+  border-radius : 9px;
+  -moz-border-radius : 9px;
+  -webkit-border-radius : 9px;
+  text-transform: uppercase;
+}
+
+.btn-red{
+  background : #FF0600;
+  background : rgba(255, 6, 0, 1);
+}
+
+.btn-red:hover{
+  background : #FF8C8C;
+  background : rgba(255, 140, 140, 1);
+}
+
+.btn-purple{
+  background : #9041B1;
+  background : rgba(144, 65, 177, 1);
+}
+
+.btn-purple:hover{
+  background : #9F8CAA;
+  background : rgba(159, 140, 170, 1);
+}
+
+.btn-blue{
+  background : #0091FF;
+  background : rgba(0, 145, 255, 1);
+}
+
+.btn-blue:hover{
+  background : #8CD1FF;
+  background : rgba(140, 209, 255, 1);
+}
+
+.btn-yellow{
+  background : #FCFF06;
+  background : rgba(252, 255, 6, 1);
+}
+
+.btn-yellow:hover{
+  background : #FFFD93;
+  background : rgba(255, 253, 147, 1);
+}
+
+.btn-green{
+  background : #12B21D;
+  background : rgba(18, 178, 29, 1);
+}
+
+.btn-green:hover{
+  background : #A9FFAF;
+  background : rgba(169, 255, 175, 1);
+}
+
+.btn-orange{
+  background : #f58c00;
+  background : rgba(255, 175, 16, 1);
+}
+
+.btn-orange:hover{
+  background : #FFCD83;
+  background : rgba(255, 205, 131, 1);
 }

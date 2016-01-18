@@ -1,63 +1,45 @@
 <div id="headerwrap">
-  <div class="container">
-    <div class="row" style="border-bottom:solid 9px black;padding:0 0 50px 0;">
-      <div class="col-lg-6 hidden-md hidden-sm hidden-xs">
-        <%= image_tag('sc_logo.png') %>
-      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
-      <div class="col-md-6 hidden-lg hidden-sm hidden-xs text-center">
-        <%= image_tag('sc_logo.png', size: "400") %>
-      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
-      <div class="col-sm-12 col-xs-12 hidden-lg hidden-md text-center" style="margin-bottom:30px;">
-        <%= image_tag('sc_logo.png', size: "300") %>
-      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
-
-
-      <div style="background-color:rgba(150,150,150, 0.7);height:100%;" class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-        <div class="text-center">
-          <h3 style="font-weight:bold;color:white;">
-            Robotics, Programming, Chess, Video Games, 3-D Printing, and MORE ...
-          </h3>
-          <div style="padding-left:30px;">
-            <h4 style="text-align:left;color:black;margin-top:40px;">
-              Fill out this form if you would like to be notified about 2016 Summer Camp updates.
-            </h4>
-            <div class="row">
-              <div class="col-lg-8 col-md-8 col-sm-8 col xs-8">
-                <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/705ad893a8de44b5bd795adfa19f3811" class="infusion-form" style="text-align:left;margin-top:20px;" method="POST">
-                  <input name="inf_form_xid" type="hidden" value="705ad893a8de44b5bd795adfa19f3811" />
-                  <input name="inf_form_name" type="hidden" value="Summer Camp Interest Form" />
-                  <input name="infusionsoft_version" type="hidden" value="1.48.0.48" />
-                  <div class="form-group">
-                    <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
-                  </div>
-                  <div class="form-group">
-                    <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/>
-                  </div>
-                  <div class="infusion-submit">
-                    <input type="submit" value="Submit" style="margin-top:20px;" class="btn btn-lg btn-success" />
-                  </div>
-                </form>
-                <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
-              </div>
-            </div>
-          </div>
-          <!-- <h2 style="color:lightgreen;">Register now!</h2>
-          <%# render 'registration_buttons' %>
-          <div>
-              <%# link_to "Camp Descriptions", descriptions_camps_path, class: "btn btn-danger btn-lg registration_buttons"  %>
-          </div> -->
-          <%= link_to("#advantage") do  %>
-          <h3 style="color:white;">More Information!</h3>
-          <i style="color:white;" class="fa fa-chevron-down fa-4x"></i>
-          <% end %>
+  <div class="main" style="border-bottom:solid 9px black;">
+    <div class="container">
+      <div class="row">
+        <%= image_tag "home_page/summercamp_2016_identity_07.png", class: "main-image" %>
+        <div class="main-title">
+          For Kids Who Love Tech<br>
+        </div> <!-- /.main-title -->
+        <div class="main-sub-title">
+          Or who want to &hellip; ;)
         </div>
-      </div><!-- /col-lg-6 col-md-6 col-sm-12 col-xs-12 -->
+        <div class="main-grades">
+          Grades K-8 &bull; Full Day &amp; Half
+        </div>
+      </div><!-- /row -->
+    </div><!-- /.container -->
+  </div><!-- /.main -->
+  <div class="container">
+    <div class="row">
+      <div class="after_main_section">
+        Most tech camps are expensive and packed full of campers. We max out at 10 students &amp; hire licensed teachers &amp; industry professionals.
+      </div>
     </div><!-- /row -->
-    <div class="row" id="advantage" style="padding-top:50px;">
-    </div>
   </div><!-- /.container -->
+  <div class="row">
+    <div class="main-location">
+    </div>
+  </div>
 </div><!-- /.headerwrap -->
-
+<div class="container" style="margin-bottom:70px;">
+  <div class="row locations">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center hilliard">
+      <a href="#"><h2>Hilliard</h2></a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">
+      <a href="#"><h2>New Albany</h2></a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center powell">
+      <a href="#"><h2>Powell</h2></a>
+    </div>
+  </div>
+</div>
 
   <div class="container">
     <!-- ** Math Plus Camp Advantage ** -->
