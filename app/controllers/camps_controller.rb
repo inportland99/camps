@@ -13,7 +13,7 @@ class CampsController < ApplicationController
   # GET /camps
   # GET /camps.json
   def index
-    @camps = Camp.all
+    @camps = Camp.order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb

@@ -4,6 +4,7 @@
   <table class="datatable display responsive no-wrap"  width="100%">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Title</th>
         <th>Price</th>
         <th>Capacity</th>
@@ -16,6 +17,7 @@
     <tbody>
       <% @camps.each do |camp| %>
         <tr>
+          <td><%= camp.id %></td>
           <td><%= camp.title %></td>
           <td>$<%= camp.price if camp.price %></td>
           <td><%= camp.capacity %></td>
