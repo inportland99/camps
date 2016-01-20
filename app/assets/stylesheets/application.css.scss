@@ -318,7 +318,11 @@ i {
   color : #666666;
   color : rgb(102, 102, 102);
   margin-top: 10px;
-  margin-bottom: 10%;
+  margin-bottom: 25px;
+}
+
+.main-buttons{
+  margin-bottom: 25px;
 }
 
 .main-grades{
@@ -347,9 +351,40 @@ i {
   margin-top:40px;
 }
 
+@media screen and (max-width:1100px) {
+  .main{
+    background-image: url('home_page/summercamp_2016_identity_mobile.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+  }
+  .main-title{
+    font-weight : bold;
+    font-size : 50px;
+    letter-spacing : -4.14px;
+    line-height: 50px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+  }
+  .main-sub-title{
+    font-size : 40px;
+    font-weight: 300;
+    letter-spacing : -3.92px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+  .main-grades{
+    font-size : 30px;
+    font-weight: 300;
+    letter-spacing : -2.8px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+}
+
 .locations{
   margin: 0 0 70px 0;
-  
+
   .hilliard{
     border-bottom:solid 9px #FF0063;
   }
@@ -432,4 +467,26 @@ i {
 .btn-orange:hover{
   background : #FFCD83;
   background : rgba(255, 205, 131, 1);
+}
+
+.dropdown-menu{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: white;
+  border: 5px solid #cccccc;
+  border: 5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 9px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  background-clip: padding-box;
 }

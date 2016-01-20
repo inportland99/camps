@@ -1,11 +1,15 @@
 <div class='row'>
   <div class='col-sm-12 col-xs-12'>
-    <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons mobile"  %>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-sm-12 col-xs-12'>
-  <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons mobile" %>
+    <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-danger registration_buttons mobile dropdown-toggle" data-toggle="dropdown">
+        Registration By Location <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <% @locations.each do |location| %>
+          <li><%= link_to location.name, new_registration_path(location: location.id) %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
 <div class='row'>

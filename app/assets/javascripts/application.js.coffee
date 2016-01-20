@@ -31,3 +31,4 @@ jQuery ->
   $('.datatable').DataTable
     responsive: true,
     pagingType: 'simple'
+    order:      [[ 0, "desc" ]]

@@ -1,8 +1,16 @@
 <div class="container">
   <h1>Admin Page</h1>
   <div class="row hidden-sm hidden-xs">
-    <%= link_to "Powell Registration", new_registration_path(location: "1"), class: "btn btn-warning btn-lg registration_buttons"  %>
-    <%= link_to "New Albany Registration", new_registration_path(location: "2"), class: "btn btn-warning btn-lg registration_buttons" %>
+    <div class="btn-group">
+      <button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown">
+        Registration By Location <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <% @locations.each do |location| %>
+          <li><%= link_to location.name, new_registration_path(location: location.id) %></li>
+        <% end %>
+      </ul>
+    </div>
     <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons" %>
     <%= link_to "Coupon Codes", coupon_codes_path, class: 'btn btn-default btn-lg registration_buttons' %>
     <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-success btn-lg registration_buttons' %>
@@ -23,23 +31,23 @@
   <div class="row">
     <div class="admin_dashboard">
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='todays_registrations'>
+        <div class='admin-dash-section'>
           <div class="header">
-            <h2> Registrations today.</h2>
+            <h2> Registrations Today</h2>
           </div>
           <span><%= @todays_registrations.count %></span>
         </div>
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='todays_sales'>
+        <div class='admin-dash-section'>
           <div class="header">
-            <h2>Registrations this month.</h2>
+            <h2>Registrations This Month</h2>
           </div>
           <span><%= @months_registrations.count %></span>
         </div> <!-- .todays_sales -->
       </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
       <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='todays_registrations'>
+        <div class='admin-dash-section'>
           <div class="header">
             <h2>Number of Camps Sold</h2>
           </div>

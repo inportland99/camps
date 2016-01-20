@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   def home
     if current_user
       @registrations = Registration.where(year: 1)
+      @locations = Location.all
       @months_registrations = Registration.where("created_at >= ? AND year=?", Time.now.beginning_of_month, 1)
       @this_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today, Date.today.beginning_of_year)
       @last_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today - 1.year, (Date.today - 1.year).beginning_of_year)

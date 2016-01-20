@@ -2,15 +2,20 @@
   <div class="main" style="border-bottom:solid 9px black;">
     <div class="container">
       <div class="row">
-        <%= image_tag "home_page/summercamp_2016_identity_07.png", class: "main-image" %>
-        <div class="main-title">
-          For Kids Who Love Tech<br>
-        </div> <!-- /.main-title -->
-        <div class="main-sub-title">
-          Or who want to &hellip; ;)
-        </div>
-        <div class="main-grades">
-          Grades K-8 &bull; Full Day &amp; Half
+        <div class="col-sm-6 col-xs-12">
+          <%= image_tag "home_page/summercamp_2016_identity_07.png", width: '100%', class: "main-image responsive" %>
+          <div class="main-title">
+            For Kids Who Love Tech<br>
+          </div> <!-- /.main-title -->
+          <div class="main-sub-title">
+            Or who want to &hellip; ;)
+          </div>
+          <div class="main-buttons">
+            <%= link_to "Schedule By Location", locations_path, class: "btn btn-lg btn-orange" %>
+          </div>
+          <div class="main-grades">
+            Grades K-8 &bull; Full Day &amp; Half
+          </div>
         </div>
       </div><!-- /row -->
     </div><!-- /.container -->
@@ -29,7 +34,7 @@
 </div><!-- /.headerwrap -->
 <div class="container" style="margin-bottom:70px;">
   <div class="row locations">
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center hilliard">
+    <div class="col-md-4 col-xs-12 text-center hilliard">
       <a href="#"><h2>Hilliard</h2></a>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">

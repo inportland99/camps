@@ -1,46 +1,46 @@
 <div class="container">
-<h1>Registrations</h1>
+  <h1>Registrations</h1>
 
-<table class="reg-datatable display responsive no-wrap"  width="100%">
-  <thead>
-      <tr>
-        <th class="all control">Reg. Date</th>
-        <th class="all">Parent First Name</th>
-        <th class="all">Parent Last name</th>
-        <th class="desktop">Parent Email</th>
-        <th class="desktop">Parent Phone</th>
-        <th class="all">Student First Name</th>
-        <th class="none">Camps</th>
-        <th class="desktop"></th>
-        <th class="desktop"></th>
-        <th class="desktop"></th>
-      </tr>
-  </thead>
-    <tbody>
-        <% @registrations.each do |registration| %>
-          <tr>
-            <td><%= registration.created_at.strftime('%b %d') %></td>
-            <td><%= registration.parent_first_name %></td>
-            <td><%= registration.parent_last_name %></td>
-            <td><%= registration.parent_email %></td>
-            <td><%= registration.parent_phone %></td>
-            <td><%= registration.student_first_name %></td>
-            <td>
-              <ul>
-                <% registration.camp_offerings.each do |camp_offering| %>
-                  <li><%= camp_offering.confirmation_name %></li>
-                <% end %>
-              <ul>
-            </td>
-            <td><%= link_to 'Show', registration, target: '_blank' %></td>
-            <td><%= link_to 'Edit', edit_registration_path(registration), target: '_blank' %></td>
-            <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-    </tbody>
-</table>
+  <table class="reg-datatable display responsive no-wrap"  width="100%">
+    <thead>
+        <tr>
+          <th class="all control">Reg. Date</th>
+          <th class="all">Parent First Name</th>
+          <th class="all">Parent Last name</th>
+          <th class="desktop">Parent Email</th>
+          <th class="desktop">Parent Phone</th>
+          <th class="all">Student First Name</th>
+          <th class="none">Camps</th>
+          <th class="desktop"></th>
+          <th class="desktop"></th>
+          <th class="desktop"></th>
+        </tr>
+    </thead>
+      <tbody>
+          <% @registrations.each do |registration| %>
+            <tr>
+              <td><%= registration.created_at.strftime('%b %d') %></td>
+              <td><%= registration.parent_first_name %></td>
+              <td><%= registration.parent_last_name %></td>
+              <td><%= registration.parent_email %></td>
+              <td><%= registration.parent_phone %></td>
+              <td><%= registration.student_first_name %></td>
+              <td>
+                <ul>
+                  <% registration.camp_offerings.each do |camp_offering| %>
+                    <li><%= camp_offering.confirmation_name %></li>
+                  <% end %>
+                <ul>
+              </td>
+              <td><%= link_to 'Show', registration, target: '_blank' %></td>
+              <td><%= link_to 'Edit', edit_registration_path(registration), target: '_blank' %></td>
+              <td><%= link_to 'Destroy', registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+      </tbody>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Registration', new_registration_path %>
+  <%= link_to 'New Registration', new_registration_path %>
 </div>

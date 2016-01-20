@@ -1,37 +1,64 @@
-<h1>Listing locations</h1>
+<div class="container">
+  <% if current_user && current_user.role?(:super_admin) %>
+    <h1>Listing Locations</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Address 1</th>
-    <th>Address 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Telephone</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table class="datatable display" width="100%">
+      <tr>
+        <th>Name</th>
+        <th>Address 1</th>
+        <th>Address 2</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Telephone</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.name %></td>
-    <td><%= location.address_1 %></td>
-    <td><%= location.address_2 %></td>
-    <td><%= location.city %></td>
-    <td><%= location.state %></td>
-    <td><%= location.zip %></td>
-    <td><%= location.telephone %></td>
-    <td><%= location.email %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.name %></td>
+        <td><%= location.address_1 %></td>
+        <td><%= location.address_2 %></td>
+        <td><%= location.city %></td>
+        <td><%= location.state %></td>
+        <td><%= location.zip %></td>
+        <td><%= location.telephone %></td>
+        <td><%= location.email %></td>
+        <td><%= link_to 'Show', location %></td>
+        <td><%= link_to 'Edit', edit_location_path(location) %></td>
+        <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </table>
 
-<br />
+    <br />
 
-<%= link_to 'New Location', new_location_path %>
+    <%= link_to 'New Location', new_location_path %>
+  <% else %>
+    <div class="location-selection">
+      <h1 class="centered">Select A Location!</h1>
+      <div class="container" style="margin-bottom:70px;">
+        <div class="row locations">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center hilliard">
+            <%= link_to new_registration_path(location: 3) do %>
+              <h2>Hilliard</h2>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">
+            <%= link_to new_registration_path(location: 2) do %>
+              <h2>New Albany</h2>
+            <% end %>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center powell">
+            <%= link_to new_registration_path(location: 1) do %>
+              <h2>Powell</h2>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

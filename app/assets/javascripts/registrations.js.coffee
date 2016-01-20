@@ -38,15 +38,19 @@ jQuery ->
   $registration_location_id = $('#registration_location_id')
   $powell_camp_offerings = $('#powell_camp_offerings')
   $new_albany_camp_offerings = $('#new_albany_camp_offerings')
+  $mill_run_camp_offerings = $('#mill_run_camp_offerings')
 
   $registration_location_id.trigger('blur') #lose focus to trigger .on 'change'
   $registration_location_id.on 'change', ->
     $powell_camp_offerings.css('display','none')
     $new_albany_camp_offerings.css('display','none')
+    $mill_run_camp_offerings.css('display','none')
     if $registration_location_id.val() is "1"
       $powell_camp_offerings.css('display','inline-block')
     if $registration_location_id.val() is "2"
       $new_albany_camp_offerings.css('display','inline-block')
+    if $registration_location_id.val() is "3"
+      $mill_run_camp_offerings.css('display','inline-block')
 
   #coupon code lookup logic
   $('#coupon_code_button').on 'click', ->
@@ -199,4 +203,3 @@ registration_payment =
       $('#stripe_error').text(response.error.message)
       $('#cc_field').addClass('has-error')
       $('input[type=submit]').attr('disabled', false)
-
