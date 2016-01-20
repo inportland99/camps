@@ -46,36 +46,40 @@ class CampOffering < ActiveRecord::Base
   elsif Rails.env.production?
   OFFERING_WEEKS = {
                           1 => {
-                                  :start => Date.new(2015,6,8),
-                                  :end => Date.new(2015,6,12)
+                                  :start => Date.new(2016,6,6),
+                                  :end => Date.new(2016,6,10)
                           },
                           2 => {
-                                  :start => Date.new(2015,6,15),
-                                  :end => Date.new(2015,6,19)
+                                  :start => Date.new(2016,6,13),
+                                  :end => Date.new(2016,6,17)
                           },
                           3 => {
-                                  :start => Date.new(2015,6,22),
-                                  :end => Date.new(2015,6,26)
+                                  :start => Date.new(2016,6,20),
+                                  :end => Date.new(2016,6,24)
                           },
                           4 => {
-                                  :start => Date.new(2015,7,6),
-                                  :end => Date.new(2015,7,10)
+                                  :start => Date.new(2016,6,27),
+                                  :end => Date.new(2016,7,1)
                           },
                           5 => {
-                                  :start => Date.new(2015,7,13),
-                                  :end => Date.new(2015,7,17)
+                                  :start => Date.new(2016,7,11),
+                                  :end => Date.new(2016,7,15)
                           },
                           6 => {
-                                  :start => Date.new(2015,7,20),
-                                  :end => Date.new(2015,7,24)
+                                  :start => Date.new(2016,7,18),
+                                  :end => Date.new(2016,7,22)
                           },
                           7 => {
-                                  :start => Date.new(2015,7,27),
-                                  :end => Date.new(2015,7,31)
+                                  :start => Date.new(2016,7,25),
+                                  :end => Date.new(2016,7,29)
                           },
                           8 => {
-                                  :start => Date.new(2015,8,3),
-                                  :end => Date.new(2015,8,7)
+                                  :start => Date.new(2016,8,1),
+                                  :end => Date.new(2016,8,5)
+                          },
+                          9 => {
+                                  :start => Date.new(2016,8,8),
+                                  :end => Date.new(2016,8,12)
                           }
   }
   end
