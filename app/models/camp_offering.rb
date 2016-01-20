@@ -81,7 +81,9 @@ class CampOffering < ActiveRecord::Base
   end
 
   def name
-    camp.title + " " + "(Ages: #{camp.age})"
+    if camp
+      camp.title + " " + "(Ages: #{camp.age})"
+    end
   end
 
   def extended_care_name
