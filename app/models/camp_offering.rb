@@ -80,6 +80,10 @@ class CampOffering < ActiveRecord::Base
   }
   end
 
+  def self.accessible_attributes
+   ["assistant", "camp_id", "end_date", 'location_id', "start_date", "teacher", "classroom", "time", "week", "hidden", "year", "extended_care"]
+  end
+
   def name
     if camp
       camp.title + " " + "(Ages: #{camp.age})"
@@ -139,8 +143,12 @@ class CampOffering < ActiveRecord::Base
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       camp_offering = find_by_id(row["id"]) || new
-      camp_offering.attributes = row.to_hash.slice(attribute_names)
-      camp_offering.save!
+      camp_offering.attributes = row.to_hash.slice(*accessible_attributes)
+      begin
+        camp_offering.save!
+      rescue ActiveRecord::RecordInvalid => e
+        false
+      end
     end
   end
 

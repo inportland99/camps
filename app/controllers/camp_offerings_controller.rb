@@ -5,7 +5,7 @@ class CampOfferingsController < ApplicationController
 
   def index
     @camp_offerings = CampOffering.order(:id).where(year: 2)
-    @all_camp_offerings = CampOfferings.order(:id).all
+    @all_camp_offerings = CampOffering.order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb

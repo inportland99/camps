@@ -5,10 +5,14 @@ class Camp < ActiveRecord::Base
 
 
 
+  def self.accessible_attributes
+   ["age", "capacity", "description", "price", "title", "show_description"]
+  end
+
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       camp = find_by_id(row["id"]) || new
-      camp.attributes = row.to_hash.slice(attribute_names)
+      camp.attributes = row.to_hash.slice(*accessible_attributes)
       camp.save!
     end
   end
