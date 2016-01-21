@@ -1,9 +1,15 @@
 <div class="container">
-  <h1>Listing camps</h1>
+  <h1>Listing Camps</h1>
+
+  <p>
+    Download:
+    <%= link_to "CSV", camps_path(format: "csv") %>
+  </p>
 
   <table class="datatable display responsive no-wrap"  width="100%">
     <thead>
       <tr>
+        <th>ID</th>
         <th>Title</th>
         <th>Price</th>
         <th>Capacity</th>
@@ -16,6 +22,7 @@
     <tbody>
       <% @camps.each do |camp| %>
         <tr>
+          <td><%= camp.id %></td>
           <td><%= camp.title %></td>
           <td>$<%= camp.price if camp.price %></td>
           <td><%= camp.capacity %></td>
@@ -27,6 +34,14 @@
       <% end %>
     </tbody>
   </table>
+  <p>
+      <h3> Import Camps</h3>
+        <%= form_tag import_camps_path, multipart: true do %>
+          <%= file_field_tag :file %><br />
+          <%= submit_tag "Import", class: 'btn btn-sm btn-default' %>
+        <% end %>
+  </p>
+  <br />
 
   <br />
 

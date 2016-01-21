@@ -4,12 +4,13 @@ class CampOfferingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @camp_offerings = CampOffering.order("location_id ASC").where(year: 1).all
+    @camp_offerings = CampOffering.order(:id).where(year: 2)
+    @all_camp_offerings = CampOffering.order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @camp_offerings }
-      format.csv { send_data @camp_offerings.to_csv }
+      format.csv { send_data @all_camp_offerings.to_csv }
     end
   end
 
