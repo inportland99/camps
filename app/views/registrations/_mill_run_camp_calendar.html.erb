@@ -29,7 +29,7 @@
         <td style="vertical-align:middle;">AM (9:00 - 12:00)</td>
         <!-- classroom 1 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 1 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -65,7 +65,7 @@
         <% end %>
         <!-- classroom 2 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 2 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -101,7 +101,7 @@
         <% end %>
         <!-- classroom 3 -->
         <% am_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 3 %>
           <% am_camp = true %>
           <td style="vertical-align:middle;">
@@ -136,7 +136,7 @@
           <td></td>
         <% end %>
         <!-- extended care -->
-        <% CampOffering.extended_care(3, n+1, 1).each do |co| %>
+        <% CampOffering.extended_care(3, n+1, 2).each do |co| %>
           <% if co %>
             <td rowspan=2 style="vertical-align:middle;width:50px;">
               <label class="checkbox">
@@ -147,7 +147,7 @@
             </td>
           <% end %>
         <% end %>
-        <% if CampOffering.extended_care(1, n+1, 1).empty? %>
+        <% if CampOffering.extended_care(3, n+1, 2).empty? %>
           <td rowspan=2 style="vertical-align:middle;width:50px;"></td>
         <% end %>
       </tr>
@@ -155,7 +155,7 @@
         <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
         <!-- classroom 1 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 1 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
@@ -179,7 +179,7 @@
         <% end %>
         <!-- classroom 2 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
@@ -203,7 +203,7 @@
         <% end %>
         <!-- classroom 3 -->
         <% pm_camp = false %>
-        <% CampOffering.by_week(3, n+1, 1).each do |co| %>
+        <% CampOffering.by_week(3, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 3 %>
               <% pm_camp = true %>
               <td style="vertical-align:middle;">
