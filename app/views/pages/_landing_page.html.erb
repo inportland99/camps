@@ -35,13 +35,19 @@
 <div class="container" style="margin-bottom:70px;">
   <div class="row locations">
     <div class="col-md-4 col-xs-12 text-center hilliard">
-      <a href="#"><h2>Hilliard</h2></a>
+      <%= link_to new_registration_path(location: 3) do %>
+        <h2>Hilliard</h2>
+      <% end %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">
-      <a href="#"><h2>New Albany</h2></a>
+      <%= link_to new_registration_path(location: 2) do %>
+        <h2>New Albany</h2>
+      <% end %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center powell">
-      <a href="#"><h2>Powell</h2></a>
+      <%= link_to new_registration_path(location: 1) do %>
+        <h2>Powell</h2>
+      <% end %>
     </div>
   </div>
 </div>
