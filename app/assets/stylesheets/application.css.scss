@@ -291,7 +291,7 @@ i {
 
 // Main Section Styling\
 .main{
-  background-image: url('home_page/camps_background.svg');
+  background-image: image-url('home_page/camps_background.svg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: right top;
@@ -345,7 +345,7 @@ i {
 }
 
 .main-location{
-  background-image: url('home_page/summercamp_2016_identity_10.png');
+  background-image: image-url('home_page/summercamp_2016_identity_10.png');
   background-position: center;
   height:90px;
   margin-top:40px;
@@ -353,10 +353,10 @@ i {
 
 @media screen and (max-width:1100px) {
   .main{
-    background-image: url('home_page/camps_background_mobile.svg');
+    background-image: image-url('home_page/camps_background_mobile.svg');
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center middle;
+    background-position: center;
   }
   .main-title{
     font-weight : bold;
