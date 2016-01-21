@@ -24,7 +24,10 @@ Camps::Application.routes.draw do
   end
 
   resources :camps do
-    collection { get :descriptions }
+    collection do
+      get :descriptions
+      post :import
+    end
   end
 
   resources :registrations do

@@ -10,6 +10,7 @@ class CampsController < ApplicationController
       format.json { render json: @camps }
     end
   end
+
   # GET /camps
   # GET /camps.json
   def index
@@ -18,6 +19,7 @@ class CampsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @camps }
+      format.csv { send_data @camps.to_csv }
     end
   end
 
@@ -90,6 +92,11 @@ class CampsController < ApplicationController
       format.html { redirect_to camps_url }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Camp.import(params[:file])
+    redirect_to camps_path, notice: "Camps imported."
   end
 
   private
