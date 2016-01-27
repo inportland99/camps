@@ -4,13 +4,12 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel"><%= camp.title %></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+          <h2 class="modal-title" id="myModalLabel"><%= camp.title %></h2>
         </div>
         <div class="modal-body">
-          <p>
+          
             <%= camp.description.html_safe %>
-          </p>
           <%# unless camp.id == 20 %>
             <!-- <p>
               <h4>Offerings of this camp:</h4>
@@ -21,8 +20,8 @@
               </ul>
             </p> -->
           <%# end %>
-          <h3>Schedules coming soon!</h3>
-          <%# render '/pages/registration_buttons' %>
+          <h3>View Schedules</h3>
+          <%= render '/pages/registration_buttons' %>
         </div><!-- .modal-body -->
         <div class="modal-footer">
           <hr>
