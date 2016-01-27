@@ -1,26 +1,31 @@
-<%= simple_form_for(@camp_offering) do |f| %>
-  <% if @camp_offering.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@camp_offering.errors.count, "error") %> prohibited this camp_offering from being saved:</h2>
+<div class="row">
+  <div class="col-md-4">
+    <%= simple_form_for(@camp_offering) do |f| %>
+      <% if @camp_offering.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@camp_offering.errors.count, "error") %> prohibited this camp_offering from being saved:</h2>
 
-      <ul>
-      <% @camp_offering.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+          <ul>
+          <% @camp_offering.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-    <%= f.association :camp %>
-    <%= f.input :teacher %>
-    <%= f.input :assistant %>
-    <%= f.input :week %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
-    <%= f.association :location, label_method: :name %>
-    <%= f.input :classroom, collection: (1..3).to_a %>
-    <%= f.input :time, collection: CampOffering::OFFERING_TIMES %>
-    <%= f.input :hidden %>
+        <%= f.association :camp %>
+        <%= f.input :year, as: :select, collection: CampOffering::YEARS.zip((0..6).to_a) %>
+        <%= f.input :teacher %>
+        <%= f.input :assistant %>
+        <%= f.input :week %>
+        <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' } %>
+        <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' } %>
+        <%= f.association :location, label_method: :name %>
+        <%= f.input :classroom, collection: (1..3).to_a %>
+        <%= f.input :time, collection: CampOffering::OFFERING_TIMES %>
+        <%= f.input :hidden %>
 
-    <%= f.button :submit, class: "btn btn-lg btn-success" %>
-<% end %>
+        <%= f.button :submit, class: "btn btn-lg btn-success" %>
+    <% end %>
+  </div>
+</div>

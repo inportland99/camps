@@ -32,3 +32,6 @@ jQuery ->
     responsive: true,
     pagingType: 'simple'
     order:      [[ 0, "desc" ]]
+
+  $('.datepicker').datepicker
+    dateFormat: "yy-mm-dd"
