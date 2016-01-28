@@ -17,6 +17,23 @@
   float: right;
 }
 
+
+
+@media screen and (min-width:1200px) {
+  .girls-only-logo-half{
+    position: relative;
+    margin-top: 0;
+    margin-right:-13px;
+    float: right;
+  }
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -78px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
 @media screen and (max-width:991px) {
   .girls-only-logo-half{
     position: relative;
