@@ -1,3 +1,85 @@
-// Place all the styles related to the Camps controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.girls-only-logo-half{
+  position: relative;
+  margin-top: -19px;
+  margin-right:-13px;
+  float: right;
+}
+.girls-only-logo-half-pm{
+  position: relative;
+  margin-top: -8px;
+  margin-right:-13px;
+  float: right;
+}
+.girls-only-logo-full{
+  position: relative;
+  margin-top: -60px;
+  margin-right:-13px;
+  float: right;
+}
+
+@media screen and (max-width:991px) {
+  .girls-only-logo-half{
+    position: relative;
+    margin-top: -8px;
+    margin-right:-13px;
+    float: right;
+  }
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -82px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:715px){
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -93px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
+
+@media screen and (max-width:698px){
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -115px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:662px){
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -137px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:652px) {
+  .girls-only-logo-half{
+    position: relative;
+    margin-top: -13px;
+    margin-right:-13px;
+    float: right;
+  }
+}
+
+@media screen and (max-width:376px) {
+  .girls-only-logo-half{
+    position: relative;
+    margin-top: -8px;
+    margin-right:-13px;
+    float: right;
+  }
+  .girls-only-logo-full{
+    position: relative;
+    margin-top: -88px;
+    margin-right:-13px;
+    float: right;
+  }
+}
