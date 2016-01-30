@@ -100,7 +100,7 @@
       <%= f.input :parent_email, label: "Email", input_html: { value: params[:parent_email]} %>
       <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:parent_phone]} %>
       <%= f.input :stripe_card_token, as: :hidden %>
-      <%= f.input :year, as: :hidden, input_html: { value: 1 } %>
+      <%= f.input :year, as: :hidden, input_html: { value: 2 } %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <%= render 'credit_card_form' %>
