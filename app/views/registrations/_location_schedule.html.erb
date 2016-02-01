@@ -30,10 +30,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 1 %>
           <% am_camp = true %>
-          <td style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-half"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
@@ -52,10 +49,7 @@
           </td>
           <% elsif co.time == "All Day" && co.classroom == 1 %>
           <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-full"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? ) && !user_signed_in? %>
@@ -82,10 +76,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 2 %>
           <% am_camp = true %>
-          <td style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-half"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
@@ -104,10 +95,7 @@
           </td>
           <% elsif co.time == "All Day" && co.classroom == 2 %>
           <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-full"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in? %>
@@ -134,10 +122,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
           <% if co.time == "AM" && co.classroom == 3 %>
           <% am_camp = true %>
-          <td style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-half"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
@@ -156,10 +141,7 @@
           </td>
           <% elsif co.time == "All Day" && co.classroom == 3 %>
           <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;">
-            <% if co.camp.girls_only? %>
-              <span class="girls-only-logo-full"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-            <% end %>
+          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
             <% unless co.hidden && !user_signed_in? %>
               <label class="checkbox">
                 <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
@@ -204,10 +186,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 1 %>
               <% pm_camp = true %>
-              <td style="vertical-align:middle;">
-                <% if co.camp.girls_only? %>
-                  <span class="girls-only-logo-half-pm"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-                <% end %>
+              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                 <% unless co.hidden && !user_signed_in? %>
                 <label class="checkbox">
                   <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
@@ -236,10 +215,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
               <% pm_camp = true %>
-              <td style="vertical-align:middle;">
-                <% if co.camp.girls_only? %>
-                  <span class="girls-only-logo-half"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-                <% end %>
+              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                 <% unless co.hidden && !user_signed_in? %>
                   <label class="checkbox">
                     <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
@@ -268,10 +244,7 @@
         <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
             <% if co.time == "PM" && co.classroom == 3 %>
               <% pm_camp = true %>
-              <td style="vertical-align:middle;">
-                <% if co.camp.girls_only? %>
-                  <span class="girls-only-logo-half"><%= image_tag('girls_only-02.svg', size: '50') %></span>
-                <% end %>
+              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                 <% unless co.hidden && !user_signed_in? %>
                   <label class="checkbox">
                     <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
