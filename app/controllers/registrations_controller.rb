@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   force_ssl if: :ssl_configured?
-  before_filter :authenticate_user!, :except => [:new, :create, :total_discounts]
+  before_filter :authenticate_user!, :except => [:new, :create, :total_discounts, :confirmation]
 
   def index
     @registrations = Registration.where(year: 2).order('created_at DESC')
@@ -79,7 +79,7 @@ class RegistrationsController < ApplicationController
           @registration.infusionsoft_actions
 
           #process shareable code actions
-          @registration.set_up_code_share
+          # @registration.set_up_code_share
 
           format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
