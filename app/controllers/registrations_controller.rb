@@ -52,12 +52,18 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    if current_user && current_user.role?('super_admin') && params[:process_without_payment] == "yes"
+    if current_user && (current_user.role?('super_admin')||current_user.role?('admin')) && params[:process_without_payment] == "yes"
       respond_to do |format|
         if @registration.save_without_payment
+          # send confirmation email
           PonyExpress.registration_confirmation(@registration).deliver
+
           #add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
+
+          #process shareable code actions
+          # @registration.set_up_code_share
+
           format.html { redirect_to @registration, notice: 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
@@ -71,7 +77,11 @@ class RegistrationsController < ApplicationController
           PonyExpress.registration_confirmation(@registration).deliver
           #add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
-          format.html { redirect_to reg_confirmation_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
+
+          #process shareable code actions
+          @registration.set_up_code_share
+
+          format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
         else
           format.html { render action: "new" }
@@ -87,6 +97,14 @@ class RegistrationsController < ApplicationController
     rescue Stripe::InvalidRequestError => e
       flash.now[:error] = e.message + "Please enter a valid credit card and reselect your camps."
       render action: :new, location: @registration.location
+  end
+
+  def confirmation
+    @registration = Registration.find(params[:id])
+
+    unless params[:token] == @registration.stripe_charge_token
+      redirect_to { redirect_to root_url, notice: 'No need to go there :)' }
+    end
   end
 
   def email_confirmation

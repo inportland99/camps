@@ -92,6 +92,15 @@ class CouponCodesController < ApplicationController
     end
   end
 
+  def facebook_share
+    @registration = Registration.find(params[:registration_id])
+
+    unless params[:token] == @registration.stripe_charge_token
+      redirect_to { redirect_to root_url, notice: 'No need to go there :)' }
+    else
+    end
+  end
+
   private
 
     # Use this method to whitelist the permissible parameters. Example:

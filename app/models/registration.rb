@@ -87,6 +87,19 @@ class Registration < ActiveRecord::Base
     update_attribute :camp_campaign, true
   end
 
+  def set_up_code_share
+    coupon_code = CouponCode.create(name:             CouponCode.generate_name(parent_last_name),
+                                    coupon_type:      "0",
+                                    amount:           10,
+                                    active:           true,
+                                    description:      "Social promotion for #{parent_name}. They earn $10 credit each time someone uses their code. Code is good for $10 off each camp in purchase.")
+
+    coupon_uid = coupon_code.generate_share_image
+
+    # add coupon uid to reference coupon image with registration
+    update_attribute :coupon_uid, coupon_uid
+  end
+
   def infusionsoft_actions
     result = Infusionsoft.data_query_order_by('Contact', 50, 0, {:Email=> '%'+"#{self.parent_email}"+'%'}, [:Id, :FirstName, :LastName, :ContactType, :Email], :FirstName, true)
     if result.empty?

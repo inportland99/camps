@@ -8,7 +8,9 @@ Camps::Application.routes.draw do
     collection { post :import }
   end
 
-  resources :coupon_codes
+  resources :coupon_codes do
+    collection { get :facebook_share }
+  end
 
   devise_for :users, :skip => [:registrations]
     as :user do
@@ -31,14 +33,16 @@ Camps::Application.routes.draw do
   end
 
   resources :registrations do
-    collection { get :total_discounts }
+    collection do
+      get :total_discounts
+      get :confirmation
+    end
   end
 
 
   root :to => 'pages#home'
 
   get '/faq', to: 'pages#faq'
-  get '/reg_confirmation', to: 'pages#reg_confirmation'
   get '/comparison', to: 'pages#comparison'
   get '/email_confirmation', to: 'registrations#email_confirmation'
   get '/thank_you', to: 'pages#thank_you'
