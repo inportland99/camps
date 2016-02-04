@@ -10,7 +10,7 @@ class CouponCode < ActiveRecord::Base
   DISCOUNT_TYPE = ["$ Discount", "% Discount"]
 
   def upcase_name
-    name = name.upcase
+    self.name = name.upcase
   end
 
   def how_many_used?
