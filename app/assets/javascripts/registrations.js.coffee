@@ -4,6 +4,11 @@
 
 #Calcualte total for selected camps.
 jQuery ->
+
+  if document.getElementById("facebook_pixel_tracking")
+    total = $("#facebook_pixel_tracking").data('amount')
+    fbq('track', 'Purchase', {value: total, currency: 'USD'});
+
   $('.reg-datatable').DataTable
     responsive: true,
     pagingType: 'simple'
