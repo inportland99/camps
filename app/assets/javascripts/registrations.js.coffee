@@ -62,6 +62,18 @@ jQuery ->
     $(this).attr('disabled', true)
     coupon_code.look_up()
 
+  #Payment plan logic, **check box is hidden/shown via selected total method**
+  fadeTime = 1000
+  $('#payment_plan').on 'click', ->
+    if $(this).is(':checked')
+      $('#cc_form').hide()
+      $('#payment_plan_info').fadeIn(fadeTime)
+      $('#installment_explanation').fadeOut(fadeTime)
+    else
+      $('#cc_form').show()
+      $('#payment_plan_info').fadeOut(fadeTime)
+      $('#installment_explanation').fadeIn(fadeTime)
+
 coupon_code =
   look_up: ->
     $coupon_code_button = $('#coupon_code_button')
@@ -137,6 +149,11 @@ camps =
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
 
+    if total > 500
+      $('#payment_plan_field').show()
+    else
+      $('#payment_plan_field').hide()
+
   selectedCount: ->
     count = $(':checkbox:checked', '#camp_offerings').length
     count
@@ -181,6 +198,8 @@ registration_payment =
     str = str.replace(".","")
     amount = parseInt(str)
     $('#registration_total').val(amount)
+    alert amount
+
 
   processCard: ->
     card =
@@ -193,7 +212,7 @@ registration_payment =
       cvc: $('#card_code').val()
       expMonth: $('#card_month').val()
       expYear: $('#card_year').val()
-    Stripe.createToken(card, registration_payment.handleStripeResponse)
+      card_token = Stripe.createToken(card, registration_payment.handleStripeResponse)
 
   handleStripeResponse: (status, response) ->
     if status == 200

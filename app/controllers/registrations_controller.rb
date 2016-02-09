@@ -187,7 +187,8 @@ class RegistrationsController < ApplicationController
                                            {camp_offering_ids: []},
                                            :stripe_card_token,
                                            :process_without_payment,
-                                           :camp_campaign)
+                                           :camp_campaign,
+                                           :payment_plan)
     end
 
     def ssl_configured?

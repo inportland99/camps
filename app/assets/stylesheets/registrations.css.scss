@@ -81,3 +81,12 @@ table.calendar{
   background-repeat: no-repeat;
   background-position: right top;
 }
+
+#payment_plan_field{
+  input[type="checkbox"]{
+    margin-right: 15px;
+  }
+  label{
+    padding:0;
+  }
+}

@@ -103,7 +103,7 @@
       <%= f.input :year, as: :hidden, input_html: { value: 2 } %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <%= render 'credit_card_form' %>
+    <%= render 'credit_card_form', f: f %>
     <%= f.input :coupon_code, as: :hidden %>
     <div id="coupon_code_field" class="form-group string optional">
       <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
@@ -250,7 +250,7 @@
       <%= f.input :year, as: :hidden, input_html: { value: 2 } %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
     <div class="col-md-4 col-xs-12">
-      <%= render 'credit_card_form' %>
+      <%= render 'credit_card_form', f: f %>
       <%= f.input :coupon_code, as: :hidden %>
       <div id="coupon_code_field" class="form-group string optional">
         <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>

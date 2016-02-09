@@ -25,6 +25,13 @@ class Registration < ActiveRecord::Base
                                       card: stripe_card_token,
                                       description: "#{camp_location}: Registration #{student_first_name} for #{camp_names.join}."
                                     )
+      customer = Stripe::Customer.create(
+                                          source:       stripe_card_token,
+                                          email:        parent_email,
+                                          description:  "Purchased #{Date.today.year} Summer          Camp.",
+
+      )
+      self.stripe_customer_id = customer.id
       self.stripe_charge_token = charge.id
       save!
     end
