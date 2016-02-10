@@ -1,5 +1,7 @@
 Camps::Application.routes.draw do
 
+  resources :invoices
+
   resources :camp_interests
 
   resources :weekly_programs

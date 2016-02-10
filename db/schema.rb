@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209190833) do
+ActiveRecord::Schema.define(version: 20160209203502) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -97,6 +97,19 @@ ActiveRecord::Schema.define(version: 20160209190833) do
     t.string   "image_uid",   default: ""
   end
 
+  create_table "invoices", force: true do |t|
+    t.integer  "registration_id"
+    t.boolean  "paid",               default: false
+    t.date     "payment_date"
+    t.string   "stripe_charge_id"
+    t.string   "stripe_customer_id"
+    t.integer  "amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "attempts",           default: 0
+    t.boolean  "payment_declined",   default: false
+  end
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.string   "address_1"
@@ -140,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160209190833) do
     t.integer  "coupon_image_id"
     t.boolean  "payment_plan",            default: false
     t.string   "stripe_customer_id"
+    t.boolean  "payment_plan_completed",  default: false
   end
 
   create_table "roles", force: true do |t|

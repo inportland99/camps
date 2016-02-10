@@ -66,13 +66,13 @@ jQuery ->
   fadeTime = 1000
   $('#payment_plan').on 'click', ->
     if $(this).is(':checked')
-      $('#cc_form').hide()
       $('#payment_plan_info').fadeIn(fadeTime)
       $('#installment_explanation').fadeOut(fadeTime)
+      $('#payment_plan_amounts').show(fadeTime)
     else
-      $('#cc_form').show()
       $('#payment_plan_info').fadeOut(fadeTime)
       $('#installment_explanation').fadeIn(fadeTime)
+      $('#payment_plan_amounts').hide(fadeOut)
 
 coupon_code =
   look_up: ->
@@ -149,7 +149,21 @@ camps =
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
 
-    if total > 500
+    # Calculate and display payments with dates
+    first_payment = Math.floor(total*100/3)/100
+    second_payment = first_payment
+    third_payment = Math.round((total - (first_payment + second_payment))*100)/100
+    todays_date = moment().format('MMM Do, YYYY')
+    thrity_days_out = moment().add(30, 'days').format('MMM Do, YYYY')
+    sixty_days_out = moment().add(60, 'days').format('MMM Do, YYYY')
+
+    $('#registration_payment_1').children('p').html("<b>Payment 1: #{todays_date}</b> - $#{first_payment.toFixed(2)} <span style='color:orange;'>(today)</span>")
+    $('#registration_payment_2').children('p').html("<b>Payment 2: #{thrity_days_out}</b> - $#{second_payment.toFixed(2)}")
+    $('#registration_payment_3').children('p').html("<b>Payment 3: #{sixty_days_out}</b> - $#{third_payment.toFixed(2)}")
+
+
+    # Show payment plan option if amount is above $250
+    if total > 250
       $('#payment_plan_field').show()
     else
       $('#payment_plan_field').hide()
@@ -157,7 +171,6 @@ camps =
   selectedCount: ->
     count = $(':checkbox:checked', '#camp_offerings').length
     count
-
 
 #stripe payment logic and form submition
 jQuery ->
@@ -198,7 +211,6 @@ registration_payment =
     str = str.replace(".","")
     amount = parseInt(str)
     $('#registration_total').val(amount)
-    alert amount
 
 
   processCard: ->
@@ -212,7 +224,8 @@ registration_payment =
       cvc: $('#card_code').val()
       expMonth: $('#card_month').val()
       expYear: $('#card_year').val()
-      card_token = Stripe.createToken(card, registration_payment.handleStripeResponse)
+
+    card_token = Stripe.createToken(card, registration_payment.handleStripeResponse)
 
   handleStripeResponse: (status, response) ->
     if status == 200
