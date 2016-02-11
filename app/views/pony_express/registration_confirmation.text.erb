@@ -7,4 +7,11 @@ You've registered <%= @registration.student_first_name %> for the following camp
 
 Total :<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
 
+<% if @registration.payment_plan %>
+    Payment Plan
+    <% @registration.invoices.each_with_index do |invoice, i| %>
+      Payment #<%= i+1 %>: <%= invoice.due_date.strftime('%m/%d/%Y') %> - $<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %>
+    <% end %>
+<% end %>
+
 Thank you for registering!

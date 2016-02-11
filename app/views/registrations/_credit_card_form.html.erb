@@ -17,7 +17,26 @@
     You have elected to pay in three, monthly installments. Please see the payment setup below.
   </h4>
 </div>
+<div id="payment_plan_amounts" style="display:none;">
+  <fieldset>
+    <legend>Payment Plan</legend>
+    <div id="registration_payment_1">
+      <p>
 
+      </p>
+    </div>
+    <div id="registration_payment_2">
+      <p>
+
+      </p>
+    </div>
+    <div id="registration_payment_3">
+      <p>
+
+      </p>
+    </div>
+  </fieldset>
+</div>
 <% if @registration.stripe_card_token %>
   <h4>Card has already been provided.</h4>
 <% else %>
@@ -47,26 +66,6 @@
   <p>
     <b></b> <span></span>
   </p>
-</div>
-<div id="payment_plan_amounts" style="display:none;">
-  <fieldset>
-    <legend>Payment Plan</legend>
-    <div id="registration_payment_1">
-      <p>
-
-      </p>
-    </div>
-    <div id="registration_payment_2">
-      <p>
-
-      </p>
-    </div>
-    <div id="registration_payment_3">
-      <p>
-
-      </p>
-    </div>
-  </fieldset>
 </div>
 <div id="registration_totals">
   <div id="registration_subtotal">
