@@ -20,6 +20,14 @@
       </div><!-- /row -->
     </div><!-- /.container -->
   </div><!-- /.main -->
+  <div>
+    <div class="row">
+      <div id="installment-offer" class="col-xs-12 text-center" style="display:none;">
+        <h3 style="margin-bottom:20px;"><span style="color:green;margin-right:20px;">Now offering!</span> 3-month payment plan for registrations over $250.</h3>
+        <hr>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="after_main_section">
@@ -39,18 +47,19 @@
         <h2>Hilliard/ UA</h2>
       <% end %>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">
+    <div class="col-md-4 col-xs-12 text-center new-albany">
       <%= link_to new_registration_path(location: 2) do %>
         <h2>New Albany</h2>
       <% end %>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center powell">
+    <div class="col-md-4 col-xs-12 text-center powell">
       <%= link_to new_registration_path(location: 1) do %>
         <h2>Powell</h2>
       <% end %>
     </div>
   </div>
 </div>
+
 
   <div class="container">
     <!-- ** Math Plus Camp Advantage ** -->

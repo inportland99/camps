@@ -18,6 +18,8 @@ jQuery ->
   $inputCheckbox = $('input[type=checkbox]')
 
   if !(document.getElementById("camp_offerings") is null)
+    $('.payment_plan_banner').delay(2000).fadeIn(1000)
+
     #calculate total on page load (incase of redirect)
     camps.selected_total()
 
@@ -68,11 +70,11 @@ jQuery ->
     if $(this).is(':checked')
       $('#payment_plan_info').fadeIn(fadeTime)
       $('#installment_explanation').fadeOut(fadeTime)
-      $('#payment_plan_amounts').show(fadeTime)
+      $('#payment_plan_amounts').fadeIn(fadeTime)
     else
       $('#payment_plan_info').fadeOut(fadeTime)
       $('#installment_explanation').fadeIn(fadeTime)
-      $('#payment_plan_amounts').hide(fadeOut)
+      $('#payment_plan_amounts').fadeOut(fadeTime)
 
 coupon_code =
   look_up: ->
@@ -134,6 +136,7 @@ camps =
       $('#registration_discount').children('span').text("-$#{amount}.00")
       #update total
       $('#registration_total > p').children('span').text("$#{total - amount}.00")
+      total = total - amount
     else if coupon_type is 1
       inverse_percent_discount = (100 - coupon_amount)/100
       percent_discount =  (coupon_amount)/100
@@ -145,6 +148,7 @@ camps =
       $('#registration_discount').children('span').text("-$#{discount_amount}")
       #update total
       $('#registration_total > p').children('span').text("$#{total_after_discount}")
+      total = total_after_discount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
@@ -162,11 +166,14 @@ camps =
     $('#registration_payment_3').children('p').html("<b>Payment 3: #{sixty_days_out}</b> - $#{third_payment.toFixed(2)}")
 
 
-    # Show payment plan option if amount is above $250
+    # Show/hide payment plan option if amount is above $250
     if total > 250
       $('#payment_plan_field').show()
     else
+      $('#payment_plan_info').hide()
       $('#payment_plan_field').hide()
+      $('#payment_plan').attr('checked', false)
+      $('#payment_plan_amounts').fadeOut(800)
 
   selectedCount: ->
     count = $(':checkbox:checked', '#camp_offerings').length

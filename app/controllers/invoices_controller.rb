@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :except => [:new, :create]
 
   respond_to :html
 
@@ -42,6 +43,6 @@ class InvoicesController < ApplicationController
     end
 
     def invoice_params
-      params.require(:invoice).permit(:registration_id, :paid, :payment_date, :stripe_charge_id, :stripe_customer_id, :amount)
+      params.require(:invoice).permit(:registration_id, :paid, :payment_date, :stripe_charge_id, :stripe_customer_id, :amount, :due_date, :payment_order, :charge_description, :payment_declined)
     end
 end

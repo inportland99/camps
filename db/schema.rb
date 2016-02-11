@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160209203502) do
+ActiveRecord::Schema.define(version: 20160210201138) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -108,6 +108,9 @@ ActiveRecord::Schema.define(version: 20160209203502) do
     t.datetime "updated_at"
     t.integer  "attempts",           default: 0
     t.boolean  "payment_declined",   default: false
+    t.date     "due_date"
+    t.integer  "payment_order"
+    t.string   "charge_description"
   end
 
   create_table "locations", force: true do |t|

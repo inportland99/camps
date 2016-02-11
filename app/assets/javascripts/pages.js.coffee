@@ -25,3 +25,6 @@ jQuery ->
 		else
 			$(this).text("Show")
 			$(".revenue span").hide()
+
+	if !(document.getElementById("installment-offer") is null)
+    $('#installment-offer').delay(2000).fadeIn(1000)

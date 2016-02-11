@@ -34,7 +34,7 @@ class Registration < ActiveRecord::Base
       end
 
       # Charge customer using customer id
-      charge  = Stripe::Charge.create(
+      charge = Stripe::Charge.create(
                                       amount: charge_total,
                                       currency: "usd",
                                       customer: customer.id,
@@ -53,12 +53,14 @@ class Registration < ActiveRecord::Base
         Invoice.create(
                         amount: payments[n],
                         registration_id: self.id,
-                        payment_date: Date.today + (n*30).days,
-                        stripe_customer_id: customer.id
+                        due_date: Date.today + (n*30).days,
+                        stripe_customer_id: customer.id,
+                        payment_order: n+1
         )
       end
+
       # Mark first invoice paid if customer elected for payment plan.
-      self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id
+      self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id, payment_date: Date.today
     end
   end
 
@@ -85,6 +87,16 @@ class Registration < ActiveRecord::Base
     end
 
     subtotal
+  end
+
+  def payment_plan_balance
+    balance_due = 0
+    invoices.each { |invoice| balance_due += invoice.amount if !invoice.paid  }
+    balance_due
+  end
+
+  def paid_in_full?
+    invoices.all? { |invoice| invoice.paid }
   end
 
   def discount_amount
