@@ -58,16 +58,28 @@
           <%= @registration.coupon_code ? @registration.coupon_code : "No coupon applied." %>
         </p>
         <p>
+          <b>Payment Plan:</b>
+          <% if @registration.payment_plan %>
+            <% if @registration.paid_in_full? %>
+              <span style="color:green;">Paid In Full</span>
+            <% else %>
+              <%= @registration.payment_plan ? "<i class='fa fa-check' style='color:green;'></i> <span style='color:orange;'>Outstanding balance: $#{number_with_precision(@registration.payment_plan_balance.to_f/100, precision: 2)}</span><br> (See payments below)".html_safe : "No payment plan." %>
+            <% end %>
+          <% else %>
+            No Payment Plan
+          <% end %>
+        </p>
+        <p>
           <b>Total:</b>
           $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
         </p>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+      <div class="col-md-8 col-sm-12 col-xs-12">
         <h3>Thanks for registering. Let the fun begin.</h3>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="col-md-4 col-sm-12 col-xs-12">
         <p>
           <%= link_to 'Register Another Student', new_registration_path(
               parent_first_name: @registration.parent_first_name,
@@ -90,6 +102,41 @@
       </div>
     </div>
   </div>
+  <% if @registration.payment_plan %>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Payment Plan Invoices</h3>
+        <table class="table table-bordered table-responsive table-hover">
+          <thead>
+            <tr>
+              <th>
+                Payment
+              </th>
+              <th>
+                Due Date
+              </th>
+              <th>
+                Amount
+              </th>
+              <th>
+                Date Paid
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @registration.invoices.each_with_index do |invoice, i| %>
+              <tr>
+                <td><%= i+1 %></td>
+                <td><%= invoice.due_date.strftime('%m/%d/%Y') if invoice.due_date %></td>
+                <td>$<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %></td>
+                <td><%= invoice.payment_date ? "<span style='color:green;'>#{invoice.payment_date.strftime('%m/%d/%Y')}</span>".html_safe : '<span style="color:red;">Unpaid</unpaid>'.html_safe %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
   <div class="row">
     <% if current_user && ( current_user.role?(:super_admin) || current_user.role?(:admin))%>
       <%= link_to 'Edit', edit_registration_path(@registration) %> |

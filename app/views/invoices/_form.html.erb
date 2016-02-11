@@ -1,0 +1,16 @@
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :registration_id %>
+    <%= f.input :paid %>
+    <%= f.input :payment_date %>
+    <%= f.input :stripe_charge_id %>
+    <%= f.input :stripe_customer_id %>
+    <%= f.input :amount %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

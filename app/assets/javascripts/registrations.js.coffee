@@ -4,6 +4,11 @@
 
 #Calcualte total for selected camps.
 jQuery ->
+
+  if document.getElementById("facebook_pixel_tracking")
+    total = $("#facebook_pixel_tracking").data('amount')
+    fbq('track', 'Purchase', {value: total, currency: 'USD'});
+
   $('.reg-datatable').DataTable
     responsive: true,
     pagingType: 'simple'
@@ -13,6 +18,8 @@ jQuery ->
   $inputCheckbox = $('input[type=checkbox]')
 
   if !(document.getElementById("camp_offerings") is null)
+    $('.payment_plan_banner').delay(2000).fadeIn(1000)
+
     #calculate total on page load (incase of redirect)
     camps.selected_total()
 
@@ -56,6 +63,18 @@ jQuery ->
   $('#coupon_code_button').on 'click', ->
     $(this).attr('disabled', true)
     coupon_code.look_up()
+
+  #Payment plan logic, **check box is hidden/shown via selected total method**
+  fadeTime = 1000
+  $('#payment_plan').on 'click', ->
+    if $(this).is(':checked')
+      $('#payment_plan_info').fadeIn(fadeTime)
+      $('#installment_explanation').fadeOut(fadeTime)
+      $('#payment_plan_amounts').fadeIn(fadeTime)
+    else
+      $('#payment_plan_info').fadeOut(fadeTime)
+      $('#installment_explanation').fadeIn(fadeTime)
+      $('#payment_plan_amounts').fadeOut(fadeTime)
 
 coupon_code =
   look_up: ->
@@ -117,6 +136,7 @@ camps =
       $('#registration_discount').children('span').text("-$#{amount}.00")
       #update total
       $('#registration_total > p').children('span').text("$#{total - amount}.00")
+      total = total - amount
     else if coupon_type is 1
       inverse_percent_discount = (100 - coupon_amount)/100
       percent_discount =  (coupon_amount)/100
@@ -128,14 +148,36 @@ camps =
       $('#registration_discount').children('span').text("-$#{discount_amount}")
       #update total
       $('#registration_total > p').children('span').text("$#{total_after_discount}")
+      total = total_after_discount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
 
+    # Calculate and display payments with dates
+    first_payment = Math.floor(total*100/3)/100
+    second_payment = first_payment
+    third_payment = Math.round((total - (first_payment + second_payment))*100)/100
+    todays_date = moment().format('MMM Do, YYYY')
+    thrity_days_out = moment().add(30, 'days').format('MMM Do, YYYY')
+    sixty_days_out = moment().add(60, 'days').format('MMM Do, YYYY')
+
+    $('#registration_payment_1').children('p').html("<b>Payment 1: #{todays_date}</b> - $#{first_payment.toFixed(2)} <span style='color:orange;'>(today)</span>")
+    $('#registration_payment_2').children('p').html("<b>Payment 2: #{thrity_days_out}</b> - $#{second_payment.toFixed(2)}")
+    $('#registration_payment_3').children('p').html("<b>Payment 3: #{sixty_days_out}</b> - $#{third_payment.toFixed(2)}")
+
+
+    # Show/hide payment plan option if amount is above $250
+    if total > 250
+      $('#payment_plan_field').show()
+    else
+      $('#payment_plan_info').hide()
+      $('#payment_plan_field').hide()
+      $('#payment_plan').attr('checked', false)
+      $('#payment_plan_amounts').fadeOut(800)
+
   selectedCount: ->
     count = $(':checkbox:checked', '#camp_offerings').length
     count
-
 
 #stripe payment logic and form submition
 jQuery ->
@@ -177,6 +219,7 @@ registration_payment =
     amount = parseInt(str)
     $('#registration_total').val(amount)
 
+
   processCard: ->
     card =
       name: $('#registration_parent_first_name').val() + ' ' + $('#registration_parent_last_name').val()
@@ -188,7 +231,8 @@ registration_payment =
       cvc: $('#card_code').val()
       expMonth: $('#card_month').val()
       expYear: $('#card_year').val()
-    Stripe.createToken(card, registration_payment.handleStripeResponse)
+
+    card_token = Stripe.createToken(card, registration_payment.handleStripeResponse)
 
   handleStripeResponse: (status, response) ->
     if status == 200

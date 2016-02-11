@@ -1,6 +1,9 @@
 <div class"production" hidden=true>Production</div>
 
 <h1>Summer Camp Registration</h1>
+<div class="payment_plan_banner text-center" style="margin:20px 0 20px 0;padding:20px 20px 20px 20px;border: 3px solid green;display:none;">
+  <span style='color:purple;margin-right:20px;'>Monthly Payment Plan!</span> <span>Spend more that $250 and you can opt for a three-month installment plan.</span>
+</div>
 <% if params[:parent_first_name] %>
     <!-- This form reders if the parent is registering another child after redirect from reg show page. Currently, this does not render. -->
   <%= simple_form_for(@registration) do |f| %>
@@ -103,7 +106,7 @@
       <%= f.input :year, as: :hidden, input_html: { value: 2 } %>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <%= render 'credit_card_form' %>
+    <%= render 'credit_card_form', f: f %>
     <%= f.input :coupon_code, as: :hidden %>
     <div id="coupon_code_field" class="form-group string optional">
       <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
@@ -250,7 +253,7 @@
       <%= f.input :year, as: :hidden, input_html: { value: 2 } %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
     <div class="col-md-4 col-xs-12">
-      <%= render 'credit_card_form' %>
+      <%= render 'credit_card_form', f: f %>
       <%= f.input :coupon_code, as: :hidden %>
       <div id="coupon_code_field" class="form-group string optional">
         <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>

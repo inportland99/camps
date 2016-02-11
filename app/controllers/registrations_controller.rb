@@ -95,7 +95,7 @@ class RegistrationsController < ApplicationController
       render action: :new, location: @registration.location
 
     rescue Stripe::InvalidRequestError => e
-      flash.now[:error] = e.message + "Please enter a valid credit card and reselect your camps."
+      flash.now[:error] = e.message + " Please enter a valid credit card and reselect your camps."
       render action: :new, location: @registration.location
   end
 
@@ -187,7 +187,8 @@ class RegistrationsController < ApplicationController
                                            {camp_offering_ids: []},
                                            :stripe_card_token,
                                            :process_without_payment,
-                                           :camp_campaign)
+                                           :camp_campaign,
+                                           :payment_plan)
     end
 
     def ssl_configured?

@@ -3,6 +3,7 @@ class Registration < ActiveRecord::Base
   attr_accessor :stripe_card_token, :location, :process_without_payment
 
   has_and_belongs_to_many :camp_offerings
+  has_many :invoices
   belongs_to :location
 
   validates :emergency_contact_name, :emergency_contact_phone, :parent_address_1, :parent_email,
@@ -19,14 +20,47 @@ class Registration < ActiveRecord::Base
       camp_offerings.each do |offering|
         camp_names << "#{offering.name} "
       end
+
+      # Create stripe customer
+      customer = Stripe::Customer.create(
+                                          source:       stripe_card_token,
+                                          email:        parent_email,
+                                          description:  "Purchased #{Date.today.year} Summer Camp."
+      )
+      # If they elected for a payment plan charge first thrid of total and create invoices for the second installment payments
+      if payment_plan
+        payments = calculate_payments(total)
+        charge_total = payments[0]
+      end
+
+      # Charge customer using customer id
       charge = Stripe::Charge.create(
                                       amount: charge_total,
                                       currency: "usd",
-                                      card: stripe_card_token,
+                                      customer: customer.id,
                                       description: "#{camp_location}: Registration #{student_first_name} for #{camp_names.join}."
                                     )
+
+      #Update registration with customer id and first charge token
+      self.stripe_customer_id = customer.id
       self.stripe_charge_token = charge.id
       save!
+    end
+
+    # Process invoices after registration is created and first payment is processed.
+    if payment_plan
+      3.times do |n|
+        Invoice.create(
+                        amount: payments[n],
+                        registration_id: self.id,
+                        due_date: Date.today + (n*30).days,
+                        stripe_customer_id: customer.id,
+                        payment_order: n+1
+        )
+      end
+
+      # Mark first invoice paid if customer elected for payment plan.
+      self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id, payment_date: Date.today
     end
   end
 
@@ -36,6 +70,16 @@ class Registration < ActiveRecord::Base
     end
   end
 
+  def calculate_payments(total)
+    third_of_total = total/3
+    payments = Hash.new(0)
+
+    payments[0] = third_of_total
+    payments[1] = third_of_total
+    payments[2] = total - third_of_total*2
+    payments
+  end
+
   def camp_subtotal
     subtotal = 0.0
     camp_offerings.each do |camp_offering|
@@ -43,6 +87,16 @@ class Registration < ActiveRecord::Base
     end
 
     subtotal
+  end
+
+  def payment_plan_balance
+    balance_due = 0
+    invoices.each { |invoice| balance_due += invoice.amount if !invoice.paid  }
+    balance_due
+  end
+
+  def paid_in_full?
+    invoices.all? { |invoice| invoice.paid }
   end
 
   def discount_amount

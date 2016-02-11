@@ -1,14 +1,14 @@
 <div class="container">
   <h1>Thank you for registering!</h1>
   <p>You have been sent an email confirming the details of this transaction.</p>
-  <hr>
+  <!-- <hr>
   <h2 style="color:#252525;">Want to receive a free camp?</h2>
   <h3>
     <%= link_to "Click here and share this!", facebook_share_coupon_codes_path(registration_id: @registration.id, token: @registration.stripe_charge_token) %>
   </h3>
   <p>
     Everytime someone uses the shared code you will receive a $10 credit! We're serious, it's that easy.
-  </p>
+  </p> -->
   <hr>
   <h2>Do you follow us on Facebook or Twitter?</h2>
   <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
@@ -27,6 +27,8 @@
 </div>
 
 <% if Rails.env.production? %>
+  <div id="facebook_pixel_tracking" data-amount="<%= '%.2f'%(@registration.total/100) %>">
+  </div>
   <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-19803817-1']);
