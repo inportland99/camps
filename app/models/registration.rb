@@ -18,7 +18,9 @@ class Registration < ActiveRecord::Base
       charge_total = total
       camp_location = camp_offerings.first.location.name
       camp_offerings.each do |offering|
-        camp_names << "#{offering.name} "
+        if offering
+          camp_names << "#{offering.name} "
+        end
       end
 
       # Create stripe customer
@@ -27,6 +29,7 @@ class Registration < ActiveRecord::Base
                                           email:        parent_email,
                                           description:  "Purchased #{Date.today.year} Summer Camp."
       )
+
       # If they elected for a payment plan charge first thrid of total and create invoices for the second installment payments
       if payment_plan
         payments = calculate_payments(total)
@@ -62,6 +65,7 @@ class Registration < ActiveRecord::Base
       # Mark first invoice paid if customer elected for payment plan.
       self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id, payment_date: Date.today
     end
+    save!
   end
 
   def save_without_payment

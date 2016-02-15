@@ -31,9 +31,9 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-    @camp_offerings = CampOffering.where(year: 1).order("week asc, location_id asc")
-    @powell_camps = CampOffering.where("location_id=? AND year=?", 1, 1)
-    @new_albany_camps = CampOffering.where("location_id=? AND year=?", 2, 1)
+    @camp_offerings = CampOffering.where(year: 2).order("week asc, location_id asc")
+    @powell_camps = CampOffering.where("location_id=? AND year=?", 1, 2)
+    @new_albany_camps = CampOffering.where("location_id=? AND year=?", 2, 2)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,7 +52,7 @@ class RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    if current_user && (current_user.role?('super_admin')||current_user.role?('admin')) && params[:process_without_payment] == "yes"
+    if current_user && (current_user.role?('super_admin') || current_user.role?('admin')) && params[:process_without_payment] == "yes"
       respond_to do |format|
         if @registration.save_without_payment
           # send confirmation email
@@ -188,7 +188,8 @@ class RegistrationsController < ApplicationController
                                            :stripe_card_token,
                                            :process_without_payment,
                                            :camp_campaign,
-                                           :payment_plan)
+                                           :payment_plan,
+                                           :newsletter)
     end
 
     def ssl_configured?
