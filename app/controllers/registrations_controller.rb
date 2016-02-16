@@ -44,7 +44,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations/1/edit
   def edit
     @registration = Registration.find(params[:id])
-    @camp_offerings = CampOffering.order('location_id ASC')
+    @locations = Location.order(:id)
   end
 
   # POST /registrations
