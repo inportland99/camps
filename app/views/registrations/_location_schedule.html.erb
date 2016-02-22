@@ -1,276 +1,284 @@
-<h2><%= location.name %> Camp Schedule</h2>
+<div class="row location-schedule-info">
+  <div class="col-sm-12">
+    <h2 class="location-title"><%= location.name %> Camp Schedule</h2>
     <ul>
       <li>Click on camp names for detailed descriptions.
       <li>Select all of the summer camps for which you wish to register one child.
       <li>You will need to complete a separate registration for each child.
     </ul>
-    <br />
-<div class="form-group check_boxes optional registration_camp_offerings">
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Dates</th>
-      <th>Time</th>
-      <th style="text-align:center;">Offering 1</th>
-      <th style="text-align:center;">Offering 2</th>
-      <th style="text-align:center;">Offering 3</th>
-      <th style="text-align:center;">Extended care</th>
-    </tr>
-  </thead>
-  <tbody>
+  </div>
+</div>
 
-    <% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
-      <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
-        <td rowspan=2 style="vertical-align:middle;">
-          <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %>
-        </td>
-        <td style="vertical-align:middle;">AM (9:00 - 12:00)</td>
-        <!-- classroom 1 -->
-        <% am_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-          <% if co.time == "AM" && co.classroom == 1 %>
-          <% am_camp = true %>
-          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% elsif co.time == "All Day" && co.classroom == 1 %>
-          <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? ) && !user_signed_in? %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% end %>
-        <% end %>
-        <% if !am_camp %>
-          <td></td>
-        <% end %>
-        <!-- classroom 2 -->
-        <% am_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-          <% if co.time == "AM" && co.classroom == 2 %>
-          <% am_camp = true %>
-          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% elsif co.time == "All Day" && co.classroom == 2 %>
-          <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in? %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% end %>
-        <% end %>
-        <% if !am_camp %>
-          <td></td>
-        <% end %>
-        <!-- classroom 3 -->
-        <% am_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-          <% if co.time == "AM" && co.classroom == 3 %>
-          <% am_camp = true %>
-          <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% elsif co.time == "All Day" && co.classroom == 3 %>
-          <% am_camp = true %>
-          <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-            <% unless co.hidden && !user_signed_in? %>
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <% if co.at_capacity? %>
-                  <span style='color:red;' class="pull-right">Sold Out</span>
-                <% else %>
-                  <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                  <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                <% end %>
-                <% if co.hidden && user_signed_in? %>
-                  <span style='color:orange;' class="pull-left">Hidden</span>
-                <% end %>
-              </label>
-            <% end %>
-          </td>
-          <% end %>
-        <% end %>
-        <% if !am_camp %>
-          <td></td>
-        <% end %>
-        <!-- extended care -->
-        <% CampOffering.extended_care(location.id, n+1, 2).each do |co| %>
-          <% if co %>
-            <td rowspan=2 style="vertical-align:middle;width:50px;">
-              <label class="checkbox">
-                <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                <%= link_to "#{co.extended_care_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                <span style='color:green;' class="pull-right">$<%= co.price %></span>
-              </label>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group check_boxes optional registration_camp_offerings">
+    <table class="table table-bordered" width='100%'>
+      <thead>
+        <tr>
+          <th>Dates</th>
+          <th>Time</th>
+          <th style="text-align:center;">Offering 1</th>
+          <th style="text-align:center;">Offering 2</th>
+          <th style="text-align:center;">Offering 3</th>
+          <th style="text-align:center;">Extended care</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
+          <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
+            <td rowspan=2 style="vertical-align:middle;">
+              <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %>
             </td>
-          <% end %>
-        <% end %>
-        <% if CampOffering.extended_care(location.id, n+1, 2).empty? %>
-          <td rowspan=2 style="vertical-align:middle;width:50px;"></td>
-        <% end %>
-      </tr>
-      <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
-        <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
-        <!-- classroom 1 -->
-        <% pm_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-            <% if co.time == "PM" && co.classroom == 1 %>
-              <% pm_camp = true %>
+            <td style="vertical-align:middle;">AM (9:00 - 12:00)</td>
+            <!-- classroom 1 -->
+            <% am_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+              <% if co.time == "AM" && co.classroom == 1 %>
+              <% am_camp = true %>
               <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                 <% unless co.hidden && !user_signed_in? %>
-                <label class="checkbox">
-                  <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                  <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                  <% if co.at_capacity? %>
-                    <span style='color:red;' class="pull-right">Sold Out</span>
-                  <% else %>
-                    <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% elsif co.time == "All Day" && co.classroom == 1 %>
+              <% am_camp = true %>
+              <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                <% unless co.hidden && !user_signed_in? %>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? ) && !user_signed_in? %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% end %>
+            <% end %>
+            <% if !am_camp %>
+              <td></td>
+            <% end %>
+            <!-- classroom 2 -->
+            <% am_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+              <% if co.time == "AM" && co.classroom == 2 %>
+              <% am_camp = true %>
+              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                <% unless co.hidden && !user_signed_in? %>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless co.at_capacity? && !user_signed_in? %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% elsif co.time == "All Day" && co.classroom == 2 %>
+              <% am_camp = true %>
+              <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                <% unless co.hidden && !user_signed_in? %>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in? %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% end %>
+            <% end %>
+            <% if !am_camp %>
+              <td></td>
+            <% end %>
+            <!-- classroom 3 -->
+            <% am_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+              <% if co.time == "AM" && co.classroom == 3 %>
+              <% am_camp = true %>
+              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                <% unless co.hidden && !user_signed_in? %>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% elsif co.time == "All Day" && co.classroom == 3 %>
+              <% am_camp = true %>
+              <td rowspan=2 style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                <% unless co.hidden && !user_signed_in? %>
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                    <% if co.at_capacity? %>
+                      <span style='color:red;' class="pull-right">Sold Out</span>
+                    <% else %>
+                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                    <% end %>
+                    <% if co.hidden && user_signed_in? %>
+                      <span style='color:orange;' class="pull-left">Hidden</span>
+                    <% end %>
+                  </label>
+                <% end %>
+              </td>
+              <% end %>
+            <% end %>
+            <% if !am_camp %>
+              <td></td>
+            <% end %>
+            <!-- extended care -->
+            <% CampOffering.extended_care(location.id, n+1, 2).each do |co| %>
+              <% if co %>
+                <td rowspan=2 style="vertical-align:middle;">
+                  <label class="checkbox">
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                    <%= link_to "#{co.extended_care_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
                     <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                  <% end %>
-                  <% if co.hidden && user_signed_in? %>
-                    <span style='color:orange;' class="pull-left">Hidden</span>
-                  <% end %>
-                </label>
-                <% end %>
-              </td>
-            <% elsif co.time == "All Day" && co.classroom == 1 %>
-              <% pm_camp = true %>
-            <% end %>
-        <% end %>
-        <% if !pm_camp %>
-          <td></td>
-        <% end %>
-        <!-- classroom 2 -->
-        <% pm_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-            <% if co.time == "PM" && co.classroom == 2 %>
-              <% pm_camp = true %>
-              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-                <% unless co.hidden && !user_signed_in? %>
-                  <label class="checkbox">
-                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                    <% if co.at_capacity? %>
-                      <span style='color:red;' class="pull-right">Sold Out</span>
-                    <% else %>
-                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                    <% end %>
-                    <% if co.hidden && user_signed_in? %>
-                      <span style='color:orange;' class="pull-left">Hidden</span>
-                    <% end %>
                   </label>
-                <% end %>
-              </td>
-            <% elsif co.time == "All Day" && co.classroom == 2 %>
-              <% pm_camp = true %>
+                </td>
+              <% end %>
             <% end %>
-        <% end %>
-        <% if !pm_camp %>
-          <td></td>
-        <% end %>
-        <!-- classroom 3 -->
-        <% pm_camp = false %>
-        <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
-            <% if co.time == "PM" && co.classroom == 3 %>
-              <% pm_camp = true %>
-              <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
-                <% unless co.hidden && !user_signed_in? %>
-                  <label class="checkbox">
-                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                    <% if co.at_capacity? %>
-                      <span style='color:red;' class="pull-right">Sold Out</span>
-                    <% else %>
-                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                    <% end %>
-                    <% if co.hidden && user_signed_in? %>
-                      <span style='color:orange;' class="pull-left">Hidden</span>
-                    <% end %>
-                  </label>
-                <% end %>
-              </td>
-            <% elsif co.time == "All Day" && co.classroom == 3 %>
-              <% pm_camp = true %>
+            <% if CampOffering.extended_care(location.id, n+1, 2).empty? %>
+              <td rowspan=2 style="vertical-align:middle;"></td>
             <% end %>
+          </tr>
+          <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
+            <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
+            <!-- classroom 1 -->
+            <% pm_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+                <% if co.time == "PM" && co.classroom == 1 %>
+                  <% pm_camp = true %>
+                  <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                    <% unless co.hidden && !user_signed_in? %>
+                    <label class="checkbox">
+                      <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                      <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                      <% if co.at_capacity? %>
+                        <span style='color:red;' class="pull-right">Sold Out</span>
+                      <% else %>
+                        <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                        <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                      <% end %>
+                      <% if co.hidden && user_signed_in? %>
+                        <span style='color:orange;' class="pull-left">Hidden</span>
+                      <% end %>
+                    </label>
+                    <% end %>
+                  </td>
+                <% elsif co.time == "All Day" && co.classroom == 1 %>
+                  <% pm_camp = true %>
+                <% end %>
+            <% end %>
+            <% if !pm_camp %>
+              <td></td>
+            <% end %>
+            <!-- classroom 2 -->
+            <% pm_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+                <% if co.time == "PM" && co.classroom == 2 %>
+                  <% pm_camp = true %>
+                  <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                    <% unless co.hidden && !user_signed_in? %>
+                      <label class="checkbox">
+                        <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                        <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                        <% if co.at_capacity? %>
+                          <span style='color:red;' class="pull-right">Sold Out</span>
+                        <% else %>
+                          <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                          <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                        <% end %>
+                        <% if co.hidden && user_signed_in? %>
+                          <span style='color:orange;' class="pull-left">Hidden</span>
+                        <% end %>
+                      </label>
+                    <% end %>
+                  </td>
+                <% elsif co.time == "All Day" && co.classroom == 2 %>
+                  <% pm_camp = true %>
+                <% end %>
+            <% end %>
+            <% if !pm_camp %>
+              <td></td>
+            <% end %>
+            <!-- classroom 3 -->
+            <% pm_camp = false %>
+            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+                <% if co.time == "PM" && co.classroom == 3 %>
+                  <% pm_camp = true %>
+                  <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
+                    <% unless co.hidden && !user_signed_in? %>
+                      <label class="checkbox">
+                        <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                        <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                        <% if co.at_capacity? %>
+                          <span style='color:red;' class="pull-right">Sold Out</span>
+                        <% else %>
+                          <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                          <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                        <% end %>
+                        <% if co.hidden && user_signed_in? %>
+                          <span style='color:orange;' class="pull-left">Hidden</span>
+                        <% end %>
+                      </label>
+                    <% end %>
+                  </td>
+                <% elsif co.time == "All Day" && co.classroom == 3 %>
+                  <% pm_camp = true %>
+                <% end %>
+            <% end %>
+            <% if !pm_camp %>
+              <td></td>
+            <% end %>
+          </tr>
         <% end %>
-        <% if !pm_camp %>
-          <td></td>
-        <% end %>
-      </tr>
-    <% end %>
-    <input name="registration[camp_offering_ids][]" type="hidden" value="">
-  </tbody>
-</table>
+        <input name="registration[camp_offering_ids][]" type="hidden" value="">
+      </tbody>
+    </table>
+    </div>
+  </div>
 </div>
