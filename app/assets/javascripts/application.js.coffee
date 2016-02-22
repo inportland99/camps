@@ -25,7 +25,6 @@
 //= require gritter
 //= require registrations
 //= require camp_surveys
-//= require camp_offerings
 
 jQuery ->
   $('.datatable').DataTable
