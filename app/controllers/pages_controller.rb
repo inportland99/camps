@@ -49,4 +49,8 @@ class PagesController < ApplicationController
 
   def thank_you
   end
+
+  def reminder_thank_you
+    #code
+  end
 end

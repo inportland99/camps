@@ -42,6 +42,11 @@
   </div>
 </div><!-- /.headerwrap -->
 <div class="container" style="margin-bottom:70px;">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h3><i>Select Location For Schedule</i></h3>
+    </div>
+  </div>
   <div class="row locations">
     <div class="col-md-4 col-xs-12 text-center hilliard">
       <%= link_to new_registration_path(location: 3) do %>
@@ -58,6 +63,22 @@
         <h2>Powell</h2>
       <% end %>
     </div>
+  </div>
+</div>
+<div class="reminder">
+  <div class="text-center">
+    <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
+      <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/69050ced480ca23de310e59c6bf16b91" class="infusion-form form-inline"
+      method="POST">
+      <input name="inf_form_xid" type="hidden" value="69050ced480ca23de310e59c6bf16b91" />
+      <input name="inf_form_name" type="hidden" value="Asks For Reminder" />
+      <input name="infusionsoft_version" type="hidden" value="1.50.0.38" />
+      <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
+      <input class="form-control infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" placeholder="Last Name" />
+      <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/>
+      <input class="btn btn-purple" type="submit" value="Submit" />
+    </form>
+  <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
   </div>
 </div>
 

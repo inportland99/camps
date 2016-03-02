@@ -10,16 +10,20 @@
     Everytime someone uses the shared code you will receive a $10 credit! We're serious, it's that easy.
   </p> -->
   <hr>
-  <h2>Do you follow us on Facebook or Twitter?</h2>
-  <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
-  <p>
-    <div class="fb-follow" data-href="https://www.facebook.com/mathplusacademy" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
-  </p>
-  <hr>
+  <div class="row text-center">
+    <%= render 'pages/jumpstart' %>
+  </div>
+  <hr style="margin-top:50px;">
   <div class="row mt centered">
     <h1>Register For More</h1>
     <%= render 'pages/registration_buttons' %>
   </div>
+  <hr>
+  <h2>Do you follow us on Facebook?</h2>
+  <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
+  <p>
+    <div class="fb-follow" data-href="https://www.facebook.com/mathplusacademy" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
+  </p>
 </div>
 
 <% if Rails.env.production? %>
