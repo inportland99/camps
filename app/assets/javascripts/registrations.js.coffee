@@ -176,7 +176,8 @@ camps =
       $('#payment_plan_amounts').fadeOut(800)
 
   selectedCount: ->
-    count = $(':checkbox:checked', '#camp_offerings').length
+    # count selected camps less extended care options selected
+    count = $(':checkbox:checked', '#camp_offerings').length - $('.extended-care:checked').length
     count
 
 #stripe payment logic and form submition

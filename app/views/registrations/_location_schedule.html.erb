@@ -174,7 +174,7 @@
               <% if co %>
                 <td rowspan=2 style="vertical-align:middle;">
                   <label class="checkbox">
-                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes extended-care optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}"} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
                     <%= link_to "#{co.extended_care_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
                     <span style='color:green;' class="pull-right">$<%= co.price %></span>
                   </label>
