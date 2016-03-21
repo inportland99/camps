@@ -433,6 +433,22 @@ i {
   .powell{
     border-bottom:solid 9px #FFAF10;
   }
+  .past{
+    border-bottom:solid 9px #3eb27e;
+  }
+}
+
+.locations:nth-of-type(1){
+  margin: 110px 0 0 0;
+}
+
+.locations:nth-of-type(2){
+  margin: 0 0 70px 0;
+}
+
+.location-description{
+  color: #a8a8a8;
+  margin-bottom: 10px;
 }
 // Button Styling
 

@@ -45,20 +45,31 @@
       <h1 class="centered">Select A Location!</h1>
       <div class="container" style="margin-bottom:70px;">
         <div class="row locations">
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center hilliard">
+          <div class="col-md-6 col-xs-12 text-center hilliard">
             <%= link_to new_registration_path(location: 3) do %>
               <h2>Hilliard/ UA</h2>
             <% end %>
+            <div class="location-description"><em>Mill Run</em></div>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center new-albany">
+          <div class="col-md-6 col-xs-12 text-center new-albany">
             <%= link_to new_registration_path(location: 2) do %>
               <h2>New Albany</h2>
             <% end %>
+            <div class="location-description"><em>North Hamilton Rd (near Home Depot)</em></div>
           </div>
-          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center powell">
+        </div>
+        <div class="row locations">
+          <div class="col-md-6 col-xs-12 text-center powell">
             <%= link_to new_registration_path(location: 1) do %>
               <h2>Powell</h2>
             <% end %>
+            <div class="location-description"><em>Sawmill Parkway &amp; Powell Road</em></div>
+          </div>
+          <div class="col-md-6 col-xs-12 text-center past">
+            <%= link_to new_registration_path(location: 4) do %>
+              <h2>PAST Innovation Lab</h2>
+            <% end %>
+            <div class="location-description"><em>West OSU Campus (near AMC Lennox)</em></div>
           </div>
         </div>
       </div>
