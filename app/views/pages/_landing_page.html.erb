@@ -47,23 +47,7 @@
       <h3><i>Select Location For Schedule</i></h3>
     </div>
   </div>
-  <div class="row locations">
-    <div class="col-md-4 col-xs-12 text-center hilliard">
-      <%= link_to new_registration_path(location: 3) do %>
-        <h2>Hilliard/ UA</h2>
-      <% end %>
-    </div>
-    <div class="col-md-4 col-xs-12 text-center new-albany">
-      <%= link_to new_registration_path(location: 2) do %>
-        <h2>New Albany</h2>
-      <% end %>
-    </div>
-    <div class="col-md-4 col-xs-12 text-center powell">
-      <%= link_to new_registration_path(location: 1) do %>
-        <h2>Powell</h2>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'locations/select_location' %>
 </div>
 <div class="reminder">
   <div class="text-center">
