@@ -48,6 +48,9 @@ class PagesController < ApplicationController
   end
 
   def thank_you
+    if params[:id]
+      @registration = Registration.find(params[:id])
+    end
   end
 
   def reminder_thank_you
