@@ -158,6 +158,17 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def outstanding_payments
+    if params[:token] == 'eToGH4RlfHPz2C96yIjRenxS'
+      outstanding_invoice_total = (Invoice.where(paid: false).sum(:amount).to_f/100).round(2)
+
+      render plain: "$#{outstanding_invoice_total}"
+
+    else
+      render nothing: true
+    end
+  end
+
   private
 
     # Use this method to whitelist the permissible parameters. Example:

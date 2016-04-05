@@ -36,6 +36,7 @@ Camps::Application.routes.draw do
 
   resources :registrations do
     collection do
+      get :outstanding_payments
       get :total_discounts
       get :confirmation
     end
