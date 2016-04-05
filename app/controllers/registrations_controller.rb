@@ -2,7 +2,7 @@ class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   force_ssl if: :ssl_configured?
-  before_filter :authenticate_user!, :except => [:new, :create, :total_discounts, :confirmation]
+  before_filter :authenticate_user!, :except => [:new, :create, :total_discounts, :confirmation, :outstanding_payments]
 
   def index
     @registrations = Registration.where(year: 2).order('created_at DESC')
