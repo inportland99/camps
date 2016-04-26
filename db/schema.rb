@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210201138) do
+ActiveRecord::Schema.define(version: 20160426184556) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20160210201138) do
     t.integer  "price"
     t.text     "show_description"
     t.boolean  "girls_only",       default: false
+    t.text     "video_url"
   end
 
   create_table "coupon_codes", force: true do |t|

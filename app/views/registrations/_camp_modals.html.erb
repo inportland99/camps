@@ -8,8 +8,16 @@
           <h2 class="modal-title" id="myModalLabel"><%= camp.title %></h2>
         </div>
         <div class="modal-body">
-          
-            <%= camp.description.html_safe %>
+          <% if camp.video_url %>
+            <div class="row" style="margin-bottom:20px;">
+              <div class="col-sm-6 col-sm-offset-3">
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe src="<%= camp.video_url %>?color=c9ff23&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <%= camp.description.html_safe %>
           <%# unless camp.id == 20 %>
             <!-- <p>
               <h4>Offerings of this camp:</h4>
@@ -20,6 +28,7 @@
               </ul>
             </p> -->
           <%# end %>
+          <hr>
           <h3>View Schedules</h3>
           <%= render '/pages/registration_buttons' %>
         </div><!-- .modal-body -->
