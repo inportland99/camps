@@ -8,10 +8,7 @@
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:title" content="Math Plus - Summer Tech Camps" />
-    <meta property="og:url" content="https://summercamps.mathplusacademy.com" />
-    <meta property="og:image" content="https://s3.amazonaws.com/mpasummercamps/images/summercamp_fb_april_2016.png" />
-    <meta property="og:description" content="For kids who love tech, or who want to. We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology." />
+    <%= render 'facebook_meta_tags' %>
   </head>
   <body>
 
