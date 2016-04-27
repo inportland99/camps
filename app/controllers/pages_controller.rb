@@ -58,5 +58,6 @@ class PagesController < ApplicationController
   end
 
   def googlea898a912abc4e23c
+    render :layout => false
   end
 end
