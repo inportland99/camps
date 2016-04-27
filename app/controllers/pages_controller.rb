@@ -56,4 +56,7 @@ class PagesController < ApplicationController
   def reminder_thank_you
     #code
   end
+
+  def googlea898a912abc4e23c
+  end
 end

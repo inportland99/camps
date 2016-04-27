@@ -53,4 +53,5 @@ Camps::Application.routes.draw do
   post 'coupon_codes/code_lookup', to: 'coupon_codes#code_lookup'
   post 'camp_offerings/week_at_a_glance', to: 'camp_offerings#week_at_a_glance'
   get 'camp_surveys/contacted/:id', to: 'camp_surveys#contacted'
+  get '/googlea898a912abc4e23c', to: 'pages#googlea898a912abc4e23c'
 end
