@@ -28,3 +28,9 @@ jQuery ->
 
 	if !(document.getElementById("installment-offer") is null)
     $('#installment-offer').delay(2000).fadeIn(1000)
+
+	$(".modal").on "shown.bs.modal", ->
+		$camp_video = $(this).find(".camp-video")
+		if $(this).find(".camp-video").length != 0
+			alert "Video!"
+			$camp_video.html('<iframe src=' + $camp_video.data('video') + 'width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
