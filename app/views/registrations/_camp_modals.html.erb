@@ -1,4 +1,4 @@
-<% Camp.all.each do |camp| %>
+<% Camp.find(1..19).each do |camp| %>
   <!-- confirmationModal -->
   <div class="modal fade" id="camp<%= camp.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
