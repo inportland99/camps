@@ -164,7 +164,7 @@ class RegistrationsController < ApplicationController
       registrations = Registration.where(year: CampOffering::CURRENT_YEAR)
 
       total_camps_count = 0
-      full_day_count = 0
+      half_day_count = 0
       registrations.each do |reg|
         total_camps_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
         half_day_count += reg.camp_offerings.reject{ |co| co.time = "Full Day" }.count
