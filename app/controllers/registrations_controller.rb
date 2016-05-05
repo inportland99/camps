@@ -166,8 +166,11 @@ class RegistrationsController < ApplicationController
       total_camps_count = 0
       half_day_count = 0
       registrations.each do |reg|
+        camp_offerings = reg.camp_offerings
+        camp_offerings = camp_offerings.reject{ |co| co.extended_care? }
+        half_day_camp_offerings = camp_offerings.reject{ |co| co.time == "All Day" }
         total_camps_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
-        half_day_count += reg.camp_offerings.reject{ |co| co.time = "Full Day" }.count
+        half_day_count += half_day_camp_offerings.count
       end
       full_day_count = total_camps_count - half_day_count
 
