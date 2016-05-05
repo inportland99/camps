@@ -163,7 +163,15 @@ class RegistrationsController < ApplicationController
       outstanding_invoice_total = (Invoice.where(paid: false).sum(:amount).to_f/100).round(2)
       registrations = Registration.where(year: CampOffering::CURRENT_YEAR)
 
-      render plain: "Total # of Registrations: #{registrations.count}\n Total Rev: $#{registrations.sum(:total)/100}\nAvg. Spend per Registration: $#{(registrations.average(:total).to_f/100).round(2)}\n# of Registrations on Payment Plan: #{Registration.where(payment_plan: true).count}\nOutstanding Payment Plan Payments: $#{outstanding_invoice_total}\nCurrent # of Declined Invoices: #{Invoice.where(payment_declined: true).count}\n"
+      total_camps_count = 0
+      full_day_count = 0
+      registrations.each do |reg|
+        total_camps_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
+        full_day_count += reg.camp_offerings.reject{ |co| co.camp.time = "Full Day" }.count
+      end
+      half_day_count = total_camps_count - full_day_count
+
+      render plain: "Total # of Registrations: #{registrations.count}\n Total Rev: $#{registrations.sum(:total)/100}\nAvg. Spend per Registration: $#{(registrations.average(:total).to_f/100).round(2)}\n# of Registrations on Payment Plan: #{Registration.where(year: CampOffering::CURRENT_YEAR, payment_plan: true).count}\nOutstanding Payment Plan Payments: $#{outstanding_invoice_total}\nCurrent # of Declined Invoices: #{Invoice.where(payment_declined: true).count}\n Total Camps Purchased: #{total_camps_count}\nFull Day Camps Purchased: #{full_day_count}\n Half Day Camps Purchased: #{half_day_count}"
 
     else
       render nothing: true
