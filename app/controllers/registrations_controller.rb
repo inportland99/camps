@@ -161,8 +161,14 @@ class RegistrationsController < ApplicationController
   def outstanding_payments
     if params[:token] == 'eToGH4RlfHPz2C96yIjRenxS'
       outstanding_invoice_total = (Invoice.where(paid: false).sum(:amount).to_f/100).round(2)
+      registrations = Registration.where(year: CampOffering::CURRENT_YEAR)
 
-      render plain: "$#{outstanding_invoice_total}"
+      render plain: "Total # of Registrations: #{registrations.count}\n
+                     Total Rev: #{registrations.sum(:total)}\n
+                     Avg. Spend per Registration: #{(registrations.average(:total).to_f/100).round(2)}\n
+                     # of Registrations on Payment Plan: #{Registration.count(conditions: "payment_plan = true")}\n
+                     Outstanding Payment Plan Payments: $#{outstanding_invoice_total}\n
+                     Current # of Declined Invoices: #{Invoice.count(conditions: "payment_declined = true")}\n"
 
     else
       render nothing: true
