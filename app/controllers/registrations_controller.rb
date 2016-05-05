@@ -163,12 +163,7 @@ class RegistrationsController < ApplicationController
       outstanding_invoice_total = (Invoice.where(paid: false).sum(:amount).to_f/100).round(2)
       registrations = Registration.where(year: CampOffering::CURRENT_YEAR)
 
-      render plain: "Total # of Registrations: #{registrations.count}\n
-                     Total Rev: #{registrations.sum(:total)}\n
-                     Avg. Spend per Registration: #{(registrations.average(:total).to_f/100).round(2)}\n
-                     # of Registrations on Payment Plan: #{Registration.count(conditions: "payment_plan = true")}\n
-                     Outstanding Payment Plan Payments: $#{outstanding_invoice_total}\n
-                     Current # of Declined Invoices: #{Invoice.count(conditions: "payment_declined = true")}\n"
+      render plain: "Total # of Registrations: #{registrations.count}\n Total Rev: $#{registrations.sum(:total)/100}\nAvg. Spend per Registration: $#{(registrations.average(:total).to_f/100).round(2)}\n# of Registrations on Payment Plan: #{Registration.where(payment_plan: true).count}\nOutstanding Payment Plan Payments: $#{outstanding_invoice_total}\nCurrent # of Declined Invoices: #{Invoice.where(payment_declined: true).count}\n"
 
     else
       render nothing: true
