@@ -34,6 +34,7 @@ class RegistrationsController < ApplicationController
     @camp_offerings = CampOffering.where(year: 2).order("week asc, location_id asc")
     @powell_camps = CampOffering.where("location_id=? AND year=?", 1, 2)
     @new_albany_camps = CampOffering.where("location_id=? AND year=?", 2, 2)
+    @extended_care = Camp.find 20
 
     respond_to do |format|
       format.html # new.html.erb

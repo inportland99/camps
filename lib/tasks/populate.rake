@@ -30,13 +30,13 @@ end
 
 #this is where we add the user information
 def make_users
-    user1 = User.create!(first_name:            "Travis",
-                         last_name:             "Sperry",
+    user1 = User.create!(first_name:            "Kyra",
+                         last_name:             "wisniewski",
                          location_id:           "2",
-                         email:                 "director@mathplusacademy.com",
+                         email:                 "kyrawisniewski@gmail.com",
                          password:              "password",
                          password_confirmation: "password")
-    user1.roles << Role.find(1)
+    user1.roles << Role.find(2)
     user1.save
 
     user2 = User.create!(first_name:            "Madison",
