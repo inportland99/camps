@@ -3,7 +3,7 @@ class CampSurvey < ActiveRecord::Base
   belongs_to :camp
   belongs_to :location
 
-  SATISFACTION_LEVELS = ["Very Satisfied", "Satisfied", "Somewhat Satisfied", "Not Sure"]
+  SATISFACTION_LEVELS = ["Very Satisfied", "Somewhat Satisfied", "Not Satisfied", "Not Sure"]
   CONTACT_METHOD = ["Phone", "Email"]
 
   def accessible_attributes
