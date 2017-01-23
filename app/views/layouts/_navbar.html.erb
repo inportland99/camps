@@ -1,33 +1,26 @@
-<div class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a style="font-weight:bold;" class="navbar-brand" href="/">
-        <%= image_tag "home_page/summercamp_2016_identity_04.png", height: "35" %>
-      </a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "MPA.com", "http://www.mathplusacademy.com" %></li>
-        <li class="hidden-md hidden-sm"><%= link_to "How We Compare", comparison_path %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">More Info<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li class="hidden-lg hidden-xs">
-              <%= link_to "How We Compare", comparison_path %>
-            </li>
-            <li><%= link_to "Testimonials", testimonials_path %></li>
-            <li><%= link_to "FAQ", faq_path %></li>
-            <li><%= link_to("#signUpModal", :data => {:toggle=>"modal"}) do %>Help<% end %></li>
-          </ul>
-        </li>
-        <li><i class="fa fa-phone"></i> 614.792.6284</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
+<div class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#main-nav" aria-controls="navbarMainNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="/">
+    <%= image_tag "home_page/camps_logo.svg", width: "300px" %>
+  </a>
+  <div class="collapse navbar-collapse  justify-content-end" id="main-nav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><%= link_to "MPA.com", "http://www.mathplusacademy.com", class: "nav-link" %></li>
+      <li class="nav-item"><%= link_to "How We Compare", comparison_path, class: "nav-link" %></li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          More Info<b class="caret"></b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to "Testimonials", testimonials_path, class: "dropdown-item" %>
+          <%= link_to "FAQ", faq_path, class: "dropdown-item" %>
+          <%= link_to("#signUpModal", :data => {:toggle=>"modal"}, class: "dropdown-item") do %>Help<% end %>
+        </div>
+      </li>
+      <li class="navbar-text"><i class="fa fa-phone"></i> 614.792.6284</li>
+    </ul>
+  </div><!--/.nav-collapse -->
 </div>
 <%= render '/pages/help_modal' %>

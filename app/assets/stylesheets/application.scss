@@ -14,8 +14,24 @@
 $baseFontFamily: 'FontAwesome';
 @import "bootstrap";
 @import 'bootstrap-datetimepicker';
-@import "gritter";
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+$camps-orange: #F78A22;
+$camps-orange-light: #f7b473;
+$camps-green: #2CAA49;
+$camps-green-light: #45f66e;
+$camps-blue: #0053B1;
+$camps-blue-light: #2c7bd4;
+$camps-red: #CF232B;
+$camps-red-light: #e64b52;
+$camps-purple: #7a3cff;
+$camps-purple-light: #9668f7;
+$camps-yellow: #cfb823;
+$camps-yellow-light: #f6e577;
+
+.navbar{
+  margin-top:-62px;
+}
 
 .checkbox input[type="checkbox"] {
   float: none;
@@ -42,19 +58,6 @@ $baseFontFamily: 'FontAwesome';
   border: 3px solid gray;
 }
 
-.navbar-toggle {
-  border: 3px solid transparent;
-}
-
-/*
- * Author: Carlos Alvarez
- * URL: http://alvarez.is
- *
- * Project Name: FLATTY - Free Bootstrap 3 Theme
- * Version: 1.0
- * URL: http://blacktie.co
- */
-
 body {
   background-color: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -77,14 +80,14 @@ h1 {
   font-size: 69px;
   font-weight : bold;
   font-size : 69px;
-  letter-spacing : -4.14px;
+  letter-spacing : -2px;
   color : #000000;
   color : rgb(0, 0, 0);
 }
 
 h2{
   font-size : 49px;
-  letter-spacing : -1.92px;
+  letter-spacing : -1px;
   color : #666666;
   color : rgb(102, 102, 102);
 }
@@ -151,36 +154,6 @@ a:after {
     padding: 0;
 }
 
-.navbar-brand {
-  float: left;
-  padding-top: 15px;
-  padding-bottom: 12px;
-  font-size: 18px;
-  line-height: 20px;
-}
-.navbar-default {
-  background-color: #ffffff;
-  border: solid 1px #dedede;
-  padding-bottom: 10px;
-}
-
-.navbar-default .navbar-brand {
-  color: black;
-}
-
-.navbar-default .navbar-nav > li {
-  color: gray;
-  padding-top: 13px;
-  padding-bottom: 5px;
-  padding-right: 15px;
-  padding-left: 15px;
-
-  a {
-    padding-top: 7px;
-    padding-bottom: 5px;
-  }
-}
-
 
 /* Helpers */
 
@@ -199,10 +172,45 @@ i {
   color: #333333;
 }
 
+.camps-green{
+  color: $camps-green;
+}
+.camps-green-ligh{
+  color: $camps-green-light;
+}
+.camps-blue{
+  color: $camps-blue;
+}
+.camps-blue-light{
+  color: $camps-blue-light;
+}
+.camps-red{
+  color: $camps-red;
+}
+.camps-red-light{
+  color: $camps-red-light;
+}
+.camps-orange{
+  color: $camps-orange;
+}
+.camps-orange-light{
+  color: $camps-orange-light;
+}
+.camps-yellow{
+  color: $camps-yellow;
+}
+.camps-yellow-light{
+  color: $camps-yellow-light;
+}
+.camps-purple{
+  color: $camps-purple;
+}
+.camps-purple-light{
+  color: $camps-purple-light;
+}
 
 /* HeaderWrap */
 #headerwrap {
-  margin-top: -20px;
   min-height: 100vh;
   width: 100%;
 
@@ -290,34 +298,34 @@ i {
 
 // Main Section Styling\
 .main{
-  background-image: image-url('home_page/camps_background.svg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: right top;
+  padding:50px 30px 0 40px;
 }
 
 .main-image{
-  margin-top: 50px;
+  // margin-top: 50px;
 }
 
 .main-title{
   font-weight : bold;
-  font-size : 62px;
-  letter-spacing : -4.14px;
+  font-size : 50px;
+  letter-spacing : -2px;
   line-height: 50px;
   color : #000000;
   color : rgb(0, 0, 0);
-  margin: 10px 0 0 0;
+  margin: 10px 0 140px 0;
 }
 
 .main-sub-title{
   font-size : 49px;
   font-weight: 300;
-  letter-spacing : -3.92px;
+  letter-spacing : -2px;
   color : #666666;
   color : rgb(102, 102, 102);
   margin-top: 10px;
-  margin-bottom: 25px;
+}
+
+.main-schedule{
+  margin-top: 25px;
 }
 
 .main-buttons{
@@ -327,7 +335,7 @@ i {
 .main-grades{
   font-size : 35px;
   font-weight: 300;
-  letter-spacing : -2.8px;
+  letter-spacing : -1px;
   color : #666666;
   color : rgb(102, 102, 102);
   margin-bottom: 30px
@@ -344,97 +352,38 @@ i {
 }
 
 .main-location{
-  background-image: image-url('home_page/summercamp_2016_identity_10.png');
+  font-weight: 100;
+  text-align: center;
+  width: 100%;
+  background: url('home_page/locations_background.png');
   background-position: center;
-  height:90px;
+  min-height:90px;
   margin-top:40px;
-}
 
-@media screen and (max-width:1100px) {
-  .main{
-    background-image: image-url('home_page/camps_background_mobile.svg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-  }
-  .main-title{
-    font-weight : bold;
-    font-size : 50px;
-    letter-spacing : -4.14px;
-    line-height: 50px;
-    color : #000000;
-    color : rgb(0, 0, 0);
-  }
-  .main-sub-title{
-    font-size : 40px;
-    font-weight: 300;
-    letter-spacing : -3.92px;
-    color : #666666;
-    color : rgb(102, 102, 102);
-  }
-  .main-grades{
-    font-size : 30px;
-    font-weight: 300;
-    letter-spacing : -2.8px;
-    color : #666666;
-    color : rgb(102, 102, 102);
+  h2{
+    margin:0;
   }
 }
 
-@media screen and (max-width:600px) {
-  .main{
-    background-image: image-url('home_page/camps_background_mobile.svg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-  }
-  .main-title{
-    font-weight : bold;
-    font-size : 50px;
-    letter-spacing : -4.14px;
-    line-height: 50px;
-    color : #000000;
-    color : rgb(0, 0, 0);
-  }
-  .main-sub-title{
-    font-size : 30px;
-    font-weight: 300;
-    letter-spacing : -2px;
-    color : #666666;
-    color : rgb(102, 102, 102);
-  }
-  .main-grades{
-    font-size : 30px;
-    font-weight: 300;
-    letter-spacing : -2.8px;
-    color : #666666;
-    color : rgb(102, 102, 102);
-  }
-  .after_main_section{
-    font-weight : bold;
-    font-size : 30px;
-    line-height : 35.79px;
-    color : #000000;
-    color : rgb(0, 0, 0);
-    margin-top: 30px;
-    text-align: center;
-  }
+.location-select{
+  text-align: center;
+  margin:40px 0 25px 0;
 }
 
 .locations{
   margin: 110px 0 70px 0;
 
   .hilliard{
-    border-bottom:solid 9px #FF0063;
+    border-bottom:solid 9px $camps-blue;
   }
   .new-albany{
-    border-bottom:solid 9px #7497B1;
+    border-bottom:solid 9px $camps-green;
   }
   .powell{
-    border-bottom:solid 9px #FFAF10;
+    border-bottom:solid 9px $camps-orange;
   }
   .past{
-    border-bottom:solid 9px #3eb27e;
+    border-bottom:solid 9px $camps-red;
   }
 }
 
@@ -450,6 +399,138 @@ i {
   color: #a8a8a8;
   margin-bottom: 10px;
 }
+
+@media screen and (max-width:1200px) {
+  .main{
+    padding:40px 30px 40px 30px;
+  }
+  .main-title{
+    font-weight : bold;
+    font-size : 40px;
+    letter-spacing : -2px;
+    line-height: 50px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+  }
+  .main-sub-title{
+    font-size : 40px;
+    font-weight: 300;
+    letter-spacing : -2px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+  .main-grades{
+    font-size : 30px;
+    font-weight: 300;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+}
+@media screen and (max-width:990px) {
+  .main-title{
+    font-weight : bold;
+    font-size : 30px;
+    letter-spacing : -2px;
+    line-height: 50px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+    margin-bottom: 30px;
+  }
+  .main-grades{
+    font-size : 30px;
+    font-weight: 300;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+  .locations{
+    margin:0;
+  }
+}
+
+@media screen and (max-width:767px) {
+  .main{
+    text-align:center;
+  }
+  .main-title{
+    font-weight : bold;
+    font-size : 30px;
+    letter-spacing : -2px;
+    line-height: 50px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+  }
+  .main-grades{
+    font-size : 24px;
+    font-weight: 300;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+
+  .locations:nth-of-type(1){
+    margin: 30px 0 30px 0;
+  }
+
+  .locations:nth-of-type(2){
+    margin: 35px 0 30px 0;
+  }
+
+  .hilliard{
+    margin-bottom:35px;
+  }
+
+  .powell{
+    margin-bottom:35px;
+  }
+}
+
+@media screen and (max-width:600px) {
+  .main{
+    padding: 20px 20px 0 20px;
+  }
+  .main-title{
+    font-weight : bold;
+    font-size : 30px;
+    letter-spacing : -2px;
+    line-height: 50px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+  }
+  .main-sub-title{
+    font-size : 30px;
+    font-weight: 300;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+  .main-grades{
+    font-size : 24px;
+    font-weight: 300;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+  .after_main_section{
+    padding: 0 10px 30px 10px;
+    font-weight : bold;
+    font-size : 30px;
+    line-height : 35.79px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+    margin-top: 30px;
+    text-align: center;
+  }
+  #installment-offer{
+    h3{
+      font-size: 20px;
+      margin-bottom:20px;
+      text-align: center;
+    }
+  }
+}
+
 // Button Styling
 
 .btn{
@@ -464,84 +545,54 @@ i {
   text-transform: uppercase;
 }
 
+.btn:hover{
+  color:#383838;
+}
+
 .btn-red{
-  background : #FF0600;
-  background : rgba(255, 6, 0, 1);
+  background : $camps-red;
 }
 
 .btn-red:hover{
-  background : #FF8C8C;
-  background : rgba(255, 140, 140, 1);
+  background : $camps-red-light;
 }
 
 .btn-purple{
-  background : #9041B1;
-  background : rgba(144, 65, 177, 1);
+  background : $camps-purple;
 }
 
 .btn-purple:hover{
-  background : #9F8CAA;
-  background : rgba(159, 140, 170, 1);
+  background : $camps-purple-light;
 }
 
 .btn-blue{
-  background : #0091FF;
-  background : rgba(0, 145, 255, 1);
+  background : $camps-blue;
 }
 
 .btn-blue:hover{
-  background : #8CD1FF;
-  background : rgba(140, 209, 255, 1);
+  background : $camps-blue-light;
 }
 
 .btn-yellow{
-  background : #FCFF06;
-  background : rgba(252, 255, 6, 1);
+  background : $camps-yellow;
 }
 
 .btn-yellow:hover{
-  background : #FFFD93;
-  background : rgba(255, 253, 147, 1);
+  background : $camps-yellow-light;
 }
 
 .btn-green{
-  background : #12B21D;
-  background : rgba(18, 178, 29, 1);
+  background : $camps-green;
 }
 
 .btn-green:hover{
-  background : #A9FFAF;
-  background : rgba(169, 255, 175, 1);
+  background : $camps-green-light;
 }
 
 .btn-orange{
-  background : #f58c00;
-  background : rgba(255, 175, 16, 1);
+  background : $camps-orange;
 }
 
 .btn-orange:hover{
-  background : #FFCD83;
-  background : rgba(255, 205, 131, 1);
-}
-
-.dropdown-menu{
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 1000;
-  display: none;
-  float: left;
-  min-width: 160px;
-  padding: 5px 0;
-  margin: 2px 0 0;
-  list-style: none;
-  font-size: 14px;
-  text-align: left;
-  background-color: white;
-  border: 5px solid #cccccc;
-  border: 5px solid rgba(0, 0, 0, 0.15);
-  border-radius: 9px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
-  background-clip: padding-box;
+  background : $camps-orange-light;
 }

@@ -1,33 +1,34 @@
 <div class="col-xs-12">
 <div id="headerwrap">
   <div class="main" style="border-bottom:solid 9px black;">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-xs-12">
-          <%= image_tag "home_page/summercamp_2016_main_title.png", width: '100%', class: "main-image responsive" %>
+    <div class="white-bg">
+      <div class="row text-sm-center text-lg-left">
+        <div class="col-lg-6 col-xs-12 text-xs-center">
+          <%= image_tag "home_page/summercamp_2016_main_title.png", width: '100%' %>
           <div class="main-title">
-            For Kids Who Love Tech<br>
+            For Kids Who Love Tech
           </div> <!-- /.main-title -->
-          <div class="main-sub-title">
-            Or who want to &hellip; ;)
-          </div>
+          <%= image_tag "home_page/kids_at_the_table.svg", width: '50%', class: 'hidden-lg-up' %>
           <div class="main-buttons">
-            <%= link_to "Schedule By Location", locations_path, class: "btn btn-lg btn-orange" %>
+            <%= link_to "Schedule By Location", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
           </div>
           <div class="main-grades">
             Grades K-8 &bull; Full Day &amp; Half
           </div>
-        </div>
-      </div><!-- /row -->
-    </div><!-- /.container -->
+        </div><!-- /.col-sm-6 .col-xs-12 -->
+        <div class="col-sm-6 col-xs-12 hidden-md-down">
+          <div class="col-sm-12"><%= image_tag "home_page/kids_at_the_table.svg" %></div>
+        </div><!-- /.col-sm-6 .col-xs-12 -->
+      </div><!-- /.row -->
+    </div>
   </div><!-- /.main -->
-  <div>
-    <div class="row">
-      <div id="installment-offer" class="col-xs-12 text-center" style="display:none;">
-        <h3 style="margin-bottom:20px;"><span style="color:green;margin-right:20px;">Now offering!</span> 3-month payment plan for registrations over $250.</h3>
+  <div class="row">
+      <div id="installment-offer" class="col-sm-12 text-sm-center" style="display:none;">
+        <div class="col-sm-12">
+          <h3><span style="color:green;margin-right:20px;">Now offering!</span> 3-month payment plan for registrations over $250.</h3>
+        </div>
         <hr>
       </div>
-    </div>
   </div>
   <div class="container">
     <div class="row">
@@ -38,31 +39,36 @@
   </div><!-- /.container -->
   <div class="row">
     <div class="main-location">
+      
     </div>
   </div>
 </div><!-- /.headerwrap -->
 <div class="container" style="margin-bottom:70px;">
   <div class="row">
-    <div class="col-sm-12 text-center">
-      <h3><i>Select Location For Schedule</i></h3>
+    <div class="col-sm-12 text-sm-center">
+      <h3 class="location-select"><i>Select Location For Schedule</i></h3>
     </div>
   </div>
   <%= render 'locations/select_location' %>
 </div>
 <div class="reminder">
-  <div class="text-center">
-    <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
-      <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/69050ced480ca23de310e59c6bf16b91" class="infusion-form form-inline"
-      method="POST">
-      <input name="inf_form_xid" type="hidden" value="69050ced480ca23de310e59c6bf16b91" />
-      <input name="inf_form_name" type="hidden" value="Asks For Reminder" />
-      <input name="infusionsoft_version" type="hidden" value="1.50.0.38" />
-      <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
-      <input class="form-control infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" placeholder="Last Name" />
-      <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/>
-      <input class="btn btn-purple" type="submit" value="Submit" />
-    </form>
-  <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
+  <div class="row">
+    <div class="col-sm-12 text-sm-center">
+      <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
+        <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/69050ced480ca23de310e59c6bf16b91" class="infusion-form form-inline"
+        method="POST">
+        <div class="col-sm-8 offset-sm-2">
+          <input name="inf_form_xid" type="hidden" value="69050ced480ca23de310e59c6bf16b91" />
+          <input name="inf_form_name" type="hidden" value="Asks For Reminder" />
+          <input name="infusionsoft_version" type="hidden" value="1.50.0.38" />
+          <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
+          <input class="form-control infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" placeholder="Last Name" />
+          <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/><br>
+          <input class="btn btn-purple btn-lg" type="submit" value="Submit" />
+        </div>
+      </form>
+      <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
+    </div>
   </div>
 </div>
 
@@ -70,17 +76,17 @@
   <div class="container">
     <!-- ** Math Plus Camp Advantage ** -->
     <div class="row mt centered" >
-      <div class="col-lg-6 col-lg-offset-3">
-        <h1 class="hidden-sm hidden-xs">The Math Plus Camp Advantage.</h1>
-        <h2 class="hidden-lg hidden-md">The Math Plus Camp Advantage.</h2>
-        <h3>We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3>
+      <div class="col-lg-10 offset-lg-1">
+        <h1 class="hidden-sm-down">The Math Plus Camp Advantage.</h1>
+        <h2 class="hidden-md-up">The Math Plus Camp Advantage.</h2>
+        <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
 
     <div class="row mt centered">
       <div class="col-lg-4">
         <i class="fa fa-gears fa-5x"></i>
-        <h2>Hands-on, Minds-on</h2>
+        <h2 class="camps-blue">Hands-on, Minds-on</h2>
         <p>
           Catered to your child's unique interests.
         </p>
@@ -88,7 +94,7 @@
 
       <div class="col-lg-4">
         <i class="fa fa-group fa-5x"></i>
-        <h2>Highly Qualified Instructors</h2>
+        <h2 class="camps-red">Highly Qualified Instructors</h2>
         <p>
           They're good and they love STEM.
         </p>
@@ -96,7 +102,7 @@
 
       <div class="col-lg-4">
         <i class="fa fa-sort-amount-desc fa-5x"></i>
-        <h2>Small Camp Sizes</h2>
+        <h2 class="camps-green">Small Camp Sizes</h2>
         <p>
           8-10 students per camp.
         </p>
@@ -106,7 +112,7 @@
     <div class="row mt centered">
       <div class="col-lg-4">
         <i class="fa fa-comments-o fa-5x"></i>
-        <h2>100% Satisfaction</h2>
+        <h2 class="camps-orange">100% Satisfaction</h2>
         <p>
           Over 1,000 happy students served.
         </p>
@@ -114,7 +120,7 @@
 
       <div class="col-lg-4">
         <i class="fa fa-calendar fa-5x"></i>
-        <h2>Flexible Scheduling</h2>
+        <h2 class="camps-purple">Flexible Scheduling</h2>
         <p>
           Change camps at any time.
         </p>
@@ -122,7 +128,7 @@
 
       <div class="col-lg-4">
         <i class="fa fa-usd fa-5x"></i>
-        <h2>Satisfaction Guarantee</h2>
+        <h2 class="camps-yellow-light">Satisfaction Guarantee</h2>
         <p>
           If your child is not happy with the camp we'll happily issue a full refund.
         </p>
@@ -138,9 +144,9 @@
     </div>
 
     <!-- ** Camp Information ** -->
-    <div class="row mt centered">
-      <div class="col-lg-6 col-lg-offset-3">
-        <h2>Our Camps</h2>
+    <div class="row mt text-sm-center">
+      <div class="col-lg-6 offset-lg-3">
+        <h1>Our Camps</h1>
         <h3>Duration: 1 Week (M-F)</h3>
         <p>Check schedule for start and end times.</p>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->

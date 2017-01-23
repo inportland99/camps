@@ -1,12 +1,12 @@
 source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.0'
 
 gem 'rails', '4.1'
 gem 'sqlite3', :group => :development
 gem 'pg', :group => :production
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
@@ -28,10 +28,11 @@ gem "timecop"
 gem "ranked-model"
 gem "rspec-rails", :group => ["development", "test"]
 gem "factory_girl_rails", "~> 4.0", :group => ["development", "test"]
-gem "bootstrap-sass"
+gem 'bootstrap', '~> 4.0.0.alpha6'
 gem "font-awesome-rails", "~> 4.0.3.1"
 gem "underscore-rails"
-gem "gritter"
+gem "tether"
+# gem "gritter"
 gem "chosen-rails"
 gem "carrierwave"
 gem "faker"
@@ -41,13 +42,13 @@ gem "rack-cache", :require => "rack/cache"
 gem "dragonfly", "~>1.0.2"
 gem 'dragonfly-s3_data_store'
 gem "remotipart"
-gem "nested_form", :git => "git://github.com/ryanb/nested_form.git"
+gem "nested_form", :git => "https://github.com/ryanb/nested_form.git"
 gem "simple_form"
 gem "country_select"
 gem "stripe"
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
-gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git'
 gem 'lodash-rails'
 gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.5.0'
