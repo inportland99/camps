@@ -1,29 +1,19 @@
 <div class='row'>
-  <div class='col-sm-12 col-xs-12'>
-    <div class="btn-group">
-      <button type="button" class="btn btn-lg btn-danger registration_buttons mobile dropdown-toggle" data-toggle="dropdown">
-        Registration By Location <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <% @locations.each do |location| %>
-          <li><%= link_to location.name, new_registration_path(location: location.id) %></li>
-        <% end %>
-      </ul>
+  <div class="col-sm-12">
+    <div class='btn-group-vertical'>
+      <div class="btn-group">
+        <a href="#" class="btn btn-lg btn-red dropdown-toggle" data-toggle="dropdown">
+          Registration By Location
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <% @locations.each do |location| %>
+            <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item"%>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "Registrations List", registrations_path, class: "btn btn-blue btn-lg" %>
+      <%= link_to "Coupon Codes", coupon_codes_path, class: 'btn btn-white btn-lg' %>
+      <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-green btn-lg' %>
     </div>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-sm-12 col-xs-12'>
-    <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons mobile" %>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-sm-12 col-xs-12'>
-    <%= link_to "Coupon Codes", coupon_codes_path, class: 'btn btn-default btn-lg registration_buttons mobile' %>
-  </div>
-</div>
-<div class='row'>
-  <div class='col-sm-12 col-xs-12'>
-    <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-success btn-lg registration_buttons mobile' %>
   </div>
 </div>

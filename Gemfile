@@ -31,7 +31,7 @@ gem "factory_girl_rails", "~> 4.0", :group => ["development", "test"]
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem "font-awesome-rails", "~> 4.0.3.1"
 gem "underscore-rails"
-gem "tether"
+gem "rails-assets-tether"
 # gem "gritter"
 gem "chosen-rails"
 gem "carrierwave"
@@ -48,7 +48,7 @@ gem "country_select"
 gem "stripe"
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
-gem 'jquery-datatables-rails', git: 'https://github.com/rweng/jquery-datatables-rails.git'
+gem 'jquery-datatables'
 gem 'lodash-rails'
 gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.5.0'

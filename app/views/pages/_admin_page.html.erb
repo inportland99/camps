@@ -1,71 +1,78 @@
 <div class="container">
-  <h1>Admin Page</h1>
-  <div class="row hidden-sm hidden-xs">
-    <div class="btn-group">
-      <button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown">
-        Registration By Location <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <% @locations.each do |location| %>
-          <li><%= link_to location.name, new_registration_path(location: location.id) %></li>
-        <% end %>
-      </ul>
-    </div>
-    <%= link_to "Registrations List", registrations_path, class: "btn btn-primary btn-lg registration_buttons" %>
-    <%= link_to "Coupon Codes", coupon_codes_path, class: 'btn btn-default btn-lg registration_buttons' %>
-    <%= link_to "Camp Offerings", camp_offerings_path, class: 'btn btn-success btn-lg registration_buttons' %>
-    <div class="btn-group">
-      <button type="button" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
-        Surveys <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu">
-        <li><a href="/camp_surveys">All Surveys</a></li>
-        <li><a href="/camp_surveys/new">New Survey</a></li>
-      </ul>
-    </div>
-  </div> <!-- /.row -->
-  <div class="hidden-lg hidden-md admin-mobile">
-    <%= render 'admin_mobile_buttons' %>
-  </div> <!-- /.row -->
-  <!-- ** Row One ** -->
+  <h2 class="mt-5 mb-5">Admin Page</h2>
   <div class="row">
-    <div class="admin_dashboard">
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='admin-dash-section'>
-          <div class="header">
-            <h2> Registrations Today</h2>
-          </div>
-          <span><%= @todays_registrations.count %></span>
+    <div class="col-sm-6 col-lg-3">
+      <div class="btn-group btn-block">
+        <a class="btn btn-lg btn-red btn-block dropdown-toggle" href="#" data-toggle="dropdown">
+          Register <span class="caret"></span>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <% @locations.each do |location| %>
+            <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item" %>
+          <% end %>
         </div>
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='admin-dash-section'>
-          <div class="header">
-            <h2>Registrations This Month</h2>
-          </div>
-          <span><%= @months_registrations.count %></span>
-        </div> <!-- .todays_sales -->
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='admin-dash-section'>
-          <div class="header">
-            <h2>Number of Camps Sold</h2>
-          </div>
-          <span><%= @camp_off_reg_count %></span>
+      </div>
+      <%= link_to "Registrations", registrations_path, class: "btn btn-blue btn-lg btn-block" %>
+      <%= link_to "Coupon Codes", coupon_codes_path, class: 'btn btn-white btn-lg btn-block' %>
+      <%= link_to "Camps", camp_offerings_path, class: 'btn btn-green btn-lg btn-block' %>
+      <div class="btn-group btn-block mb-4" role="group">
+        <a href="#" class="btn btn-lg btn-purple btn-block dropdown-toggle" data-toggle="dropdown">
+          Surveys
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <a class="dropdown-item" href="/camp_surveys">All Surveys</a>
+          <a class="dropdown-item" href="/camp_surveys/new">New Survey</a>
         </div>
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-    </div> <!-- admin_dashboard -->
-  </div><!-- /.row -->
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-9">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header card-outline-danger">
+              Registrations Today
+            </div>
+            <div class="card-block text-sm-center">
+              <h2><%= @todays_registrations.count %></h2>
+            </div>
+          </div>
+        </div><!-- /.col-md-4 -->
+      </div>
+      <div class="row mt-2">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header card-outline-success">
+              Registrations This Month
+            </div>
+            <div class="card-block text-sm-center">
+              <h2><%= @months_registrations.count %></h2>
+            </div>
+          </div>
+        </div><!-- /.col-sm-12 -->
+      </div>
+      <div class="row mt-2">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-header card-outline-info">
+              Number of Camps Sold
+            </div>
+            <div class="card-block text-sm-center">
+              <h2><%= @camp_off_reg_count %></h2>
+            </div>
+          </div>
+        </div><!-- /.col-sm-12 -->
+      </div>
+    </div>
+  </div> <!-- /.row -->
   <!-- ** Row Two ** -->
   <div class="row">
-    <div class="admin_dashboard">
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='week_at_a_glance'>
-          <div class="header">
-            <h2>Week at a glance.</h2>
+    <div class="col-md-4 mt-2">
+        <div class="card">
+          <div class="card-header card-outline-primary">
+            Week at a glance
           </div>
-          <div class="row">
-            <div class="col-sm-2 col-xs-2">
+          <div class="card-block">
+            <div class="col-sm-12">
               <%= simple_form_for(:info, url: camp_offerings_week_at_a_glance_path) do |f| %>
                 <%= f.input :week, as: :select, collection: (1..9).to_a, required: false %>
                 <%= f.input :location, collection: Location.all, required: false %>
@@ -74,29 +81,32 @@
             </div>
           </div>
         </div>
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-        <div class='coupon_codes'>
-          <div class="header">
-            <h2>Top Coupons</h2>
+    </div><!-- /.col-md-4 -->
+    <div class="col-md-4 mt-2">
+        <div class="card">
+          <div class="card-header card-outline-secondary">
+            Top Coupons
           </div>
-          <div class="body">
+          <div class="card-block">
             <ol>
               <% @coupon_codes_by_count.sort_by{ |hash| hash[:count] }.reverse.take(10).each do |code| %>
               <li> <%= code[:name] %> (Count: <%= code[:count] %> ) </li>
               <% end %>
             </ol>
           </div>
-        </div> <!-- .todays_sales -->
-      </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <% if current_user.roles.any?{ |role| role.name == "SuperAdmin"} %>
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-          <div class='revenue'>
-            <div class="header">
-              <h2>Revenue</h2>
-            </div>
+        </div>
+    </div><!-- /.col-md-4 -->
+    <% if current_user.roles.any?{ |role| role.name == "SuperAdmin"} %>
+    <div class="col-md-4 mt-2">
+        <div class="card">
+          <div class="card-header card-outline-warning">
+            Revenue
+          </div>
+          <div class="card-block revenue text-sm-center">
             <p><%= link_to "Show", "javaScript:void(0)", id: "revenue_link" %></p>
-            <span style="display:none;">$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></span>
+            <span style="display:none;">
+              <h2>$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></h2>
+            </span>
             <span style="font-size: 1em;
             <% if @percent_different <= 0.to_f %>
               color:red;
@@ -105,10 +115,10 @@
             <% else %>
               color:green;
             <% end %>
-          "><%= @percent_different.round(2) %>%</span>
+          "><%= @percent_different.nan? ? "" : "#{@percent_different.round(2)}%" %></span>
           </div>
-        </div><!-- /.col-lg-4 col-md-4 col-sm-12 -->
-      <% end %>
-    </div> <!-- admin_dashboard -->
+        </div>
+    </div><!-- /.col-md-4 -->
+    <% end %>
   </div><!-- /.row -->
 </div><!-- /.container -->

@@ -6,16 +6,15 @@
 //= require jquery_nested_form
 //= require jquery-ui
 //= require jquery.html5-placeholder-shim
+//= require camp_surveys
+//= require tether
 //= require bootstrap
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
-//= require dataTables/extras/dataTables.responsive
+//= require datatables
 //= require moment
 //= require bootstrap-datetimepicker
 //= require underscore
 //= require pages
 //= require registrations
-//= require camp_surveys
 
 jQuery ->
   $('.datatable').DataTable

@@ -97,37 +97,6 @@
   }
 }
 
-.revenue{
-  border: solid 1px lightgray;
-  margin-top:15px;
-  margin-bottom:15px;
-  border-radius:2px;
-  text-align: center;
-  height: 225px;
-
-  .header{
-    min-height: 60px;
-    margin-bottom: 30px;
-    position: relative;
-    text-align: center;
-    border-bottom: solid 1px lightgray;
-    width: 98%;
-
-    h2{
-      margin-top: 0;
-      margin-bottom:  0;
-      padding-top: 10px;
-    }
-  }
-  p{
-    margin-bottom:0;
-  }
-  span{
-    font-size: 3em;
-    margin-bottom: 80px;
-  }
-}
-
 .modal_buttons{
   margin-bottom: 10px;
 }

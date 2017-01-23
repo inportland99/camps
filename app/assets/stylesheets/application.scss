@@ -4,9 +4,7 @@
 /*= require locations */
 /*= require camps */
 /*= require jquery-ui */
-/*= require dataTables/jquery.dataTables */
-/*= require dataTables/bootstrap/3/jquery.dataTables.bootstrap */
-/*= require dataTables/extras/dataTables.responsive */
+/*= require datatables */
 /*= require_self */
 
 @import "compass";
@@ -18,13 +16,13 @@ $baseFontFamily: 'FontAwesome';
 
 $camps-orange: #F78A22;
 $camps-orange-light: #f7b473;
-$camps-green: #2CAA49;
-$camps-green-light: #45f66e;
+$camps-green: #42a258;
+$camps-green-light: #90d29f;
 $camps-blue: #0053B1;
 $camps-blue-light: #2c7bd4;
 $camps-red: #CF232B;
 $camps-red-light: #e64b52;
-$camps-purple: #7a3cff;
+$camps-purple: #633eb3;
 $camps-purple-light: #9668f7;
 $camps-yellow: #cfb823;
 $camps-yellow-light: #f6e577;
@@ -596,3 +594,13 @@ i {
 .btn-orange:hover{
   background : $camps-orange-light;
 }
+
+.btn-white{
+  background : #ffffff;
+}
+
+.btn-white:hover{
+  background : #bebebe;
+}
+
+@import "datatables";
