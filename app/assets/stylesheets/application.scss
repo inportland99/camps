@@ -361,7 +361,7 @@ i {
   font-weight: 100;
   text-align: center;
   width: 100%;
-  background: url('home_page/locations_background.png');
+  background: image-url('home_page/locations_background.png');
   background-position: center;
   min-height:90px;
   margin-top:40px;
@@ -536,7 +536,7 @@ i {
     }
   }
   .main-location{
-    background: url('home_page/locations_background_mobile.png');
+    background: image-url('home_page/locations_background_mobile.png');
     background-position: center;
   }
 }
