@@ -56,6 +56,10 @@ $camps-yellow-light: #f6e577;
   border: 3px solid gray;
 }
 
+.paging_simple{
+  float:right;
+}
+
 body {
   background-color: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -92,12 +96,12 @@ h2{
 
 h3 {
   color: #555;
-  font-weight: 200;
+  font-weight: bold;
 }
 
 h4 {
   color: #95a5a6;
-  font-weight: 200;
+  font-weight: bold;
   font-size: 20px;
 }
 
@@ -273,6 +277,10 @@ i {
   width: 150px;
   height: 150px;
   background: yellow;
+
+  img{
+    margin:-1px 0 0 -1px;
+  }
 }
 
 .form-control{
@@ -526,6 +534,10 @@ i {
       margin-bottom:20px;
       text-align: center;
     }
+  }
+  .main-location{
+    background: url('home_page/locations_background_mobile.png');
+    background-position: center;
   }
 }
 

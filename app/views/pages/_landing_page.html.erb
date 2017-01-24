@@ -39,7 +39,7 @@
   </div><!-- /.container -->
   <div class="row">
     <div class="main-location">
-      
+
     </div>
   </div>
 </div><!-- /.headerwrap -->
@@ -159,7 +159,7 @@
             <%= image_tag('life-size-choc-fix-150x150.jpg')%>
           </div>
           <h2>Brain Games</h2>
-        <p>Ages: 6-8 & 9-12 Half-Day</p>
+        <p>Ages: 6-8 &amp; 9-12 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -168,7 +168,7 @@
           <%= image_tag('robotics.png', size: '150x150')%>
         </div>
         <h2>LEGO Robotics</h2>
-        <p>Ages: 9-14 Full-Day</p>
+        <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -177,7 +177,7 @@
           <%= image_tag('video_game.png', size: '150x150')%>
         </div>
         <h2>Video Game Design</h2>
-        <p>Ages: 9-14 Half-Day</p>
+        <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
@@ -199,7 +199,7 @@
           <%= image_tag('shark_tank.jpg', size: '150x150')%>
         </div>
         <h2>Shark Tank</h2>
-        <p>Ages: 10-14 Full-Day</p>
+        <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -208,7 +208,7 @@
           <%= image_tag('chess.png', size: '150x150')%>
         </div>
         <h2>Chess</h2>
-        <p>Ages: 5-14 Full-Day and Half-Day</p>
+        <p>Ages: 5-14 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
@@ -220,8 +220,8 @@
         <div class="circle_base type_1">
           <%= image_tag('programming.png', size: '150x150')%>
         </div>
-        <h2>Computer Programming</h2>
-        <p>Ages: 9-13 Full-Day</p>
+        <h2>Programming</h2>
+        <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
       <div class="col-lg-4">
@@ -229,7 +229,7 @@
         <div class="circle_base type_1">
           <%= image_tag('STEMcraft.png', size: '150x150')%>
         </div>
-        <h2>STEMcraft</h2>
+        <h2>Minecraft</h2>
         <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
@@ -238,7 +238,7 @@
         <div class="circle_base type_1">
           <%= image_tag('inventors.png', size: '150x150')%>
         </div>
-        <h2>Inventor's Workshop</h2>
+        <h2>3D Printing</h2>
         <p>Ages: 9-13 Full-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
@@ -269,10 +269,10 @@
       <div class="col-lg-4">
         <%= link_to("#girlsOnlyModal", :data => {:toggle=>"modal"}) do %>
         <div class="circle_base type_1">
-          <%= image_tag('prealgebraprep.png', size: '150x150')%>
+          <%= image_tag('girls_only.png', size: '150x150')%>
         </div>
         <h2>Girls Only Camps</h2>
-        <p>Ages: 9-13 Half-Day &amp; Full</p>
+        <p>Ages: 9-13 Half-Day</p>
         <% end %>
       </div><!--/col-lg-4 -->
     </div>
@@ -280,11 +280,6 @@
     <%= render 'compare_button' %>
 
 </div>
-
-    <!-- <div class="row mt centered">
-      <h1>Register now!</h1>
-      <%# render 'registration_buttons' %>
-    </div> -->
 
     <%= render '/registrations/camp_modals' %>
 
@@ -294,20 +289,20 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h2 class="modal-title" id="myModalLabel">Girls Only Camps</h2>
+          <h3 class="modal-title" id="myModalLabel">Girls Only Camps</h3>
         </div>
         <div class="modal-body">
-          <h3>
-            We offer girls only camps for Website Design, Video Game Design, and Robotics.
-          </h3>
+          <h4>
+            We offer girls only camps for Maker Camp, Video Game Design, Minecraft and Robotics.
+          </h4>
           <p>
-            In 2016 we have a great selection of GIRLS ONLY camps at each location! Look for this logo <span><%= image_tag('girls_only-02.svg', size: '50') %></span>
+            In 2017 we have a great selection of GIRLS ONLY camps at each location! Look for this logo <span><%= image_tag('girls_only-02.svg', size: '50') %></span>
           </p>
           <hr>
           <%= render '/pages/registration_buttons' %>
         </div><!-- .modal-body -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
