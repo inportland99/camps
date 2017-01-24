@@ -31,6 +31,12 @@ $camps-yellow-light: #f6e577;
   margin-top:-62px;
 }
 
+.navbar-brand{
+  img{
+    width: 300px;
+  }
+}
+
 .checkbox input[type="checkbox"] {
   float: none;
   position: relative;
@@ -493,6 +499,11 @@ i {
 }
 
 @media screen and (max-width:600px) {
+  .navbar-brand{
+    img{
+      width: 275px;
+    }
+  }
   .main{
     padding: 20px 20px 0 20px;
   }
