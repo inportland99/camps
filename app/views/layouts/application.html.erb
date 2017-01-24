@@ -18,9 +18,7 @@
 
     <%= render 'layouts/navbar' %>
 
-    <div id="flash_messages">
-      <%= flash_messages %>
-    </div>
+    <%= flash_messages %>
 
     <%= yield %>
 
@@ -34,5 +32,6 @@
     <%= render 'layouts/footer' %>
 
     <%= render 'layouts/ga' if Rails.env.production? %>
+    <%= render '/pages/help_modal' %>
   </body>
 </html>
