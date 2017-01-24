@@ -117,7 +117,7 @@ input{
 
 /* Paragraph & Typographic */
 p {
-    line-height: 28px;
+    line-height: 23px;
     margin-bottom: 25px;
     font-size: 16px;
 }
@@ -553,6 +553,46 @@ i {
   .main-location{
     background: image-url('home_page/locations_background_mobile.png');
     background-position: center;
+  }
+}
+
+@media screen and (max-width:578px) {
+  .navbar-brand{
+    img{
+      width: 195px;
+    }
+  }
+  .btn-lg{
+    padding: 0.65rem .75rem;
+    font-size: 1.2rem;
+  }
+  h1{
+
+  }
+  h1 {
+    font-size: 42px;
+    font-weight : bold;
+    letter-spacing : -2px;
+    color : #000000;
+    color : rgb(0, 0, 0);
+  }
+
+  h2{
+    font-size : 33px;
+    letter-spacing : -1px;
+    color : #666666;
+    color : rgb(102, 102, 102);
+  }
+
+  h3 {
+    color: #555;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 18px;
+    color: #95a5a6;
+    font-weight: bold;
   }
 }
 
