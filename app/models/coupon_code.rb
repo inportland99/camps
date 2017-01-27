@@ -16,7 +16,7 @@ class CouponCode < ActiveRecord::Base
   def how_many_used?
     title = name
     count = 0
-    Registration.where(year: 1).each do |reg|
+    Registration.where(year: CampOffering::CURRENT_YEAR).each do |reg|
       if reg.coupon_code && reg.coupon_code.upcase == title
         count += 1
       end

@@ -101,14 +101,19 @@ coupon_code =
         $coupon_code_button.attr('disabled', false)
       success: (data) ->
         results = data # active:boolean, amount:int, coupon_type:intstring (0 $ off, 1 % off), description:text, id:int
-        $coupon_code_button.attr('disabled', false)
-        $coupon_total_p.children('b').text("Coupon Applied: ")
-        $coupon_total_p.children('span').text("#{results.name}")
-        $coupon_total.attr("data-amount", results.amount )
-        $coupon_total.attr("data-coupon", results.coupon_type)
-        $registration_coupon_code.val($coupon_code.val())
-        $coupon_code.val('')
-        camps.selected_total()
+        if !results['active']
+          $coupon_error.text("Coupon Has Expired")
+          $coupon_code.val('')
+          $coupon_code_button.attr('disabled', false)
+        else
+          $coupon_code_button.attr('disabled', false)
+          $coupon_total_p.children('b').text("Coupon Applied: ")
+          $coupon_total_p.children('span').text("#{results.name}")
+          $coupon_total.attr("data-amount", results.amount )
+          $coupon_total.attr("data-coupon", results.coupon_type)
+          $registration_coupon_code.val($coupon_code.val())
+          $coupon_code.val('')
+          camps.selected_total()
 
 camps =
   selected_camps: ->
