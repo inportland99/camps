@@ -4,7 +4,7 @@ class CampOfferingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @camp_offerings = CampOffering.order(:id).where(year: 2)
+    @camp_offerings = CampOffering.order(:id).where(year: 3)
     @all_camp_offerings = CampOffering.order(:id).all
 
     respond_to do |format|

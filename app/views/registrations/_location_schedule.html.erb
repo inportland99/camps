@@ -1,11 +1,23 @@
-<div class="row location-schedule-info">
-  <div class="col-sm-12">
+<div class="row location-schedule-info mb-4">
+  <div class="col-sm-7">
     <h2 class="location-title"><%= location.name %> Camp Schedule</h2>
-    <ul>
-      <li>Click on camp names for detailed descriptions.
-      <li>Select all of the summer camps for which you wish to register one child.
-      <li>You will need to complete a separate registration for each child.
-    </ul>
+    <p>
+      <%= location.directions.html_safe %>
+    </p>
+  </div>
+  <div class="col-sm-5">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">How to register!</h3>
+      </div>
+      <div class="card-block">
+        <ul>
+          <li>Click on camp names for detailed descriptions.</li>
+          <li>Select all of the summer camps for which you wish to register one child for.</li>
+          <li><u>You will need to complete a separate registration for each child.</u> We will fill out most the form the second time around 😉.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -33,7 +45,7 @@
             <td style="vertical-align:middle;">AM (9:00 - 12:00)</td>
             <!-- classroom 1 -->
             <% am_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
               <% if co.time == "AM" && co.classroom == 1 %>
               <% am_camp = true %>
               <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
@@ -79,7 +91,7 @@
             <% end %>
             <!-- classroom 2 -->
             <% am_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
               <% if co.time == "AM" && co.classroom == 2 %>
               <% am_camp = true %>
               <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
@@ -125,7 +137,7 @@
             <% end %>
             <!-- classroom 3 -->
             <% am_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
               <% if co.time == "AM" && co.classroom == 3 %>
               <% am_camp = true %>
               <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
@@ -170,7 +182,7 @@
               <td></td>
             <% end %>
             <!-- extended care -->
-            <% CampOffering.extended_care(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.extended_care(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
               <% if co %>
                 <td rowspan=2 style="vertical-align:middle;">
                   <label class="checkbox">
@@ -181,7 +193,7 @@
                 </td>
               <% end %>
             <% end %>
-            <% if CampOffering.extended_care(location.id, n+1, 2).empty? %>
+            <% if CampOffering.extended_care(location.id, n+1, CampOffering::CURRENT_YEAR).empty? %>
               <td rowspan=2 style="vertical-align:middle;"></td>
             <% end %>
           </tr>
@@ -189,7 +201,7 @@
             <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
             <!-- classroom 1 -->
             <% pm_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
                 <% if co.time == "PM" && co.classroom == 1 %>
                   <% pm_camp = true %>
                   <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
@@ -218,7 +230,7 @@
             <% end %>
             <!-- classroom 2 -->
             <% pm_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
                 <% if co.time == "PM" && co.classroom == 2 %>
                   <% pm_camp = true %>
                   <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
@@ -247,7 +259,7 @@
             <% end %>
             <!-- classroom 3 -->
             <% pm_camp = false %>
-            <% CampOffering.by_week(location.id, n+1, 2).each do |co| %>
+            <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>
                 <% if co.time == "PM" && co.classroom == 3 %>
                   <% pm_camp = true %>
                   <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>

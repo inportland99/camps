@@ -87,6 +87,6 @@ class LocationsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def location_params
-      params.require(:location).permit(:address_1, :address_2, :city, :email, :name, :state, :telephone, :zip)
+      params.require(:location).permit(:address_1, :address_2, :city, :email, :name, :state, :telephone, :zip, :directions)
     end
 end
