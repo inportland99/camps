@@ -72,7 +72,6 @@
   </div>
 </div>
 
-
   <div class="container">
     <!-- ** Math Plus Camp Advantage ** -->
     <div class="row mt centered" >
@@ -109,7 +108,7 @@
       </div><!--/col-lg-4 -->
     </div><!-- /row -->
 
-    <div class="row mt centered">
+    <div class="row mt centered container">
       <div class="col-lg-4">
         <i class="fa fa-comments-o fa-5x"></i>
         <h2 class="camps-orange">100% Satisfaction</h2>
@@ -136,150 +135,165 @@
     </div><!-- /row -->
 
     <%= render 'compare_button' %>
-
-    <div class"row mt">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <hr>
-      </div>
     </div>
 
+    <div class"row">
+      <hr>
+    </div>
+    <div class="row" style="margin-bottom:60px;">
+      <div class="girls_only_banner">
+        <%= image_tag "home_page/girls_only_badge.svg" %> <span>GIRLS ONLY OPTIONS!</span>
+      </div>
+    </div>
     <!-- ** Camp Information ** -->
     <div class="row mt centered">
       <div class="col-lg-6 offset-lg-3 text-xs-center">
-        <h1>Our Camps</h1>
+        <h1 style="padding-top:50px;">Our Camps</h1>
         <h3><small>Duration:</small> 1 Week (M-F)</h3>
         <p>Check schedule for start and end times.</p>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
     <!-- ** Row 1 ** -->
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <%= link_to("#camp10Modal", :data => {:toggle=>"modal"}) do %>
+    <div class="container">
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp10Modal", :data => {:toggle=>"modal"}) do %>
+            <div class="circle_base type_1">
+              <%= image_tag('life-size-choc-fix-150x150.jpg')%>
+            </div>
+            <h2>Brain Games</h2>
+          <p>Ages: 6-8 &amp; 9-12 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp32Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
-            <%= image_tag('life-size-choc-fix-150x150.jpg')%>
+            <%= image_tag('robotics.png', size: '150x150')%>
           </div>
-          <h2>Brain Games</h2>
-        <p>Ages: 6-8 &amp; 9-12 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp1Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('robotics.png', size: '150x150')%>
-        </div>
-        <h2>LEGO Robotics</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp5Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('video_game.png', size: '150x150')%>
-        </div>
-        <h2>Video Game Design</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
+          <h2>LEGO Robotics</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp5Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('video_game.png', size: '150x150')%>
+          </div>
+          <h2>Video Game Design</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <!-- ** Row 2 ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('engineering.png', size: '150x150')%>
+          </div>
+          <h2>LEGO Engineering</h2>
+          <p>Ages: 6-8 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp14Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('shark_tank.jpg', size: '150x150')%>
+          </div>
+          <h2>Shark Tank</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp6Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('chess.png', size: '150x150')%>
+          </div>
+          <h2>Chess</h2>
+          <p>Ages: 5-14 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <!-- ** Row 3 ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp4Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('programming.png', size: '150x150')%>
+          </div>
+          <h2>Programming</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp2Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('STEMcraft.png', size: '150x150')%>
+          </div>
+          <h2>Minecraft</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('inventors.png', size: '150x150')%>
+          </div>
+          <h2>3D Printing</h2>
+          <p>Ages: 9-13 Full-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <!-- ** Row 4 ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('prealgebraprep.png', size: '150x150')%>
+          </div>
+          <h2>Pre-Algebra Prep</h2>
+          <p>Ages: 10-12 Half-Day</p>
+          <p></p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
+          </div>
+          <h2>Kickstart Kindergarten</h2>
+          <p>Ages: 4-5 Half-Day</p>
+          <p></p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp31Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('maker_camp.png', size: '150x150')%>
+          </div>
+          <h2>Maker Camp</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <!-- <div class="col-lg-4">
+          <%= link_to("#girlsOnlyModal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('girls_only.png', size: '150x150')%>
+          </div>
+          <h2>Girls Only Camps</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div>--><!--/col-lg-4 -->
+      </div>
     </div>
 
-    <!-- ** Row 2 ** -->
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('engineering.png', size: '150x150')%>
-        </div>
-        <h2>LEGO Engineering</h2>
-        <p>Ages: 6-8 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp14Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('shark_tank.jpg', size: '150x150')%>
-        </div>
-        <h2>Shark Tank</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp6Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('chess.png', size: '150x150')%>
-        </div>
-        <h2>Chess</h2>
-        <p>Ages: 5-14 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
+    <div class="mb-5">
+      <%= render 'compare_button' %>
+      <h2 class="centered">Questions? Call 614-792-6284</h2>
     </div>
-
-    <!-- ** Row 3 ** -->
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <%= link_to("#camp4Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('programming.png', size: '150x150')%>
-        </div>
-        <h2>Programming</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp2Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('STEMcraft.png', size: '150x150')%>
-        </div>
-        <h2>Minecraft</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('inventors.png', size: '150x150')%>
-        </div>
-        <h2>3D Printing</h2>
-        <p>Ages: 9-13 Full-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-    </div>
-
-    <!-- ** Row 4 ** -->
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('prealgebraprep.png', size: '150x150')%>
-        </div>
-        <h2>Pre-Algebra Prep</h2>
-        <p>Ages: 10-12 Half-Day</p>
-        <p></p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
-        </div>
-        <h2>Kickstart Kindergarten</h2>
-        <p>Ages: 4-5 Half-Day</p>
-        <p></p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#girlsOnlyModal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('girls_only.png', size: '150x150')%>
-        </div>
-        <h2>Girls Only Camps</h2>
-        <p>Ages: 9-13 Half-Day</p>
-        <% end %>
-      </div><!--/col-lg-4 -->
-    </div>
-
-    <%= render 'compare_button' %>
-
-</div>
 
     <%= render '/registrations/camp_modals' %>
 
