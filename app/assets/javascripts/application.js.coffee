@@ -7,6 +7,7 @@
 //= require jquery-ui
 //= require jquery.html5-placeholder-shim
 //= require camp_surveys
+//= require coupon_codes
 //= require tether
 //= require bootstrap
 //= require datatables

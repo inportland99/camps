@@ -22,31 +22,31 @@
         </p>
 
         <p>
-          <b>Emergency contact name:</b>
+          <strong>Emergency contact name:</strong>
           <%= @registration.emergency_contact_name %>
         </p>
 
         <p>
-          <b>Emergency contact phone:</b>
+          <strong>Emergency contact phone:</strong>
           <%= @registration.emergency_contact_phone %>
         </p>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         <h3>Student Information</h3>
         <p>
-          <b>Name:</b> <%= @registration.student_name %>
+          <strong>Name:</strong> <%= @registration.student_name %>
         </p>
         <p>
-          <b>Student grade:</b>
+          <strong>Student grade:</strong>
           <%= @registration.student_grade %>
         </p>
 
         <p>
-          <b>Student allergies:</b>
+          <strong>Student allergies:</strong>
           <%= @registration.student_allergies ? @registration.student_allergies : "none" %>
         </p>
         <p>
-          <b>Regsitered Camps:</b>
+          <strong>Regsitered Camps:</strong>
           <ul>
           <% @registration.camp_offerings.each do |offering| %>
             <li><%= offering.confirmation_name %></li>
@@ -54,11 +54,11 @@
           </ul>
         </p>
         <p>
-          <b>Coupon:</b>
+          <strong>Coupon:</strong>
           <%= @registration.coupon_code ? @registration.coupon_code : "No coupon applied." %>
         </p>
         <p>
-          <b>Payment Plan:</b>
+          <strong>Payment Plan:</strong>
           <% if @registration.payment_plan %>
             <% if @registration.paid_in_full? %>
               <span style="color:green;">Paid In Full</span>
@@ -70,7 +70,7 @@
           <% end %>
         </p>
         <p>
-          <b>Total:</b>
+          <strong>Total:</strong>
           $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
         </p>
       </div>

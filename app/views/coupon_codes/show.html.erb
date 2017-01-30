@@ -1,26 +1,37 @@
 <div class="container">
   <p>
-    <b>Name:</b>
+    <strong>Name:</strong>
     <%= @coupon_code.name %>
   </p>
 
   <p>
-    <b>Type:</b>
-    <%= @coupon_code.coupon_type %>
+    <strong>Type:</strong>
+    <%= CouponCode::DISCOUNT_TYPE[@coupon_code.coupon_type.to_i] %>
   </p>
 
   <p>
-    <b>Description:</b>
+    <strong>Description:</strong>
     <%= @coupon_code.description %>
   </p>
 
-  <p>
-    <b>Amount:</b>
-    <%= @coupon_code.amount %>
-  </p>
+  <% if @coupon_code.coupon_type.to_i < 2 %>
+    <p>
+      <strong>Amount:</strong>
+      <%= @coupon_code.amount %>
+    </p>
+  <% else %>
+    <p>
+      <strong>Half-day Discount:</strong>
+      <%= @coupon_code.half_day_discount %>
+    </p>
+    <p>
+      <strong>Full-day Discount:</strong>
+      <%= @coupon_code.full_day_discount %>
+    </p>
+  <% end %>
 
   <p>
-    <b>Active:</b>
+    <strong>Active:</strong>
     <%= @coupon_code.active %>
   </p>
 

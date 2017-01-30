@@ -159,6 +159,14 @@ camps =
       #update total
       $('#registration_total > p').children('span').text("$#{total_after_discount}")
       total = total_after_discount
+    else if coupon_type is 2
+      discount_amount = coupon_amount * camp_count
+      #populate discount div with discount information
+      $('#registration_discount').children('b').text("Discount: ")
+      $('#registration_discount').children('span').text("-$#{amount}.00")
+      #update total
+      $('#registration_total > p').children('span').text("$#{total - amount}.00")
+      total = total - amount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
@@ -171,9 +179,9 @@ camps =
     thrity_days_out = moment().add(30, 'days').format('MMM Do, YYYY')
     sixty_days_out = moment().add(60, 'days').format('MMM Do, YYYY')
 
-    $('#registration_payment_1').children('p').html("<b>Payment 1: #{todays_date}</b> - $#{first_payment.toFixed(2)} <span style='color:orange;'>(today)</span>")
-    $('#registration_payment_2').children('p').html("<b>Payment 2: #{thrity_days_out}</b> - $#{second_payment.toFixed(2)}")
-    $('#registration_payment_3').children('p').html("<b>Payment 3: #{sixty_days_out}</b> - $#{third_payment.toFixed(2)}")
+    $('#registration_payment_1').children('p').html("<strong>Payment 1: #{todays_date}</strong> - $#{first_payment.toFixed(2)} <span style='color:orange;'>(today)</span>")
+    $('#registration_payment_2').children('p').html("<strong>Payment 2: #{thrity_days_out}</strong> - $#{second_payment.toFixed(2)}")
+    $('#registration_payment_3').children('p').html("<strong>Payment 3: #{sixty_days_out}</strong> - $#{third_payment.toFixed(2)}")
 
 
     # Show/hide payment plan option if amount is above $250

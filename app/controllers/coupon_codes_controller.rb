@@ -107,6 +107,6 @@ class CouponCodesController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def coupon_code_params
-      params.require(:coupon_code).permit(:amount, :description, :name, :coupon_type, :active, :image, :image_uid)
+      params.require(:coupon_code).permit(:amount, :description, :name, :coupon_type, :active, :image, :image_uid, :half_day_discount, :full_day_discount)
     end
 end

@@ -60,7 +60,7 @@
                             <ul>
                               <% @registration.camp_offerings.each do |offering| %>
                                 <% if offering.start_date > Date.today && offering.start_date <= Date.today + 7.days %>
-                                  <li><b><%= offering.confirmation_name %></b></li>
+                                  <li><strong><%= offering.confirmation_name %></strong></li>
                                   <% if offering.camp_id == 2 %>
                                     *It will be helpful if your student either has, or has access to an Gmail account.
                                     This is only necessary for the Web Design Camp. We will be setting them up with

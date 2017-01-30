@@ -2,42 +2,42 @@
   <div class"row">
     <div class="col-lg-6 col-mg-6 col-sm-6 col-xs-12">
         <p>
-          <b>Camp:</b>
+          <strong>Camp:</strong>
           <%= @camp_offering.id %>: <%= @camp_offering.name %>
         </p>
 
         <p>
-          <b>Hidden:</b>
+          <strong>Hidden:</strong>
           <%= @camp_offering.hidden %>
         </p>
 
         <p>
-          <b>Teacher:</b>
+          <strong>Teacher:</strong>
           <%= @camp_offering.teacher %>
         </p>
 
         <p>
-          <b>Assistant:</b>
+          <strong>Assistant:</strong>
           <%= @camp_offering.assistant %>
         </p>
 
         <p>
-          <b>Start date:</b>
+          <strong>Start date:</strong>
           <%= @camp_offering.start_date %>
         </p>
 
         <p>
-          <b>End date:</b>
+          <strong>End date:</strong>
           <%= @camp_offering.end_date %>
         </p>
 
         <p>
-          <b>Location:</b>
+          <strong>Location:</strong>
           <%= @camp_offering.location.name if @camp_offering.location %>
         </p>
 
         <p>
-          <b>Camp Roster</b>
+          <strong>Camp Roster</strong>
           <ul>
           <% @camp_offering.registrations.each do |registration| %>
             <li><%= link_to "#{registration.student_first_name} #{registration.student_last_name}", registration, target: '_blank' %></li>

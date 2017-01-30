@@ -3,8 +3,10 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :coupon_type, collection: CouponCode::DISCOUNT_TYPE.zip((0..1).to_a), label: "Discount Type" %>
+    <%= f.input :coupon_type, collection: CouponCode::DISCOUNT_TYPE.zip((0..2).to_a), label: "Discount Type" %>
     <%= f.input :amount, hint: "No decimals! '10' would represent 10% or $10 depending on the discount type." %>
+    <%= f.input :half_day_discount, hint: "No decimals! '10' would represent 10% or $10 depending on the discount type.", placeholder: 'half-day camp discount only', wrapper_html: { style: "display:none;"} %>
+    <%= f.input :full_day_discount, hint: "No decimals! '10' would represent 10% or $10 depending on the discount type.", placeholder: 'full-day camp discount only', wrapper_html: { style: "display:none;"} %>
     <%= f.input :description, :input_html => { :rows => 4 } %>
     <%= f.input :active %>
   </div>

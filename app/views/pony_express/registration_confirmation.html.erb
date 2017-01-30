@@ -57,19 +57,19 @@
                             <p class="lead" style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 21px;font-size: 18px;">Thank you for registering for Math Plus Academy's 2016 Summer Camps. Below you will find the registration information.</p>
                             <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">Student Information</h5>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <b>Name:</b> <%= @registration.student_name %>
+                              <strong>Name:</strong> <%= @registration.student_name %>
                             </p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <b>Student grade:</b>
+                              <strong>Student grade:</strong>
                               <%= @registration.student_grade %>
                             </p>
 
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <b>Student allergies:</b>
+                              <strong>Student allergies:</strong>
                               <%= @registration.student_allergies ? @registration.student_allergies : "none" %>
                             </p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <b>Regsitered Camps:</b>
+                              <strong>Regsitered Camps:</strong>
                               <ul>
                                 <% @registration.camp_offerings.each do |offering| %>
                                 <li><%= offering.confirmation_name %></li>
@@ -77,16 +77,16 @@
                               </ul>
                             </p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <b>Total:</b>
+                              <strong>Total:</strong>
                               $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
                             </p>
                             <% if @registration.payment_plan %>
                               <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                                <b>Payment Plan</b>
+                                <strong>Payment Plan</strong>
                                 <ul style="list-style-type:none;">
                                   <% @registration.invoices.each_with_index do |invoice, i| %>
                                     <li>
-                                      <b>Payment #<%= i+1 %>:</b> <%= invoice.due_date.strftime('%m/%d/%Y') %> - $<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %>
+                                      <strong>Payment #<%= i+1 %>:</strong> <%= invoice.due_date.strftime('%m/%d/%Y') %> - $<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %>
                                     </li>
                                   <% end %>
                                 </ul>
@@ -108,7 +108,7 @@
                       <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
                         <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td class="panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #ECF8FF;border: 1px solid #d9d9d9;border-color: #b9e5ff;border-collapse: collapse;">
-                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">Check out our summer math program <b>JumpStart!</b>. <a href="http://www.mathplusacademy.com/jumpstart" style="color: #2ba6cb;text-decoration: none;">Click here! »</a></p>
+                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">Check out our summer math program <strong>JumpStart!</strong>. <a href="http://www.mathplusacademy.com/jumpstart" style="color: #2ba6cb;text-decoration: none;">Click here! »</a></p>
                           </td>
                           <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse;"></td>
                         </tr>
