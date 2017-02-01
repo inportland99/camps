@@ -45,9 +45,9 @@ class Registration < ActiveRecord::Base
                                     )
 
       #Update registration with customer id and first charge token
-      stripe_customer_id = customer.id
-      stripe_charge_token = charge.id
-      save!
+      self.stripe_customer_id = customer.id
+      self.stripe_charge_token = charge.id
+      save
     end
 
     # Process invoices after registration is created and first payment is processed.
@@ -65,6 +65,7 @@ class Registration < ActiveRecord::Base
       # Mark first invoice paid if customer elected for payment plan.
       self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id, payment_date: Date.today
     end
+    save
   end
 
   def save_without_payment

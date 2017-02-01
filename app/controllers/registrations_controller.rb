@@ -1,4 +1,4 @@
-sclass RegistrationsController < ApplicationController
+class RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   force_ssl if: :ssl_configured?
@@ -58,8 +58,11 @@ sclass RegistrationsController < ApplicationController
           # send confirmation email
           PonyExpress.registration_confirmation(@registration).deliver
 
-          #add to infusionsoft if not already added and tag as purchasing a summer camp.
+          # add to infusionsoft if not already added and tag as purchasing a summer camp.
           # @registration.infusionsoft_actions
+
+          # process shareable code actions
+          # @registration.set_up_code_share
 
           format.html { redirect_to @registration, notice: 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
@@ -88,12 +91,10 @@ sclass RegistrationsController < ApplicationController
     end
 
     rescue Stripe::CardError => e
-      flash.now[:error] = e.message + " Please enter a valid credit card and reselect your camps."
-      render action: :new, location: @registration.location
+      redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps. If you keep experiencing this issue please call 614-792-6284 or email info@mathplusacademy.com." }
 
     rescue Stripe::InvalidRequestError => e
-      flash.now[:error] = e.message + " Please enter a valid credit card and reselect your camps."
-      render action: :new, location: @registration.location
+      redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps." }
   end
 
   def confirmation

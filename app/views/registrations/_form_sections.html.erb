@@ -3,13 +3,15 @@
   <%= simple_form_for(@registration) do |f| %>
   <div class="row">
     <div class="col-md-4">
-      <% if @registration.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
-        </div>
-      <% end %>
       <!-- location select that toggles calendar view from location to location -->
       <%= f.association :location, label_method: :name, selected: params[:location] %>
+    </div>
+    <div class="col-md-8">
+      <% if @registration.errors.any? %>
+        <div id="error_explanation" style="color:red;">
+          <h4 style="color:red;"><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved. See fields below for errors. Reselect camps before submitting.</h4>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="row">
@@ -139,37 +141,35 @@
       <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
     </div>
     <div class="col-lg-4">
-    <%= render 'credit_card_form', f: f %>
-    <%= f.input :coupon_code, as: :hidden %>
-    <div id="coupon_code_field" class="form-group string optional">
-      <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
-      <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
-    </div>
-    <div id="coupon_error"></div>
-    <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-default btn-xs', id: :coupon_code_button %>
-  </br>
+      <%= render 'credit_card_form', f: f %>
+      <%= f.input :coupon_code, as: :hidden %>
+      <div id="coupon_code_field" class="form-group string optional">
+        <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
+        <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
+      </div>
+      <div id="coupon_error"></div>
+      <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-default btn-xs', id: :coupon_code_button %>
+      </br>
     </div>
   </div>
-
-    <div class="registration_button mt-4">
-      <div class="row">
-        <div class="col-md-8 col-sm-6 col-xs-3 mt-4">
-          <h3>Camps you are registering for:</h3>
-          <div id="camp_registrations">
-            <ul>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4 col-sm-6 col-xs-9 mt-3">
-          <%= f.input :newsletter, label: "I would like to receive more information from Math Plus Academy!", class: 'float-sm-right' %>
-          <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right hidden-md-down", id: "registration_button" %>
-          <%= f.button :submit, "Submit Registration", class: "btn btn-md btn-green float-sm-right  hidden-lg-up", id: "registration_button" %>
-          <%= image_tag('satisfaction.png', size: '100x100', class: 'float-sm-right mt-4') %>
+  <div class="registration_button mt-4">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+        <h3>Camps you are registering for:</h3>
+        <div id="camp_registrations">
+          <ul>
+          </ul>
         </div>
       </div>
-    </div><!-- /.registration_button -->
+      <div class="col-md-4 mt-3">
+        <%= f.input :newsletter, label: "I would like to receive more information from Math Plus Academy!", class: 'float-sm-right' %>
+        <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right", id: "registration_button" %>
+        <%= image_tag('satisfaction.png', size: '100x100', class: 'float-sm-right mt-4') %>
+      </div>
+    </div>
+  </div><!-- /.registration_button -->
   <% end %>
-</br>
+  </br>
 <% else %>
     <!-- This form renders if page is being loaded with no previous registrations. -->
   <%= simple_form_for(@registration) do |f| %>
@@ -334,40 +334,10 @@
       </div>
       <div class="col-md-4 mt-3">
         <%= f.input :newsletter, label: "I would like to receive more information from Math Plus Academy!", class: 'float-sm-right' %>
-        <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right hidden-md-down", id: "registration_button" %>
-        <%= f.button :submit, "Submit Registration", class: "btn btn-md btn-green float-sm-right hidden-lg-up", id: "registration_button" %>
+        <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right", id: "registration_button" %>
         <%= image_tag('satisfaction.png', size: '100x100', class: 'float-sm-right mt-4') %>
       </div>
     </div>
   </div><!-- /.registration_button -->
   <% end %>
-  <div class="row">
-    <div class="col-lg-12">
-    </div>
-  </div><!-- /.row -->
-<!-- </br>
-<hr>
-<div class="row">
-  <div class="col-lg-4 col-xs-12">
-    <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/3e93836302b43a68f3e0d36b400fd1d4" class="infusion-form" method="POST">
-      <fieldset>
-        <legend>Couldn't find what you were looking for? We'll keep you updated on camp additions and updates.</legend>
-        <input name="inf_form_xid" type="hidden" value="3e93836302b43a68f3e0d36b400fd1d4" />
-        <input name="inf_form_name" type="hidden" value="Sign up for newsletter" />
-        <input name="infusionsoft_version" type="hidden" value="1.29.9.21" />
-        <div class="form-group">
-            <label for="inf_field_FirstName">First Name *</label>
-            <input class="form-control" id="inf_field_FirstName" name="inf_field_FirstName" type="text" />
-        </div>
-        <div class="form-group">
-            <label for="inf_field_Email">Email *</label>
-            <input class="form-control" id="inf_field_Email" name="inf_field_Email" type="text" />
-        </div>
-        <div class="infusion-submit">
-            <input type="submit" value="Submit" class="btn btn-lg btn-primary" />
-        </div>
-      </fieldset>
-    </form>
-  </div>
-</div> -->
 <% end %>
