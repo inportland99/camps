@@ -48,7 +48,7 @@
       <div class="camp_offerings">
         <% @locations.each do |location| %>
           <h3><%= location.name %></h3>
-          <%= f.association :camp_offerings, as: :check_boxes, label_method: :confirmation_name, collection: CampOffering.where("location_id = ?", "#{location.id}").where(year: 2).order("start_date asc") %>
+          <%= f.association :camp_offerings, as: :check_boxes, label_method: :confirmation_name, collection: CampOffering.where("location_id = ?", "#{location.id}").where(year: CampOffering::CURRENT_YEAR).order("start_date asc") %>
         <% end %>
       </div>
     </div>

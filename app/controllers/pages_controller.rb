@@ -5,14 +5,14 @@ class PagesController < ApplicationController
       @registrations = Registration.where(year: CampOffering::CURRENT_YEAR)
       @locations = Location.all
       @months_registrations = Registration.where("created_at >= ? AND year=?", Time.now.beginning_of_month, CampOffering::CURRENT_YEAR)
-      @this_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today, Date.today.beginning_of_year)
+      @this_years_registrations_to_date = Registration.where("created_at >= ?", Date.today.beginning_of_year)
       @last_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today - 1.year, (Date.today - 1.year).beginning_of_year)
 
       @last_years_revenue_to_date = @last_years_registrations_to_date.sum(:total)
 
       @this_years_revenue_to_date = @this_years_registrations_to_date.sum(:total)
 
-      @percent_different = ((@this_years_revenue_to_date - @last_years_revenue_to_date).to_f / @last_years_revenue_to_date.to_f * 100).round(2)
+      @percent_difference = ((@this_years_revenue_to_date - @last_years_revenue_to_date).to_f / @last_years_revenue_to_date.to_f * 100).round(2)
 
       # ((@months_registrations.to_a.sum{ |reg| reg.total } - @months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f/(@months_registrations_last_year.to_a.sum{ |reg| reg.total }).to_f).round(2) * 100
       @todays_registrations = Registration.where("created_at > ? AND year =?", Time.now.beginning_of_day, CampOffering::CURRENT_YEAR)
