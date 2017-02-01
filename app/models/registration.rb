@@ -146,24 +146,39 @@ class Registration < ActiveRecord::Base
   end
 
   def infusionsoft_actions
-    result = Infusionsoft.data_query_order_by('Contact', 50, 0, {:Email=> '%'+"#{self.parent_email}"+'%'}, [:Id, :FirstName, :LastName, :ContactType, :Email], :FirstName, true)
+    # search infusionsoft by email
+    result = Infusionsoft.data_query_order_by('Contact', 10, 0, {:Email=> self.parent_email}, [:Id], :FirstName, true)
+
     if result.empty?
-      #create new contact
-      data = { :FirstName => self.parent_first_name, :LastName => self.parent_last_name, :Email => self.parent_email, :Phone1 => self.parent_phone }
+      # create new contact in not found in infusionsoft
+      # load data for infusionsoft contact
+      data = {:FirstName => self.parent_first_name,
+              :LastName => self.parent_last_name,
+              :Email => self.parent_email,
+              :Phone1 => self.parent_phone,
+              :StreetAddress1 => self.parent_address_1,
+              :StreetAddress2 => self.parent_address_2,
+              :City => self.parent_city,
+              :State => self.parent_state,
+              :PostalCode => self.parent_zip}
+
       if contact = Infusionsoft.contact_add(data)
+        # if contact is added opt in email to communication
         Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
       end
     else
+      # an existing record is found in infusionsoft
       contact = result.first["Id"].to_i
     end
 
     if Rails.env.production?
-      #add to group when in production
-      Infusionsoft.contact_add_to_group(contact, 1836)
-      Infusionsoft.contact_add_to_group(contact, 91) if newsletter?
+      #add to groups
+      Infusionsoft.contact_add_to_group(contact, 2256) # purchased summer camp tag
+      Infusionsoft.contact_add_to_group(contact, 2058) if newsletter? # local marketing tag
     elsif Rails.env.development?
-      #add to group when in development
-      Infusionsoft.contact_add_to_group(contact, 107)
+      #add to groups
+      Infusionsoft.contact_add_to_group(contact, 115) # purchased summer camp tag
+      Infusionsoft.contact_add_to_group(contact, 101) if newsletter? # local marketing tag
     end
   end
 end

@@ -59,7 +59,7 @@ class RegistrationsController < ApplicationController
           PonyExpress.registration_confirmation(@registration).deliver
 
           # add to infusionsoft if not already added and tag as purchasing a summer camp.
-          # @registration.infusionsoft_actions
+          @registration.infusionsoft_actions
 
           # process shareable code actions
           # @registration.set_up_code_share
@@ -74,7 +74,9 @@ class RegistrationsController < ApplicationController
     else
       respond_to do |format|
         if @registration.save_with_payment
+          # send email confirmation
           PonyExpress.registration_confirmation(@registration).deliver
+
           #add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
 
