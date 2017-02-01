@@ -108,14 +108,14 @@
               <h2>$ <%= number_with_precision(@camp_revenue.to_f/100, precision: 0) %></h2>
             </span>
             <span style="font-size: 1em;
-            <% if @percent_different <= 0.to_f %>
+            <% if @percent_difference <= 0.to_f %>
               color:red;
-            <% elsif @percent_different == 0 || @percent_different.nan? %>
+            <% elsif @percent_difference == 0 || @percent_difference.nan? %>
 
             <% else %>
               color:green;
             <% end %>
-          "><%= @percent_different.nan? ? "" : "#{@percent_different.round(2)}%" %></span>
+          "><%= @percent_difference.nan? ? "" : "#{@percent_difference.round(2)}%" %></span>
           </div>
         </div>
     </div><!-- /.col-md-4 -->
