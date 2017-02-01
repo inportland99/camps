@@ -1,146 +1,115 @@
-<div class="container show">
+<div class="container show mt-4">
   <div class="row">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <h1>Math Plus <%= Time.now.year %> Summer Camp Registration</h1>
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <p>
-          <h3><%= @registration.parent_name %></h3>
-          <%= @registration.parent_address_1 %></br>
-          <% if @registration.parent_address_2%><%= @registration.parent_address_2 %></br><%end%>
-          <%= @registration.parent_city %>, <%= @registration.parent_state %> <%= @registration.parent_zip %>
-        </p>
-        <p>
-          <i class="fa fa-envelope"></i>: <%= @registration.parent_email %>
-        </p>
-
-        <p>
-          <i class="fa fa-phone"></i>: <%= @registration.parent_phone %>
-        </p>
-
-        <p>
-          <strong>Emergency contact name:</strong>
-          <%= @registration.emergency_contact_name %>
-        </p>
-
-        <p>
-          <strong>Emergency contact phone:</strong>
-          <%= @registration.emergency_contact_phone %>
-        </p>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-        <h3>Student Information</h3>
-        <p>
-          <strong>Name:</strong> <%= @registration.student_name %>
-        </p>
-        <p>
-          <strong>Student grade:</strong>
-          <%= @registration.student_grade %>
-        </p>
-
-        <p>
-          <strong>Student allergies:</strong>
-          <%= @registration.student_allergies ? @registration.student_allergies : "none" %>
-        </p>
-        <p>
-          <strong>Regsitered Camps:</strong>
-          <ul>
-          <% @registration.camp_offerings.each do |offering| %>
-            <li><%= offering.confirmation_name %></li>
-          <% end %>
-          </ul>
-        </p>
-        <p>
-          <strong>Coupon:</strong>
-          <%= @registration.coupon_code ? @registration.coupon_code : "No coupon applied." %>
-        </p>
-        <p>
-          <strong>Payment Plan:</strong>
-          <% if @registration.payment_plan %>
-            <% if @registration.paid_in_full? %>
-              <span style="color:green;">Paid In Full</span>
-            <% else %>
-              <%= @registration.payment_plan ? "<i class='fa fa-check' style='color:green;'></i> <span style='color:orange;'>Outstanding balance: $#{number_with_precision(@registration.payment_plan_balance.to_f/100, precision: 2)}</span><br> (See payments below)".html_safe : "No payment plan." %>
-            <% end %>
-          <% else %>
-            No Payment Plan
-          <% end %>
-        </p>
-        <p>
-          <strong>Total:</strong>
-          $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 col-sm-12 col-xs-12">
-        <h3>Thanks for registering. Let the fun begin.</h3>
-      </div>
-      <div class="col-md-4 col-sm-12 col-xs-12">
-        <p>
-          <%= link_to 'Register Another Student', new_registration_path(
-              parent_first_name: @registration.parent_first_name,
-              parent_last_name: @registration.parent_last_name,
-              parent_address_1: @registration.parent_address_1,
-              parent_city: @registration.parent_city,
-              parent_state: @registration.parent_state,
-              parent_zip: @registration.parent_zip,
-              parent_email: @registration.parent_email,
-              parent_phone: @registration.parent_phone,
-              emergency_contact_name: @registration.emergency_contact_name,
-              emergency_contact_phone: @registration.emergency_contact_phone,
-              location: @registration.location_id
-              ),
-              class: 'btn btn-lg btn-info', id: "register_another_student" %>
-        </p>
-        <p>
-          <%= link_to 'Done', root_path, class: "btn btn-lg btn-danger"%>
-        </p>
-      </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h2>Math Plus <%= CampOffering::YEARS[CampOffering::CURRENT_YEAR] %> Summer Camp Registration</h2>
     </div>
   </div>
-  <% if @registration.payment_plan %>
-    <div class="row">
+  <hr class="mb-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h3><%= @registration.parent_name %></h3>
+      <p>
+        <%= @registration.parent_address_1 %></br>
+        <% if @registration.parent_address_2%><%= @registration.parent_address_2 %></br><%end%>
+        <%= @registration.parent_city %>, <%= @registration.parent_state %> <%= @registration.parent_zip %>
+      </p>
+      <p>
+        <i class="fa fa-envelope"></i>: <%= @registration.parent_email %>
+      </p>
+
+      <p>
+        <i class="fa fa-phone"></i>: <%= @registration.parent_phone %>
+      </p>
+
+      <p>
+        <strong>Emergency contact name:</strong>
+        <%= @registration.emergency_contact_name %>
+      </p>
+
+      <p>
+        <strong>Emergency contact phone:</strong>
+        <%= @registration.emergency_contact_phone %>
+      </p>
+      <%= render 'invoice_table' if @registration.payment_plan %>
+    </div>
+    <div class="col-md-6">
+      <h3>Student Information</h3>
+      <p>
+        <strong>Name:</strong> <%= @registration.student_name %>
+      </p>
+      <p>
+        <strong>Student grade:</strong>
+        <%= @registration.student_grade %>
+      </p>
+
+      <p>
+        <strong>Student allergies:</strong>
+        <%= @registration.student_allergies ? @registration.student_allergies : "none" %>
+      </p>
+      <p>
+        <strong>Regsitered Camps:</strong>
+        <ul>
+        <% @registration.camp_offerings.each do |offering| %>
+          <li><%= offering.confirmation_name %></li>
+        <% end %>
+        </ul>
+      </p>
+      <p>
+        <strong>Coupon:</strong>
+        <%= @registration.coupon_code ? @registration.coupon_code : "No coupon applied." %>
+      </p>
+      <p>
+        <strong>Payment Plan:</strong>
+        <% if @registration.payment_plan %>
+          <% if @registration.paid_in_full? %>
+            <span style="color:green;">Paid In Full</span>
+          <% else %>
+            <%= @registration.payment_plan ? "<i class='fa fa-check' style='color:green;'></i> <span style='color:orange;'>Outstanding balance: $#{number_with_precision(@registration.payment_plan_balance.to_f/100, precision: 2)}</span><br> (See payments below)".html_safe : "No payment plan." %>
+          <% end %>
+        <% else %>
+          No Payment Plan
+        <% end %>
+      </p>
+      <p>
+        <strong>Total:</strong>
+        $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <hr>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h3>Thanks for registering!<br> Let the fun begin.</h3>
+    </div>
+    <div class="col-md-6">
+      <%= link_to 'Register Another Student', new_registration_path(registration: {
+          parent_first_name: @registration.parent_first_name,
+          parent_last_name: @registration.parent_last_name,
+          parent_address_1: @registration.parent_address_1,
+          parent_city: @registration.parent_city,
+          parent_state: @registration.parent_state,
+          parent_zip: @registration.parent_zip,
+          parent_email: @registration.parent_email,
+          parent_phone: @registration.parent_phone,
+          emergency_contact_name: @registration.emergency_contact_name,
+          emergency_contact_phone: @registration.emergency_contact_phone,
+          location_id: @registration.location_id}
+          ),
+          class: 'btn btn-lg btn-blue', id: "register_another_student" %>
+      <%= link_to 'Done', root_path, class: "btn btn-lg btn-red"%>
+    </div>
+  </div>
+
+  <% if current_user && ( current_user.role?(:super_admin) || current_user.role?(:admin))%>
+    <div class="row mt-4">
       <div class="col-sm-12">
-        <h3>Payment Plan Invoices</h3>
-        <table class="table table-bordered table-responsive table-hover">
-          <thead>
-            <tr>
-              <th>
-                Payment
-              </th>
-              <th>
-                Due Date
-              </th>
-              <th>
-                Amount
-              </th>
-              <th>
-                Date Paid
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @registration.invoices.order(due_date: :asc).each_with_index do |invoice, i| %>
-              <tr>
-                <td><%= i+1 %></td>
-                <td><%= invoice.due_date.strftime('%m/%d/%Y') if invoice.due_date %></td>
-                <td>$<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %></td>
-                <td><%= invoice.payment_date ? "<span style='color:green;'>#{invoice.payment_date.strftime('%m/%d/%Y')}</span>".html_safe : '<span style="color:red;">Unpaid</unpaid>'.html_safe %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <%= link_to 'Edit', edit_registration_path(@registration) %> |
+        <%= link_to 'Send Confirmation', email_confirmation_path(id: @registration.id) %>
       </div>
     </div>
   <% end %>
-  <div class="row">
-    <% if current_user && ( current_user.role?(:super_admin) || current_user.role?(:admin))%>
-      <%= link_to 'Edit', edit_registration_path(@registration) %> |
-      <%= link_to 'Send Confirmation', email_confirmation_path(id: @registration.id) %>
-    <% end %>
-  </div>
 </div>

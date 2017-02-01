@@ -11,8 +11,8 @@
   </p> -->
   <% if @registration %>
     <p>
-      <%= link_to 'Register Another Student', new_registration_path(
-          parent_first_name: @registration.parent_first_name,
+      <%= link_to 'Register Another Student', new_registration_path( registration:
+          {parent_first_name: @registration.parent_first_name,
           parent_last_name: @registration.parent_last_name,
           parent_address_1: @registration.parent_address_1,
           parent_city: @registration.parent_city,
@@ -22,7 +22,7 @@
           parent_phone: @registration.parent_phone,
           emergency_contact_name: @registration.emergency_contact_name,
           emergency_contact_phone: @registration.emergency_contact_phone,
-          location: @registration.location_id
+          location_id: @registration.location_id}
           ),
           class: 'btn btn-lg btn-info', id: "register_another_student" %>
     </p>

@@ -45,8 +45,8 @@ class Registration < ActiveRecord::Base
                                     )
 
       #Update registration with customer id and first charge token
-      self.stripe_customer_id = customer.id
-      self.stripe_charge_token = charge.id
+      stripe_customer_id = customer.id
+      stripe_charge_token = charge.id
       save!
     end
 
@@ -65,7 +65,6 @@ class Registration < ActiveRecord::Base
       # Mark first invoice paid if customer elected for payment plan.
       self.invoices.first.update_attributes paid: true, stripe_charge_id: charge.id, payment_date: Date.today
     end
-    save!
   end
 
   def save_without_payment
@@ -143,19 +142,6 @@ class Registration < ActiveRecord::Base
 
   def campaign_finished
     update_attribute :camp_campaign, true
-  end
-
-  def set_up_code_share
-    coupon_code = CouponCode.create(name:             CouponCode.generate_name(parent_last_name),
-                                    coupon_type:      "0",
-                                    amount:           10,
-                                    active:           true,
-                                    description:      "Social promotion for #{parent_name}. They earn $10 credit each time someone uses their code. Code is good for $10 off each camp in purchase.")
-
-    coupon_uid = coupon_code.generate_share_image
-
-    # add coupon uid to reference coupon image with registration
-    update_attribute :coupon_uid, coupon_uid
   end
 
   def infusionsoft_actions

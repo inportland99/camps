@@ -48,6 +48,7 @@
 }
 
 #camp_registrations{
+  margin-top: 20px;
   margin-bottom: 20px;
   padding-top: 15px;
   padding-bottom: 10px;
@@ -95,6 +96,14 @@ table.calendar{
   }
   label{
     padding:0;
+    margin-bottom: 0;
+  }
+  #payment_plan{
+    margin-bottom:0;
+  }
+  .registration_payment_plan{
+    margin-top:15px;
+    margin-bottom:5px;
   }
 }
 

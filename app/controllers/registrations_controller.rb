@@ -1,11 +1,11 @@
-class RegistrationsController < ApplicationController
+sclass RegistrationsController < ApplicationController
   # GET /registrations
   # GET /registrations.json
   force_ssl if: :ssl_configured?
   before_filter :authenticate_user!, :except => [:new, :create, :total_discounts, :confirmation, :outstanding_payments]
 
   def index
-    @registrations = Registration.where(year: 2).order('created_at DESC')
+    @registrations = Registration.where(year: CampOffering::CURRENT_YEAR).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,9 +31,6 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-    @camp_offerings = CampOffering.where(year: 2).order("week asc, location_id asc")
-    @powell_camps = CampOffering.where("location_id=? AND year=?", 1, 2)
-    @new_albany_camps = CampOffering.where("location_id=? AND year=?", 2, 2)
     @extended_care = Camp.find 20
 
     respond_to do |format|
@@ -46,12 +43,14 @@ class RegistrationsController < ApplicationController
   def edit
     @registration = Registration.find(params[:id])
     @locations = Location.order(:id)
+    @extended_care = Camp.find 20
   end
 
   # POST /registrations
   # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
+    @extended_care = Camp.find 20
 
     if current_user && (current_user.role?('super_admin') || current_user.role?('admin')) && params[:process_without_payment] == "yes"
       respond_to do |format|
@@ -60,10 +59,7 @@ class RegistrationsController < ApplicationController
           PonyExpress.registration_confirmation(@registration).deliver
 
           #add to infusionsoft if not already added and tag as purchasing a summer camp.
-          @registration.infusionsoft_actions
-
-          #process shareable code actions
-          # @registration.set_up_code_share
+          # @registration.infusionsoft_actions
 
           format.html { redirect_to @registration, notice: 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
@@ -150,7 +146,7 @@ class RegistrationsController < ApplicationController
 
   def total_discounts
     if params[:token] == 'OGGfBcPNINciwXYJRx4ccNW0'
-      total_discounts = Registration.total_discounts_by_year(1).round(2)
+      total_discounts = Registration.total_discounts_by_year(CampOffering::CURRENT_YEAR).round(2)
 
       render plain: "#{total_discounts}"
 

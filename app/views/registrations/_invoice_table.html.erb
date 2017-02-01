@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h3 class="mb-3">Payment Plan Invoices</h3>
+    <table class="table table-bordered table-responsive table-hover">
+      <thead>
+        <tr>
+          <th>
+            Payment
+          </th>
+          <th>
+            Due Date
+          </th>
+          <th>
+            Amount
+          </th>
+          <th>
+            Date Paid
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @registration.invoices.order(due_date: :asc).each_with_index do |invoice, i| %>
+          <tr>
+            <td><%= i+1 %></td>
+            <td><%= invoice.due_date.strftime('%m/%d/%Y') if invoice.due_date %></td>
+            <td>$<%= number_with_precision(invoice.amount.to_f/100, precision: 2) %></td>
+            <td><%= invoice.payment_date ? "<span style='color:green;'>#{invoice.payment_date.strftime('%m/%d/%Y')}</span>".html_safe : '<span style="color:red;">Unpaid</unpaid>'.html_safe %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

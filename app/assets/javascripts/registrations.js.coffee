@@ -106,14 +106,26 @@ coupon_code =
           $coupon_code.val('')
           $coupon_code_button.attr('disabled', false)
         else
-          $coupon_code_button.attr('disabled', false)
-          $coupon_total_p.children('b').text("Coupon Applied: ")
-          $coupon_total_p.children('span').text("#{results.name}")
-          $coupon_total.attr("data-amount", results.amount )
-          $coupon_total.attr("data-coupon", results.coupon_type)
-          $registration_coupon_code.val($coupon_code.val())
-          $coupon_code.val('')
-          camps.selected_total()
+          if results.coupon_type < 2 # if coupon is standard discount types
+            $coupon_code_button.attr('disabled', false)
+            $coupon_total_p.children('strong').text("Coupon Applied: ")
+            $coupon_total_p.children('span').text("#{results.name}")
+            $coupon_total.attr("data-amount", results.amount )
+            $coupon_total.attr("data-coupon", results.coupon_type)
+            $registration_coupon_code.val($coupon_code.val())
+            $coupon_code.val('')
+            camps.selected_total()
+          else #if coupon amount varies between half and full day camps
+            console.log results
+            $coupon_code_button.attr('disabled', false)
+            $coupon_total_p.children('strong').text("Coupon Applied: ")
+            $coupon_total_p.children('span').text("#{results.name}")
+            $coupon_total.attr("data-half-day-discount", results.half_day_discount )
+            $coupon_total.attr("data-full-day-discount", results.full_day_discount )
+            $coupon_total.attr("data-coupon", results.coupon_type)
+            $registration_coupon_code.val($coupon_code.val())
+            $coupon_code.val('')
+            camps.selected_total()
 
 camps =
   selected_camps: ->
@@ -125,7 +137,7 @@ camps =
       name = $(this).data('name')
       $camp_registrations_ul.append("<li>#{name}</li>")
     if count is 0
-      $camp_registrations_ul.text("You have not selected any camps.")
+      $camp_registrations_ul.text("You have not selected any camps.").css('color', 'red')
 
   selected_total: ->
     total = 0
@@ -135,7 +147,12 @@ camps =
         total += $(this).data('price')
     coupon_type = parseInt($('#coupon_total').attr('data-coupon'))
     coupon_amount = parseInt($('#coupon_total').attr('data-amount'))
+    coupon_half_day_discount = parseInt($('#coupon_total').attr('data-half-day-discount'))
+    coupon_full_day_discount = parseInt($('#coupon_total').attr('data-full-day-discount'))
     camp_count = parseInt(camps.selectedCount())
+    half_day_count = parseInt(camps.halfdayCount())
+    full_day_count = parseInt(camps.fulldayCount())
+
     #update subtotal
     $('#registration_subtotal').children('span').text("$#{total}.00")
 
@@ -154,19 +171,19 @@ camps =
       discount_amount = (discount_amount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
       total_after_discount = (total * inverse_percent_discount).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
       #populate discount div with discount information
-      $('#registration_discount').children('b').text("Discount: ")
+      $('#registration_discount').children('strong').text("Discount: ")
       $('#registration_discount').children('span').text("-$#{discount_amount}")
       #update total
       $('#registration_total > p').children('span').text("$#{total_after_discount}")
       total = total_after_discount
     else if coupon_type is 2
-      discount_amount = coupon_amount * camp_count
+      discount_amount = (half_day_count * coupon_half_day_discount) + (full_day_count * coupon_full_day_discount)
       #populate discount div with discount information
-      $('#registration_discount').children('b').text("Discount: ")
-      $('#registration_discount').children('span').text("-$#{amount}.00")
+      $('#registration_discount').children('strong').text("Discount: ")
+      $('#registration_discount').children('span').text("-$#{discount_amount}.00")
       #update total
-      $('#registration_total > p').children('span').text("$#{total - amount}.00")
-      total = total - amount
+      $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
+      total = total - discount_amount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
@@ -196,6 +213,26 @@ camps =
   selectedCount: ->
     # count selected camps less extended care options selected
     count = $(':checkbox:checked', '#camp_offerings').length - $('.extended-care:checked').length
+    count
+
+  halfdayCount: ->
+    # count selected camps less extended care options selected
+    half_day_camps = $('input[data-halfday="true"]', '#camp_offerings')
+    count = 0
+    for camp in half_day_camps
+      if camp.checked
+        count += 1
+
+    count
+
+  fulldayCount: ->
+    # count selected camps less extended care options selected
+    full_day_camps = $('input[data-halfday="false"]', '#camp_offerings')
+    count = 0
+    for camp in full_day_camps
+      if camp.checked
+        count += 1
+
     count
 
 #stripe payment logic and form submition
