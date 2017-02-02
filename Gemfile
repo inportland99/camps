@@ -14,6 +14,7 @@ gem 'jquery-ui-rails'
 gem "cancan"
 gem "devise"
 gem "high_voltage"
+gem "httparty"
 gem "therubyracer"
 gem "compass-rails"
 gem "has_scope"

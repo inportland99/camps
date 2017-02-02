@@ -68,6 +68,16 @@ class Registration < ActiveRecord::Base
     save
   end
 
+  def send_slack_notification
+    test_note = Rails.env.development? ? "[TEST] " : ""
+    HTTParty.post("https://hooks.slack.com/services/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",
+      {:body => {text: "#{test_note}Half-day Camps: #{half_day_count}\nFull-day Camps: #{full_day_count}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}",
+                  username: "Registration Received",
+                  icon_emoji: ":tada:",}.to_json,
+                  :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
+                  })
+  end
+
   def save_without_payment
     if valid?
       save!
@@ -127,6 +137,14 @@ class Registration < ActiveRecord::Base
       total_discounts += registration.discount_amount
     end
     total_discounts
+  end
+
+  def half_day_count
+    camp_offerings.where("time = ? OR time = ?", "AM","PM").count
+  end
+
+  def full_day_count
+    camp_offerings.where("time = ?", "All Day").count
   end
 
   def parent_name

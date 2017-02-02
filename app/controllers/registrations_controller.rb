@@ -61,6 +61,8 @@ class RegistrationsController < ApplicationController
           # add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
 
+          @registration.send_slack_notification
+
           # process shareable code actions
           # @registration.set_up_code_share
 

@@ -26,4 +26,6 @@ jQuery ->
   $('.datepicker').datepicker
     dateFormat: "yy-mm-dd"
 
-  $('.chosen').chosen()
+  $('.chosen').chosen
+    allow_single_deselect: true
+    no_results_text: 'No results matched'

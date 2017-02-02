@@ -104,12 +104,24 @@ class CampOffering < ActiveRecord::Base
     camp.title
   end
 
-  def confirmation_name
+  def select_name
     camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
+  end
+
+  def confirmation_name
+    camp.title + ": " + location.name + ", " + convert_time + " (Start Date: #{start_date.strftime('%b, %d')})"
   end
 
   def edit_name
     camp.title + " " + location.name + " Week: " + week.to_s + " " + time
+  end
+
+  def convert_time
+    case time
+      when "AM" then "9:00AM - 12:00PM"
+      when "PM" then "12:30PM - 3:30PM"
+      when "All Day" then "9:00AM - 3:30PM"
+    end
   end
 
   def students
