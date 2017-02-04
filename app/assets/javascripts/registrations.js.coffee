@@ -159,7 +159,7 @@ camps =
     if coupon_type is 0
       amount = coupon_amount * camp_count
       #populate discount div with discount information
-      $('#registration_discount').children('b').text("Discount: ")
+      $('#registration_discount').children('strong').text("Discount: ")
       $('#registration_discount').children('span').text("-$#{amount}.00")
       #update total
       $('#registration_total > p').children('span').text("$#{total - amount}.00")
