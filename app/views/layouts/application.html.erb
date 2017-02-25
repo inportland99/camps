@@ -26,7 +26,11 @@
 
     <% if Rails.env.development? %>
       <div class="container" style= "margin-top:25px;">
-        <%= debug(params) %>
+        <div class="card">
+          <div class="carb-block">
+            <%= debug(params) %>
+          </div>
+        </div>
       </div>
     <% end %>
 
