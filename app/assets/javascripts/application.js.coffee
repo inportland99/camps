@@ -24,7 +24,9 @@ jQuery ->
     order:      [[ 0, "desc" ]]
 
   $('.datepicker').datepicker
-    dateFormat: "yy-mm-dd"
+    dateFormat: "yy-mm-dd",
+    changeMonth: true,
+    changeYear: true
 
   $('.chosen').chosen
     allow_single_deselect: true
