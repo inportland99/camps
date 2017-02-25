@@ -4,7 +4,10 @@
 @import "compass";
 @import "font-awesome";
 @import "bootstrap";
-@import 'bootstrap-datetimepicker';
+@import "jquery-ui/datepicker";
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
+@import "jquery.timepicker";
 @import "variables";
 @import "registrations";
 @import "locations";
