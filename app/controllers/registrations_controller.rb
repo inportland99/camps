@@ -61,6 +61,7 @@ class RegistrationsController < ApplicationController
           # add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
 
+          # send notification to slack
           @registration.send_slack_notification
 
           # process shareable code actions
@@ -82,8 +83,8 @@ class RegistrationsController < ApplicationController
           #add to infusionsoft if not already added and tag as purchasing a summer camp.
           @registration.infusionsoft_actions
 
-          #process shareable code actions
-          # @registration.set_up_code_share
+          # send notification to slack
+          @registration.send_slack_notification
 
           format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
