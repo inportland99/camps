@@ -47,6 +47,7 @@ jQuery ->
   $new_albany_camp_offerings = $('#new_albany_camp_offerings')
   $mill_run_camp_offerings = $('#mill_run_camp_offerings')
   $past_camp_offerings = $('#past_il_camp_offerings')
+  $teays_valley_camp_offerings = $('#teays_valley_camp_offerings')
 
   $registration_location_id.trigger('blur') #lose focus to trigger .on 'change'
   $registration_location_id.on 'change', ->
@@ -54,6 +55,7 @@ jQuery ->
     $new_albany_camp_offerings.css('display','none')
     $mill_run_camp_offerings.css('display','none')
     $past_camp_offerings.css('display','none')
+    $teays_valley_camp_offerings.css('display', 'none')
 
     if $registration_location_id.val() is "1"
       $powell_camp_offerings.css('display','inline-block')
@@ -63,6 +65,8 @@ jQuery ->
       $mill_run_camp_offerings.css('display','inline-block')
     if $registration_location_id.val() is "4"
       $past_camp_offerings.css('display','inline-block')
+    if $registration_location_id.val() is "5"
+      $teays_valley_camp_offerings.css('display','inline-block')
 
   #coupon code lookup logic
   $('#coupon_code_button').on 'click', ->
