@@ -6,32 +6,13 @@
     </div>
   </div>
   <div class="row mt-3">
-    <% if @registration.total < 25000 %>
-      <div class="col-sm-12">
-        <div class="alert alert-success text-center">
-          <h1>
-            Receive $50 off when purchase another camp with code: <span style="color:rgb(164, 53, 53);" >
-              DOUBLEUP222
-            </span>
-          </h1>
-        </div>
-      </div>
-      <div class="col-md-12 text-center mt-3">
-        <% if @registration %>
-          <p>
-            <%= render 'registration_another_student_button', registration: @registration %>
-          </p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="col-sm-12 text center">
-        <% if @registration %>
-          <p>
-            <%= render 'registration_another_student_button', registration: @registration %>
-          </p>
-        <% end %>
-      </div>
-    <% end %>
+    <div class="col-sm-12 text-center">
+      <% if @registration %>
+        <p>
+          <%= render 'registration_another_student_button', registration: @registration %>
+        </p>
+      <% end %>
+    </div>
   </div>
   <hr class="mt-5 mb-5">
   <div class="row">
