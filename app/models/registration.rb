@@ -144,7 +144,7 @@ class Registration < ActiveRecord::Base
   end
 
   def full_day_count
-    camp_offerings.where("time = ?", "All Day").count
+    camp_offerings.where("time = ? AND camp_id != ?", "All Day", 20).count
   end
 
   def parent_name
