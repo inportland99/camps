@@ -20,7 +20,7 @@
 
   </div>
   <div class="col-lg-4">
-    <%= f.input :week, as: :select, collection: (1...9).to_a %>
+    <%= f.input :week, as: :select, collection: (1..9).to_a %>
     <%= f.input :start_date, as: :string, input_html: { class: 'datepicker' } %>
     <%= f.input :end_date, as: :string, input_html: { class: 'datepicker' } %>
   </div>
