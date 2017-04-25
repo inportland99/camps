@@ -215,7 +215,8 @@ class RegistrationsController < ApplicationController
                                            :process_without_payment,
                                            :camp_campaign,
                                            :payment_plan,
-                                           :newsletter)
+                                           :newsletter,
+                                           :referred_by)
     end
 
     def ssl_configured?

@@ -348,13 +348,14 @@
       <%= f.input :parent_last_name, label: "Last Name" %>
       <%= f.input :parent_address_1, label: "Address 1" %>
       <%= f.input :parent_address_2, label: "Address 2" %>
+        <%= f.input :parent_city, label: "City" %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
     <div class="col-lg-4">
-      <%= f.input :parent_city, label: "City" %>
       <%= f.input :parent_state, collection: Registration::US_STATES, label: "State" %>
       <%= f.input :parent_zip, as: :string, label: "Zip" %>
       <%= f.input :parent_email, label: "Email" %>
       <%= f.input :parent_phone, label: "Phone" %>
+      <%= f.input :referred_by, label: "Referred By" %>
       <%= f.input :stripe_card_token, as: :hidden %>
       <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->

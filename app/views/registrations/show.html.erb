@@ -30,6 +30,11 @@
         <strong>Emergency contact phone:</strong>
         <%= @registration.emergency_contact_phone %>
       </p>
+      <% if @registration.referred_by %>
+      <p>
+        Referred by: <%= @registration.referred_by %>
+      </p>
+      <% end %>
       <%= render 'invoice_table' if @registration.payment_plan %>
     </div>
     <div class="col-md-6">
