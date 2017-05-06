@@ -54,7 +54,7 @@
       </tr>
     </thead>
     <tbody>
-      <% co.registrations.where(year: 2).to_a.each_with_index do |reg, i| %>
+      <% co.registrations.where(year: CampOffering::CURRENT_YEAR).to_a.each_with_index do |reg, i| %>
       <tr>
         <td><%= i + 1 %></td>
         <td><%= reg.student_name %></td>

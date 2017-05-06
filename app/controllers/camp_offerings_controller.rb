@@ -91,9 +91,9 @@ class CampOfferingsController < ApplicationController
   end
 
   def week_at_a_glance
-    @location = Location.where('id = ?', "#{params[:info][:location]}").first
+    @location = Location.find(params[:info][:location].to_i)
     @week = params[:info][:week]
-    @camp_offerings = CampOffering.where('week = ? AND location_id = ? AND year = ?', "#{params[:info][:week]}","#{params[:info][:location]}", CampOffering::CURRENT_YEAR)
+    @camp_offerings = CampOffering.where('week = ? AND location_id = ? AND year = ?', @week, @location.id, CampOffering::CURRENT_YEAR)
   end
 
   private
