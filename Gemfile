@@ -37,7 +37,6 @@ gem "chosen-rails"
 gem "carrierwave"
 gem "faker"
 gem "fog"
-gem 'rmagick'
 gem "rack-cache", require: "rack/cache"
 gem "dragonfly", "~>1.0.2"
 gem 'dragonfly-s3_data_store'
