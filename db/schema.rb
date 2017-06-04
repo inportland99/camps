@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425131002) do
+ActiveRecord::Schema.define(version: 20170604000035) do
 
   create_table "camp_interests", force: true do |t|
     t.string   "name"
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20170425131002) do
     t.string   "stripe_customer_id"
     t.boolean  "payment_plan_completed",  default: false
     t.string   "referred_by"
+    t.integer  "infusionsoft_id"
   end
 
   create_table "roles", force: true do |t|

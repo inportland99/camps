@@ -165,7 +165,8 @@ class Registration < ActiveRecord::Base
 
   def infusionsoft_actions
     # search infusionsoft by email
-    result = Infusionsoft.data_query_order_by('Contact', 10, 0, {:Email=> self.parent_email}, [:Id], :FirstName, true)
+    result = Infusionsoft.contact_find_by_email(self.parent_email, [:Id])
+
 
     if result.empty?
       # create new contact in not found in infusionsoft
@@ -180,23 +181,23 @@ class Registration < ActiveRecord::Base
               :State => self.parent_state,
               :PostalCode => self.parent_zip}
 
-      if contact = Infusionsoft.contact_add(data)
+      if contact_id = Infusionsoft.contact_add(data)
         # if contact is added opt in email to communication
         Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
       end
     else
       # an existing record is found in infusionsoft
-      contact = result.first["Id"].to_i
+      contact_id = result.first["Id"].to_i
     end
 
     if Rails.env.production?
       #add to groups
-      Infusionsoft.contact_add_to_group(contact, 2256) # purchased summer camp tag
-      Infusionsoft.contact_add_to_group(contact, 2058) if newsletter? # local marketing tag
+      Infusionsoft.contact_add_to_group(contact_id, 2256) # purchased summer camp tag
+      Infusionsoft.contact_add_to_group(contact_id, 2058) if newsletter? # local marketing tag
     elsif Rails.env.development?
       #add to groups
-      Infusionsoft.contact_add_to_group(contact, 115) # purchased summer camp tag
-      Infusionsoft.contact_add_to_group(contact, 101) if newsletter? # local marketing tag
+      Infusionsoft.contact_add_to_group(contact_id, 115) # purchased summer camp tag
+      Infusionsoft.contact_add_to_group(contact_id, 101) if newsletter? # local marketing tag
     end
   end
 end
