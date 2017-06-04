@@ -199,5 +199,7 @@ class Registration < ActiveRecord::Base
       Infusionsoft.contact_add_to_group(contact_id, 115) # purchased summer camp tag
       Infusionsoft.contact_add_to_group(contact_id, 101) if newsletter? # local marketing tag
     end
+
+    self.update_attribute :infusionsoft_id, contact_id
   end
 end
