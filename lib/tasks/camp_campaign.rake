@@ -7,11 +7,15 @@ namespace :mail do
   end
 end
 
-def send_tuesday_email
+def add_to_infusionsoft_campaign
   # Pull registration that have camps starting today.
-  @registrations = Registration.joins(:camp_offerings).where("start_date = ?", Date.today)
+  registrations = Registration.joins(:camp_offerings).where("start_date = ?", Date.today)
 
-  @registrations.each do |registration|
-    Infusionsoft.contact_add_to_group(registration.infusionsoft_id, 2304) # start summer camp campaign
+  registrations.each do |registration|
+    if registration.infusionsoft_id
+      Infusionsoft.contact_add_to_group(registration.infusionsoft_id, 2304) # start summer camp campaign
+    else
+      puts "No infusionsoft_id for registration #{registration.id}!"
+    end
   end
 end
