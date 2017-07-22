@@ -4,7 +4,7 @@ class CampSurveysController < ApplicationController
 
   def index
     @camp_surveys = CampSurvey.order(:id)
-    @current_camps_surveys = CampSurvey.where('created_at > ? AND created_at < ?', Date.today.beginning_of_year, Date.today)
+    @current_camps_surveys = CampSurvey.where('created_at > ? AND created_at <= ?', Date.today.beginning_of_year, Date.today)
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @camp_surveys }
