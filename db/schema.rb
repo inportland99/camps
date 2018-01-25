@@ -130,36 +130,6 @@ ActiveRecord::Schema.define(version: 20170604000035) do
     t.text     "directions"
   end
 
-  create_table "parents", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "phone"
-    t.string   "address_1"
-    t.string   "address_2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "stripe_customer_id"
-    t.string   "image_url"
-  end
-
-  add_index "parents", ["email"], name: "index_parents_on_email", unique: true
-  add_index "parents", ["reset_password_token"], name: "index_parents_on_reset_password_token", unique: true
-
   create_table "registrations", force: true do |t|
     t.string   "parent_first_name"
     t.string   "parent_last_name"
@@ -187,7 +157,6 @@ ActiveRecord::Schema.define(version: 20170604000035) do
     t.integer  "year"
     t.boolean  "newsletter",              default: false
     t.string   "coupon_uid",              default: ""
-    t.integer  "coupon_image_id"
     t.boolean  "payment_plan",            default: false
     t.string   "stripe_customer_id"
     t.boolean  "payment_plan_completed",  default: false

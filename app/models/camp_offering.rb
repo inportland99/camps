@@ -4,7 +4,7 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  CURRENT_YEAR = 3
+  CURRENT_YEAR = 4
 
   YEARS = %w(2014 2015 2016 2017 2018 2019 2020) # year 0 is 2014
 
@@ -13,81 +13,81 @@ class CampOffering < ActiveRecord::Base
   if Rails.env.development?
     OFFERING_WEEKS = {
                             1 => {
-                                    :start => Date.new(2017,6,5),
-                                    :end => Date.new(2017,6,9)
+                                    :start => Date.new(2018,6,4),
+                                    :end => Date.new(2018,6,8)
                             },
                             2 => {
-                                    :start => Date.new(2017,6,12),
-                                    :end => Date.new(2017,6,16)
+                                    :start => Date.new(2018,6,11),
+                                    :end => Date.new(2018,6,15)
                             },
                             3 => {
-                                    :start => Date.new(2017,6,19),
-                                    :end => Date.new(2017,6,23)
+                                    :start => Date.new(2018,6,18),
+                                    :end => Date.new(2018,6,22)
                             },
                             4 => {
-                                    :start => Date.new(2017,6,26),
-                                    :end => Date.new(2017,6,30)
+                                    :start => Date.new(2018,6,25),
+                                    :end => Date.new(2018,6,29)
                             },
                             5 => {
-                                    :start => Date.new(2017,7,10),
-                                    :end => Date.new(2017,7,14)
+                                    :start => Date.new(2018,7,9),
+                                    :end => Date.new(2018,7,13)
                             },
                             6 => {
-                                    :start => Date.new(2017,7,17),
-                                    :end => Date.new(2017,7,21)
+                                    :start => Date.new(2018,7,14),
+                                    :end => Date.new(2018,7,20)
                             },
                             7 => {
-                                    :start => Date.new(2017,7,24),
-                                    :end => Date.new(2017,7,28)
+                                    :start => Date.new(2018,7,23),
+                                    :end => Date.new(2018,7,27)
                             },
                             8 => {
-                                    :start => Date.new(2017,7,31),
-                                    :end => Date.new(2017,8,4)
+                                    :start => Date.new(2018,7,30),
+                                    :end => Date.new(2018,8,3)
                             },
                             9 => {
-                                    :start => Date.new(2017,8,7),
-                                    :end => Date.new(2017,8,11)
+                                    :start => Date.new(2018,8,6),
+                                    :end => Date.new(2018,8,10)
                             }
     }
   elsif Rails.env.production?
     OFFERING_WEEKS = {
-                            1 => {
-                                    :start => Date.new(2017,6,5),
-                                    :end => Date.new(2017,6,9)
-                            },
-                            2 => {
-                                    :start => Date.new(2017,6,12),
-                                    :end => Date.new(2017,6,16)
-                            },
-                            3 => {
-                                    :start => Date.new(2017,6,19),
-                                    :end => Date.new(2017,6,23)
-                            },
-                            4 => {
-                                    :start => Date.new(2017,6,26),
-                                    :end => Date.new(2017,6,30)
-                            },
-                            5 => {
-                                    :start => Date.new(2017,7,10),
-                                    :end => Date.new(2017,7,14)
-                            },
-                            6 => {
-                                    :start => Date.new(2017,7,17),
-                                    :end => Date.new(2017,7,21)
-                            },
-                            7 => {
-                                    :start => Date.new(2017,7,24),
-                                    :end => Date.new(2017,7,28)
-                            },
-                            8 => {
-                                    :start => Date.new(2017,7,31),
-                                    :end => Date.new(2017,8,4)
-                            },
-                            9 => {
-                                    :start => Date.new(2017,8,7),
-                                    :end => Date.new(2017,8,11)
-                            }
-    }
+      1 => {
+              :start => Date.new(2018,6,4),
+              :end => Date.new(2018,6,8)
+      },
+      2 => {
+              :start => Date.new(2018,6,11),
+              :end => Date.new(2018,6,15)
+      },
+      3 => {
+              :start => Date.new(2018,6,18),
+              :end => Date.new(2018,6,22)
+      },
+      4 => {
+              :start => Date.new(2018,6,25),
+              :end => Date.new(2018,6,29)
+      },
+      5 => {
+              :start => Date.new(2018,7,9),
+              :end => Date.new(2018,7,13)
+      },
+      6 => {
+              :start => Date.new(2018,7,14),
+              :end => Date.new(2018,7,20)
+      },
+      7 => {
+              :start => Date.new(2018,7,23),
+              :end => Date.new(2018,7,27)
+      },
+      8 => {
+              :start => Date.new(2018,7,30),
+              :end => Date.new(2018,8,3)
+      },
+      9 => {
+              :start => Date.new(2018,8,6),
+              :end => Date.new(2018,8,10)
+      }
+  }
   end
 
   def self.accessible_attributes
