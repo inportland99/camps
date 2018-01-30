@@ -54,3 +54,4 @@ gem 'momentjs-rails', '~> 2.5.0'
 gem 'jquery-timepicker-rails'
 gem 'infusionsoft'
 gem 'active-campaign-rails'
+gem 'pry-rails', group: :development

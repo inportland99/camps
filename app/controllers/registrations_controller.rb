@@ -58,8 +58,8 @@ class RegistrationsController < ApplicationController
           # send confirmation email
           PonyExpress.registration_confirmation(@registration).deliver
 
-          # add to infusionsoft if not already added and tag as purchasing a summer camp.
-          @registration.infusionsoft_actions
+          # sync to active campaign
+          @registration.active_campaign_actions
 
           # send notification to slack
           @registration.send_slack_notification
@@ -80,8 +80,8 @@ class RegistrationsController < ApplicationController
           # send email confirmation
           PonyExpress.registration_confirmation(@registration).deliver
 
-          #add to infusionsoft if not already added and tag as purchasing a summer camp.
-          @registration.infusionsoft_actions
+          # sync to active campaign
+          @registration.active_campaign_actions
 
           # send notification to slack
           @registration.send_slack_notification

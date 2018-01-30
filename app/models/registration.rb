@@ -163,14 +163,21 @@ class Registration < ActiveRecord::Base
     update_attribute :camp_campaign, true
   end
 
-  def activecampaign_actions
-    # search for contact in activecampaign via email address
-    result = JSON.parse ActiveCampaign.contact_list({'filters[email]' => '#{self.parent_email}'})
-    if result['result_code'] == 1 #found user in db
+  def active_campaign_actions
+    # contact_sync will create or modify a contact in activecampaign automatically
+    active_campaign_client.contact_sync(active_campaign_client_data)
+  end
 
-    else #create new contact record
-
-    end
+  def active_campaign_client_data
+    {
+      'email' => parent_email,
+      'first_name' => parent_first_name,
+      'last_name' => parent_last_name,
+      'phone' => parent_phone,
+      'p[2]' => 2,
+      'status[2]' => newsletter ? 1 : 2,
+      'tags' => 'api, SummerCamp2018, Local'
+    }
   end
 
   def infusionsoft_actions
@@ -211,5 +218,11 @@ class Registration < ActiveRecord::Base
     end
 
     self.update_attribute :infusionsoft_id, contact_id
+  end
+
+  def active_campaign_client
+    ActiveCampaign.new(
+        api_endpoint: ENV['ACTIVECAMPAIGN_URL'], # e.g. 'https://yourendpoint.api-us1.com'
+        api_key: ENV['ACTIVECAMPAIGN_KEY']) # e.g. 'a4e60a1ba200595d5cc37ede5732545184165e'
   end
 end

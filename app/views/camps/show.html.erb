@@ -1,12 +1,13 @@
 <div style="margin-top:20px;" class="container">
 
+  <h1><%= @camp.title %></h1>
   <%= raw @camp.show_description %>
 
   <hr>
-  <div class="text-center">
+  <!-- <div class="text-center">
     <h3>Camp Schedules:</h3>
-    <%= render '/pages/registration_buttons' %>
-  </div>
+    <%# render '/pages/registration_buttons' %>
+  </div> -->
 
   <% if current_user && current_user.role?("SuperAdmin") %>
     <p>

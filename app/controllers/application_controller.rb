@@ -1,7 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
-  before_action :set_locations 
+  before_action :set_locations
+  before_action :set_camps
   self.responder = ApplicationResponder
   respond_to :html
   protect_from_forgery
@@ -13,5 +14,9 @@ class ApplicationController < ActionController::Base
 
   def set_locations
     @locations = Location.all
+  end
+
+  def set_camps
+    @activecamps = Camp.activecamps.sort_by! {|a| a.title}
   end
 end

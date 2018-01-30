@@ -4,6 +4,9 @@ class Camp < ActiveRecord::Base
   has_many :camp_surveys
 
 
+  def self.activecamps
+    self.find [8,10,12,19,33,4,5,2,32,31,3,9,14,37,38,18,7,20]
+  end
 
   def self.accessible_attributes
    ["age", "capacity", "description", "price", "title", "show_description"]

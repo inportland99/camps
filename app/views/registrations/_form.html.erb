@@ -1,9 +1,12 @@
 <div class="row">
   <div class="col-sm-12">
-    <h1 class="registration_header">Camp Registration</h1>
+    <h1 class="registration_header"><%= Location.find(params[:location] || params[:registration][:location_id]).name %> Camp Registration</h1>
     <!-- <div class="payment_plan_banner centered">
       <span>Monthly Payment Plan!</span> Spend more than $250 and you can opt for a three-month installment plan.
     </div> -->
+    <p>
+      <%= Location.find(params[:location] || params[:registration][:location_id]).directions.html_safe %>
+    </p>
   </div>
 </div>
 <!-- <div class="row mt-5">
