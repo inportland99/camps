@@ -1,23 +1,27 @@
 <div class="row mt-5 mb-4">
-  <div class="col-lg-7">
-    <h2 class="location-title"><%= location.name %> Camp Schedule</h2>
-    <p>
-      <%= location.directions.html_safe %>
-    </p>
-  </div>
-  <div class="col-lg-5">
+  <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">How to register!</h3>
+        <h3 class="card-title">How to Register</h3>
       </div>
       <div class="card-block">
         <ul>
           <li>Click on camp names for detailed descriptions.</li>
-          <li>Select all of the summer camps for which you wish to register one child for.</li>
+          <li>Click on checkboxes to register for a camp.</li>
+          <li>You may only regsister ONE child at a time.</li>
           <li><u>You will need to complete a separate registration for each child.</u> We will fill out most the form the second time around 😉.</li>
+          <li>Can't find a camp that fits your schedule? Check another location!</li>
         </ul>
       </div>
     </div>
+  </div>
+</div>
+<div class="row mt-5 mb-4">
+  <div class="col-lg-12">
+    <h2 class="location-title"><%= location.name %> Camp Schedule</h2>
+    <p>
+      <%= location.directions.html_safe %>
+    </p>
   </div>
 </div>
 
@@ -29,10 +33,10 @@
         <tr>
           <th>Dates</th>
           <th>Time</th>
-          <th style="text-align:center;">Offering 1</th>
-          <th style="text-align:center;">Offering 2</th>
-          <th style="text-align:center;">Offering 3</th>
-          <th style="text-align:center;">Extended care</th>
+          <th style="text-align:center;">Camps for Ages 9-13</th>
+          <th style="text-align:center;">Camps for Ages 6-8</th>
+          <th style="text-align:center;">Additional Camps</th>
+          <th style="text-align:center;">Extended Care</th>
         </tr>
       </thead>
       <tbody>
@@ -59,7 +63,7 @@
                       <span class="pull-left"><%= open_spots(co).html_safe %></span>
                       <span style='color:green;' class="pull-right">$<%= co.price %></span>
                       <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 40 %>
+                        $<%= co.price + 10 %>
                       </span>
                     <% end %>
                     <% if co.hidden && user_signed_in? %>
@@ -81,7 +85,7 @@
                       <span class="pull-left"><%= open_spots(co).html_safe %></span>
                       <span style='color:green;' class="pull-right">$<%= co.price %></span>
                       <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 40 %>
+                        $<%= co.price + 10 %>
                       </span>
                     <% end %>
                     <% if co.hidden && user_signed_in? %>
@@ -111,7 +115,7 @@
                       <span class="pull-left"><%= open_spots(co).html_safe %></span>
                       <span style='color:green;' class="pull-right">$<%= co.price %></span>
                       <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 40 %>
+                        $<%= co.price + 10 %>
                       </span>
                     <% end %>
                     <% if co.hidden && user_signed_in? %>
@@ -160,7 +164,7 @@
                       <span class="pull-left"><%= open_spots(co).html_safe %></span>
                       <span style='color:green;' class="pull-right">$<%= co.price %></span>
                       <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 40 %>
+                        $<%= co.price + 10 %>
                       </span>
                     <% end %>
                     <% if co.hidden && user_signed_in? %>
@@ -182,7 +186,7 @@
                       <span class="pull-left"><%= open_spots(co).html_safe %></span>
                       <span style='color:green;' class="pull-right">$<%= co.price %></span>
                       <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 40 %>
+                        $<%= co.price + 10 %>
                       </span>
                     <% end %>
                     <% if co.hidden && user_signed_in? %>
@@ -230,7 +234,7 @@
                         <span class="pull-left"><%= open_spots(co).html_safe %></span>
                         <span style='color:green;' class="pull-right">$<%= co.price %></span>
                         <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                          $<%= co.price + 40 %>
+                          $<%= co.price + 10 %>
                         </span>
                       <% end %>
                       <% if co.hidden && user_signed_in? %>
@@ -262,7 +266,7 @@
                           <span class="pull-left"><%= open_spots(co).html_safe %></span>
                           <span style='color:green;' class="pull-right">$<%= co.price %></span>
                           <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                            $<%= co.price + 40 %>
+                            $<%= co.price + 10 %>
                           </span>
                         <% end %>
                         <% if co.hidden && user_signed_in? %>
@@ -294,7 +298,7 @@
                           <span class="pull-left"><%= open_spots(co).html_safe %></span>
                           <span style='color:green;' class="pull-right">$<%= co.price %></span>
                           <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                            $<%= co.price + 40 %>
+                            $<%= co.price + 10 %>
                           </span>
                         <% end %>
                         <% if co.hidden && user_signed_in? %>

@@ -2,10 +2,6 @@
   <!-- This form renders if the parent is registering another child after redirect from reg show page. Currently, this does not render. -->
   <%= simple_form_for(@registration) do |f| %>
   <div class="row">
-    <div class="col-md-4">
-      <!-- location select that toggles calendar view from location to location -->
-      <%= f.association :location, label_method: :name, selected: params[:location] %>
-    </div>
     <div class="col-md-8">
       <% if @registration.errors.any? %>
         <div id="error_explanation" style="color:red;">
@@ -195,8 +191,6 @@
           <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
         </div>
       <% end %>
-      <!-- Location select that toggles calendar view from location to location. -->
-      <%= f.association :location, label_method: :name, selected: params[:location] %>
     </div>
   </div>
   <div class="row">
@@ -305,7 +299,7 @@
   <!-- ** Camps Your Registering For ** -->
   <div class="row">
     <div class="col-sm-12">
-      <h3>Camps you are registering for:</h3>
+      <h3>Camps you have selected:</h3>
       <div id="camp_registrations">
         <ul>
         </ul>
@@ -314,6 +308,7 @@
   </div><!-- /.row -->
   <div class="row mt-4 mb-4">
     <div class="col-sm-12">
+      <h2>Registration Form & Payment</h2><br />
       <h3>Student Information</h3>
     </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
   </div>
@@ -358,6 +353,7 @@
       <%= f.input :referred_by, label: "Referred By" %>
       <%= f.input :stripe_card_token, as: :hidden %>
       <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
+      <%= f.input :location_id, as: :hidden, input_html: { value: params[:location] } %>
     </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
     <div class="col-lg-4">
       <%= render 'credit_card_form', f: f %>

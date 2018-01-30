@@ -1,6 +1,7 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  before_action :set_locations 
   self.responder = ApplicationResponder
   respond_to :html
   protect_from_forgery
@@ -8,5 +9,9 @@ class ApplicationController < ActionController::Base
 
   def ssl_configured?
     !Rails.env.development?
+  end
+
+  def set_locations
+    @locations = Location.all
   end
 end

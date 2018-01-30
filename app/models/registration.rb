@@ -163,6 +163,16 @@ class Registration < ActiveRecord::Base
     update_attribute :camp_campaign, true
   end
 
+  def activecampaign_actions
+    # search for contact in activecampaign via email address
+    result = JSON.parse ActiveCampaign.contact_list({'filters[email]' => '#{self.parent_email}'})
+    if result['result_code'] == 1 #found user in db
+
+    else #create new contact record
+
+    end
+  end
+
   def infusionsoft_actions
     # search infusionsoft by email
     result = Infusionsoft.contact_find_by_email(self.parent_email, [:Id])

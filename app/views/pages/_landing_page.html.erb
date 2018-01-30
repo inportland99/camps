@@ -11,12 +11,16 @@
           <div class="main-title">
             For Kids Who Love Math & Tech
           </div> <!-- /.main-title -->
+          <div class="main-grades">
+            Grades K-12<br />
+            Week-long<br />
+            Half Day &amp; Full Day<br />
+            Extended Care Available<br />
+          </div>
           <%= image_tag "home_page/kids_at_the_table.svg", width: '50%', class: 'hidden-lg-up' %>
           <div class="main-buttons">
-            <%= link_to "Schedule By Location", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
-          </div>
-          <div class="main-grades">
-            Grades K-8 &bull; Full Day &amp; Half
+            <%= link_to "View Schedules by Location", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+            <%= link_to "View Camp Descriptions", locations_path, class: "btn btn-lg btn-blue main-schedule" %>
           </div>
         </div><!-- /.col-sm-6 .col-xs-12 -->
         <div class="col-sm-6 col-xs-12 hidden-md-down">
@@ -33,54 +37,14 @@
         <hr>
       </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="after_main_section">
-        We max out at 10 students &amp; hire licensed teachers &amp; industry professionals.
-      </div>
-    </div><!-- /row -->
-  </div><!-- /.container -->
-  <div class="row">
-    <div class="main-location">
-
-    </div>
-  </div>
 </div><!-- /.headerwrap -->
-<div class="container" style="margin-bottom:70px;">
-  <div class="row">
-    <div class="col-sm-12 text-sm-center">
-      <h3 class="location-select"><i>Select Location For Schedule</i></h3>
-    </div>
-  </div>
-  <%= render 'locations/select_location' %>
-</div>
-<div class="reminder">
-  <div class="row">
-    <div class="col-sm-12 centered">
-      <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
-        <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/69050ced480ca23de310e59c6bf16b91" class="infusion-form form-inline"
-        method="POST">
-        <div class="col-sm-8 offset-sm-2">
-          <input name="inf_form_xid" type="hidden" value="69050ced480ca23de310e59c6bf16b91" />
-          <input name="inf_form_name" type="hidden" value="Asks For Reminder" />
-          <input name="infusionsoft_version" type="hidden" value="1.50.0.38" />
-          <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
-          <input class="form-control infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" placeholder="Last Name" />
-          <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/><br>
-          <input class="btn btn-purple btn-lg" type="submit" value="Submit" />
-        </div>
-      </form>
-      <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
-    </div>
-  </div>
-</div>
 
   <div class="container">
     <!-- ** Math Plus Camp Advantage ** -->
     <div class="row mt centered" >
       <div class="col-lg-10 offset-lg-1">
-        <h1 class="hidden-sm-down">The Math Plus Camp Advantage.</h1>
-        <h2 class="hidden-md-up">The Math Plus Camp Advantage.</h2>
+        <h1 class="hidden-sm-down">The Math Plus Advantage.</h1>
+        <h2 class="hidden-md-up">The Math Plus Advantage.</h2>
         <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
@@ -90,7 +54,7 @@
         <i class="fa fa-gears fa-5x"></i>
         <h2 class="camps-blue">Hands-on, Minds-on</h2>
         <p>
-          Catered to your child's unique interests.
+          Enhance your child's passion for math & tech.
         </p>
       </div><!--/col-lg-4 -->
 
@@ -106,7 +70,7 @@
         <i class="fa fa-sort-amount-desc fa-5x"></i>
         <h2 class="camps-green">Small Camp Sizes</h2>
         <p>
-          8-10 students per camp.
+          No more than 10 students per camp.
         </p>
       </div><!--/col-lg-4 -->
     </div><!-- /row -->
@@ -114,9 +78,9 @@
     <div class="row mt centered container">
       <div class="col-lg-4">
         <i class="fa fa-comments-o fa-5x"></i>
-        <h2 class="camps-orange">100% Satisfaction</h2>
+        <h2 class="camps-orange">98% Satisfaction Rate</h2>
         <p>
-          Over 1,000 happy students served.
+          Surveys show over 2,500 happy students served.
         </p>
       </div><!--/col-lg-4 -->
 
@@ -124,15 +88,15 @@
         <i class="fa fa-calendar fa-5x"></i>
         <h2 class="camps-purple">Flexible Scheduling</h2>
         <p>
-          Change camps at any time.
+          Something came up? No problem, change camps at any time.
         </p>
       </div><!--/col-lg-4 -->
 
       <div class="col-lg-4">
         <i class="fa fa-usd fa-5x"></i>
-        <h2 class="camps-yellow-light">Satisfaction Guarantee</h2>
+        <h2 class="camps-yellow">100% Money Back Guarantee</h2>
         <p>
-          If your child is not happy with the camp we'll happily issue a full refund.
+          If your child is not happy with the camp, we'll happily issue a full refund.
         </p>
       </div><!--/col-lg-4 -->
     </div><!-- /row -->
@@ -143,21 +107,30 @@
     <div class"row">
       <hr>
     </div>
-    <div class="row" style="margin-bottom:60px;">
+    <!-- <div class="row" style="margin-bottom:60px;">
       <div class="girls_only_banner">
-        <%= image_tag "home_page/girls_only_badge.svg" %> <span>GIRLS ONLY OPTIONS!</span>
+        <%# image_tag "home_page/girls_only_badge.svg" %> <span>GIRLS ONLY OPTIONS!</span>
       </div>
-    </div>
+    </div> -->
     <!-- ** Camp Information ** -->
     <div class="row mt centered">
       <div class="col-lg-6 offset-lg-3 text-xs-center">
-        <h1 style="padding-top:50px;">Our Camps</h1>
-        <h3><small>Duration:</small> 1 Week (M-F)</h3>
-        <p>Check schedule for start and end times.</p>
+        <h1 style="padding-top:50px;">Enrichment Summer Camps</h1>
+        <!-- <h3><small>Duration:</small> 1 Week (M-F)</h3>
+        <p>Check schedule for start and end times.</p> -->
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
-    <!-- ** Row 1 ** -->
+
+    <div class="row mt centered">
+      <div class="col-lg-6 offset-lg-3 text-xs-center">
+      <hr>
+      <h3>Camp Options For Ages 4 -5 and 6 - 8</h1>
+      <hr>
+      </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
+    </div><!-- /row -->
+
     <div class="container">
+      <!-- ** Row ** -->
       <div class="row mt centered">
         <div class="col-lg-4">
           <%= link_to("#camp10Modal", :data => {:toggle=>"modal"}) do %>
@@ -165,15 +138,73 @@
               <%= image_tag('life-size-choc-fix-150x150.jpg')%>
             </div>
             <h2>Brain Games</h2>
-          <p>Ages: 6-8 &amp; 9-12 Half-Day</p>
+          <p>Ages: 6-8 Half-Day</p>
           <% end %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
-          <%= link_to("#camp32Modal", :data => {:toggle=>"modal"}) do %>
+          <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
-            <%= image_tag('robotics.png', size: '150x150')%>
+            <%= image_tag('engineering.png', size: '150x150')%>
           </div>
-          <h2>LEGO Robotics</h2>
+          <h2>LEGO Engineering</h2>
+          <p>Ages: 6-8 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp19Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('jrlego.jpg', size: '150x150')%>
+          </div>
+          <h2>Jr. LEGO Robotics</h2>
+          <p>Ages: 6-8 Half-Day</p>
+          <p></p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <!-- ** Row ** -->
+      <div class="row mt centered">
+        <div class="col-lg-2">
+        </div><!--/col-lg-2 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp33Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('hexaflexagon.jpg', size: '150x150')%>
+          </div>
+          <h2>Jr. Maker Camp</h2>
+          <p>Ages: 6-8 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
+          </div>
+          <h2>Kickstart KG</h2>
+          <p>Ages: 4-5 Half-Day</p>
+          <p></p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-2">
+        </div><!--/col-lg-2 -->
+      </div>
+
+      <div class="row mt centered">
+        <div class="col-lg-6 offset-lg-3 text-xs-center">
+          <hr>
+          <h3>Camp Options For Ages 9 - 13</h1>
+          <hr>
+        </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
+      </div><!-- /row -->
+
+      <!-- ** Row ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp4Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('programming.png', size: '150x150')%>
+          </div>
+          <h2>Coding 101</h2>
           <p>Ages: 9-13 Half-Day</p>
           <% end %>
         </div><!--/col-lg-4 -->
@@ -186,17 +217,58 @@
           <p>Ages: 9-13 Half-Day</p>
           <% end %>
         </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp2Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('STEMcraft.png', size: '150x150')%>
+          </div>
+          <h2>Minecraft &amp; STEM</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
       </div>
 
-      <!-- ** Row 2 ** -->
+      <!-- ** Row ** -->
       <div class="row mt centered">
         <div class="col-lg-4">
-          <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
+          <%= link_to("#camp32Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
-            <%= image_tag('engineering.png', size: '150x150')%>
+            <%= image_tag('robotics.png', size: '150x150')%>
           </div>
-          <h2>LEGO Engineering</h2>
-          <p>Ages: 6-8 Half-Day</p>
+          <h2>LEGO Robotics</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp31Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('maker_camp.png', size: '150x150')%>
+          </div>
+          <h2>Maker Camp</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('3d-printing.jpg', size: '150x150')%>
+          </div>
+          <h2>3D Modeling & Printing</h2>
+          <p>Ages: 9-13 Full-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <!-- ** Row ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('prealgebraprep.png', size: '150x150')%>
+          </div>
+          <h2>Middle School Math Prep</h2>
+          <p>Ages: 10-12 Half-Day</p>
+          <p></p>
           <% end %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
@@ -206,6 +278,47 @@
           </div>
           <h2>Shark Tank</h2>
           <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp37Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('enigma.jpg', size: '150x150')%>
+          </div>
+          <h2>Crack the Code</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <p></p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+
+      <div class="row mt centered">
+        <div class="col-lg-6 offset-lg-3 text-xs-center">
+          <hr>
+          <h3>Additional Camp Options for Varying Ages</h1>
+          <hr>
+        </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
+      </div><!-- /row -->
+
+      <!-- ** Row ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
+          <%= link_to("#camp38Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('QEDmath.jpg', size: '150x150')%>
+          </div>
+          <h2>QED: Advanced Math Camp</h2>
+          <p>Ages: 9-13 Half-Day</p>
+          <% end %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp18Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('bootcamp.jpg', size: '150x150')%>
+          </div>
+          <h2>SAT/ACT Math Bootcamp</h2>
+          <p>Ages: 14-18 Half-Day</p>
+          <p></p>
           <% end %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
@@ -219,68 +332,6 @@
         </div><!--/col-lg-4 -->
       </div>
 
-      <!-- ** Row 3 ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp4Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('programming.png', size: '150x150')%>
-          </div>
-          <h2>Programming</h2>
-          <p>Ages: 9-13 Half-Day</p>
-          <% end %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp2Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('STEMcraft.png', size: '150x150')%>
-          </div>
-          <h2>Minecraft</h2>
-          <p>Ages: 9-13 Half-Day</p>
-          <% end %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('inventors.png', size: '150x150')%>
-          </div>
-          <h2>3D Printing</h2>
-          <p>Ages: 9-13 Full-Day</p>
-          <% end %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-      <!-- ** Row 4 ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('prealgebraprep.png', size: '150x150')%>
-          </div>
-          <h2>Pre-Algebra Prep</h2>
-          <p>Ages: 10-12 Half-Day</p>
-          <p></p>
-          <% end %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
-          </div>
-          <h2>Kickstart Kindergarten</h2>
-          <p>Ages: 4-5 Half-Day</p>
-          <p></p>
-          <% end %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp31Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('maker_camp.png', size: '150x150')%>
-          </div>
-          <h2>Maker Camp</h2>
-          <p>Ages: 9-13 Half-Day</p>
-          <% end %>
-        </div><!--/col-lg-4 -->
         <!-- <div class="col-lg-4">
           <%= link_to("#girlsOnlyModal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
@@ -290,18 +341,17 @@
           <p>Ages: 9-13 Half-Day</p>
           <% end %>
         </div>--><!--/col-lg-4 -->
-      </div>
     </div>
 
-    <div class="mb-5">
+    <!-- <div class="mb-5">
       <%= render 'compare_button' %>
       <h2 class="centered">Questions? Call 614-792-6284</h2>
-    </div>
+    </div> -->
 
     <%= render '/registrations/camp_modals' %>
 
   <!-- girlsOnlyModal -->
-  <div class="modal fade" id="girlsOnlyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="girlsOnlyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -317,12 +367,54 @@
           </p>
           <hr>
           <%= render '/pages/registration_buttons' %>
-        </div><!-- .modal-body -->
-        <div class="modal-footer">
+        </div> -->
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div>
+  </div> -->
 </div>
+<div class="row">
+  <div class="main-location">
+
+  </div>
+</div>
+<div class="container" style="margin-bottom:70px;">
+  <div class="row">
+    <div class="col-sm-12 text-sm-center">
+      <h3 class="location-select"><i>Select Location For Schedule</i></h3>
+    </div>
+  </div>
+  <%= render 'locations/select_location' %>
+</div>
+<div class = "reminder">
+  <div class="row">
+    <div class="col-sm-12 centered">
+      <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
+        <%= render '/registrations/activecampaign_form' %>
+    </div>
+  </div>
+</div>
+<!-- <div class="reminder">
+  <div class="row">
+    <div class="col-sm-12 centered">
+      <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
+      <form accept-charset="UTF-8" action="https://jmrmath.infusionsoft.com/app/form/process/69050ced480ca23de310e59c6bf16b91" class="infusion-form form-inline"
+      method="POST">
+      <div class="col-sm-8 offset-sm-2">
+        <input name="inf_form_xid" type="hidden" value="69050ced480ca23de310e59c6bf16b91" />
+        <input name="inf_form_name" type="hidden" value="Asks For Reminder" />
+        <input name="infusionsoft_version" type="hidden" value="1.50.0.38" />
+        <input class="form-control infusion-field-input-container" id="inf_field_FirstName" name="inf_field_FirstName" type="text" placeholder="First Name" />
+        <input class="form-control infusion-field-input-container" id="inf_field_LastName" name="inf_field_LastName" type="text" placeholder="Last Name" />
+        <input class="form-control infusion-field-input-container" id="inf_field_Email" name="inf_field_Email" type="text" placeholder="Email"/><br>
+        <input class="btn btn-purple btn-lg" type="submit" value="Submit" />
+      </div>
+      </form>
+      <script type="text/javascript" src="https://jmrmath.infusionsoft.com/app/webTracking/getTrackingCode?trackingId=923aa331612576ad9a3e1f7a3e09d881"></script>
+    </div>
+  </div>
+</div> -->
+
 <!-- /container -->
