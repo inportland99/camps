@@ -1,189 +1,4 @@
-<% if params[:registration] && params[:registration][:parent_first_name] %>
-  <!-- This form renders if the parent is registering another child after redirect from reg show page. Currently, this does not render. -->
-  <%= simple_form_for(@registration) do |f| %>
-  <div class="row">
-    <div class="col-md-8">
-      <% if @registration.errors.any? %>
-        <div id="error_explanation" style="color:red;">
-          <h4 style="color:red;"><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved. See fields below for errors. Reselect camps before submitting.</h4>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <div id="camp_offerings">
-        <% if params[:registration][:location_id] == "1" || @registration.location_id == 1 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:registration][:location_id] == "2" || @registration.location_id == 2 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:registration][:location_id] == "3" || @registration.location_id == 3 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:inline-block;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div>
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:registration][:location_id] == "4" || @registration.location_id == 4 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:inline-block;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div>
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% else %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:inline-block;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:inline-block;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:inline-block;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% end %>
-      </div> <!-- /#camp_offerings -->
-    </div> <!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
-  </div> <!-- /.row-->
-  <!-- ** Camps Your Registering For ** -->
-  <div class="row">
-    <div class="col-sm-12">
-      <h3>Camps you are registering for:</h3>
-      <div id="camp_registrations">
-        <ul>
-        </ul>
-      </div><!-- /#camp_registrations -->
-    </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
-  </div><!-- /.row -->
-  <div class='row mt-4 mb-4'>
-    <div class="col-sm-12">
-      <h3>Student Information</h3>
-    </div>
-    <div class="col-lg-4">
-      <%= f.input :student_first_name, label: "Student First Name" %>
-      <%= f.input :student_last_name, label: "Student Last Name" %>
-    </div>
-
-    <div class="col-lg-4">
-      <%= f.input :student_grade, label: "Grade" %>
-      <%= f.input :student_allergies, label: "Allergies" %>
-    </div>
-
-    <div class="col-lg-4">
-    <%= f.input :emergency_contact_name, input_html: { value: params[:registration][:emergency_contact_name]} %>
-    <%= f.input :emergency_contact_phone, input_html: { value: params[:registration][:emergency_contact_phone]} %>
-    <%= f.input :total, as: :hidden %>
-    </div>
-  </div>
-  <div class="row mt-4 mb-3">
-    <div class="col-md-8">
-      <h3>Parent/Gaurdian Information</h3>
-    </div>
-    <div class="col-md-4 hidden-md-down">
-      <h3>Payment Information</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4">
-      <%= f.input :parent_first_name, label: "Parent/Guardian First Name", input_html: { value: params[:registration][:parent_first_name]} %>
-      <%= f.input :parent_last_name, label: "Last Name", input_html: { value: params[:registration][:parent_last_name]} %>
-      <%= f.input :parent_address_1, label: "Address 1", input_html: { value: params[:registration][:parent_address_1]} %>
-      <%= f.input :parent_address_2, label: "Address 2", input_html: { value: params[:registration][:parent_address]} %>
-    </div>
-    <div class="col-lg-4">
-      <%= f.input :parent_city, label: "City", input_html: { value: params[:registration][:parent_city]} %>
-      <%= f.input :parent_state, label: "State", input_html: { value: params[:registration][:parent_state]} %>
-      <%= f.input :parent_zip, label: "Zip", as: :string, input_html: { value: params[:registration][:parent_zip]} %>
-      <%= f.input :parent_email, label: "Email", input_html: { value: params[:registration][:parent_email]} %>
-      <%= f.input :parent_phone, label: "Phone", input_html: { value: params[:registration][:parent_phone]} %>
-      <%= f.input :stripe_card_token, as: :hidden %>
-      <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
-    </div>
-    <div class="col-lg-4">
-      <%= render 'credit_card_form', f: f %>
-      <%= f.input :coupon_code, as: :hidden %>
-      <div id="coupon_code_field" class="form-group string optional">
-        <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
-        <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
-      </div>
-      <div id="coupon_error"></div>
-      <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-default btn-xs', id: :coupon_code_button %>
-      </br>
-    </div>
-  </div>
-  <div class="registration_button mt-4">
-    <div class="row">
-      <div class="col-md-8 mt-4">
-        <h3>Camps you are registering for:</h3>
-        <div id="camp_registrations">
-          <ul>
-          </ul>
-        </div>
-      </div>
-      <div class="col-md-4 mt-3">
-        <%= f.input :newsletter, label: "I would like to receive more information from Math Plus Academy!", class: 'float-sm-right' %>
-        <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right", id: "registration_button" %>
-        <%= image_tag('satisfaction.png', size: '100x100', class: 'float-sm-right mt-4') %>
-      </div>
-    </div>
-  </div><!-- /.registration_button -->
-  <% end %>
-  </br>
-<% else %>
-    <!-- This form renders if page is being loaded with no previous registrations. -->
-  <%= simple_form_for(@registration) do |f| %>
+<%= simple_form_for(@registration) do |f| %>
   <div class="row">
     <div class="col-lg-4">
       <% if @registration.errors.any? %>
@@ -196,106 +11,11 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div id="camp_offerings">
-        <% if params[:location] == "1" || @registration.location_id == 1 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:location] == "2" || @registration.location_id == 2 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:location] == "3" || @registration.location_id == 3 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:inline-block;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div>
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:location] == "4" || @registration.location_id == 4 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:inline-block;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div>
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:none;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% elsif params[:location] == "5" || @registration.location_id == 5 %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:none;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:none;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:none;">
-            <%= render 'powell_camp_calendar' %>
-          </div>
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:none;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div>
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:inline-block;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% else %>
-          <div id="past_il_camp_offerings" class="past_il_camp_offerings" style="display:inline-block;">
-            <%= render 'past_camp_calendar' %>
-          </div>
-          <div id="mill_run_camp_offerings" class="mill_run_camp_offerings" style="display:inline-block;">
-            <%= render 'mill_run_camp_calendar' %>
-          </div>
-          <div id="powell_camp_offerings" class="powell_camp_offerings" style="display:inline-block;">
-            <%= render 'powell_camp_calendar' %>
-          </div><!-- /#powell_camp_offerings -->
-          <div id="new_albany_camp_offerings" class="new_albany_camp_offerings" style="display:inline-block;">
-            <%= render 'new_albany_camp_calendar' %>
-          </div><!-- /#new_albany_camp_offerings -->
-          <div id="teays_valley_camp_offerings" class="teays_valley_camp_offerings" style="display:inline-block;">
-            <%= render 'teays_valley_camp_calendar' %>
-          </div>
-        <% end %>
+        <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
       </div><!-- /#camp_offerings -->
     </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
   </div><!-- /.row -->
+
   <!-- ** Camps Your Registering For ** -->
   <div class="row">
     <div class="col-sm-12">
@@ -338,23 +58,43 @@
     </div><!-- /.col-lg-4 .col-md-4 .hidden-sm-down -->
   </div><!-- /.row -->
   <div class="row">
-    <div class="col-lg-4">
-      <%= f.input :parent_first_name, label: "Parent/Guardian First Name" %>
-      <%= f.input :parent_last_name, label: "Last Name" %>
-      <%= f.input :parent_address_1, label: "Address 1" %>
-      <%= f.input :parent_address_2, label: "Address 2" %>
-        <%= f.input :parent_city, label: "City" %>
-    </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
-    <div class="col-lg-4">
-      <%= f.input :parent_state, collection: Registration::US_STATES, label: "State" %>
-      <%= f.input :parent_zip, as: :string, label: "Zip" %>
-      <%= f.input :parent_email, label: "Email" %>
-      <%= f.input :parent_phone, label: "Phone" %>
-      <%= f.input :referred_by, label: "Referred By" %>
-      <%= f.input :stripe_card_token, as: :hidden %>
-      <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
-      <%= f.input :location_id, as: :hidden, input_html: { value: params[:location] } %>
-    </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
+    <% if params[:registration] %>
+      <div class="col-lg-4">
+        <%= f.input :parent_first_name, label: "Parent/Guardian First Name", input_html: {value: params[:registration][:parent_first_name]}  %>
+        <%= f.input :parent_last_name, label: "Last Name", input_html: {value: params[:registration][:parent_last_name]} %>
+        <%= f.input :parent_address_1, label: "Address 1", input_html: {value: params[:registration][:parent_address_1]} %>
+        <%= f.input :parent_address_2, label: "Address 2", input_html: {value: params[:registration][:parent_address_2]} %>
+        <%= f.input :parent_city, label: "City", input_html: {value: params[:registration][:parent_city]} %>
+      </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
+      <div class="col-lg-4">
+        <%= f.input :parent_state, collection: Registration::US_STATES, label: "State", input_html: {value: params[:registration][:parent_state]} %>
+        <%= f.input :parent_zip, as: :string, label: "Zip", input_html: {value: params[:registration][:parent_zip]} %>
+        <%= f.input :parent_email, label: "Email", input_html: {value: params[:registration][:parent_email]} %>
+        <%= f.input :parent_phone, label: "Phone", input_html: {value: params[:registration][:parent_phone]} %>
+        <%= f.input :referred_by, label: "Referred By", input_html: {value: params[:registration][:referred_by]} %>
+        <%= f.input :stripe_card_token, as: :hidden %>
+        <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
+        <%= f.input :location_id, as: :hidden, input_html: { value: params[:location] || params[:registration][:location_id]} %>
+      </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
+    <% else %>
+      <div class="col-lg-4">
+        <%= f.input :parent_first_name, label: "Parent/Guardian First Name"  %>
+        <%= f.input :parent_last_name, label: "Last Name" %>
+        <%= f.input :parent_address_1, label: "Address 1" %>
+        <%= f.input :parent_address_2, label: "Address 2"%>
+        <%= f.input :parent_city, label: "City"%>
+      </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
+      <div class="col-lg-4">
+        <%= f.input :parent_state, collection: Registration::US_STATES, label: "State" %>
+        <%= f.input :parent_zip, as: :string, label: "Zip" %>
+        <%= f.input :parent_email, label: "Email" %>
+        <%= f.input :parent_phone, label: "Phone" %>
+        <%= f.input :referred_by, label: "Referred By" %>
+        <%= f.input :stripe_card_token, as: :hidden %>
+        <%= f.input :year, as: :hidden, input_html: { value: CampOffering::CURRENT_YEAR } %>
+        <%= f.input :location_id, as: :hidden, input_html: { value: params[:location] || params[:registration][:location_id]} %>
+      </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
+    <% end %>
     <div class="col-lg-4">
       <%= render 'credit_card_form', f: f %>
       <%= f.input :coupon_code, as: :hidden %>
@@ -382,5 +122,4 @@
       </div>
     </div>
   </div><!-- /.registration_button -->
-  <% end %>
 <% end %>
