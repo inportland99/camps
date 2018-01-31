@@ -1,8 +1,13 @@
 <div style="margin-top:20px;" class="container">
 
-  <h1><%= @camp.title %></h1>
-  <%= raw @camp.show_description %>
+  <h1><%= @camp.title %> <small style="font-size: 30px;">&nbsp; Ages <%= @camp.age %></small></h1>
 
+  <div class="show-camp">
+    <%= raw @camp.description %>
+    <br /><br />Camp is limited to <%= @camp.capacity %> students.
+    <br /><br />Half-day Monday through Friday (9:00am-12pm or 12:30-3:30pm).
+    <br /><br />Tuition: $<%= @camp.price + 10 %>
+  </div>
   <hr>
   <!-- <div class="text-center">
     <h3>Camp Schedules:</h3>

@@ -20,7 +20,6 @@
           <%= image_tag "home_page/kids_at_the_table.svg", width: '50%', class: 'hidden-lg-up' %>
           <div class="main-buttons">
             <%= link_to "View Schedules by Location", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
-            <%= link_to "View Camp Descriptions", locations_path, class: "btn btn-lg btn-blue main-schedule" %>
           </div>
         </div><!-- /.col-sm-6 .col-xs-12 -->
         <div class="col-sm-6 col-xs-12 hidden-md-down">
@@ -43,9 +42,9 @@
     <!-- ** Math Plus Camp Advantage ** -->
     <div class="row mt centered" >
       <div class="col-lg-10 offset-lg-1">
-        <h1 class="hidden-sm-down">The Math Plus Advantage.</h1>
+        <h1 class="hidden-sm-down">The Math Plus Advantage</h1>
         <h2 class="hidden-md-up">The Math Plus Advantage.</h2>
-        <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3>
+        <!-- <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3> -->
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
 
@@ -54,7 +53,7 @@
         <i class="fa fa-gears fa-5x"></i>
         <h2 class="camps-blue">Hands-on, Minds-on</h2>
         <p>
-          Enhance your child's passion for math & tech.
+          Enhance your child's passion for math & tech with engaging, interactive camps
         </p>
       </div><!--/col-lg-4 -->
 
@@ -78,9 +77,9 @@
     <div class="row mt centered container">
       <div class="col-lg-4">
         <i class="fa fa-comments-o fa-5x"></i>
-        <h2 class="camps-orange">98% Satisfaction Rate</h2>
+        <h2 class="camps-orange">98.7% Satisfaction</h2>
         <p>
-          Surveys show over 2,500 happy students served.
+          Over 2,500 happy campers served.
         </p>
       </div><!--/col-lg-4 -->
 
@@ -96,7 +95,7 @@
         <i class="fa fa-usd fa-5x"></i>
         <h2 class="camps-yellow">100% Money Back Guarantee</h2>
         <p>
-          If your child is not happy with the camp, we'll happily issue a full refund.
+          If your child does not enjoy camp, we'll happily issue a full refund.
         </p>
       </div><!--/col-lg-4 -->
     </div><!-- /row -->
@@ -135,7 +134,7 @@
         <div class="col-lg-4">
           <%= link_to("#camp10Modal", :data => {:toggle=>"modal"}) do %>
             <div class="circle_base type_1">
-              <%= image_tag('life-size-choc-fix-150x150.jpg')%>
+              <%= image_tag('braingames.jpg', size: '150x150')%>
             </div>
             <h2>Brain Games</h2>
           <p>Ages: 6-8 Half-Day</p>
@@ -233,7 +232,7 @@
         <div class="col-lg-4">
           <%= link_to("#camp32Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
-            <%= image_tag('robotics.png', size: '150x150')%>
+            <%= image_tag('ev3.jpg', size: '150x150')%>
           </div>
           <h2>LEGO Robotics</h2>
           <p>Ages: 9-13 Half-Day</p>
