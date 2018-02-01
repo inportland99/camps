@@ -174,8 +174,8 @@ class Registration < ActiveRecord::Base
       'first_name' => parent_first_name,
       'last_name' => parent_last_name,
       'phone' => parent_phone,
-      'p[2]' => 2,
-      'status[2]' => newsletter ? 1 : 2,
+      'p[4]' => 4,
+      'status[4]' => newsletter ? 1 : 2,
       'tags' => 'api, SummerCamp2018, Local'
     }
   end
