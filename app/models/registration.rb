@@ -169,15 +169,22 @@ class Registration < ActiveRecord::Base
   end
 
   def active_campaign_client_data
-    {
+    client_data = {
       'email' => parent_email,
       'first_name' => parent_first_name,
       'last_name' => parent_last_name,
       'phone' => parent_phone,
       'p[4]' => 4,
-      'status[4]' => newsletter ? 1 : 2,
-      'tags' => 'api, SummerCamp2018, Local'
+      'status[4]' => 1
     }
+    if newsletter
+      tag_list = 'api, SummerCamp2018, Local'
+    else
+      tag_list = 'api, SummerCamp2018'
+    end
+    client_data.merge!('tags' => tag_list)
+
+    client_data
   end
 
   def infusionsoft_actions
