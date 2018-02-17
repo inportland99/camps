@@ -17,14 +17,6 @@
   </div>
 </div>
 
-<% if location.id == 6 %>
-  <div class="row mt-5">
-    <div class="col-sm-12 align-center">
-      <div class="alert alert-danger text-center" >Official camp registration for Solon will begin soon. Please email solon@mathplusacademy.com for more information.</u></div>
-    </div>
-  </div>
-<% else %>
-
 <div class="row">
   <div class="col-md-12">
     <div class="form-group check_boxes optional registration_camp_offerings">
@@ -155,22 +147,31 @@
               <% am_camp = true %>
               <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                 <% unless co.hidden && !user_signed_in? %>
-                  <label class="checkbox">
-                    <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}", halfday: true} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
-                    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
-                    <% if co.at_capacity? %>
-                      <span style='color:red;' class="pull-right">Sold Out</span>
-                    <% else %>
-                      <span class="pull-left"><%= open_spots(co).html_safe %></span>
-                      <span style='color:green;' class="pull-right">$<%= co.price %></span>
-                      <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
-                        $<%= co.price + 10 %>
-                      </span>
-                    <% end %>
-                    <% if co.hidden && user_signed_in? %>
-                      <span style='color:orange;' class="pull-left">Hidden</span>
-                    <% end %>
-                  </label>
+                  <% if location.id == 6 && co.camp.id == 39 %>
+                    <label>
+                      <%= link_to "Progress with Chess", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                      <% if co.hidden && user_signed_in? %>
+                        <span style='color:orange;' class="pull-left">Hidden</span>
+                      <% end %>
+                    </label>
+                  <% else %>
+                    <label class="checkbox">
+                      <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}", halfday: true} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
+                      <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                      <% if co.at_capacity? %>
+                        <span style='color:red;' class="pull-right">Sold Out</span>
+                      <% else %>
+                        <span class="pull-left"><%= open_spots(co).html_safe %></span>
+                        <span style='color:green;' class="pull-right">$<%= co.price %></span>
+                        <span style='color:gray;text-decoration:line-through;margin-right:10px;' class="pull-right">
+                          $<%= co.price + 10 %>
+                        </span>
+                      <% end %>
+                      <% if co.hidden && user_signed_in? %>
+                        <span style='color:orange;' class="pull-left">Hidden</span>
+                      <% end %>
+                    </label>
+                  <% end %>
                 <% end %>
               </td>
               <% elsif co.time == "All Day" && co.classroom == 3 %>
@@ -289,6 +290,14 @@
                   <% pm_camp = true %>
                   <td style="vertical-align:middle;" <%= "class=girls-only" if co.camp.girls_only? %>>
                     <% unless co.hidden && !user_signed_in? %>
+                    <% if location.id == 6 && co.camp.id == 39 %>
+                      <label>
+                        <%= link_to "Progress with Chess", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
+                        <% if co.hidden && user_signed_in? %>
+                          <span style='color:orange;' class="pull-left">Hidden</span>
+                        <% end %>
+                      </label>
+                    <% else %>
                       <label class="checkbox">
                         <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}", halfday: true} unless ( co.at_capacity? || co.hidden ) && !user_signed_in?  %>
                         <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %></br>
@@ -306,6 +315,7 @@
                         <% end %>
                       </label>
                     <% end %>
+                    <% end %>
                   </td>
                 <% elsif co.time == "All Day" && co.classroom == 3 %>
                   <% pm_camp = true %>
@@ -322,5 +332,3 @@
     </div>
   </div>
 </div>
-
-<% end %>
