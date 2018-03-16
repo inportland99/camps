@@ -7,7 +7,7 @@ class CouponCode < ActiveRecord::Base
 
   before_save :upcase_name
 
-  DISCOUNT_TYPE = ["$ Discount", "% Discount", "$ Varies By Camp"]
+  DISCOUNT_TYPE = ["$ Discount", "% Discount", "$ Varies By Camp", "Cart $ Discount"]
 
   def upcase_name
     self.name = name.upcase

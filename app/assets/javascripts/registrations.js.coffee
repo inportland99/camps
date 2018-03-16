@@ -188,6 +188,14 @@ camps =
       #update total
       $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
       total = total - discount_amount
+    # else if coupon_type is 3
+    #   discount_amount = coupon_amount
+    #   #populate discount div with discount information
+    #   $('#registration_discount').children('strong').text("Cart Discount: ")
+    #   $('#registration_discount').children('span').text("-$#{discount_amount}.00")
+    #   #update total
+    #   $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
+    #   total = total - discount_amount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")

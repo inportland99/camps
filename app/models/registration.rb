@@ -71,7 +71,7 @@ class Registration < ActiveRecord::Base
   def send_slack_notification
     test_note = Rails.env.development? ? "[TEST] " : ""
     HTTParty.post("https://hooks.slack.com/services/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",
-      {:body => {text: "#{test_note}Half-day Camps: #{half_day_count}\nFull-day Camps: #{full_day_count}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
+      {:body => {text: "#{test_note}Parent: #{parent_name}\nHalf-day Camps: #{half_day_count}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
                   username: "Registration Received",
                   icon_emoji: ":tada:",}.to_json,
                   :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
