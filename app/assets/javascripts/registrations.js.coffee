@@ -110,7 +110,7 @@ coupon_code =
           $coupon_code.val('')
           $coupon_code_button.attr('disabled', false)
         else
-          if results.coupon_type < 2 # if coupon is standard discount types
+          if results.coupon_type < 2 || results.coupon_type > 2 # if coupon is standard discount types
             $coupon_code_button.attr('disabled', false)
             $coupon_total_p.children('strong').text("Coupon Applied: ")
             $coupon_total_p.children('span').text("#{results.name}")
@@ -188,14 +188,14 @@ camps =
       #update total
       $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
       total = total - discount_amount
-    # else if coupon_type is 3
-    #   discount_amount = coupon_amount
-    #   #populate discount div with discount information
-    #   $('#registration_discount').children('strong').text("Cart Discount: ")
-    #   $('#registration_discount').children('span').text("-$#{discount_amount}.00")
-    #   #update total
-    #   $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
-    #   total = total - discount_amount
+    else if coupon_type is 3
+      discount_amount = coupon_amount
+      #populate discount div with discount information
+      $('#registration_discount').children('strong').text("Discount: ")
+      $('#registration_discount').children('span').text("-$#{discount_amount}.00")
+      #update total
+      $('#registration_total > p').children('span').text("$#{total - discount_amount}.00")
+      total = total - discount_amount
     else
       #update total
       $('#registration_total > p').children('span').text("$#{total}.00")
