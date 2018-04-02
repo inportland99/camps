@@ -3,6 +3,13 @@
 </div> -->
 <div class="col-xs-12">
 <div id="headerwrap">
+  <% if params[:utm_source].present? %>
+     <div class="row">
+       <div class="col-sm-12 align-center">
+         <div class="alert alert-success text-center" style="font-size:1.5em;" >As Seen on TV: Use Coupon Code TV25 to Save $25!</div>
+       </div>
+     </div>
+  <% end %>
   <div class="main" style="border-bottom:solid 9px black;">
     <div class="white-bg">
       <div class="row text-sm-center text-lg-left">
