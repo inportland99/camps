@@ -44,10 +44,10 @@ class CampOffering < ActiveRecord::Base
                                     :start => Date.new(2018,7,30),
                                     :end => Date.new(2018,8,3)
                             },
-                            # 9 => {
-                            #         :start => Date.new(2018,8,6),
-                            #         :end => Date.new(2018,8,10)
-                            # }
+                            9 => {
+                                    :start => Date.new(2018,8,6),
+                                    :end => Date.new(2018,8,10)
+                            }
     }
   elsif Rails.env.production?
     OFFERING_WEEKS = {
