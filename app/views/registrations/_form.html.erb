@@ -1,26 +1,26 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-sm-12">
     <h1 class="registration_header"><%= Location.find(params[:location] || params[:registration][:location_id]).name %> Camp Registration</h1>
-    <!-- <div class="payment_plan_banner centered">
+    <div class="payment_plan_banner centered">
       <span>Monthly Payment Plan!</span> Spend more than $250 and you can opt for a three-month installment plan.
-    </div> -->
+    </div>
     <p>
       <%= Location.find(params[:location] || params[:registration][:location_id]).directions.html_safe %>
     </p>
   </div>
-</div>
-<!-- <div class="row mt-5">
+</div> -->
+<div class="row mt-5">
   <div class="col-sm-12 align-center">
     <div class="alert alert-danger text-center" >Official camp registration will begin February 1, 2018</u></div>
   </div>
-</div> -->
+</div>
 <!-- This renders all of the form information. -->
-<%= render 'form_sections' %>
+<%# render 'form_sections' %>
 
-<%= render 'registration_modal' %>
+<%# render 'registration_modal' %>
 
-<%= render 'confirmation_modal' %>
+<%# render 'confirmation_modal' %>
 
-<%= render 'camp_modals' %>
+<%# render 'camp_modals' %>
 
-<%= render 'extended_care_modal' %>
+<%# render 'extended_care_modal' %>
