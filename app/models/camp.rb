@@ -5,7 +5,7 @@ class Camp < ActiveRecord::Base
 
 
   def self.activecamps
-    self.find [8,10,12,19,33,4,5,2,32,31,3,9,14,37,38,18,7,20,39]
+    self.find [8,10,12,19,33,4,5,2,32,31,3,9,41,11,37,38,18,7,20,39]
   end
 
   def self.accessible_attributes
