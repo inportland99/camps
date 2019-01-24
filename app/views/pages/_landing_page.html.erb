@@ -332,8 +332,9 @@
             <%= image_tag('microbit.jpg', size: '150x150')%>
           </div>
           <h2>Digital Designer</h2>
-          <p>Ages: 9-13 Half-Day</p>
+          Ages: 9-13 Half-Day<br />
           <% end %>
+          <%= link_to "Learn More", "#camp31Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
           <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
