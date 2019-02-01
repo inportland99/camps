@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-12 text-center">
       <h1 class="mb-5">Thank you for registering!</h1>
-      <p>You have been sent an email confirming the details of this transaction.</p>
+      <p>Check your inbox for a confirmation email.</p>
     </div>
   </div>
   <div class="row mt-3">
@@ -11,6 +11,16 @@
         <p>
           <%= render 'registration_another_student_button', registration: @registration %>
         </p>
+        <p>&nbsp;</p>
+        <h2>Earn a $20 referral credit!</h2>
+        <p>
+          <strong>Camps are much more fun with a friend and your friends can save too!</strong>
+        </p>
+          <p>1. Share this link with your friends: <a href="http://summercamps.mathplusacademy.com" style="color: #2ba6cb;text-decoration: none;">sign up for summer camps</a>.</p>
+          <p>2. Tell them to use code 'REFERRAL20' to save $20.</p>
+          <p>3. Remind them to enter your name in the 'Referred by' field at checkout.</p>
+          <p>4. Sit back and relax as we automatically credit you $20 for each family you refer!</p>
+
       <% end %>
     </div>
   </div>
@@ -18,15 +28,12 @@
   <!-- <div class="row"> -->
     <%# render 'pages/jumpstart' %>
   <!-- </div> -->
-  <hr class="mt-5 mb-5">
   <div class="row mt-5 mb-5">
     <div class="col-sm-9">
       <%= image_tag "FB-f-Logo__blue_1024.png", class: "hidden-md-up float-right ml-2", width: "15%" %>
-      <h2 style="color:black;" class="mb-5">Do you follow us on Facebook?</h2>
+      <h2 style="color:black;" class="mb-5">Follow us on Facebook</h2>
       <p>We post fun stuff, information about our programs, and ways to save on Math Plus Programs.</p>
-      <p>
         <div class="fb-follow" data-href="https://www.facebook.com/mathplusacademy" data-colorscheme="light" data-layout="standard" data-show-faces="true"></div>
-      </p>
     </div>
     <div class="col-sm-3 text">
       <%= image_tag "FB-f-Logo__blue_1024.png", width: "100%", class: "hidden-sm-down" %>

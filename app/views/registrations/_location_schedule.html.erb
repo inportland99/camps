@@ -5,25 +5,16 @@
         <h3 class="card-title">How to Register</h3>
       </div>
       <div class="card-block">
-        <ul>
+        <ol>
           <li>Click on camp names for detailed descriptions.</li>
-          <li>Click on checkboxes to register for a camp.</li>
-          <li>You may only register ONE child at a time.</li>
-          <li><u>You will need to complete a separate registration for each child.</u> We will fill out most the form the second time around 😉.</li>
-          <li>Can't find a camp that fits your schedule? Check another location!</li>
-        </ul>
+          <li>Click checkbox to add camp(s) to cart for <u>one child</u>.</li>
+          <li>Complete registration and payment info and submit your registration.</li>
+          <li>Rinse and repeat for each child 😉.</li>
+        </ol>
       </div>
     </div>
   </div>
 </div>
-
-<% if location.id == 6 %>
-   <div class="row mt-5 mb-5">
-     <div class="col-sm-12 align-center">
-       <div class="alert alert-success text-center" >In honor of our grand opening, use coupon code SOLON25 to save $25 off every camp</div>
-     </div>
-   </div>
-<% end %>
 
 <div class="row">
   <div class="col-md-12">
@@ -238,7 +229,7 @@
             <% end %>
           </tr>
           <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
-            <td style="vertical-align:middle;">PM (12:30 - 3:30)</td>
+            <td style="vertical-align:middle;">PM (1:00 - 4:00)</td>
             <!-- classroom 1 -->
             <% pm_camp = false %>
             <% CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).each do |co| %>

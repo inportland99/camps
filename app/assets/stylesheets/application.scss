@@ -75,13 +75,15 @@
 
 .show-camp {
   font-weight: 100;
-  font-size: 18px;
+  font-size: calc(10px + 1vw);
+  line-height: 1.3;
 }
 
 body {
   background-color: #ffffff;
   font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
+  font-size: calc(12px + 0.5vw);
+  line-height: 1.5;
   color: #555;
   padding-top: 62px;
   -webkit-font-smoothing: antialiased;
@@ -94,7 +96,8 @@ h1, h2, h3, h4, h5, h6, input, select{
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: calc(16px + 3.5vw);
+  line-height: 1.3;
   font-weight : bold;
   letter-spacing : -2px;
   color : #000000;
@@ -102,7 +105,8 @@ h1 {
 }
 
 h2{
-  font-size : 4.5vw;
+  font-size: calc(14px + 2vw);
+  line-height: 1.3;
   font-weight : bold;
   letter-spacing : -2px;
   color : #323030;
@@ -110,6 +114,8 @@ h2{
 }
 
 h3 {
+  font-size: calc(12px + 1vw);
+  line-height: 1.3;
   color: #535050;
   font-weight: bold;
 }
@@ -127,9 +133,9 @@ h4 {
 
 /* Paragraph & Typographic */
 p {
-  line-height: 23px;
+  font-size: calc(12px + 0.5vw);
+  line-height: 1.5;
   margin-bottom: 25px;
-  font-size: 16px;
 }
 
 .centered {
@@ -349,9 +355,10 @@ i {
 }
 
 .main-title{
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0);
   font-weight : bold;
-  font-size : 5vw;
+  font-size : calc(14px + 3vw);
+  line-height: 1.3;
   text-align: center;
   letter-spacing : -2px;
   color : white;
@@ -377,7 +384,8 @@ i {
 }
 
 .main-grades{
-  font-size : 24px;
+  font-size: calc(10px + 1vw);
+  line-height: 1.5;
   font-weight: bold;
   text-align: center;
   letter-spacing : -1px;
@@ -682,7 +690,7 @@ i {
 }
 
 .btn-white{
-  background : #ffffff;
+  background : #cccccc;
 }
 
 .btn-white:hover{

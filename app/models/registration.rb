@@ -69,9 +69,10 @@ class Registration < ActiveRecord::Base
   end
 
   def send_slack_notification
+    camp_location = camp_offerings.first.location.name
     test_note = Rails.env.development? ? "[TEST] " : ""
     HTTParty.post("https://hooks.slack.com/services/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",
-      {:body => {text: "#{test_note}Parent: #{parent_name}\nHalf-day Camps: #{half_day_count}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
+      {:body => {text: "\n#{test_note}Parent: #{parent_name}\nHalf-day Camps: #{half_day_count}\nLocation: #{camp_location}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
                   username: "Registration Received",
                   icon_emoji: ":tada:",}.to_json,
                   :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
@@ -177,10 +178,12 @@ class Registration < ActiveRecord::Base
       'p[4]' => 4,
       'status[4]' => 1
     }
-    if newsletter
-      tag_list = 'api, SummerCamp2018, Local'
+    camp_location = camp_offerings.first.location.name
+
+    if camp_location=='Solon'
+      tag_list = 'api, SummerCamp2019, Cleveland'
     else
-      tag_list = 'api, SummerCamp2018'
+      tag_list = 'api, SummerCamp2019, Local'
     end
     client_data.merge!('tags' => tag_list)
 

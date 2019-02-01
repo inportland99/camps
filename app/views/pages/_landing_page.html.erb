@@ -39,6 +39,7 @@
   </div>
 </div>
 
+<div class="container">
   <div class="row mt centered" >
     <div class="col-lg-10 offset-lg-1">
       <h2>Sign up for camps today!</h2>
@@ -70,45 +71,44 @@
       </p>
     </div><!--/col-lg-4 -->
   </div><!-- /row -->
+</div><!-- /container -->
 
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
       <h2>We know how hard it is to find affordable, high quality, STEM camps</h2>
-        There's nothing worse than picking up a child that had a miserable day at camp. We've been there too.
-        You want the confidence to know that your child will have a great camp experience.<br />
+        <p>We've spent the last 11 years refining and improving our camps so you can be <u>confident</u> that your child will have a great camp experience.</p>
 
-        We spent years perfecting our camps to make sure that every child has a great experience.
+        <div style="font-size:1.3em; color:orange;"><strong>Over 3,000 happy campers<br />97.5% of parents would recommend our camps to a friend!</strong></div>
 
-        <div style="font-size:1.3em;"><strong>Over 3,000 happy campers • 97.5% of parents would recommend our camps to a friend!</strong></div>
-
-        <div style="font-size:1.3em;"><strong>Join thousands of satisfied parents that chose Math Plus Academy Camps</strong></div>
+        <div style="font-size:1.3em;"><em>Join thousands of satisfied parents that chose Math Plus Academy Camps</em></div>
 
         <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
     </div>
   </div>
 
-  <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
-      <h2>What Parents Say</h2>
+  <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-10 offset-lg-1">
+        <h2>What Parents Say</h2>
+      </div>
+    </div>
+    <div class="row mt centered">
+      <div class="col-lg-4">
+        "Every day when I picked up my son, he was glowing with excitement and joy!" -- Braedon's mom (LEGO Robotics)
+      </div>
+      <div class="col-lg-4">
+        "He LOVED it. Every day he came out excited to tell us what he had learned." -- Jack's mom (LEGO Engineering)
+      </div>
+      <div class="col-lg-4">
+        "This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!" -- Zach's mom
+      </div>
+    </div>
+    <div class="row mt centered">
+      <div class="col-lg-10 offset-lg-1">
+        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+      </div>
     </div>
   </div>
-  <div class="row mt centered">
-    <div class="col-lg-4">
-      "Every day when I picked up my son, he was glowing with excitement and joy!" -- Braedon's mom (LEGO Robotics)
-    </div>
-    <div class="col-lg-4">
-      "He LOVED it. Every day he came out excited to tell us what he had learned." -- Jack's mom (LEGO Engineering)
-    </div>
-    <div class="col-lg-4">
-      "This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!" -- Zach's mom
-    </div>
-  </div>
-  <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
-      <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
-    </div>
-  </div>
-
 <!-- <div class="row">
     <div id="installment-offer" class="col-sm-12 centered" style="display:none;">
       <div class="col-sm-12">
@@ -122,7 +122,7 @@
     <!-- ** Math Plus Camp Advantage ** -->
     <div class="row mt centered" >
       <div class="col-lg-10 offset-lg-1">
-        <h1>The Math Plus Advantage</h1>
+        <h2>The Math Plus Advantage</h2>
         <!-- <h2 class="hidden-md-up">The Math Plus Advantage.</h2> -->
         <!-- <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3> -->
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
@@ -246,8 +246,16 @@
 
       <!-- ** Row ** -->
       <div class="row mt centered">
-        <div class="col-lg-2">
-        </div><!--/col-lg-2 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp43Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('robothink.jpg', size: '150x150')%>
+          </div>
+          <h2>RoboThink Jr.</h2>
+          Ages: 6-8 Half-Day<br />
+          <% end %>
+          <%= link_to "Learn More", "#camp43Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+        </div><!--/col-lg-4 -->
         <div class="col-lg-4">
           <%= link_to("#camp33Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
@@ -268,8 +276,6 @@
           <% end %>
           <%= link_to "Learn More", "#camp8Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
-        <div class="col-lg-2">
-        </div><!--/col-lg-2 -->
       </div>
 
       <div class="row mt centered">
@@ -384,8 +390,8 @@
 
       <!-- ** Row ** -->
       <div class="row mt centered">
-        <div class="col-lg-4">
-        </div><!--/col-lg-4 -->
+        <div class="col-lg-2">
+        </div><!--/col-lg-2 -->
         <div class="col-lg-4">
           <%= link_to("#camp11Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
@@ -397,7 +403,17 @@
           <%= link_to "Learn More", "#camp11Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
+          <%= link_to("#camp42Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('robothink.jpg', size: '150x150')%>
+          </div>
+          <h2>RoboThink</h2>
+          Ages: 9-13 Half-Day<br />
+          <% end %>
+          <%= link_to "Learn More", "#camp42Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
+        <div class="col-lg-2">
+        </div><!--/col-lg-2 -->
       </div>
 
       <div class="row mt centered">

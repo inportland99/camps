@@ -53,11 +53,9 @@
                       <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
                         <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse;">
-                            <h1 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 40px;">Hi, <%= @registration.parent_name %></h1>
-                            <p class="lead" style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 21px;font-size: 18px;">Thank you for registering for Math Plus Academy's <%= CampOffering::YEARS[CampOffering::CURRENT_YEAR] %> Summer Camps. Below you will find the registration information.</p>
-                            <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">Student Information</h5>
+                            <p class="lead" style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 21px;font-size: 18px;">Hi <%= @registration.parent_name %>,<br /><br />Your child is registered for Math Plus Academy's <%= CampOffering::YEARS[CampOffering::CURRENT_YEAR] %> Summer Camps. Below you will find the registration information.</p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <strong>Name:</strong> <%= @registration.student_name %>
+                              <strong>Student Name:</strong> <%= @registration.student_name %>
                             </p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
                               <strong>Student grade:</strong>
@@ -108,7 +106,7 @@
                       <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
                         <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td class="panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #ECF8FF;border: 1px solid #d9d9d9;border-color: #b9e5ff;border-collapse: collapse;">
-                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">Check out our summer math program <strong>JumpStart!</strong>. <a href="http://www.mathplusacademy.com/jumpstart" style="color: #2ba6cb;text-decoration: none;">Click here! »</a></p>
+                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;"><strong>Earn a $20 referral credit!</strong><br />Camps are much more fun with a friend. Tell your friends about our camps. Tell them to use code REFERRAL20 to save $20. Remind them put your name in the "Refered By" field at checkout. <i>We will automatically credit you $20 for each family you refer!</i> Forward them this link <a href="http://summercamps.mathplusacademy.com" style="color: #2ba6cb;text-decoration: none;">Sign up for summer camps today!</a></p>
                           </td>
                           <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse;"></td>
                         </tr>
@@ -132,16 +130,6 @@
                               <tr style="padding: 0;vertical-align: top;text-align: left;">
                                 <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 5px 0 4px;vertical-align: top;text-align: center;color: #ffffff;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;display: block;background: #3b5998;border: 1px solid #2284a1;border-color: #2d4473;border-collapse: collapse;width: auto;">
                                   <a href="http://www.facebook.com/MathPlusAcademy" style="color: #ffffff;text-decoration: none;font-weight: normal;font-family: Helvetica, Arial, sans-serif;font-size: 12px;">Facebook</a>
-                                </td>
-                              </tr>
-                            </table>
-
-                            <br>
-
-                            <table class="tiny-button google-plus" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;width: 100%;overflow: hidden;">
-                              <tr style="padding: 0;vertical-align: top;text-align: left;">
-                                <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 5px 0 4px;vertical-align: top;text-align: center;color: #ffffff;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;display: block;background: #2ba6cb;border: 1px solid #2284a1;background-color: #DB4A39;border-color: #CC0000;border-collapse: collapse;width: auto;">
-                                  <a href="http://www.pinterest.com/mathplusacademy/" style="color: #ffffff;text-decoration: none;font-weight: normal;font-family: Helvetica, Arial, sans-serif;font-size: 12px;">Pinterest</a>
                                 </td>
                               </tr>
                             </table>

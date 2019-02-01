@@ -4,88 +4,88 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  CURRENT_YEAR = 4
+  CURRENT_YEAR = 5
 
-  YEARS = %w(2014 2015 2016 2017 2018 2019 2020) # year 0 is 2014
+  YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022) # year 0 is 2014
 
   OFFERING_TIMES = ["All Day","AM","PM"]
 
   if Rails.env.development?
     OFFERING_WEEKS = {
                             1 => {
-                                    :start => Date.new(2018,6,4),
-                                    :end => Date.new(2018,6,8)
+                                    :start => Date.new(2019,6,3),
+                                    :end => Date.new(2019,6,7)
                             },
                             2 => {
-                                    :start => Date.new(2018,6,11),
-                                    :end => Date.new(2018,6,15)
+                                    :start => Date.new(2019,6,10),
+                                    :end => Date.new(2019,6,14)
                             },
                             3 => {
-                                    :start => Date.new(2018,6,18),
-                                    :end => Date.new(2018,6,22)
+                                    :start => Date.new(2019,6,17),
+                                    :end => Date.new(2019,6,21)
                             },
                             4 => {
-                                    :start => Date.new(2018,6,25),
-                                    :end => Date.new(2018,6,29)
+                                    :start => Date.new(2019,6,24),
+                                    :end => Date.new(2019,6,28)
                             },
                             5 => {
-                                    :start => Date.new(2018,7,9),
-                                    :end => Date.new(2018,7,13)
+                                    :start => Date.new(2019,7,8),
+                                    :end => Date.new(2019,7,12)
                             },
                             6 => {
-                                    :start => Date.new(2018,7,16),
-                                    :end => Date.new(2018,7,20)
+                                    :start => Date.new(2019,7,15),
+                                    :end => Date.new(2019,7,19)
                             },
                             7 => {
-                                    :start => Date.new(2018,7,23),
-                                    :end => Date.new(2018,7,27)
+                                    :start => Date.new(2019,7,22),
+                                    :end => Date.new(2019,7,26)
                             },
                             8 => {
-                                    :start => Date.new(2018,7,30),
-                                    :end => Date.new(2018,8,3)
+                                    :start => Date.new(2019,7,29),
+                                    :end => Date.new(2019,8,2)
                             },
                             9 => {
-                                    :start => Date.new(2018,8,6),
-                                    :end => Date.new(2018,8,10)
+                                    :start => Date.new(2019,8,5),
+                                    :end => Date.new(2019,8,9)
                             }
     }
   elsif Rails.env.production?
     OFFERING_WEEKS = {
       1 => {
-              :start => Date.new(2018,6,4),
-              :end => Date.new(2018,6,8)
+              :start => Date.new(2019,6,3),
+              :end => Date.new(2019,6,7)
       },
       2 => {
-              :start => Date.new(2018,6,11),
-              :end => Date.new(2018,6,15)
+              :start => Date.new(2019,6,10),
+              :end => Date.new(2019,6,14)
       },
       3 => {
-              :start => Date.new(2018,6,18),
-              :end => Date.new(2018,6,22)
+              :start => Date.new(2019,6,17),
+              :end => Date.new(2019,6,21)
       },
       4 => {
-              :start => Date.new(2018,6,25),
-              :end => Date.new(2018,6,29)
+              :start => Date.new(2019,6,24),
+              :end => Date.new(2019,6,28)
       },
       5 => {
-              :start => Date.new(2018,7,9),
-              :end => Date.new(2018,7,13)
+              :start => Date.new(2019,7,8),
+              :end => Date.new(2019,7,12)
       },
       6 => {
-              :start => Date.new(2018,7,16),
-              :end => Date.new(2018,7,20)
+              :start => Date.new(2019,7,15),
+              :end => Date.new(2019,7,19)
       },
       7 => {
-              :start => Date.new(2018,7,23),
-              :end => Date.new(2018,7,27)
+              :start => Date.new(2019,7,22),
+              :end => Date.new(2019,7,26)
       },
       8 => {
-              :start => Date.new(2018,7,30),
-              :end => Date.new(2018,8,3)
+              :start => Date.new(2019,7,19),
+              :end => Date.new(2019,8,2)
       },
       9 => {
-              :start => Date.new(2018,8,6),
-              :end => Date.new(2018,8,10)
+              :start => Date.new(2019,8,5),
+              :end => Date.new(2019,8,9)
       }
   }
   end
@@ -119,8 +119,8 @@ class CampOffering < ActiveRecord::Base
   def convert_time
     case time
       when "AM" then "9:00AM - 12:00PM"
-      when "PM" then "12:30PM - 3:30PM"
-      when "All Day" then "9:00AM - 3:30PM"
+      when "PM" then "1:00PM - 4:00PM"
+      when "All Day" then "9:00AM - 4:00PM"
     end
   end
 

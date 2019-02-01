@@ -6,8 +6,8 @@
     <%= raw @camp.description %>
     <% unless @camp.id == 39 %>
       <br /><br />Camp is limited to <%= @camp.capacity %> students.
-      <br /><br />Half-day Monday through Friday (9:00am-12pm or 12:30-3:30pm).
-      <br /><br />Tuition: $<%= @camp.price + 10 %>
+      <br /><br />Half-day Monday through Friday (9:00am-12pm or 1:00-4:00pm).
+      <br /><br />Tuition: $<%= @camp.price %>
     <% end %>
   </div>
   <hr>

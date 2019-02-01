@@ -40,7 +40,7 @@ class PonyExpress < ActionMailer::Base
 
     mail(
       to: @registration.parent_email,
-      subject: '[MPA Camp] Do You Know Someone Who Wants Their Child to Excel at Academically?'
+      subject: '[MPA Camp] Do You Know Someone Who Wants Their Child to Excel Academically?'
       )
   end
 

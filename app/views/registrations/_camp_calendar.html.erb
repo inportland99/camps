@@ -45,7 +45,7 @@
         </td>
       </tr>
       <tr>
-        <td>PM (12:30 - 3:30)</td>
+        <td>PM (1:00 - 4:00)</td>
         <td>
           <% CampOffering.by_week(params[:location].to_i, n+1).each do |co| %>
             <% if co.time == "PM" && co.classroom == 2 %>
