@@ -15,3 +15,7 @@
     <%= link_to "Sign In", new_user_session_path %>
   <% end %>
 </p>
+
+<% if !user_signed_in? %>
+  <script src="//static.leadpages.net/leadboxes/current/embed.js" async defer></script> <script>window.addEventListener('LPLeadboxesReady',function(){LPLeadboxes.setExitIntent('i5jvMqZEnjagr9VPMoY23h',{dontShowFor:'1d',domain:'mathplus.lpages.co'});});</script>
+<% end %>

@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       @locations = Location.all
       @months_registrations = Registration.where("created_at >= ? AND year=?", Time.now.beginning_of_month, CampOffering::CURRENT_YEAR)
       @this_years_registrations_to_date = Registration.where("created_at >= ?", Date.today.beginning_of_year)
-      @last_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today - 2.year, (Date.today - 2.year).beginning_of_year)
+      @last_years_registrations_to_date = Registration.where("created_at <= ? AND created_at >= ?", Date.today - 1.year, (Date.today - 1.year).beginning_of_year)
 
       @last_years_revenue_to_date = @last_years_registrations_to_date.sum(:total)
 

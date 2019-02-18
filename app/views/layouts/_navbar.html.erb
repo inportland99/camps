@@ -7,7 +7,7 @@
   </a>
   <div class="collapse navbar-collapse  justify-content-end" id="main-nav">
     <ul class="navbar-nav">
-      <li class="nav-item"><%= link_to "MPA.com", "http://www.mathplusacademy.com", class: "nav-link" %></li>
+      <!-- <li class="nav-item"><%# link_to "MPA.com", "http://www.mathplusacademy.com", class: "nav-link" %></li> -->
       <!-- <li class="nav-item"><%= link_to "How We Compare", comparison_path, class: "nav-link" %></li> -->
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +39,6 @@
           <%= link_to "How We Compare", comparison_path, class: "dropdown-item" %>
           <%= link_to "Testimonials", testimonials_path, class: "dropdown-item" %>
           <%= link_to "FAQ", faq_path, class: "dropdown-item" %>
-          <%= link_to("#signUpModal", :data => {:toggle=>"modal"}, class: "dropdown-item") do %>Help<% end %>
         </div>
       </li>
       <li class="navbar-text"><i class="fa fa-phone"></i> 614.792.6284</li>

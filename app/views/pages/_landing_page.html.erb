@@ -1,6 +1,6 @@
-<div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
+<!-- <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
   Summer camp registration is open!
-</div>
+</div> -->
 <div id="headerwrap">
   <div class="row" style="overflow:hidden;">
     <%# if params[:utm_source].present? %>
@@ -15,7 +15,7 @@
         Conquer Summer Boredom with Camps that are Fun, Inspiring, and Educational
       </div> <!-- /.main-title -->
       <div class="main-grades">
-        Grades K-12 • Half Day &amp; Full Day • Extended Care
+        STEM Camps • Grades K-12 • Half Day &amp; Full Day • Extended Care
       </div>
       <div class="main-buttons">
         <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
@@ -37,6 +37,10 @@
         <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
     </div>
   </div>
+</div>
+
+<div class"row">
+  <hr>
 </div>
 
 <div class="container">
@@ -73,6 +77,11 @@
   </div><!-- /row -->
 </div><!-- /container -->
 
+<div class"row">
+  <hr>
+</div>
+
+<div class="container">
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
       <h2>We know how hard it is to find affordable, high quality, STEM camps</h2>
@@ -85,30 +94,35 @@
         <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
     </div>
   </div>
+</div>
 
-  <div class="container">
-    <div class="row mt centered">
-      <div class="col-lg-10 offset-lg-1">
-        <h2>What Parents Say</h2>
-      </div>
-    </div>
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        "Every day when I picked up my son, he was glowing with excitement and joy!" -- Braedon's mom (LEGO Robotics)
-      </div>
-      <div class="col-lg-4">
-        "He LOVED it. Every day he came out excited to tell us what he had learned." -- Jack's mom (LEGO Engineering)
-      </div>
-      <div class="col-lg-4">
-        "This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!" -- Zach's mom
-      </div>
-    </div>
-    <div class="row mt centered">
-      <div class="col-lg-10 offset-lg-1">
-        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
-      </div>
+<div class"row">
+  <hr>
+</div>
+
+<div class="container">
+  <div class="row mt centered">
+    <div class="col-lg-10 offset-lg-1">
+      <h2>What Parents Say</h2>
     </div>
   </div>
+  <div class="row mt centered">
+    <div class="col-lg-4">
+      "Every day when I picked up my son, he was glowing with excitement and joy!" -- Braedon's mom (LEGO Robotics)
+    </div>
+    <div class="col-lg-4">
+      "He LOVED it. Every day he came out excited to tell us what he had learned." -- Jack's mom (LEGO Engineering)
+    </div>
+    <div class="col-lg-4">
+      "This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!" -- Zach's mom
+    </div>
+  </div>
+  <div class="row mt centered">
+    <div class="col-lg-10 offset-lg-1">
+      <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+    </div>
+  </div>
+</div>
 <!-- <div class="row">
     <div id="installment-offer" class="col-sm-12 centered" style="display:none;">
       <div class="col-sm-12">
@@ -118,74 +132,78 @@
     </div>
 </div> -->
 
-  <div class="container">
-    <!-- ** Math Plus Camp Advantage ** -->
-    <div class="row mt centered" >
-      <div class="col-lg-10 offset-lg-1">
-        <h2>The Math Plus Advantage</h2>
-        <!-- <h2 class="hidden-md-up">The Math Plus Advantage.</h2> -->
-        <!-- <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3> -->
-      </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
-    </div><!-- /row -->
+<div class"row">
+  <hr>
+</div>
 
-    <div class="row mt centered">
-      <div class="col-lg-4">
-        <i class="fa fa-gears fa-5x"></i>
-        <h3 class="camps-blue">Hands-on, Minds-on</h3>
-        <p>
-          Enhance your child's passion with engaging, interactive camps
-        </p>
-      </div><!--/col-lg-4 -->
+<div class="container">
+  <!-- ** Math Plus Camp Advantage ** -->
+  <div class="row mt centered" >
+    <div class="col-lg-10 offset-lg-1">
+      <h2>The Math Plus Advantage</h2>
+      <!-- <h2 class="hidden-md-up">The Math Plus Advantage.</h2> -->
+      <!-- <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3> -->
+    </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
+  </div><!-- /row -->
 
-      <div class="col-lg-4">
-        <i class="fa fa-group fa-5x"></i>
-        <h3 class="camps-red">Highly Qualified Instructors</h3>
-        <p>
-          They're well trained and they love math and technology.
-        </p>
-      </div><!--/col-lg-4 -->
+  <div class="row mt centered">
+    <div class="col-lg-4">
+      <i class="fa fa-gears fa-5x"></i>
+      <h3 class="camps-blue">Hands-on, Minds-on</h3>
+      <p>
+        Enhance your child's passion with engaging, interactive camps
+      </p>
+    </div><!--/col-lg-4 -->
 
-      <div class="col-lg-4">
-        <i class="fa fa-sort-amount-desc fa-5x"></i>
-        <h3 class="camps-green">Small Camp Sizes</h3>
-        <p>
-          No more than 10 students per camp.
-        </p>
-      </div><!--/col-lg-4 -->
-    </div><!-- /row -->
+    <div class="col-lg-4">
+      <i class="fa fa-group fa-5x"></i>
+      <h3 class="camps-red">Highly Qualified Instructors</h3>
+      <p>
+        They're well trained and they love math and technology.
+      </p>
+    </div><!--/col-lg-4 -->
 
-    <div class="row mt centered container">
-      <div class="col-lg-4">
-        <i class="fa fa-comments-o fa-5x"></i>
-        <h3 class="camps-orange">98.7% Satisfaction</h3>
-        <p>
-          Over 3,000 happy campers.
-        </p>
-      </div><!--/col-lg-4 -->
+    <div class="col-lg-4">
+      <i class="fa fa-sort-amount-desc fa-5x"></i>
+      <h3 class="camps-green">Small Camp Sizes</h3>
+      <p>
+        No more than 10 students per camp.
+      </p>
+    </div><!--/col-lg-4 -->
+  </div><!-- /row -->
 
-      <div class="col-lg-4">
-        <i class="fa fa-calendar fa-5x"></i>
-        <h3 class="camps-purple">Flexible Scheduling</h3>
-        <p>
-          Something came up? No problem, change camps at any time.
-        </p>
-      </div><!--/col-lg-4 -->
+  <div class="row mt centered container">
+    <div class="col-lg-4">
+      <i class="fa fa-comments-o fa-5x"></i>
+      <h3 class="camps-orange">98.7% Satisfaction</h3>
+      <p>
+        Over 3,000 happy campers.
+      </p>
+    </div><!--/col-lg-4 -->
 
-      <div class="col-lg-4">
-        <i class="fa fa-usd fa-5x"></i>
-        <h3 class="camps-yellow">Satisfaction Guarantee</h3>
-        <p>
-          If your child does not enjoy camp, we'll happily issue a full refund.
-        </p>
-      </div><!--/col-lg-4 -->
-    </div><!-- /row -->
+    <div class="col-lg-4">
+      <i class="fa fa-calendar fa-5x"></i>
+      <h3 class="camps-purple">Flexible Scheduling</h3>
+      <p>
+        Something came up? No problem, change camps at any time.
+      </p>
+    </div><!--/col-lg-4 -->
 
-    <%= render 'compare_button' %>
-  </div>
+    <div class="col-lg-4">
+      <i class="fa fa-usd fa-5x"></i>
+      <h3 class="camps-yellow">Satisfaction Guarantee</h3>
+      <p>
+        If your child does not enjoy camp, we'll happily issue a full refund.
+      </p>
+    </div><!--/col-lg-4 -->
+  </div><!-- /row -->
 
-  <div class"row">
-    <hr>
-  </div>
+  <%= render 'compare_button' %>
+</div>
+
+<div class"row">
+  <hr>
+</div>
 
     <!-- <div class="row" style="margin-bottom:60px;">
       <div class="girls_only_banner">
@@ -474,14 +492,14 @@
   </div>
   <%= render 'locations/select_location' %>
 </div>
-<div class = "reminder">
+<!-- <div class = "reminder">
   <div class="row">
     <div class="col-sm-12 centered">
       <div class="reminder-header">I can't register right now, but I would love a reminder!</div>
-        <%= render '/registrations/activecampaign_form' %>
+        <%# render '/registrations/activecampaign_form' %>
     </div>
   </div>
-</div>
+</div> -->
 <!-- <div class="reminder">
   <div class="row">
     <div class="col-sm-12 centered">
