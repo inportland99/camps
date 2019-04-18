@@ -109,7 +109,12 @@ coupon_code =
           $coupon_error.text("Coupon Has Expired")
           $coupon_code.val('')
           $coupon_code_button.attr('disabled', false)
+        if (results['name']=='MORECAMPS' && parseInt($('#registration_subtotal').attr('data-subtotal')) < 250)
+          $coupon_error.text("At least 2 camps required")
+          $coupon_code.val('')
+          $coupon_code_button.attr('disabled', false)
         else
+          $('#registration_subtotal').attr('data-coupon-name', results['name'])
           if results.coupon_type < 2 || results.coupon_type > 2 # if coupon is standard discount types
             $coupon_code_button.attr('disabled', false)
             $coupon_total_p.children('strong').text("Coupon Applied: ")
@@ -159,9 +164,12 @@ camps =
 
     #update subtotal
     $('#registration_subtotal').children('span').text("$#{total}.00")
+    $('#registration_subtotal').attr('data-subtotal', total)
 
     if coupon_type is 0
       amount = coupon_amount * camp_count
+      if $('#registration_subtotal').attr('data-coupon-name') == 'MORECAMPS' && (parseInt($('#registration_subtotal').attr('data-subtotal')) < 250)
+        amount = 0
       #populate discount div with discount information
       $('#registration_discount').children('strong').text("Discount: ")
       $('#registration_discount').children('span').text("-$#{amount}.00")
@@ -221,6 +229,12 @@ camps =
       $('#payment_plan_field').hide()
       $('#payment_plan').attr('checked', false)
       $('#payment_plan_amounts').fadeOut(800)
+
+    # Show/hide second camp upsell option if amount is above $0 and <$250
+    if (total > 0)&&(total < 250)
+      $('#upsell_field').show()
+    else
+      $('#upsell_field').hide()
 
   selectedCount: ->
     # count selected camps less extended care options selected
