@@ -1,6 +1,7 @@
 <!-- <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
   Summer camp registration is open!
 </div> -->
+
 <div id="headerwrap">
   <div class="row" style="overflow:hidden;">
     <%# if params[:utm_source].present? %>
@@ -498,6 +499,11 @@
   </div>
   <%= render 'locations/select_location' %>
 </div>
+
+<script>
+  fbq('track', 'ViewContent');
+</script>
+
 <!-- <div class = "reminder">
   <div class="row">
     <div class="col-sm-12 centered">
