@@ -55,8 +55,6 @@ class RegistrationsController < ApplicationController
     if current_user && (current_user.role?('super_admin') || current_user.role?('admin')) && params[:process_without_payment] == "yes"
       respond_to do |format|
         if @registration.save_without_payment
-          # send confirmation email
-          PonyExpress.registration_confirmation(@registration).deliver
 
           # sync to active campaign
           @registration.active_campaign_actions
@@ -67,7 +65,15 @@ class RegistrationsController < ApplicationController
           # process shareable code actions
           # @registration.set_up_code_share
 
-          format.html { redirect_to @registration, notice: 'Registration created' }
+          # send confirmation email
+          begin
+            PonyExpress.registration_confirmation(@registration).deliver
+          rescue Net::SMTPUnknownError => e
+            notice = 'There was an error sending your confirmation email. You should receive it within 24 hours.'\
+                     'If you do not receive the confirmation, please email info@mathpluscademy.com and we will resend it.'
+          end
+
+          format.html { redirect_to @registration, notice: notice || 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
           format.html { render action: "new" }
