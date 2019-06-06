@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-
-  <%= render 'admin_page' %>
-
+  <% if current_user.roles.any?{ |role| role.name == "Guest"} %>
+    <%= render 'solon_page' %>
+  <% else %>
+    <%= render 'admin_page' %>
+  <% end %>
 <% else %>
-
   <%= render 'landing_page' %>
-
 <% end %>

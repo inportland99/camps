@@ -66,6 +66,7 @@ class RegistrationsController < ApplicationController
           # @registration.set_up_code_share
 
           # send confirmation email
+          notice = nil
           begin
             PonyExpress.registration_confirmation(@registration).deliver
           rescue Net::SMTPUnknownError => e

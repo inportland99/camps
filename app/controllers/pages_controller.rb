@@ -24,6 +24,14 @@ class PagesController < ApplicationController
         @camp_off_reg_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
       end
 
+      # Data for solon camp overview page
+      @solon_registrations = @registrations.where("location_id = 6")
+      @solon_camp_count = 0
+      @solon_registrations.each do |reg|
+        @solon_camp_count += reg.camp_offerings.reject{ |co| co.extended_care? }.count
+      end
+      @solon_revenue = @solon_registrations.sum(:total)
+
       @coupon_codes_by_count = Array.new
       CouponCode.all.each do |coupon|
         name = coupon.name
