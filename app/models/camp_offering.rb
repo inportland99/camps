@@ -120,7 +120,8 @@ class CampOffering < ActiveRecord::Base
     case time
       when "AM" then "9:00AM - 12:00PM"
       when "PM" then "1:00PM - 4:00PM"
-      when "All Day" then "9:00AM - 4:00PM"
+      # this only works if Extended Care is the ONLY All Day camp
+      when "All Day" then "8:30AM - 9:00AM and 4:00PM - 4:30pm"
     end
   end
 
