@@ -84,14 +84,15 @@ class RegistrationsController < ApplicationController
     else
       respond_to do |format|
         if @registration.save_with_payment
+
+          # send notification to slack
+          @registration.send_slack_notification
+
           # send email confirmation
           PonyExpress.registration_confirmation(@registration).deliver
 
           # sync to active campaign
           @registration.active_campaign_actions
-
-          # send notification to slack
-          @registration.send_slack_notification
 
           format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }

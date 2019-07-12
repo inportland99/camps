@@ -71,7 +71,8 @@ class Registration < ActiveRecord::Base
   def send_slack_notification
     camp_location = camp_offerings.first.location.name
     test_note = Rails.env.development? ? "[TEST] " : ""
-    HTTParty.post("https://hooks.slack.com/services/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",
+    # HTTParty.post("https://hooks.slack.com/services/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",
+    HTTParty.post("https://hooks.slack.com/services/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",
       {:body => {text: "\n#{test_note}Parent: #{parent_name}\nHalf-day Camps: #{half_day_count}\nLocation: #{camp_location}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
                   username: "Registration Received",
                   icon_emoji: ":tada:",}.to_json,
