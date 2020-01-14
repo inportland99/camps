@@ -1,28 +1,20 @@
 <div class="row locations">
-  <div class="col-md-6 col-xs-12 text-center hilliard"  itemscope itemtype="http://schema.org/Place" >
-    <%= link_to new_registration_path(location: 3), itemprop: "url" do %>
-      <h2 itemprop="name">Hilliard / UA</h2>
-    <% end %>
-    <div class="location-description"><em>Mill Run</em></div>
-  </div>
-  <div class="col-md-6 col-xs-12 text-center new-albany"  itemscope itemtype="http://schema.org/Place" >
-    <%= link_to new_registration_path(location: 2), itemprop: "url" do %>
-      <h2 itemprop="name">New Albany</h2>
-    <% end %>
-    <div class="location-description"><em>North Hamilton Rd (near Home Depot)</em></div>
-  </div>
-</div>
-<div class="row locations mt-5">
-  <div class="col-md-6 col-xs-12 text-center powell" itemscope itemtype="http://schema.org/Place" >
+  <div class="col-md-4 col-xs-12 text-center powell" itemscope itemtype="http://schema.org/Place" >
     <%= link_to new_registration_path(location: 1), itemprop: "url" do %>
       <h2 itemprop="name">Powell</h2>
+      <div class="location-description"><em>Sawmill Parkway &amp; Powell Road</em></div>
     <% end %>
-    <div class="location-description"><em>Sawmill Parkway &amp; Powell Road</em></div>
   </div>
-  <div class="col-md-6 col-xs-12 text-center past" itemscope itemtype="http://schema.org/Place" >
+  <div class="col-md-4 col-xs-12 text-center new-albany"  itemscope itemtype="http://schema.org/Place" >
+    <%= link_to new_registration_path(location: 2), itemprop: "url" do %>
+      <h2 itemprop="name">New Albany</h2>
+      <div class="location-description"><em>North Hamilton Rd (near Home Depot)</em></div>
+    <% end %>
+  </div>
+  <div class="col-md-4 col-xs-12 text-center past" itemscope itemtype="http://schema.org/Place" >
     <%= link_to new_registration_path(location: 6), itemprop: "url" do %>
       <h2 itemprop="name">Solon</h2>
+      <div class="location-description"><em>33552 Aurora Road, Solon, Ohio</em></div>
     <% end %>
-    <div class="location-description"><em>33552 Aurora Road, Solon, Ohio</em></div>
   </div>
 </div>
