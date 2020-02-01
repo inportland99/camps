@@ -13,15 +13,16 @@
     <%# end %>
     <div class="main" style="border-bottom:solid 9px black;">
       <div class="main-title">
-        Conquer Summer Boredom with Camps that are Fun, Inspiring, and Educational
+        STEM Camps that Conquer Summer Boredom
       </div> <!-- /.main-title -->
       <div class="main-grades">
-        STEM Camps • Grades K-12 • Half Day &amp; Full Day • Extended Care
+        Day Camps • Ages 5-15 • Half Day &amp; Full Day • Extended Care
       </div>
       <div class="main-buttons">
-        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Descriptions</a>
+
         <p style="margin-top:1em;">
-            <%= link_to "Learn More <i style='color:white;' class='fa fa-play-circle'></i>".html_safe, "#watchVideo", :data => {:toggle=>"modal"}, :class => "btn btn-blue" %>
+            <%# <%= link_to "Learn More <i style='color:white;' class='fa fa-play-circle'></i>".html_safe, "#watchVideo", :data => {:toggle=>"modal"}, :class => "btn btn-blue" %> %>
         </p>
       </div>
     </div>
@@ -89,7 +90,7 @@
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
       <h2>We know how hard it is to find affordable, high quality, STEM camps</h2>
-        <p>We've spent the last 11 years refining and improving our camps so you can be <u>confident</u> that your child will have a great camp experience.</p>
+        <p>We've spent the last 12 years refining and improving our camps so you can be <u>confident</u> that your child will have a great camp experience.</p>
 
         <div style="font-size:1.3em; color:orange;"><strong>Over 3,000 happy campers<br />97.5% of parents would recommend our camps to a friend!</strong></div>
 
@@ -182,7 +183,7 @@
       <i class="fa fa-comments-o fa-5x"></i>
       <h3 class="camps-orange">98.7% Satisfaction</h3>
       <p>
-        Over 3,000 happy campers.
+        Over 4,000 happy campers.
       </p>
     </div><!--/col-lg-4 -->
 
@@ -190,7 +191,7 @@
       <i class="fa fa-calendar fa-5x"></i>
       <h3 class="camps-purple">Flexible Scheduling</h3>
       <p>
-        Something came up? No problem, change camps at any time.
+        Something came up? No problem, switch camps at any time.
       </p>
     </div><!--/col-lg-4 -->
 
@@ -218,6 +219,7 @@
     <!-- ** Camp Information ** -->
     <div class="row mt centered">
       <div class="col-lg-6 offset-lg-3 text-xs-center">
+        <a name="camps"></a>
         <h1 style="padding-top:50px;">Camp Catalog</h1>
         <!-- <h3><small>Duration:</small> 1 Week (M-F)</h3>
         <p>Check schedule for start and end times.</p> -->
@@ -227,7 +229,7 @@
     <div class="row mt centered">
       <div class="col-lg-8 offset-lg-2 text-xs-center">
       <hr>
-      <h3>Camp Options For Ages 4 - 5 and 6 - 8</h1>
+      <h3>Camp Options For Ages 6 - 8</h1>
       <hr>
       </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
     </div><!-- /row -->
@@ -246,14 +248,48 @@
           <%= link_to "Learn More", "#camp10Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
+          <%= link_to("#camp33Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('hexaflexagon.jpg', size: '150x150')%>
+          </div>
+          <h2>Jr. Maker Camp</h2>
+          Ages: 6-8 Half-Day<br />
+          <% end %>
+          <%= link_to "Learn More", "#camp33Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp44Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('programming.png', size: '150x150')%>
+          </div>
+          <h2>Jr. Coding</h2>
+          Ages: 6-8 Half-Day<br />
+          <% end %>
+          <%= link_to "Learn More", "#camp44Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+        </div><!--/col-lg-4 -->
+      </div><!-- /row -->
+
+      <!-- ** Row ** -->
+      <div class="row mt centered">
+        <div class="col-lg-4">
           <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
             <%= image_tag('engineering.png', size: '150x150')%>
           </div>
-          <h2>LEGO Engineering</h2>
+          <h2>LEGO Engineering: Simple Machines</h2>
           Ages: 6-8 Half-Day<br />
           <% end %>
           <%= link_to "Learn More", "#camp12Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+        </div><!--/col-lg-4 -->
+        <div class="col-lg-4">
+          <%= link_to("#camp13Modal", :data => {:toggle=>"modal"}) do %>
+          <div class="circle_base type_1">
+            <%= image_tag('engineering.png', size: '150x150')%>
+          </div>
+          <h2>LEGO Engineering: On The Move</h2>
+          Ages: 6-8 Half-Day<br />
+          <% end %>
+          <%= link_to "Learn More", "#camp13Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
           <%= link_to("#camp19Modal", :data => {:toggle=>"modal"}) do %>
@@ -265,42 +301,11 @@
           <% end %>
           <%= link_to "Learn More", "#camp19Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
-      </div>
+
+
+      </div><!-- /row -->
 
       <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp43Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('robothink.jpg', size: '150x150')%>
-          </div>
-          <h2>RoboThink Jr.</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp43Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp33Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('hexaflexagon.jpg', size: '150x150')%>
-          </div>
-          <h2>Jr. Maker Camp</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp33Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
-          </div>
-          <h2>Kickstart KG</h2>
-          Ages: 4-5 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp8Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
       <div class="row mt centered">
         <div class="col-lg-8 offset-lg-2 text-xs-center">
           <hr>
@@ -380,14 +385,14 @@
       <!-- ** Row ** -->
       <div class="row mt centered">
         <div class="col-lg-4">
-          <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
+          <%= link_to("#camp45Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
-            <%= image_tag('prealgebraprep.png', size: '150x150')%>
+            <%= image_tag('puzzles.jpg', size: '150x150')%>
           </div>
-          <h2>Middle School Math Prep</h2>
-          Ages: 10-12 Half-Day<br />
+          <h2>Escape Room Design</h2>
+          Ages: 9-13 Half-Day<br />
           <% end %>
-          <%= link_to "Learn More", "#camp9Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+          <%= link_to "Learn More", "#camp45Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
           <%= link_to("#camp41Modal", :data => {:toggle=>"modal"}) do %>
@@ -400,32 +405,6 @@
           <%= link_to "Learn More", "#camp41Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
         <div class="col-lg-4">
-          <%= link_to("#camp37Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('enigma.jpg', size: '150x150')%>
-          </div>
-          <h2>Math: Crack the Code</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp37Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-2">
-        </div><!--/col-lg-2 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp11Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('puzzles.jpg', size: '150x150')%>
-          </div>
-          <h2>Math: Puzzles & Problems</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp11Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
           <%= link_to("#camp42Modal", :data => {:toggle=>"modal"}) do %>
           <div class="circle_base type_1">
             <%= image_tag('robothink.jpg', size: '150x150')%>
@@ -435,10 +414,9 @@
           <% end %>
           <%= link_to "Learn More", "#camp42Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
-        <div class="col-lg-2">
-        </div><!--/col-lg-2 -->
       </div>
 
+      <!-- ** Row ** -->
       <div class="row mt centered">
         <div class="col-lg-8 offset-lg-2 text-xs-center">
           <hr>
@@ -454,7 +432,7 @@
           <div class="circle_base type_1">
             <%= image_tag('QEDmath.jpg', size: '150x150')%>
           </div>
-          <h2>Math: Advanced Topics</h2>
+          <h2>Elite Problem Solving</h2>
           Ages: 10-14 Half-Day<br />
           <% end %>
           <%= link_to "Learn More", "#camp38Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
@@ -480,17 +458,42 @@
           <%= link_to "Learn More", "#camp7Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
         </div><!--/col-lg-4 -->
       </div>
+
+    <!-- ** Row ** -->
+    <div class="row mt centered">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-4">
+        <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
+        <div class="circle_base type_1">
+          <%= image_tag('prealgebraprep.png', size: '150x150')%>
+        </div>
+        <h2>Middle School Math Prep</h2>
+        Ages: 10-12 Half-Day<br />
+        <% end %>
+        <%= link_to "Learn More", "#camp9Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+      </div><!--/col-lg-4 -->
+      <div class="col-lg-4">
+        <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
+        <div class="circle_base type_1">
+          <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
+        </div>
+        <h2>Kickstart KG</h2>
+        Ages: 4-5 Half-Day<br />
+        <% end %>
+        <%= link_to "Learn More", "#camp8Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
+      </div><!--/col-lg-4 -->
     </div>
 
     <%= render '/registrations/camp_modals' %>
     <%= render 'watch_video' %>
-
 </div>
+
 <div class="row">
   <div class="main-location">
 
   </div>
 </div>
+
 <div class="container" style="margin-bottom:70px;">
   <div class="row">
     <div class="col-sm-12 text-sm-center">

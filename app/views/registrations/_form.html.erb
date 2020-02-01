@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <h1 class="registration_header"><%= Location.find(params[:location] || params[:registration][:location_id]).name %> Camp Registration</h1>
     <div class="payment_plan_banner centered">
-      <span>Monthly Payment Plan!</span> Spend more than $250 and you can opt for a three-month installment plan.
+      <span>Monthly Payment Plan!</span> Register for more than one camp and you can opt for a three-month installment plan.
     </div>
     <p>
       <%= Location.find(params[:location] || params[:registration][:location_id]).directions.html_safe %>
@@ -15,15 +15,18 @@
   </div>
 </div>
 <!-- This renders all of the form information. -->
-<%# render 'form_sections' %>
+<% if user_signed_in? %>
 
-<%# render 'registration_modal' %>
+  <%= render 'form_sections' %>
 
-<%# render 'confirmation_modal' %>
+  <%= render 'registration_modal' %>
 
-<%# render 'camp_modals' %>
+  <%= render 'confirmation_modal' %>
 
-<%# render 'extended_care_modal' %>
+  <%= render 'camp_modals' %>
+
+  <%= render 'extended_care_modal' %>
+<% end %>
 
 <script>
   fbq('track', 'AddToCart');

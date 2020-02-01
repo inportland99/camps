@@ -42,7 +42,8 @@
     <%= link_to 'New Location', new_location_path, class: "btn btn-success" %>
   <% else %>
     <div class="location-selection">
-      <h1 class="centered">Select A Location!</h1>
+      <h2 class="centered">1. Choose a location below</h2>
+      <h2 class="centered">2. View Schedule and Register</h2>
       <div class="container" style="margin-bottom:70px;">
         <%= render 'select_location' %>
       </div>

@@ -4,91 +4,50 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  CURRENT_YEAR = 5
+  CURRENT_YEAR = 6
 
   YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022) # year 0 is 2014
 
   OFFERING_TIMES = ["All Day","AM","PM"]
 
-  if Rails.env.development?
-    OFFERING_WEEKS = {
+  OFFERING_WEEKS = {
                             1 => {
-                                    :start => Date.new(2019,6,3),
-                                    :end => Date.new(2019,6,7)
+                                    :start => Date.new(2020,6,1),
+                                    :end => Date.new(2020,6,5)
                             },
                             2 => {
-                                    :start => Date.new(2019,6,10),
-                                    :end => Date.new(2019,6,14)
+                                    :start => Date.new(2020,6,8),
+                                    :end => Date.new(2020,6,12)
                             },
                             3 => {
-                                    :start => Date.new(2019,6,17),
-                                    :end => Date.new(2019,6,21)
+                                    :start => Date.new(2020,6,15),
+                                    :end => Date.new(2020,6,19)
                             },
                             4 => {
-                                    :start => Date.new(2019,6,24),
-                                    :end => Date.new(2019,6,28)
+                                    :start => Date.new(2020,6,22),
+                                    :end => Date.new(2020,6,26)
                             },
                             5 => {
-                                    :start => Date.new(2019,7,8),
-                                    :end => Date.new(2019,7,12)
+                                    :start => Date.new(2020,7,6),
+                                    :end => Date.new(2020,7,10)
                             },
                             6 => {
-                                    :start => Date.new(2019,7,15),
-                                    :end => Date.new(2019,7,19)
+                                    :start => Date.new(2020,7,13),
+                                    :end => Date.new(2019,7,17)
                             },
                             7 => {
-                                    :start => Date.new(2019,7,22),
-                                    :end => Date.new(2019,7,26)
+                                    :start => Date.new(2019,7,20),
+                                    :end => Date.new(2019,7,24)
                             },
                             8 => {
-                                    :start => Date.new(2019,7,29),
-                                    :end => Date.new(2019,8,2)
+                                    :start => Date.new(2019,7,27),
+                                    :end => Date.new(2019,7,31)
                             },
                             9 => {
-                                    :start => Date.new(2019,8,5),
-                                    :end => Date.new(2019,8,9)
+                                    :start => Date.new(2019,8,3),
+                                    :end => Date.new(2019,8,7)
                             }
     }
-  elsif Rails.env.production?
-    OFFERING_WEEKS = {
-      1 => {
-              :start => Date.new(2019,6,3),
-              :end => Date.new(2019,6,7)
-      },
-      2 => {
-              :start => Date.new(2019,6,10),
-              :end => Date.new(2019,6,14)
-      },
-      3 => {
-              :start => Date.new(2019,6,17),
-              :end => Date.new(2019,6,21)
-      },
-      4 => {
-              :start => Date.new(2019,6,24),
-              :end => Date.new(2019,6,28)
-      },
-      5 => {
-              :start => Date.new(2019,7,8),
-              :end => Date.new(2019,7,12)
-      },
-      6 => {
-              :start => Date.new(2019,7,15),
-              :end => Date.new(2019,7,19)
-      },
-      7 => {
-              :start => Date.new(2019,7,22),
-              :end => Date.new(2019,7,26)
-      },
-      8 => {
-              :start => Date.new(2019,7,29),
-              :end => Date.new(2019,8,2)
-      },
-      9 => {
-              :start => Date.new(2019,8,5),
-              :end => Date.new(2019,8,9)
-      }
-  }
-  end
 
   def self.accessible_attributes
    ["assistant", "camp_id", "end_date", 'location_id', "start_date", "teacher", "classroom", "time", "week", "hidden", "year", "extended_care"]
