@@ -15,7 +15,6 @@
   </div>
 </div>
 <!-- This renders all of the form information. -->
-<% if user_signed_in? %>
 
   <%= render 'form_sections' %>
 
@@ -26,7 +25,6 @@
   <%= render 'camp_modals' %>
 
   <%= render 'extended_care_modal' %>
-<% end %>
 
 <script>
   fbq('track', 'AddToCart');
