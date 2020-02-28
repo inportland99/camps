@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create, :total_discounts, :confirmation, :outstanding_payments]
 
   def index
-    @registrations = Registration.where(year: CampOffering::CURRENT_YEAR).order('created_at DESC')
+    @registrations = Registration.where(year: current_year).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -194,6 +194,9 @@ class RegistrationsController < ApplicationController
 
   private
 
+    def current_year
+      (params[:current_year] || CampOffering::CURRENT_YEAR).to_i
+    end
     # Use this method to whitelist the permissible parameters. Example:
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.

@@ -3,7 +3,7 @@
 </div> -->
 
 <div id="headerwrap">
-  <div class="row" style="overflow:hidden; border-bottom:solid 9px black; background-color: rgba(0, 0, 0, 0.4);">
+  <div class="row" style="overflow:hidden;">
     <%# if params[:utm_source].present? %>
        <!-- <div class="row">
          <div class="col-sm-12 align-center">
@@ -16,14 +16,10 @@
         STEM Camps that <br />Conquer Summer Boredom
       </div> <!-- /.main-title -->
       <div class="main-grades">
-        Day Camps • Ages 5-15 • Half Day &amp; Full Day • Extended Care
+        AM and PM Camps • Ages 5-15 • Extended Care
       </div>
       <div class="main-buttons">
-        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Descriptions</a>
-
-        <p style="margin-top:1em;">
-            <%# <%= link_to "Learn More <i style='color:white;' class='fa fa-play-circle'></i>".html_safe, "#watchVideo", :data => {:toggle=>"modal"}, :class => "btn btn-blue" %> %>
-        </p>
+        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Catalog</a>
       </div>
     </div>
   </div><!-- row -->
@@ -32,14 +28,11 @@
 <div class="container">
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
-      <h2>Do you struggle to keep your child mentally stimulated in the summer?</h2>
-      <ul style="list-style:none;">
-        <li>Worried your child will be glued to a screen all day?
-        <li>Tired of the hearing your child say "I'm bored!"?
-        <li>Concerned your child will go back to school unprepared?
-        <li>Struggling to find high quality camps that match your child's interests?
-      </ul>
-        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+      <h2>Don't let your child waste the summer</h2>
+        <h3>...glued to a screen
+        <h3>...bored out of their minds
+        <h3>...forgetting everything they learned<br />
+        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Catalog</a>
     </div>
   </div>
 </div>
@@ -51,24 +44,25 @@
 <div class="container">
   <div class="row mt centered" >
     <div class="col-lg-10 offset-lg-1">
-      <h2>Sign up for camps today!</h2>
+      <h2>Enroll in 3 Easy Steps!</h2>
     </div> <!-- /.col-lg-10 .col-lg-offset-1 -->
   </div><!-- /row -->
 
   <div class="row mt centered">
     <div class="col-lg-4">
       <i class="fa fa-book fa-5x"></i>
-      <h3>1. Select camps that match your child's interests.</h3>
+      <h3>1. Find interesting camps</h3>
       <p>
-        Scroll down the list of camps offered for ages K-12
+        View camp catalog below
       </p>
     </div><!--/col-lg-4 -->
 
     <div class="col-lg-4">
       <i class="fa fa-group fa-5x"></i>
-      <h3>2. Click the Register Now button and choose a convenient location</h3>
+      <h3>2. Choose a location</h3>
       <p>
-        View the camp schedule and enroll your child in camp(s).
+        Columbus: Powell and New Albany<br>
+        Cleveland: Solon
       </p>
     </div><!--/col-lg-4 -->
 
@@ -76,7 +70,7 @@
       <i class="fa fa-comments-o fa-5x"></i>
       <h3>3. Tell your friends.</h3>
       <p>
-        Camps are more fun when your child attends with a buddy!
+        Camps are more fun with a buddy!
       </p>
     </div><!--/col-lg-4 -->
   </div><!-- /row -->
@@ -89,15 +83,9 @@
 <div class="container">
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
-      <h2>We know how hard it is to find affordable, high quality, STEM camps</h2>
-        <p>We've spent the last 12 years refining and improving our camps so you can be <u>confident</u> that your child will have a great camp experience.</p>
-
-        <div style="font-size:1.3em; color:orange;"><strong>Over 3,000 happy campers<br />97.5% of parents would recommend our camps to a friend!</strong></div>
-
-        <div style="font-size:1.3em;"><em>Join thousands of satisfied parents that chose Math Plus Academy Camps</em></div>
-
-        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
-
+      <h2>Every Child Deserves Access to High-Quality Affordable STEM Camps</h2>
+        <div style="font-size:1.3em; color:orange;"><strong>Over 4,000 happy campers<br />97.5% of parents would recommend our camps to a friend!</strong></div>
+        <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Catalog</a>
     </div>
   </div>
 </div>
@@ -114,18 +102,18 @@
   </div>
   <div class="row mt centered">
     <div class="col-lg-4">
-      "Every day when I picked up my son, he was glowing with excitement and joy!" -- Braedon's mom (LEGO Robotics)
+      <em>"Every day when I picked up my son, he was glowing with excitement and joy!"</em> -- Braedon's mom
     </div>
     <div class="col-lg-4">
-      "He LOVED it. Every day he came out excited to tell us what he had learned." -- Jack's mom (LEGO Engineering)
+      <em>"He LOVED it. Every day he came out excited to tell us what he had learned."</em> -- Jack's mom
     </div>
     <div class="col-lg-4">
-      "This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!" -- Zach's mom
+      <em>"This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!"</em> -- Zach's mom
     </div>
   </div>
   <div class="row mt centered">
     <div class="col-lg-10 offset-lg-1">
-      <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
+      <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>  <a href="#camps" class="btn btn-blue btn-lg main-schedule">Camp Catalog</a>
     </div>
   </div>
 </div>
@@ -488,19 +476,19 @@
     <%= render 'watch_video' %>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="main-location">
 
   </div>
-</div>
+</div> -->
 
 <div class="container" style="margin-bottom:70px;">
   <div class="row">
     <div class="col-sm-12 text-sm-center">
-      <h3 class="location-select"><i>Select Location To View Schedule and Register Online</i></h3>
+      <%= link_to "Register Now", locations_path, class: "btn btn-lg btn-orange main-schedule" %>
     </div>
   </div>
-  <%= render 'locations/select_location' %>
+  <#= render 'locations/select_location' %>
 </div>
 
 <script>
