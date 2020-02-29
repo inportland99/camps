@@ -181,9 +181,9 @@ class Registration < ActiveRecord::Base
     camp_location = camp_offerings.first.location.name
 
     if camp_location=='Solon'
-      tag_list = 'api, SummerCamp2019, Cleveland'
+      tag_list = 'api, SummerCamp2020, Cleveland'
     else
-      tag_list = 'api, SummerCamp2019, Local'
+      tag_list = 'api, SummerCamp2020, Local'
     end
     client_data.merge!('tags' => tag_list)
 
