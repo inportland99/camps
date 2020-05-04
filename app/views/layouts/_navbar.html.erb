@@ -9,18 +9,32 @@
     <ul class="navbar-nav">
       <!-- <li class="nav-item"><%# link_to "MPA.com", "http://www.mathplusacademy.com", class: "nav-link" %></li> -->
       <!-- <li class="nav-item"><%= link_to "How We Compare", comparison_path, class: "nav-link" %></li> -->
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Camps<b class="caret"></b>
+          In-Person<b class="caret"></b>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% @activecamps.each do |camp| %>
-            <% if camp.title != 'Extended Care' %>
+            <% if (camp.title != 'Extended Care' && !camp.online) %>
+              <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp), class: "dropdown-item"%>
+            <% end %>
+          <% end %>
+        </div>
+      </li> -->
+
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Online Camps<b class="caret"></b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <% @activecamps.each do |camp| %>
+            <% if (camp.title != 'Extended Care' && camp.online) %>
               <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp), class: "dropdown-item"%>
             <% end %>
           <% end %>
         </div>
       </li>
+
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Locations<b class="caret"></b>

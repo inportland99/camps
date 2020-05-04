@@ -16,7 +16,11 @@
             <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
           <% end %>
         <% else %>
-          <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
+          <% if params[:location] == '7' %>
+            <%= render 'online_schedule' , location: Location.find(params[:location] || params[:registration][:location_id]) %>
+          <% else %>
+            <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
+          <% end %>
         <% end %>
       </div><!-- /#camp_offerings -->
     </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
@@ -25,7 +29,7 @@
   <!-- ** Camps Your Registering For ** -->
   <div class="row">
     <div class="col-sm-12">
-      <h3>Camps you have selected:</h3>
+      <h3>Selected Camps:</h3>
       <div id="camp_registrations">
         <ul>
         </ul>

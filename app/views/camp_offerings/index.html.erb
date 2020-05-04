@@ -15,8 +15,8 @@
             <th>Teacher</th>
             <th>Assistant</th>
             <th>Camp Time</th>
-            <th>Start date</th>
-            <th>End date</th>
+            <th>Week</th>
+            <th>Start Date</th>
             <th>Year</th>
             <th>Open Spots</th>
             <th></th>
@@ -36,8 +36,8 @@
                 <td><%= camp_offering.teacher %></td>
                 <td><%= camp_offering.assistant %></td>
                 <td><%= camp_offering.time %></td>
-                <td><%= camp_offering.start_date.strftime('%b %d') if camp_offering.start_date %></td>
-                <td><%= camp_offering.end_date.strftime('%b %d') if camp_offering.end_date %></td>
+                <td><%= camp_offering.week %></td>
+                <td><%= CampOffering::OFFERING_WEEKS[camp_offering.week][:start].strftime("%b %d") %></td>
                 <td><%= CampOffering::YEARS[camp_offering.year] %></td>
                 <td><%= camp_offering.open_spots %></td>
                 <td><%= link_to 'Show', camp_offering %></td>

@@ -146,7 +146,7 @@ camps =
       name = $(this).data('name')
       $camp_registrations_ul.append("<li>#{name}</li>")
     if count is 0
-      $camp_registrations_ul.text("You have not selected any camps yet.").css('color', 'red')
+      $camp_registrations_ul.text("No camps selected yet.").css('color', 'red')
 
   selected_total: ->
     total = 0

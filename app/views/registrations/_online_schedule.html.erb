@@ -1,0 +1,120 @@
+<div class="container">
+  <div class="row mt centered" >
+    <div class="col-lg-10 offset-lg-1">
+			<h2>Online Summer Camp Options</h2>
+    </div> <!-- /.col-lg-10 .col-lg-offset-1 -->
+  </div><!-- /row -->
+
+  <div class="row mt centered">
+    <div class="col-lg-4">
+      <h3>Tech Camps</h3>
+				<div style="margin-bottom:15px;" class="circle_base type_1">
+					<%= image_tag('vgd.jpg', size: '150x150')%>
+				</div>
+				<p>Learn how to code, design 3D models, tinker with electronics, and create video games. No prior experience required. 90 minutes per day plus at-home extensions to keep your child inspired and engaged.</p>
+    </div><!--/col-lg-4 -->
+
+    <div class="col-lg-4">
+      <h3>Brain Games</h3>
+				<div style="margin-bottom:15px;" class="circle_base type_1">
+					<%= image_tag('puzzles.jpg', size: '150x150')%>
+				</div>
+				<p>Stimulate your child's curiosity and problem solving ability with puzzles, activities, and games that center around key math concepts. Two one-hour sessions per day plus at-home activity between daily sessions.</p>
+    </div><!--/col-lg-4 -->
+
+    <div class="col-lg-4">
+      <h3>Jumpstart</h3>
+				<div style="margin-bottom:15px;" class="circle_base type_1">
+					<%= image_tag('prealgebraprep.png', size: '150x150')%>
+				</div>
+				<p>Focus on grade level core curriculum to build understanding and mastery before school starts in fall. Two one-hour sessions each day plus at-home practice between sessions.</p>
+    </div><!--/col-lg-4 -->
+  </div><!-- /row -->
+</div><!-- /container -->
+
+<div class="row mt-3 mb-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Tuition Includes</h3>
+      </div>
+      <div class="card-block">
+        <ul>
+          <li>Math Plus Academy Certified instructor.</li>
+					<li>7.5 to 10 hours of live, online instruction.</li>
+					<li>Plus >5 hours of self-paced activities.</li>
+					<li>Guaranteed student:teacher ratio of 4 to 1 or better.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3 mb-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">How to Register</h3>
+      </div>
+      <div class="card-block">
+        <ol>
+          <li>Click on each week to reveal all camp offerings</li>
+					<li>Click on camp names for detailed descriptions.</li>
+          <li>Click checkbox to add camp(s) to cart for <u>one child</u>.</li>
+          <li>Complete registration and payment info and submit your registration.</li>
+          <li>Rinse and repeat for each child 😉.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
+	<!-- Cycle through all the weeks of camp -->
+	<% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
+		<% headingId = "heading_#{n}" %>
+		<% collapseId = "collapse_#{n}" %>
+		<!-- One card per week -->
+	  <div class="card">
+	    <div class="card-header" id="<%= headingId %>">
+	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<%= collapseId %>" aria-expanded="<%= n==0 ? "true" : "false"%>" aria-controls="<%= collapseId %>">
+						<h3><i class="fa fa-plus"></i> Week <%= n+1 %>: <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %></h3>
+	        </button>
+	    </div> <!-- card header -->
+
+	    <div id="<%= collapseId %>" class="collapse <%= n==0 ? " show" : ""%>" aria-labelledby="<%= headingId %>">
+	      <div class="card-body" style="margin:20px;">
+
+					<h4>Tech Camps</h4>
+					<!-- cycle through all camps for this year, location, week, and classroom -->
+					<% if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 1).count == 0 %>
+						No Tech camps offered this week. Please see other weeks.
+					<% end %>
+					<% CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 1).each do |co| %>
+						<%= render 'online_camp_listing', co: co %>
+					<% end %>
+
+					<h4>Brain Games</h4>
+					<!-- cycle through all camps for this year, location, week, and classroom -->
+					<% if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 2).count == 0 %>
+						No Brain Games camps offered this week. Please see other weeks.
+					<% end %>
+					<% CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 2).each do |co| %>
+						<%= render 'online_camp_listing', co: co %>
+					<% end %>
+
+					<h4>Jumpstart</h4>
+					<!-- cycle through all camps for this year, location, week, and classroom -->
+					<% if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).count == 0 %>
+						No Jumpstart camps offered this week. Please see other weeks.
+					<% end %>
+					<% CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).each do |co| %>
+						<%= render 'online_camp_listing', co: co %>
+					<% end %>
+					<input name="registration[camp_offering_ids][]" type="hidden" value="">
+	      </div>
+	    </div>
+	  </div>
+	<% end %>
+</div>

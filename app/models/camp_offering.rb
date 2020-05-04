@@ -8,7 +8,14 @@ class CampOffering < ActiveRecord::Base
 
   YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022) # year 0 is 2014
 
-  OFFERING_TIMES = ["All Day","AM","PM"]
+  OFFERING_TIMES = ["All Day","AM","PM",
+                    "9-10AM & 1-2PM EST",
+                    "10-11AM & 2-3PM EST",
+                    "11-12PM & 3-4PM EST",
+                    "9-10:30AM EST",
+                    "10:30-12PM EST",
+                    "1-2:30PM EST",
+                    "2:30-4:00PM EST"]
 
   OFFERING_WEEKS = {
                             1 => {
@@ -68,7 +75,11 @@ class CampOffering < ActiveRecord::Base
   end
 
   def confirmation_name
-    camp.title + ": " + location.name + ", " + convert_time + " (Start Date: #{start_date.strftime('%b, %d')})"
+    if location.id != 7
+      camp.title + ": " + location.name + ", " + convert_time + " (Start Date: #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")})"
+    else
+      camp.title + " (Online): " + " #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")} - #{CampOffering::OFFERING_WEEKS[week][:end].strftime("%b %d")} from " + time
+    end
   end
 
   def edit_name
@@ -94,6 +105,10 @@ class CampOffering < ActiveRecord::Base
 
   def self.by_week(location, week, year)
     where("location_id=? AND week=? AND year=?", location, week, year)
+  end
+
+  def self.by_week_and_classroom(location, week, year, classroom)
+    where("location_id=? AND week=? AND year=? AND classroom=?", location, week, year, classroom)
   end
 
   def self.extended_care(location, week, year)

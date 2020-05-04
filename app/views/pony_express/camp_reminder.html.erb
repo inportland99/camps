@@ -105,25 +105,27 @@
                   <tr style="padding: 0;vertical-align: top;text-align: left;">
                     <td class="wrapper last" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px 20px 0px 0px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;position: relative;padding-bottom: 20px;padding-right: 0px;border-collapse: collapse;">
 
-                      <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
-                        <tr style="padding: 0;vertical-align: top;text-align: left;">
-                          <td class="panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #ECF8FF;border: 1px solid #d9d9d9;border-color: #b9e5ff;border-collapse: collapse;">
-                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              As our camps are a highly exciting part of the year, we
-                              will be taking pictures and video of students and teachers.
-                              These pictures may be used for our Twitter, Facebook, or Website pages.
-                              You may contact Math Plus Academy directly to prohibit such use of your child’s image.
-                              Proceeding without direct notification of your intent to prohibit use of
-                              your child’s image signifies assent to Math Plus Academy to use these images
-                              for social media and website purposes.
-                              <br>
-                              <br>
-                              Please feel free to contact us with any questions, comments, or concerns.
-                            </p>
-                          </td>
-                          <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse;"></td>
-                        </tr>
-                      </table>
+                      <% if @registration.camp_offerings.first.location.name != 'Online' %>
+                        <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
+                          <tr style="padding: 0;vertical-align: top;text-align: left;">
+                            <td class="panel" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;background: #ECF8FF;border: 1px solid #d9d9d9;border-color: #b9e5ff;border-collapse: collapse;">
+                              <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                                As our camps are a highly exciting part of the year, we
+                                will be taking pictures and video of students and teachers.
+                                These pictures may be used for our Twitter, Facebook, or Website pages.
+                                You may contact Math Plus Academy directly to prohibit such use of your child’s image.
+                                Proceeding without direct notification of your intent to prohibit use of
+                                your child’s image signifies assent to Math Plus Academy to use these images
+                                for social media and website purposes.
+                                <br>
+                                <br>
+                                Please feel free to contact us with any questions, comments, or concerns.
+                              </p>
+                            </td>
+                            <td class="expander" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;visibility: hidden;width: 0px;border-collapse: collapse;"></td>
+                          </tr>
+                        </table>
+                      <% end %>
 
                     </td>
                   </tr>

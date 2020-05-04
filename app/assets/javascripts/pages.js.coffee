@@ -33,3 +33,17 @@ jQuery ->
 		$camp_video = $(this).find(".camp-video")
 		if $(this).find(".camp-video").length != 0
 			$camp_video.html('<iframe src=' + $camp_video.data('video') + 'width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+
+$(document).ready ->
+	  # Add minus icon for collapse element which is open by default
+  $('.collapse.show').each ->
+    $(this).prev('.card-header').find('.fa').addClass('fa-minus').removeClass 'fa-plus'
+    return
+  # Toggle plus minus icon on show hide of collapse element
+  $('.collapse').on('show.bs.collapse', ->
+    $(this).prev('.card-header').find('.fa').removeClass('fa-plus').addClass 'fa-minus'
+    return
+  ).on 'hide.bs.collapse', ->
+    $(this).prev('.card-header').find('.fa').removeClass('fa-minus').addClass 'fa-plus'
+    return
+  return

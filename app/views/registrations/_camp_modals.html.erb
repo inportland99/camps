@@ -17,6 +17,11 @@
               </div>
             </div>
           <% end %>
+          <% if camp.online %>
+            <div class="badge badge-success" style="margin-bottom:15px;">Online Camp</div>
+          <% else %>
+            <span class="badge badge-primary" style="margin-bottom:15px;">In-Person Camp</span>
+          <% end %>
           <%= camp.description.html_safe if camp.description %>
           <%# unless camp.id == 20 %>
             <!-- <p>

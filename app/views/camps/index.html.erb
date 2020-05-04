@@ -14,7 +14,7 @@
         <th>Price</th>
         <th>Capacity</th>
         <th>Age</th>
-        <th>Girls Only</th>
+        <th>Online</th>
         <th></th>
         <th></th>
         <th></th>
@@ -28,7 +28,7 @@
           <td>$<%= camp.price if camp.price %></td>
           <td><%= camp.capacity %></td>
           <td><%= camp.age %></td>
-          <td><%= camp.girls_only %></td>
+          <td><%= camp.online %></td>
           <td><%= link_to 'Show', camp %></td>
           <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
           <td><%= link_to 'Destroy', camp, method: :delete, data: { confirm: 'Are you sure?' } %></td>

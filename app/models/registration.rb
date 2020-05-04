@@ -182,6 +182,8 @@ class Registration < ActiveRecord::Base
 
     if camp_location=='Solon'
       tag_list = 'api, SummerCamp2020, Cleveland'
+    elsif camp_location=='Online'
+      tag_list = 'api, SummerCamp2020, Online'
     else
       tag_list = 'api, SummerCamp2020, Local'
     end
