@@ -72,7 +72,7 @@ class Registration < ActiveRecord::Base
     camp_location = camp_offerings.first.location.name
     test_note = Rails.env.development? ? "[TEST] " : ""
     HTTParty.post( ENV['SLACK_WEBHOOK'],
-      {:body => {text: "\n#{test_note}Parent: #{parent_name}\nCamps: #{total_camps_count}\nLocation: #{camp_location}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
+      {:body => {text: "\n#{test_note}Parent: #{parent_name}\nCamps: #{camp_count}\nLocation: #{camp_location}\nCoupon Code: #{!coupon_code.empty? ? coupon_code.upcase : "none"}\nReferred By: #{!referred_by.blank? ? referred_by : "no referral"}",
                   username: "Registration Received",
                   icon_emoji: ":tada:",}.to_json,
                   :headers => { 'Content-Type' => 'application/json', 'Accept' => 'application/json'}
@@ -142,6 +142,10 @@ class Registration < ActiveRecord::Base
 
   def half_day_count
     camp_offerings.where("time = ? OR time = ?", "AM","PM").count
+  end
+
+  def camp_count
+    camp_offerings.count
   end
 
   def full_day_count
