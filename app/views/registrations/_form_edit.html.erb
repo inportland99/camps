@@ -53,7 +53,7 @@
         <% @locations.each do |location| %>
           <h3><%= location.name %></h3>
           <%= f.association :camp_offerings, as: :select, label_method: :select_name,
-                  include_blank: true, collection: CampOffering.where("location_id = ?", "#{location.id}").where(year: CampOffering::CURRENT_YEAR).order("start_date asc"), input_html: {class: "chosen"} %>
+                  include_blank: true, collection: CampOffering.where("location_id = ?", "#{location.id}").where(year: CampOffering::CURRENT_YEAR).order("week asc"), input_html: {class: "chosen"} %>
         <% end %>
       </div>
     </div>

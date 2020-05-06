@@ -71,7 +71,8 @@ class CampOffering < ActiveRecord::Base
   end
 
   def select_name
-    camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
+    # camp.title + ": " + location.name + ", " + time + " (Start Date: #{start_date.strftime('%b, %d')})"
+    camp.title + ": " + location.name + ", " + time + " #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")}"
   end
 
   def confirmation_name
