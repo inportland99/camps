@@ -15,7 +15,7 @@
 
           <% [*46..52].each do |camp_id| %>
             <% camp_name = Camp.find(camp_id).title %>
-            <%= link_to camp_name.last(camp_name.length-6), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+            <%= link_to (camp_name.last(camp_name.length-6)+"<small style='color:gray;'> Ages: "+Camp.find(camp_id).age+"</small>").html_safe, "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
           <% end %>
         </div>
       </div><!--/col-lg-4 -->
@@ -37,7 +37,7 @@
           Reinforce math concepts while tackling fun puzzles and playing math games together.<br /><br />
           <% [*53..60].each do |camp_id| %>
             <% camp_name = Camp.find(camp_id).title %>
-            <%= link_to camp_name.last(camp_name.length-12), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+            <%= link_to (camp_name.last(camp_name.length-12)+"<small style='color:gray;'> Ages: "+Camp.find(camp_id).age+"</small>").html_safe, "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
           <% end %>
         </div><!--/col-lg-4 -->
       </div>
@@ -59,7 +59,7 @@
           Build understanding and gain mastery of grade level core curriculum.<br /><br />
           <% [*61..67].each do |camp_id| %>
             <% camp_name = Camp.find(camp_id).title %>
-            <%= link_to camp_name.last(camp_name.length-10), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+            <%= link_to (camp_name.last(camp_name.length-10)+"<small style='color:gray;'> Ages: "+Camp.find(camp_id).age+"</small>").html_safe, "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
           <% end %>
         </div><!--/col-lg-4 -->
       </div>
