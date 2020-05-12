@@ -43,10 +43,12 @@
 
 <% if Rails.env.production? %>
   <script>
-    fbq('track', 'Purchase');
+    fbq('track', 'Purchase', {
+      value: <%= '%.2f'%(@registration.total/100) %>,
+      currency: 'USD',});
   </script>
-  <div id="facebook_pixel_tracking" data-amount="<%= '%.2f'%(@registration.total/100) %>">
-  </div>
+  <!-- <div id="facebook_pixel_tracking" data-amount="<%= '%.2f'%(@registration.total/100) %>">
+  </div> -->
   <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-19803817-1']);

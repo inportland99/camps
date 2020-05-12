@@ -27,7 +27,7 @@
           Online Camps<b class="caret"></b>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <% @activecamps.each do |camp| %>
+          <% @onlinecamps.each do |camp| %>
             <% if (camp.title != 'Extended Care' && camp.online) %>
               <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp), class: "dropdown-item"%>
             <% end %>
@@ -35,7 +35,7 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Locations<b class="caret"></b>
         </a>
@@ -44,7 +44,7 @@
             <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item"%>
           <% end %>
         </div>
-      </li>
+      </li> -->
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           More Info<b class="caret"></b>
@@ -55,7 +55,9 @@
           <%= link_to "FAQ", faq_path, class: "dropdown-item" %>
         </div>
       </li>
-      <li class="navbar-text"><i class="fa fa-phone"></i> 614.792.6284</li>
+      <li class="navbar-text">
+          <%= link_to "Enroll Now", new_registration_path(location: 7), class: "btn btn-small btn-success" %>
+      </li>
     </ul>
   </div><!--/.nav-collapse -->
 </div>

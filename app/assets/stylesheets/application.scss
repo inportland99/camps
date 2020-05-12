@@ -365,17 +365,17 @@ i {
   text-align: left;
   letter-spacing : -2px;
   color : white;
-  width: 75%;
+  width: 65%;
   // margin: 20px 0 40px 0;
 }
 
 .main-sub-title{
-  font-size : 49px;
-  font-weight: 300;
-  letter-spacing : -2px;
-  color : #666666;
-  color : rgb(102, 102, 102);
-  margin-top: 10px;
+  font-size : calc(14px + 1vw);
+  font-weight: 500;
+  letter-spacing : -1px;
+  color : white;
+  margin-top: 20px;
+  width: 65%;
 }
 
 .main-schedule{
@@ -388,13 +388,15 @@ i {
 }
 
 .main-grades{
-  font-size: calc(10px + 1vw);
+  font-size: calc(14px + 1.3vw);
+  color: yellow;
   line-height: 1.5;
   font-weight: bold;
   text-align: left;
   letter-spacing : -1px;
-  color : white;
-  margin-bottom: 30px
+  margin-bottom: 30px;
+  margin-top:15px;
+  width: 65%;
 }
 
 .after_main_section{

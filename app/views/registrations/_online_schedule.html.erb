@@ -1,38 +1,74 @@
-<div class="container">
-  <div class="row mt centered" >
-    <div class="col-lg-10 offset-lg-1">
-			<h2>Online Summer Camp Options</h2>
-    </div> <!-- /.col-lg-10 .col-lg-offset-1 -->
-  </div><!-- /row -->
+<div class="row mt centered">
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header">
+        <h3 class="card-title">Tech Camps</h3>
+      </div>
+      <div class="card-body" style="padding:15px;">
+        <div class="card-text">
+  				<div style="margin-bottom:15px;margin-top:15px;" class="circle_base type_1">
+  					<%= image_tag('vgd.jpg', size: '150x150')%>
+  				</div>
+  				<strong>Spark a new interest!</strong><br />
+          Daily 90 minute sessions plus engaging at-home extensions.<br /><br />
+          Learn new tech skills. No prior experience required.<br /><br />
 
-  <div class="row mt centered">
-    <div class="col-lg-4">
-      <h3>Tech Camps</h3>
-				<div style="margin-bottom:15px;" class="circle_base type_1">
-					<%= image_tag('vgd.jpg', size: '150x150')%>
-				</div>
-				<p>Learn how to code, design 3D models, tinker with electronics, and create video games. No prior experience required. 90 minutes per day plus at-home extensions to keep your child inspired and engaged.</p>
-    </div><!--/col-lg-4 -->
+          <% [*46..52].each do |camp_id| %>
+            <% camp_name = Camp.find(camp_id).title %>
+            <%= link_to camp_name.last(camp_name.length-6), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+          <% end %>
+        </div>
+      </div><!--/col-lg-4 -->
+    </div>
+  </div>
 
-    <div class="col-lg-4">
-      <h3>Brain Games</h3>
-				<div style="margin-bottom:15px;" class="circle_base type_1">
-					<%= image_tag('puzzles.jpg', size: '150x150')%>
-				</div>
-				<p>Stimulate your child's curiosity and problem solving ability with puzzles, activities, and games that center around key math concepts. Two one-hour sessions per day plus at-home activity between daily sessions.</p>
-    </div><!--/col-lg-4 -->
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header">
+        <h3 class="card-title">Brain Games</h3>
+      </div>
+      <div class="card-body" style="padding:15px;">
+        <div class="card-text">
+    			<div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
+    				<%= image_tag('puzzles.jpg', size: '150x150')%>
+    			</div>
+			    <strong>Be a master problem solver!</strong><br />
+          Two 60 minute, daily sessions plus fun at-home activities.<br /><br />
+          Reinforce math concepts while tackling fun puzzles and playing math games together.<br /><br />
+          <% [*53..60].each do |camp_id| %>
+            <% camp_name = Camp.find(camp_id).title %>
+            <%= link_to camp_name.last(camp_name.length-12), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+    </div>
+  </div>
 
-    <div class="col-lg-4">
-      <h3>Jumpstart</h3>
-				<div style="margin-bottom:15px;" class="circle_base type_1">
-					<%= image_tag('prealgebraprep.png', size: '150x150')%>
-				</div>
-				<p>Focus on grade level core curriculum to build understanding and mastery before school starts in fall. Two one-hour sessions each day plus at-home practice between sessions.</p>
-    </div><!--/col-lg-4 -->
-  </div><!-- /row -->
-</div><!-- /container -->
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header">
+        <h3 class="card-title">Jumpstart</h3>
+      </div>
+      <div class="card-body" style="padding:15px;">
+        <div class="card-text">
+          <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
+    				<%= image_tag('prealgebraprep.png', size: '150x150')%>
+    			</div>
+          <strong>Get ready for school.</strong><br />
+          Two 60 minute daily sessions plus at-home practice assignments.<br /><br />
+          Build understanding and gain mastery of grade level core curriculum.<br /><br />
+          <% [*61..67].each do |camp_id| %>
+            <% camp_name = Camp.find(camp_id).title %>
+            <%= link_to camp_name.last(camp_name.length-10), "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
+          <% end %>
+        </div><!--/col-lg-4 -->
+      </div>
+    </div>
 
-<div class="row mt-3 mb-4">
+  </div><!--/col-lg-4 -->
+</div><!-- /row -->
+
+<!-- <div class="row mt-3 mb-4">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
@@ -48,7 +84,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="row mt-3 mb-4">
   <div class="col-lg-12">
@@ -61,7 +97,7 @@
           <li>Click on each week to reveal all camp offerings</li>
 					<li>Click on camp names for detailed descriptions.</li>
           <li>Click checkbox to add camp(s) to cart for <u>one child</u>.</li>
-          <li>Complete registration and payment info and submit your registration.</li>
+          <li>Complete checkout at the bottom of the page.</li>
           <li>Rinse and repeat for each child 😉.</li>
         </ol>
       </div>
