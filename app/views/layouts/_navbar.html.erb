@@ -24,7 +24,7 @@
 
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Online Camps<b class="caret"></b>
+          Online Catalog<b class="caret"></b>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% @onlinecamps.each do |camp| %>
@@ -35,7 +35,20 @@
         </div>
       </li>
 
-      <!-- <li class="nav-item dropdown">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          In-person Catalog<b class="caret"></b>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <% @activecamps.each do |camp| %>
+            <% if (camp.title != 'Extended Care' && !camp.online) %>
+              <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp), class: "dropdown-item"%>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Locations<b class="caret"></b>
         </a>
@@ -44,8 +57,8 @@
             <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item"%>
           <% end %>
         </div>
-      </li> -->
-      <li class="nav-item dropdown">
+      </li>
+      <!-- <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           More Info<b class="caret"></b>
         </a>
@@ -54,10 +67,10 @@
           <%= link_to "Testimonials", testimonials_path, class: "dropdown-item" %>
           <%= link_to "FAQ", faq_path, class: "dropdown-item" %>
         </div>
-      </li>
-      <li class="navbar-text">
+      </li> -->
+      <!-- <li class="navbar-text">
           <%= link_to "Enroll Now", new_registration_path(location: 7), class: "btn btn-small btn-success" %>
-      </li>
+      </li> -->
     </ul>
   </div><!--/.nav-collapse -->
 </div>
