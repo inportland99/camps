@@ -7,6 +7,12 @@
     Powell, Ohio 43065<span>
   </p>
 </div>
+
+<p class="centered">
+  <%= link_to "Terms and Conditions", terms_path %> |
+  <%= link_to "Privacy Policy", privacy_path %>
+</p>
+
 <p class="centered">
   <% if user_signed_in? %>
     <%= link_to "Sign Out", destroy_user_session_path %> |

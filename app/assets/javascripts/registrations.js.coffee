@@ -5,9 +5,9 @@
 #Calcualte total for selected camps.
 jQuery ->
 
-  if document.getElementById("facebook_pixel_tracking")
-    total = $("#facebook_pixel_tracking").data('amount')
-    fbq('track', 'Purchase', {value: total, currency: 'USD'});
+  # if document.getElementById("facebook_pixel_tracking")
+  #   total = $("#facebook_pixel_tracking").data('amount')
+  #   fbq('track', 'Purchase', {value: total, currency: 'USD'});
 
   $('.reg-datatable').DataTable
     responsive: true,
@@ -40,6 +40,9 @@ jQuery ->
   #add selected camp to list for registration confirmation
   $registration_camp_offerings.on 'change', 'input[type="checkbox"]', ->
     camps.selected_camps()
+
+  $registration_camp_offerings.one 'change', 'input[type="checkbox"]', ->
+    fbq('track', 'AddToCart');
 
   #toggle calendar view based on location select field
   $registration_location_id = $('#registration_location_id')

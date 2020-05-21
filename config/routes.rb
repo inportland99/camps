@@ -50,6 +50,8 @@ Camps::Application.routes.draw do
   get '/email_confirmation', to: 'registrations#email_confirmation'
   get '/thank_you', to: 'pages#thank_you'
   get '/testimonials', to: 'pages#testimonials'
+  get '/terms', to: 'pages#terms'
+  get '/privacy', to: 'pages#privacy'
   post 'coupon_codes/code_lookup', to: 'coupon_codes#code_lookup'
   post 'camp_offerings/week_at_a_glance', to: 'camp_offerings#week_at_a_glance'
   get 'camp_surveys/contacted/:id', to: 'camp_surveys#contacted'
