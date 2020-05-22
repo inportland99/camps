@@ -9,7 +9,7 @@ class Camp < ActiveRecord::Base
   end
 
   def self.onlinecamps
-    self.find [46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67]
+    self.find [46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68]
   end
 
   def self.accessible_attributes

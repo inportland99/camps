@@ -15,7 +15,8 @@ class CampOffering < ActiveRecord::Base
                     "9-10:30AM EST",
                     "10:30-12PM EST",
                     "1-2:30PM EST",
-                    "2:30-4:00PM EST"]
+                    "2:30-4:00PM EST",
+                    "1:00-3:00PM EST"]
 
   OFFERING_WEEKS = {
                             1 => {
