@@ -41,19 +41,19 @@ class CampOffering < ActiveRecord::Base
                             },
                             6 => {
                                     :start => Date.new(2020,7,13),
-                                    :end => Date.new(2019,7,17)
+                                    :end => Date.new(2020,7,17)
                             },
                             7 => {
-                                    :start => Date.new(2019,7,20),
-                                    :end => Date.new(2019,7,24)
+                                    :start => Date.new(2020,7,20),
+                                    :end => Date.new(2020,7,24)
                             },
                             8 => {
-                                    :start => Date.new(2019,7,27),
-                                    :end => Date.new(2019,7,31)
+                                    :start => Date.new(2020,7,27),
+                                    :end => Date.new(2020,7,31)
                             },
                             9 => {
-                                    :start => Date.new(2019,8,3),
-                                    :end => Date.new(2019,8,7)
+                                    :start => Date.new(2020,8,3),
+                                    :end => Date.new(2020,8,7)
                             }
     }
 
