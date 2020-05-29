@@ -13,7 +13,7 @@ def send_camp_reminder
   # is next friday within a camp week?
   week = 0
   1..9.each do |w|
-    if CampOffering::OFFERING_WEEKS[w][:start] < Date.today + 7 && CampOffering::OFFERING_WEEKS[w][:end] > Date.today + 7
+    if CampOffering::OFFERING_WEEKS[w][:start] < Date.today + 5 && CampOffering::OFFERING_WEEKS[w][:end] > Date.today + 5
       week = w
     end
   end
