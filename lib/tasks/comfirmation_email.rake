@@ -23,7 +23,7 @@ def send_camp_reminder
 
   @registrations.each do |r|
     # filter out camps canceled for Covid19 - by only sending reminders for online camps
-    if r.parent_email && r.location_id == 7
+    if r.parent_email && r.location_id == 7 && r.year == 6
       PonyExpress.camp_reminder(r).deliver
     end
   end
