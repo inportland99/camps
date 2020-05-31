@@ -1,7 +1,7 @@
 namespace :mail do
   desc "Send Confirmation for Summer Camps."
   task camp_reminder_email: :environment do
-    if Time.now.friday? || Time.now.sunday?
+    if Time.now.sunday? || Time.now.sunday?
       send_camp_reminder
     end
   end
@@ -13,7 +13,7 @@ def send_camp_reminder
   # is next friday within a camp week?
   week = 0
   1.upto(9) do |w|
-    if CampOffering::OFFERING_WEEKS[w][:start] < Date.today + 5 && CampOffering::OFFERING_WEEKS[w][:end] > Date.today + 5
+    if CampOffering::OFFERING_WEEKS[w][:start] < Date.today + 4 && CampOffering::OFFERING_WEEKS[w][:end] > Date.today + 4
       week = w
     end
   end

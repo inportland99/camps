@@ -48,6 +48,7 @@ Camps::Application.routes.draw do
   get '/faq', to: 'pages#faq'
   get '/comparison', to: 'pages#comparison'
   get '/email_confirmation', to: 'registrations#email_confirmation'
+  get '/email_reminder', to: 'registrations#email_reminder'
   get '/thank_you', to: 'pages#thank_you'
   get '/testimonials', to: 'pages#testimonials'
   get '/terms', to: 'pages#terms'

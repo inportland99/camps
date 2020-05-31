@@ -114,7 +114,8 @@
         <% if current_user && ( current_user.role?(:super_admin) || current_user.role?(:admin) )%>
           <%= link_to 'Edit', edit_registration_path(@registration) %> |
         <% end %>
-        <%= link_to 'Send Confirmation', email_confirmation_path(id: @registration.id) %>
+        <%= link_to 'Send Confirmation', email_confirmation_path(id: @registration.id) %> | 
+        <%= link_to 'Send Reminder', email_reminder_path(id: @registration.id) %>
       </div>
     </div>
 </div>

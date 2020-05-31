@@ -130,6 +130,17 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def email_reminder
+    if params[:id]
+      @registration = Registration.find(params[:id])
+      if PonyExpress.camp_reminder(@registration).deliver
+        redirect_to root_url, notice: "Reminder Sent"
+      end
+    else
+      redirect_to root_url
+    end
+  end
+
   # PATCH/PUT /registrations/1
   # PATCH/PUT /registrations/1.json
   def update
