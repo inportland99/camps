@@ -74,6 +74,17 @@ class RegistrationsController < ApplicationController
                      'If you do not receive the confirmation, please email info@mathpluscademy.com and we will resend it.'
           end
 
+          # send reminder if camp scheduled between friday before and monday of camp
+          send_reminder = false
+          @registration.camp_offerings.each do |offering|
+            if CampOffering::OFFERING_WEEKS[offering.week][:start].between?(Date.today, Date.today + 3.days)
+              send_reminder = true
+            end
+          end
+          if send_reminder
+            PonyExpress.camp_reminder(@registration).deliver
+          end
+
           format.html { redirect_to @registration, notice: notice || 'Registration created' }
           format.json { render json: @registration, status: :created, location: @registration }
         else
@@ -90,6 +101,17 @@ class RegistrationsController < ApplicationController
 
           # send email confirmation
           PonyExpress.registration_confirmation(@registration).deliver
+
+          # send reminder if camp scheduled between friday before and monday of camp
+          send_reminder = false
+          @registration.camp_offerings.each do |offering|
+            if CampOffering::OFFERING_WEEKS[offering.week][:start].between?(Date.today, Date.today + 3.days)
+              send_reminder = true
+            end
+          end
+          if send_reminder
+            PonyExpress.camp_reminder(@registration).deliver
+          end
 
           # sync to active campaign
           @registration.active_campaign_actions
@@ -133,8 +155,18 @@ class RegistrationsController < ApplicationController
   def email_reminder
     if params[:id]
       @registration = Registration.find(params[:id])
-      if PonyExpress.camp_reminder(@registration).deliver
-        redirect_to root_url, notice: "Reminder Sent"
+      send_reminder = false
+      @registration.camp_offerings.each do |offering|
+        if CampOffering::OFFERING_WEEKS[offering.week][:start].between?(Date.today, Date.today + 7.days)
+          send_reminder = true
+        end
+      end
+      if send_reminder
+        if PonyExpress.camp_reminder(@registration).deliver
+          redirect_to @registration, notice: "Reminder Sent"
+        end
+      else
+        redirect_to @registration, alert: "No Camps Next Week - Reminder not sent"
       end
     else
       redirect_to root_url

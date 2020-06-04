@@ -57,7 +57,7 @@
                               the following camp(s) next week at Math Plus:</h5>
                             <ul>
                               <% @registration.camp_offerings.each do |offering| %>
-                                <% if CampOffering::OFFERING_WEEKS[offering.week][:start] > Date.today && CampOffering::OFFERING_WEEKS[offering.week][:start] <= Date.today + 7.days %>
+                                <% if CampOffering::OFFERING_WEEKS[offering.week][:start].between?(Date.today, Date.today + 7.days) %>
                                   <li><strong><%= offering.confirmation_name %></strong></li>
                                   <% if offering.location.name == 'Online' %>
                                     <li>Zoom link for all sessions: <a href="<%= offering.camp.video_url %>"><%= offering.camp.video_url %></a></li><br />
