@@ -131,17 +131,18 @@
 <div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
 	<!-- Cycle through all the weeks of camp -->
 	<% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
+    <% if CampOffering::OFFERING_WEEKS[n+1][:start].between?(Date.today, Date.today + 7.days) then thisweek = true else thisweek = false end %>
 		<% headingId = "heading_#{n}" %>
 		<% collapseId = "collapse_#{n}" %>
 		<!-- One card per week -->
 	  <div class="card">
 	    <div class="card-header" id="<%= headingId %>">
-	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<%= collapseId %>" aria-expanded="<%= n==0 ? "true" : "false"%>" aria-controls="<%= collapseId %>">
+	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<%= collapseId %>" aria-expanded="<%= thisweek ? "true" : "false"%>" aria-controls="<%= collapseId %>">
 						<h3><i class="fa fa-plus"></i> Week <%= n+1 %>: <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %></h3>
 	        </button>
 	    </div> <!-- card header -->
 
-	    <div id="<%= collapseId %>" class="collapse <%= n==0 ? " show" : ""%>" aria-labelledby="<%= headingId %>">
+	    <div id="<%= collapseId %>" class="collapse <%= thisweek ? " show" : ""%>" aria-labelledby="<%= headingId %>">
 	      <div class="card-body" style="margin:20px;">
 
 					<h4>Tech Camps</h4>
