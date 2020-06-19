@@ -13,9 +13,8 @@
         <h3 class="card-title">Peace of Mind Guarantee</h3>
       </div>
       <div class="card-block">
-        Due to Covid-19, all in-person camps in June are cancelled.<br />
 				We are accepting enrollments for July and August camps.<br />
-				<strong>If we have to cancel future camps for safety reasons, we will provide at least two weeks notice as well as a full refund.</strong><br />
+				<strong>If we have to cancel future camps due to Covid-19, we will provide at least two weeks notice as well as a full refund.</strong><br />
       </div>
     </div>
   </div>
@@ -57,6 +56,7 @@
       <tbody>
 
         <% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
+				<% if n>3 %>
           <tr <%= n%2 == 0 ? "style=background-color:lightgray;" : "" %>>
             <td rowspan=2 style="vertical-align:middle;">
               <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %>
@@ -369,6 +369,7 @@
               <td></td>
             <% end %>
           </tr>
+				<% end %>
         <% end %>
         <input name="registration[camp_offering_ids][]" type="hidden" value="">
       </tbody>
