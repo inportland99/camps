@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @invoices = Invoice.order(:id).where("created_at > ?", Date.new(Date.today.year-1))
+    @invoices = Invoice.order(:id).where("created_at > ?", Date.new(Date.today.year))
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @invoices }
