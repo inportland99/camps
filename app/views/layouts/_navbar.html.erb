@@ -24,7 +24,7 @@
 
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Online Catalog<b class="caret"></b>
+          Camp Catalog<b class="caret"></b>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% @onlinecamps.each do |camp| %>
@@ -35,7 +35,7 @@
         </div>
       </li>
 
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           In-person Catalog<b class="caret"></b>
         </a>
@@ -46,7 +46,7 @@
             <% end %>
           <% end %>
         </div>
-      </li>
+      </li> -->
 
       <li class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,7 +54,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <% @locations.each do |location| %>
-            <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item"%>
+            <% if location.name == "Online" %>
+              <%= link_to location.name, new_registration_path(location: location.id), class: "dropdown-item"%>
+            <% end %>
           <% end %>
         </div>
       </li>

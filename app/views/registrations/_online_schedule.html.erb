@@ -34,7 +34,7 @@
     			</div>
 			    <strong>Be a master problem solver!</strong><br />
           Two 60 minute, daily sessions plus fun at-home activities.<br /><br />
-          Reinforce math concepts while tackling fun puzzles and playing math games together.<br /><br />
+          Apply previously learned math concepts while tackling fun puzzles and playing math games together.<br /><br />
           <% [*53..60].each do |camp_id| %>
             <% camp_name = Camp.find(camp_id).title %>
             <%= link_to (camp_name.last(camp_name.length-12)+"<small style='color:gray;'> Ages: "+Camp.find(camp_id).age+"</small>").html_safe, "#camp#{Camp.find(camp_id).id}Modal", "data-toggle" => "modal" %><br />
@@ -76,16 +76,18 @@
   </div>
   <div class="row mt centered">
     <div class="col-lg-3">
-      <em>"My son had great stories about what he learned each day. He is learning how to think on his own and problem solve."</em><br />-- A. Miller
+      <em>"Lucas has very much enjoyed both Math Plus Academy camps he has been a part of and looks forward to another fun camp next week (Coding 101: Games). <strong>All of the instructors are definitely making it exciting to work with these programs and we’ve been very impressed.</strong>
+"</em><br />
     </div>
     <div class="col-lg-3">
-      <em>"I am very thankful for the dedication and commitment of your team during these uncertain times. The guidelines, instructions and resources are all on-point, easy to follow for both parent and the kids."</em><br />--P. Pangasa
+      <em>"<strong>Online Tech: Minecraft camp was literally my son’s favorite class/ camp that he’s done in life</strong> (per him) in school or out of school. Thanks!!!""
+"</em><br />
     </div>
     <div class="col-lg-3">
-      <em>"He LOVED it. Every day he was excited to tell us what he had learned."</em><br /> -- Jack's mom
+      <em>"Brain Games: Multiplication/Divison was great! I loved that the student to teacher ratio was small. <strong>My child was challenged and I could see him struggling with the content but in a good way.</strong> The puzzles put a lot of context around the multiplication and division concepts and he totally gets them now. Thank you to all of you for organizing an enriching course."</em><br />
     </div>
     <div class="col-lg-3">
-      <em>"This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!"</em><br /> -- Zach's mom
+      <em>"<strong>This camp really opened my son's eyes to an entirely new field.</strong> He continues to write new programs at home. Thanks for inspiring him!"</em><br /> -- Zach's mom
     </div>
   </div>
 </div>
@@ -131,7 +133,7 @@
 <div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
 	<!-- Cycle through all the weeks of camp -->
 	<% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
-    <% if CampOffering::OFFERING_WEEKS[n+1][:start].between?(Date.today, Date.today + 7.days) then thisweek = true else thisweek = false end %>
+    <% if CampOffering::OFFERING_WEEKS[n+1][:start].between?(Date.today, Date.today + 14.days) then thisweek = true else thisweek = false end %>
 		<% headingId = "heading_#{n}" %>
 		<% collapseId = "collapse_#{n}" %>
 		<!-- One card per week -->
