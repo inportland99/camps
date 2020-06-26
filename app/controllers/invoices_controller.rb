@@ -5,8 +5,12 @@ class InvoicesController < ApplicationController
   respond_to :html
 
   def index
-    @invoices = Invoice.all
-    respond_with(@invoices)
+    @invoices = Invoice.order(:id).where("created_at > ?", Date.new(Date.today.year-1))
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @invoices }
+      format.csv { send_data @invoices.to_csv }
+    end
   end
 
   def show
