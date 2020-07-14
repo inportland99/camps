@@ -11,6 +11,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google-site-verification" content="vgW06OQ-xxKcGshIrouAKNY2yvRl7KxGrS2KPW7UwFc" />
     <%= render 'layouts/facebook_meta_tags' %>
+
+    <script>
+    window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#edeff5",
+          "text": "#838391"
+        },
+        "button": {
+          "background": "#4b81e8"
+        }
+      },
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "http://cookies.insites.com/about-cookies"
+      }
+    })});
+    </script>
+
   </head>
   <body>
     <%= render 'layouts/gtm_body' if Rails.env.production? && !current_user %>

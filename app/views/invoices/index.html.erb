@@ -20,13 +20,7 @@
       <% @invoices.each do |invoice| %>
         <tr>
           <td><%= invoice.id %></td>
-          <td>
-            <% if invoice.registration.parent_name %>
-              <%= link_to invoice.registration.parent_name, registration_path(invoice.registration) %>
-            <% else %>
-              <%= invoice.registration_id %>
-            <% end %>
-          </td>
+          <td><%= link_to invoice.registration.parent_name, registration_path(invoice.registration) %></td>
           <td><%= invoice.amount %></td>
           <td><%= invoice.payment_order %></td>
           <td><%= invoice.due_date %></td>

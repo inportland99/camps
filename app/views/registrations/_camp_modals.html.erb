@@ -4,10 +4,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h3 class="modal-title" id="myModalLabel"><%= camp.title %><small style='color:gray;'> Ages: <%= camp.age %></small></h3>          
+          <h3 class="modal-title" id="myModalLabel"><%= camp.title %><small style='color:gray;'> Ages: <%= camp.age %></small></h3>
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
         </div>
         <div class="modal-body">
+<!--
           <% if camp.video_url && camp.video_url != "" %>
             <div class="row" style="margin-bottom:20px;">
               <div class="col-sm-6 col-sm-offset-3">
@@ -17,6 +18,7 @@
               </div>
             </div>
           <% end %>
+-->
           <% if camp.online %>
             <div class="badge badge-success" style="margin-bottom:15px;">Online Camp</div>
           <% else %>

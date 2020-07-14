@@ -85,6 +85,7 @@ GEM
       sass-rails (< 5.1)
       sprockets (< 4.0)
     concurrent-ruby (1.0.5)
+    cookieconsent (0.1.0)
     countries (2.0.8)
       i18n_data (~> 0.7.0)
       money (~> 6.7)
@@ -446,6 +447,7 @@ DEPENDENCIES
   chronic
   coffee-rails
   compass-rails
+  cookieconsent
   country_select
   devise
   dragonfly (~> 1.0.2)

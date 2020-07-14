@@ -16,6 +16,7 @@
 //= require underscore
 //= require pages
 //= require registrations
+//= require cookieconsent
 
 jQuery ->
   $('.datatable').DataTable
