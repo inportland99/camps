@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/Compass/compass-rails.git
+  remote: https://github.com/Compass/compass-rails
   revision: f6391d0d30fa63bb9bf6cd94e0e5608012584e6e
   specs:
     compass-rails (4.0.0)
@@ -212,7 +212,7 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.2.3)
+    pg (0.21.0)
     popper_js (1.11.1)
     pry (0.13.1)
       coderay (~> 1.1)
@@ -333,13 +333,15 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
+    webrick (1.7.0)
     whenever (1.0.0)
       chronic (>= 0.6.3)
     wicked_pdf (2.1.0)
       activesupport
     will_paginate (3.3.0)
     wkhtmltopdf-binary (0.12.6.5)
-    xmlrpc (0.3.1)
+    xmlrpc (0.3.2)
+      webrick
 
 PLATFORMS
   ruby
@@ -376,7 +378,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.5.0)
   nested_form!
   nifty-generators
-  pg
+  pg (~> 0.20)
   pry-rails
   rack-cache
   rails (= 4.2.10)

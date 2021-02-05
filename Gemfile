@@ -5,7 +5,7 @@ ruby '2.6.0'
 
 gem 'rails', '4.2.10'
 gem "sqlite3", "~> 1.3.6", group: :development
-gem 'pg', group: :production
+gem 'pg', '~> 0.20', group: :production
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
@@ -16,7 +16,7 @@ gem "devise"
 gem "high_voltage"
 gem "httparty"
 gem "mini_racer"
-gem 'compass-rails', github: 'Compass/compass-rails'
+gem "compass-rails", :git => 'https://github.com/Compass/compass-rails'
 gem "has_scope"
 gem "responders"
 gem "will_paginate"
