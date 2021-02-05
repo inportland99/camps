@@ -1,10 +1,10 @@
 source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.6.0'
 
-gem 'rails', '4.1.2'
-gem 'sqlite3', group: :development
+gem 'rails', '4.2.10'
+gem "sqlite3", "~> 1.3.6", group: :development
 gem 'pg', group: :production
 gem 'sass-rails'
 gem 'coffee-rails'
@@ -15,8 +15,8 @@ gem "cancan"
 gem "devise"
 gem "high_voltage"
 gem "httparty"
-gem "therubyracer"
-gem "compass-rails"
+gem "mini_racer"
+gem 'compass-rails', github: 'Compass/compass-rails'
 gem "has_scope"
 gem "responders"
 gem "will_paginate"
@@ -36,7 +36,6 @@ gem "rails-assets-tether"
 gem "chosen-rails"
 gem "carrierwave"
 gem "faker"
-gem "fog"
 gem "rack-cache", require: "rack/cache"
 gem "dragonfly", "~>1.0.2"
 gem 'dragonfly-s3_data_store'
@@ -44,7 +43,7 @@ gem "remotipart"
 gem "nested_form", git: "https://github.com/ryanb/nested_form.git"
 gem "simple_form"
 gem "country_select"
-gem "stripe"
+gem 'stripe', :source => 'https://code.stripe.com/'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'jquery-datatables'

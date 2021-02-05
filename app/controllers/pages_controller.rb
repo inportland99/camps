@@ -43,6 +43,9 @@ class PagesController < ApplicationController
         end
         @coupon_codes_by_count.push({name: name, count: count})
       end
+    else
+      # bypass the home page and go straight to online reg page
+      redirect_to new_registration_path(location: 7)
     end
   end
 
