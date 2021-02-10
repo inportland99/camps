@@ -10,6 +10,7 @@
 //= require camp_surveys
 //= require coupon_codes
 //= require tether
+//= require popper
 //= require bootstrap
 //= require datatables
 //= require moment
