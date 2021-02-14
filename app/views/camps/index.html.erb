@@ -15,6 +15,7 @@
         <th>Capacity</th>
         <th>Age</th>
         <th>Online</th>
+        <th>Active</th>
         <th></th>
         <th></th>
         <th></th>
@@ -29,6 +30,7 @@
           <td><%= camp.capacity %></td>
           <td><%= camp.age %></td>
           <td><%= camp.online %></td>
+          <td><%= camp.active %></td>
           <td><%= link_to 'Show', camp %></td>
           <td><%= link_to 'Edit', edit_camp_path(camp) %></td>
           <td><%= link_to 'Destroy', camp, method: :delete, data: { confirm: 'Are you sure?' } %></td>

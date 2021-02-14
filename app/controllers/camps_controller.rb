@@ -105,6 +105,6 @@ class CampsController < ApplicationController
     # params.require(:person).permit(:name, :age)
     # Also, you can specialize this method with per-user checking of permissible attributes.
     def camp_params
-      params.require(:camp).permit(:age, :capacity, :description, :price, :title, :show_description, :girls_only, :video_url, :online)
+      params.require(:camp).permit(:age, :capacity, :description, :price, :title, :show_description, :girls_only, :video_url, :online, :active)
     end
 end
