@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
 
   def set_camps
     @activecamps = Camp.activecamps.sort_by! {|a| a.title}
-    @onlinecamps = Camp.onlinecamps.sort_by! {|a| a.id}
+    @onlinecamps = Camp.onlinecamps.order(title: :asc)
   end
 end

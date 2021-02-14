@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200501150226) do
+ActiveRecord::Schema.define(version: 20210214221301) do
 
   create_table "camp_interests", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20200501150226) do
     t.boolean  "girls_only",                   default: false
     t.text     "video_url"
     t.boolean  "online"
+    t.boolean  "active",                       default: false
   end
 
   create_table "coupon_codes", force: :cascade do |t|
