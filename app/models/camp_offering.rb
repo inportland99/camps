@@ -20,40 +20,40 @@ class CampOffering < ActiveRecord::Base
 
   OFFERING_WEEKS = {
                             1 => {
-                                    :start => Date.new(2020,6,1),
-                                    :end => Date.new(2020,6,5)
+                                    :start => Date.new(2021,6,7),
+                                    :end => Date.new(2021,6,11)
                             },
                             2 => {
-                                    :start => Date.new(2020,6,8),
-                                    :end => Date.new(2020,6,12)
+                                    :start => Date.new(2021,6,14),
+                                    :end => Date.new(2021,6,18)
                             },
                             3 => {
-                                    :start => Date.new(2020,6,15),
-                                    :end => Date.new(2020,6,19)
+                                    :start => Date.new(2021,6,21),
+                                    :end => Date.new(2021,6,25)
                             },
                             4 => {
-                                    :start => Date.new(2020,6,22),
-                                    :end => Date.new(2020,6,26)
+                                    :start => Date.new(2021,6,28),
+                                    :end => Date.new(2021,7,2)
                             },
                             5 => {
-                                    :start => Date.new(2020,7,6),
-                                    :end => Date.new(2020,7,10)
+                                    :start => Date.new(2021,7,12),
+                                    :end => Date.new(2021,7,16)
                             },
                             6 => {
-                                    :start => Date.new(2020,7,13),
-                                    :end => Date.new(2020,7,17)
+                                    :start => Date.new(2021,7,19),
+                                    :end => Date.new(2021,7,23)
                             },
                             7 => {
-                                    :start => Date.new(2020,7,20),
-                                    :end => Date.new(2020,7,24)
+                                    :start => Date.new(2021,7,26),
+                                    :end => Date.new(2021,7,30)
                             },
                             8 => {
-                                    :start => Date.new(2020,7,27),
-                                    :end => Date.new(2020,7,31)
+                                    :start => Date.new(2021,8,2),
+                                    :end => Date.new(2021,8,6)
                             },
                             9 => {
-                                    :start => Date.new(2020,8,3),
-                                    :end => Date.new(2020,8,7)
+                                    :start => Date.new(2021,8,9),
+                                    :end => Date.new(2021,8,13)
                             }
     }
 
@@ -64,6 +64,12 @@ class CampOffering < ActiveRecord::Base
   def name
     if camp
       camp.title + " " + "(Ages: #{camp.age})"
+    end
+  end
+
+  def short_name
+    if camp
+      camp.title.partition(': ').last + " " + "(Ages: #{camp.age})"
     end
   end
 
