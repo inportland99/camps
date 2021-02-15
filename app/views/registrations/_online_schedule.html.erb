@@ -14,7 +14,7 @@
           Learn new tech skills. No prior experience required.<br /><br />
 
           <% @onlinecamps.each do |camp| %>
-            <% if camp.title.include? "Tech" %>
+            <% if camp.title.include? "Innovation" %>
               <%= link_to (camp.title.last(camp.title.length-6)+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
@@ -176,7 +176,7 @@
 					<h4>Innovation Labs</h4>
 					<!-- cycle through all camps for this year, location, week, and classroom -->
 					<% if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 1).count == 0 %>
-						No Inn camps offered this week. Please see other weeks.
+						No Innovation camps offered this week. Please see other weeks.
 					<% end %>
 					<% CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 1).each do |co| %>
 						<%= render 'online_camp_listing', co: co %>
