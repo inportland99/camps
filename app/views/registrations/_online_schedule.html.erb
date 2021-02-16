@@ -15,7 +15,7 @@
 
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Innovation" %>
-              <%= link_to (camp.title.last(camp.title.length-6)+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
+              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
 
@@ -38,7 +38,7 @@
           Create art, videos, and more! No prior experience required.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Creator" %>
-              <%= link_to (camp.title.last(camp.title.length-8)+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
+              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
         </div><!--/col-lg-4 -->
@@ -63,7 +63,7 @@
           Apply previously learned math concepts while tackling fun puzzles and playing math games together.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Brain" %>
-              <%= link_to (camp.title.last(camp.title.length-12)+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
+              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
         </div><!--/col-lg-4 -->
@@ -85,7 +85,7 @@
           Build understanding and gain mastery of grade level core curriculum.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Jumpstart" %>
-              <%= link_to (camp.title.last(camp.title.length-10)+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
+              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
         </div><!--/col-lg-4 -->
@@ -96,7 +96,7 @@
 
 <div class="container" style="background:PaleTurquoise;padding:15px;">
   <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-10 mx-auto">
       <h2>What Parents Say...</h2>
     </div>
   </div>
@@ -120,7 +120,7 @@
 
 <div class="container" style="padding:15px;">
   <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-10 mx-auto">
       <h2>Founder: Dr. Raj Shah</h2>
     </div>
   </div>

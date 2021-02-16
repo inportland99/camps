@@ -10,4 +10,9 @@ module CampOfferingsHelper
       ""
     end
   end
+
+  def est_pst
+    CampOffering::OFFERING_TIMES_PST[CampOffering::OFFERING_TIMES.index(camp.time)]
+  end
+
 end

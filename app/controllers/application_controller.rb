@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
 
   def set_camps
     @activecamps = Camp.activecamps.sort_by! {|a| a.title}
-    @onlinecamps = Camp.onlinecamps.order(title: :asc)
+    # get and sort non jumpstart camps by title alphabetically
+    nonjumpstartcamps = Camp.onlinecamps.where("title NOT LIKE ?", "%Jumpstart%").order(title: :asc)
+    # get and sort jumpstart camps by id which is a proxy for grade level
+    jumpstartcamps = Camp.onlinecamps.where("title LIKE ?", "%Jumpstart%").order(id: :asc)
+    @onlinecamps = nonjumpstartcamps + jumpstartcamps
   end
 end

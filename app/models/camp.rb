@@ -13,6 +13,10 @@ class Camp < ActiveRecord::Base
     # self.find [47,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68]
   end
 
+  def short_name
+    self.title.partition(': ').last
+  end
+
   def self.accessible_attributes
    ["age", "capacity", "description", "price", "title", "show_description", "girls_only", "online", "active"]
   end

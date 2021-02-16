@@ -18,6 +18,17 @@ class CampOffering < ActiveRecord::Base
                     "2:30-4:00PM EST",
                     "1:00-3:00PM EST"]
 
+  OFFERING_TIMES_PST = ["All Day","AM","PM",
+                    "9-10AM & 1-2PM EST / 6-7AM & 10-11AM PST",
+                    "10-11AM & 2-3PM EST / 7-8AM & 11-12PM PST",
+                    "11-12PM & 3-4PM EST / 8-9AM & 12-1PM PST",
+                    "9-10:30AM EST / 6-7:30AM PST",
+                    "10:30-12PM EST / 7:30-9AM PST",
+                    "1-2:30PM EST / 10-11:30AM PST",
+                    "2:30-4:00PM EST / 11:30-1PM PST",
+                    "1:00-3:00PM EST / 10-12PM PST"]
+
+
   OFFERING_WEEKS = {
                             1 => {
                                     :start => Date.new(2021,6,7),
@@ -72,6 +83,13 @@ class CampOffering < ActiveRecord::Base
       camp.title.partition(': ').last + " " + "(Ages: #{camp.age})"
     end
   end
+
+  def est_pst
+    if camp
+      CampOffering::OFFERING_TIMES_PST[CampOffering::OFFERING_TIMES.index(self.time)]
+    end
+  end
+
 
   def extended_care_name
     camp.title
