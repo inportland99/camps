@@ -225,8 +225,8 @@ class Registration < ActiveRecord::Base
 
     if Rails.env.production?
       #add to groups
-      Infusionsoft.contact_add_to_group(contact_id, 2425) # summercamp2020 tag
-      Infusionsoft.contact_add_to_group(contact_id, 2058) if newsletter? # local marketing tag
+      Infusionsoft.contact_add_to_group(contact_id, 2593) # summercamp2021 tag
+      # Infusionsoft.contact_add_to_group(contact_id, 2058) if newsletter? # local marketing tag
     elsif Rails.env.development?
       #add to groups
       Infusionsoft.contact_add_to_group(contact_id, 115) # purchased summer camp tag
