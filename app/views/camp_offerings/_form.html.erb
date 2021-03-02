@@ -14,7 +14,7 @@
       <% end %>
 
       <%= f.association :camp %>
-      <%= f.input :year, as: :select, collection: CampOffering::YEARS.zip((0..6).to_a) %>
+      <%= f.input :year, as: :select, collection: CampOffering::YEARS.zip((0..10).to_a) %>
       <%= f.input :teacher %>
       <%= f.input :assistant %>
 
@@ -24,7 +24,7 @@
     <%= f.association :location, label_method: :name %>
   </div>
   <div class="col-lg-4">
-    <%= f.input :classroom, collection: (1..3).to_a %>
+    <%= f.input :classroom, collection: (1..4).to_a %>
     <%= f.input :time, collection: CampOffering::OFFERING_TIMES %>
     <%= f.input :hidden %>
   </div>
