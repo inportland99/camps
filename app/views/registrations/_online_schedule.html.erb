@@ -9,16 +9,16 @@
   				<div style="margin-bottom:15px;margin-top:15px;" class="circle_base type_1">
   					<%= image_tag('vgd.jpg', size: '150x150')%>
   				</div>
-  				<strong>Spark a new interest!</strong><br />
-          Daily 90 minute sessions plus engaging at-home extensions.<br /><br />
-          Learn new tech skills. No prior experience required.<br /><br />
+  				<h3>Ignite a new interest!</h3>
+          Learn new tech skills.<br />
+          No prior experience required.<br /><br />
 
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Innovation" %>
               <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
-
+          <br /><br />Daily 90 minute sessions plus engaging at-home extensions.
         </div>
       </div><!--/col-lg-4 -->
     </div>
@@ -33,14 +33,15 @@
           <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
             <%= image_tag('prealgebraprep.png', size: '150x150')%>
           </div>
-          <strong>Take your child's creativity to the next level!</strong><br />
-          Daily 90 minute sessions plus engaging at-home extensions.<br /><br />
-          Create art, videos, and more! No prior experience required.<br /><br />
+          <h3>Spark your child's creativity!</h3>
+          Create art, videos, and more!<br />
+          No prior experience required.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Creator" %>
               <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
+          <br /><br />Daily 90 minute sessions plus engaging at-home extensions.
         </div><!--/col-lg-4 -->
       </div>
     </div>
@@ -58,14 +59,14 @@
     			<div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
     				<%= image_tag('puzzles.jpg', size: '150x150')%>
     			</div>
-			    <strong>Be a master problem solver!</strong><br />
-          Two 60 minute, daily sessions plus fun at-home activities.<br /><br />
-          Apply previously learned math concepts while tackling fun puzzles and playing math games together.<br /><br />
+			    <h3>Be a master problem solver!</h3>
+          Apply <em>previously learned</em> math concepts while playing with puzzles and games together.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Brain" %>
               <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
+          <br /><br />Two 60 minute, daily sessions plus fun at-home activities.
         </div><!--/col-lg-4 -->
       </div>
     </div>
@@ -80,21 +81,21 @@
           <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
     				<%= image_tag('prealgebraprep.png', size: '150x150')%>
     			</div>
-          <strong>Get ready for school.</strong><br />
-          Two 60 minute daily sessions plus at-home practice assignments.<br /><br />
+          <h3>Get ready for school.</h3>
           Build understanding and gain mastery of grade level core curriculum.<br /><br />
           <% @onlinecamps.each do |camp| %>
             <% if camp.title.include? "Jumpstart" %>
               <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
             <% end %>
           <% end %>
+          <br /><br />Two 60 minute daily sessions plus at-home practice assignments.
         </div><!--/col-lg-4 -->
       </div>
     </div>
   </div><!--/col-lg-4 -->
 </div><!-- /row -->
 
-<div class="container" style="background:PaleTurquoise;padding:15px;">
+<div class="container border border-dark rounded" style="background:WhiteSmoke;padding:15px;">
   <div class="row mt centered">
     <div class="col-lg-10 mx-auto">
       <h2>What Parents Say...</h2>
@@ -102,18 +103,16 @@
   </div>
   <div class="row mt centered">
     <div class="col-lg-3">
-      <em>"Lucas has very much enjoyed both Math Plus Academy camps he has been a part of and looks forward to another fun camp next week (Coding 101: Games). <strong>All of the instructors are definitely making it exciting to work with these programs and we’ve been very impressed.</strong>
-"</em><br />
+      <em>"Lucas has very much enjoyed both Math Plus Academy camps he has been a part of and looks forward to another fun camp next week (Coding 101: Games). <strong>All of the instructors are definitely making it exciting to work with these programs and we’ve been very impressed.</strong>"</em><br />
     </div>
     <div class="col-lg-3">
-      <em>"<strong>Online Tech: Minecraft camp was literally my son’s favorite class/ camp that he’s done in life</strong> (per him) in school or out of school. Thanks!!!""
-"</em><br />
+      <em>"<strong>Online Tech: Minecraft camp was literally my son’s favorite class/ camp that he’s done in life</strong> (per him) in school or out of school. Thanks!!!"</em><br />
     </div>
     <div class="col-lg-3">
       <em>"Brain Games: Multiplication/Divison was great! I loved that the student to teacher ratio was small. <strong>My child was challenged and I could see him struggling with the content but in a good way.</strong> The puzzles put a lot of context around the multiplication and division concepts and he totally gets them now. Thank you to all of you for organizing an enriching course."</em><br />
     </div>
     <div class="col-lg-3">
-      <em>"<strong>This camp really opened my son's eyes to an entirely new field.</strong> He continues to write new programs at home. Thanks for inspiring him!"</em><br /> -- Zach's mom
+      <em>"<strong>This camp really opened my son's eyes to an entirely new field.</strong> He continues to write new programs at home. Thanks for inspiring him!"</em><br />
     </div>
   </div>
 </div>
@@ -159,7 +158,7 @@
 <div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
 	<!-- Cycle through all the weeks of camp -->
 	<% (CampOffering::OFFERING_WEEKS.count).times do |n| %>
-    <% if CampOffering::OFFERING_WEEKS[n+1][:start].between?(Date.today, Date.today + 14.days) then thisweek = true else thisweek = false end %>
+    <% if CampOffering::OFFERING_WEEKS[n+1][:start] > Date.today then thisweek = true else thisweek = false end %>
 		<% headingId = "heading_#{n}" %>
 		<% collapseId = "collapse_#{n}" %>
 		<!-- One card per week -->
