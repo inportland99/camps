@@ -241,4 +241,14 @@ class Registration < ActiveRecord::Base
         api_endpoint: ENV['ACTIVECAMPAIGN_URL'], # e.g. 'https://yourendpoint.api-us1.com'
         api_key: ENV['ACTIVECAMPAIGN_KEY']) # e.g. 'a4e60a1ba200595d5cc37ede5732545184165e'
   end
+
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |reg|
+        csv << reg.attributes.values_at(*column_names)
+      end
+    end
+  end
+
 end

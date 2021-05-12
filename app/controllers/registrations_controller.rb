@@ -8,10 +8,10 @@ class RegistrationsController < ApplicationController
     @registrations = Registration.where(year: current_year).order('created_at DESC')
     last_year = current_year - 1
     @registrations_last_year = Registration.where(year: last_year).order('created_at DESC')
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @registrations }
+      format.csv { send_data Registration.all.to_csv }
     end
   end
 

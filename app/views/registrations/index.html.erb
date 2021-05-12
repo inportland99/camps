@@ -5,6 +5,12 @@
   <% else %>
     <%= link_to "Last Year's Registrations", registrations_path(:registrations => :last_year) %>
   <% end %>
+
+  <p>
+    Download:
+    <%= link_to "CSV", registrations_path(format: "csv") %>
+  </p>
+
   <table class="reg-datatable table table-striped display responsive no-wrap" cellspacing="0" width="100%">
     <thead>
         <tr>
