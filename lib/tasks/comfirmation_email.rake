@@ -1,7 +1,7 @@
 namespace :mail do
   desc "Send Confirmation for Summer Camps."
   task camp_reminder_email: :environment do
-    if Time.now.saturday?
+    if Time.now.firday?
       send_camp_reminder
     end
   end
