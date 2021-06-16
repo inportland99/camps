@@ -18,7 +18,7 @@ class Camp < ActiveRecord::Base
   end
 
   def self.accessible_attributes
-   ["age", "capacity", "description", "price", "title", "show_description", "girls_only", "online", "active"]
+   ["age", "capacity", "description", "price", "title", "show_description", "girls_only", "online", "active", "parent_webpage"]
   end
 
   def self.import(file)

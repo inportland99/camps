@@ -73,7 +73,7 @@ class CampOffering < ActiveRecord::Base
     }
 
   def self.accessible_attributes
-   ["assistant", "camp_id", "end_date", 'location_id', "start_date", "teacher", "classroom", "time", "week", "hidden", "year", "extended_care"]
+   ["assistant", "camp_id", "end_date", 'location_id', "start_date", "teacher", "classroom", "time", "week", "hidden", "year", "extended_care", "zoom_link"]
   end
 
   def name

@@ -53,31 +53,40 @@
                       <table class="twelve columns" style="border-spacing: 0;border-collapse: collapse;padding: 0;vertical-align: top;text-align: left;margin: 0 auto;width: 580px;">
                         <tr style="padding: 0;vertical-align: top;text-align: left;">
                           <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0px 0px 10px;vertical-align: top;text-align: left;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;margin: 0;line-height: 19px;font-size: 14px;border-collapse: collapse;">
-                              <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">This is a reminder that <%= @registration.student_first_name %> is registered for
-                              the following camp(s) next week at Math Plus:</h5>
-                            <ul>
+                              <p style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;"><%= @registration.student_first_name %> is registered for
+                              the following camp(s) next week at Math Plus:</p><br />
                               <% @registration.camp_offerings.each do |offering| %>
                                 <% if CampOffering::OFFERING_WEEKS[offering.week][:start].between?(Date.today, Date.today + 7.days) %>
-                                  <li><strong><%= offering.confirmation_name %></strong></li>
+                                  <strong><%= offering.confirmation_name %></strong>
+                                  <ul>
                                   <% if offering.location.name == 'Online' %>
-                                    <li>Zoom link for all sessions: <a href="<%= offering.camp.video_url %>"><%= offering.camp.video_url %></a></li><br />
+                                    <li>Zoom link for all sessions: <a href="<%= offering.zoom_link %>"><%= offering.zoom_link %></a></li>
+                                    <br/><li>
+                                      <strong>Prior to camp, <a href="<%= offering.camp.parent_webpage %>">please review the parent resource page</a> for hardware and software setup requirements.</strong> You will also find the daily at-home assignments to download and print.</strong>
+                                    </li>
                                   <% end %>
                                 <% end %>
                               <% end %>
                             </ul>
                             <% @registration.camp_offerings.each do |offering| %>
                               <% if offering.location.name == 'Online' %>
+                                <hr>
                                 <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">
-                                  Important Information for Online Camps:
+                                  Please Read: Important Information for Online Camps
                                 </h5>
                                 <ul>
                                   <li>
-                                    <strong>Prior to camp, <a href="https://www.mathplusacademy.com/online-camp-details">please review this page</a> for hardware and software requirements for Tech camps.</strong>
+                                    <strong>Time Zones</strong><br/>
+                                    All camp times above are EASTERN. Please make sure you adjust accodingly for your time zone.
                                   </li>
-                                  <li>
-                                    Note: Minecraft camp requires a laptop or PC (not tablet or chromebook) and an additional software download (see link above).
+                                  <br/><li>
+                                    <strong>Daily Sessions and Assignments</strong><br />
+                                    All <em>Brain Games</em> and <em>Jumpstart</em> camps meet TWICE each day. Students complete an at-home assignment between their daily sessions.<br /><br />
+                                    All <em>Innovation</em> and <em>Tech</em> camps meet ONCE each day. Students complete an at-home assignment after each daily session.
                                   </li>
-                                  <li>
+                                  <br/><li>
+                                    <strong>Tech Requirements</strong><br />
+                                    Minecraft and Roblox camps require a laptop or PC (not tablet or chromebook) and an additional software download (details are in the parent resource page linked above).<br />
                                     For all other online camps, a laptop or PC is preferred, but Chromebooks and tablets can be used if necessary.
                                   </li>
                                 </ul>
@@ -110,7 +119,7 @@
                               <% end %>
                             <% end %>
 
-                            <h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">
+                            <hr><h5 style="color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 1.3;word-break: normal;font-size: 24px;">
                               Let us know if you have any questions!
                             </h5>
                           </td>

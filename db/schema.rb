@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210214221301) do
+ActiveRecord::Schema.define(version: 20210616151213) do
 
   create_table "camp_interests", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20210214221301) do
     t.boolean  "hidden"
     t.integer  "year"
     t.boolean  "extended_care",             default: false
+    t.string   "zoom_link"
   end
 
   create_table "camp_offerings_registrations", id: false, force: :cascade do |t|
@@ -87,6 +88,7 @@ ActiveRecord::Schema.define(version: 20210214221301) do
     t.text     "video_url"
     t.boolean  "online"
     t.boolean  "active",                       default: false
+    t.string   "parent_webpage"
   end
 
   create_table "coupon_codes", force: :cascade do |t|

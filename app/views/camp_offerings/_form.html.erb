@@ -22,6 +22,7 @@
   <div class="col-lg-4">
     <%= f.input :week, as: :select, collection: (1..9).to_a %>
     <%= f.association :location, label_method: :name %>
+    <%= f.input :zoom_link, label: "Zoom Link", as: :string %>
   </div>
   <div class="col-lg-4">
     <%= f.input :classroom, collection: (1..4).to_a %>
