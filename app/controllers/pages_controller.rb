@@ -45,7 +45,7 @@ class PagesController < ApplicationController
       end
     else
       # bypass the home page and go straight to online reg page
-      redirect_to new_registration_path(location: 7)
+      # redirect_to new_registration_path(location: 7)
     end
   end
 

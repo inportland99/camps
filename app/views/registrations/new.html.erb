@@ -1,43 +1,8 @@
-<div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
-  Summer camp registration opens February 1, 2022 at 12:01am EST
-</div>
-<% if Location.find(params[:location] || params[:registration][:location_id]).name == "Online" %>
-
-  <div id="headerwrap">
-    <div class="row" style="overflow:hidden;">
-      <div class="main">
-        <div class="main-title">
-          Re-Ignite The Joy of Learning This Summer!
-        </div> <!-- /.main-title -->
-        <div class="main-grades">
-          Weekly, Online Summer Camps for Ages 5-15
-        </div>
-        <div class="main-sub-title">
-          <ul>
-            <li><strong>Fun tech and math</strong> camps<br />
-            <li><strong>Live, online</strong> instruction<br />
-            <li><strong>Inspiring, highly trained</strong> teachers<br />
-            <li><strong>At-home activities</strong> included<br />
-            <li><strong>Individualized attention</strong> - 4 students per instructor<br />
-            <li><strong>Prepare to excel</strong> in the fall<br />
-          </ul>
-          <div class="main-grades">
-              <span style="color:LawnGreen">Camps sold out in 4 weeks last year! Register Now!</span>
-          </div>
-
-          <div style="width:50%;text-align:center; margin-top:35px;">Register Below<br /><i class="fa fa-chevron-down" style="font-size:2em;color:#bbb;"></i></div>
-        </div>
-      </div>
-    </div><!-- row -->
+<% if DateTime.now < (DateTime.civil(2022,2,1,0,0,0)) %>
+  <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
+    Summer camp registration opens February 1, 2022 at 12:01am EST
   </div>
-  <div class="container">
-      <%= render 'form' %>
-  </div>
-
-<% else %>
-
-  <div class="container">
-      <%= render 'form' %>
-  </div>
-
 <% end %>
+<div class="container">
+    <%= render 'form' %>
+</div>

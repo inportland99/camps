@@ -1,160 +1,37 @@
-<div class="row mt centered">
-  <div class="col-lg-6">
-    <div class="card h-100">
-      <div class="card-header">
-        <h3 class="card-title">Innovation Labs</h3>
-      </div>
-      <div class="card-body" style="padding:15px;">
-        <div class="card-text">
-  				<div style="margin-bottom:15px;margin-top:15px;" class="circle_base type_1">
-  					<%= image_tag('vgd.jpg', size: '150x150')%>
-  				</div>
-  				<h3>Ignite a new interest!</h3>
-          Learn new tech skills.<br />
-          No prior experience required.<br /><br />
-
-          <% @onlinecamps.each do |camp| %>
-            <% if camp.title.include? "Innovation" %>
-              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
-            <% end %>
-          <% end %>
-          <br /><br />Daily 90 minute sessions plus engaging at-home extensions.
-        </div>
-      </div><!--/col-lg-4 -->
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="card h-100">
-      <div class="card-header">
-        <h3 class="card-title">Creator Studios</h3>
-      </div>
-      <div class="card-body" style="padding:15px;">
-        <div class="card-text">
-          <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
-            <%= image_tag('prealgebraprep.png', size: '150x150')%>
-          </div>
-          <h3>Spark your child's creativity!</h3>
-          Create art, videos, and more!<br />
-          No prior experience required.<br /><br />
-          <% @onlinecamps.each do |camp| %>
-            <% if camp.title.include? "Creator" %>
-              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
-            <% end %>
-          <% end %>
-          <br /><br />Daily 90 minute sessions plus engaging at-home extensions.
-        </div><!--/col-lg-4 -->
-      </div>
-    </div>
-  </div><!--/col-lg-4 -->
-</div>
-
-<div class="row mt centered">
-  <div class="col-lg-6">
-    <div class="card h-100">
-      <div class="card-header">
-        <h3 class="card-title">Brain Games</h3>
-      </div>
-      <div class="card-body" style="padding:15px;">
-        <div class="card-text">
-    			<div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
-    				<%= image_tag('puzzles.jpg', size: '150x150')%>
-    			</div>
-			    <h3>Be a master problem solver!</h3>
-          Apply <em>previously learned</em> math concepts while playing with puzzles and games together.<br /><br />
-          <% @onlinecamps.each do |camp| %>
-            <% if camp.title.include? "Brain" %>
-              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
-            <% end %>
-          <% end %>
-          <br /><br />Two 60 minute, daily sessions plus fun at-home activities.
-        </div><!--/col-lg-4 -->
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="card h-100">
-      <div class="card-header">
-        <h3 class="card-title">Jumpstart</h3>
-      </div>
-      <div class="card-body" style="padding:15px;">
-        <div class="card-text">
-          <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
-    				<%= image_tag('prealgebraprep.png', size: '150x150')%>
-    			</div>
-          <h3>Get ready for school.</h3>
-          Build understanding and gain mastery of grade level core curriculum.<br /><br />
-          <% @onlinecamps.each do |camp| %>
-            <% if camp.title.include? "Jumpstart" %>
-              <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %><br />
-            <% end %>
-          <% end %>
-          <br /><br />Two 60 minute daily sessions plus at-home practice assignments.
-        </div><!--/col-lg-4 -->
-      </div>
-    </div>
-  </div><!--/col-lg-4 -->
-</div><!-- /row -->
-
-<div class="container border border-dark rounded" style="background:WhiteSmoke;padding:15px;">
-  <div class="row mt centered">
-    <div class="col-lg-10 mx-auto">
-      <h2>What Parents Say...</h2>
-    </div>
-  </div>
-  <div class="row mt centered">
-    <div class="col-lg-3">
-      <em>"Lucas has very much enjoyed both Math Plus Academy camps he has been a part of and looks forward to another fun camp next week (Coding 101: Games). <strong>All of the instructors are definitely making it exciting to work with these programs and we’ve been very impressed.</strong>"</em><br />
-    </div>
-    <div class="col-lg-3">
-      <em>"<strong>Online Tech: Minecraft camp was literally my son’s favorite class/ camp that he’s done in life</strong> (per him) in school or out of school. Thanks!!!"</em><br />
-    </div>
-    <div class="col-lg-3">
-      <em>"Brain Games: Multiplication/Divison was great! I loved that the student to teacher ratio was small. <strong>My child was challenged and I could see him struggling with the content but in a good way.</strong> The puzzles put a lot of context around the multiplication and division concepts and he totally gets them now. Thank you to all of you for organizing an enriching course."</em><br />
-    </div>
-    <div class="col-lg-3">
-      <em>"<strong>This camp really opened my son's eyes to an entirely new field.</strong> He continues to write new programs at home. Thanks for inspiring him!"</em><br />
-    </div>
-  </div>
-</div>
-
-<div class="container" style="padding:15px;">
-  <div class="row mt centered">
-    <div class="col-lg-10 mx-auto">
-      <h2>Founder: Dr. Raj Shah</h2>
-    </div>
-  </div>
-  <div class="row mt centered">
-    <div class="col-lg-3 offset-lg-1">
-      <%= image_tag('Raj-Shah-portrait-circle.png', size: '250x250')%>
-    </div>
-    <div class="col-lg-7">
-      <strong>I'm on a mission to make math irresistible for all.</strong><br />
-      Powered by my love of math, I earned a Ph.D. in Physics in 1999 which led to a decade in R&D at Intel.
-      In 2008, I was struggling to find an effective math enrichment program for my 5 year-old son. So, I quit my job and spent three years develop a powerful curriculum and pedagogy designed to make your child think deeply about mathematics.
-    </div>
-  </div>
-</div>
-
 <div class="row mt-3 mb-4">
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">How to Register</h3>
       </div>
-      <div class="card-block">
+      <div class="card-block mt-3">
         <ol>
-          <li>Registration opens February 1, 2022
-          <!-- <li>Click on each week to reveal all camp offerings</li>
+          <li>Click on each week to reveal all camp offerings</li>
 					<li>Click on camp names for detailed descriptions.</li>
           <li>Click checkbox to add camp(s) to cart for <u>one child</u>.</li>
           <li>Complete checkout at the bottom of the page.</li>
-          <li>Rinse and repeat for each child 😉.</li> -->
+          <li>Rinse and repeat for each child 😉.</li>
         </ol>
       </div>
     </div>
   </div>
 </div>
 
+<% if !location.name.include? "Online"%>
+  <div class="row mt-3 mb-4">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Peace of Mind Guarantee</h3>
+        </div>
+        <div class="card-block m-3">
+  				We are accepting enrollments for in-person camps.<br />
+  				<strong>If we have to cancel future camps due to Covid-19, we will provide at least two weeks notice as well as a full refund.</strong><br />
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
 	<!-- Cycle through all the weeks of camp -->
@@ -172,7 +49,7 @@
 
 	    <div id="<%= collapseId %>" class="collapse <%= thisweek ? " show" : ""%>" aria-labelledby="<%= headingId %>">
 	      <div class="card-body" style="margin:20px;">
-          <strong>Camp schedule will be published on February 1, 2022</strong><br /><br />
+          <!-- <strong>Camp schedule will be published on February 1, 2022</strong><br /><br /> -->
 
 					<h4>Innovation Labs</h4>
 					<!-- cycle through all camps for this year, location, week, and classroom -->

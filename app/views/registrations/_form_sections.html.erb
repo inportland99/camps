@@ -19,7 +19,7 @@
           <% if params[:location] == '7' %>
             <%= render 'online_schedule' , location: Location.find(params[:location] || params[:registration][:location_id]) %>
           <% else %>
-            <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
+            <%= render 'online_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
           <% end %>
         <% end %>
       </div><!-- /#camp_offerings -->

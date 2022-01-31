@@ -18,7 +18,9 @@ class CampOffering < ActiveRecord::Base
                     "2:30-4:00PM EST",
                     "1:00-3:00PM EST",
                     "1-2PM & 5-6PM EST",
-                    "2-3PM & 6-7PM EST"]
+                    "2-3PM & 6-7PM EST",
+                    "9AM-12PM EST",
+                    "1PM-4PM EST"]
 
   OFFERING_TIMES_PST = ["All Day","AM","PM",
                     "9-10AM & 1-2PM EST / 6-7AM & 10-11AM PST",
@@ -30,7 +32,9 @@ class CampOffering < ActiveRecord::Base
                     "2:30-4:00PM EST / 11:30-1PM PST",
                     "1:00-3:00PM EST / 10-12PM PST",
                     "1-2PM & 5-6PM EST / 10-11AM & 2-3PM PST",
-                    "2-3PM & 6-7PM EST / 11-12PM & 3-4PM PST"]
+                    "2-3PM & 6-7PM EST / 11-12PM & 3-4PM PST",
+                    "9AM-12PM EST",
+                    "1PM-4PM EST"]
 
 
   OFFERING_WEEKS = {
@@ -106,7 +110,7 @@ class CampOffering < ActiveRecord::Base
 
   def confirmation_name
     if location.id != 7
-      camp.title + ": " + location.name + ", " + convert_time + " (Start Date: #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")})"
+      camp.title + " ( " + location.name + " ): " + " #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")} - #{CampOffering::OFFERING_WEEKS[week][:end].strftime("%b %d")} from " + time
     else
       camp.title + " (Online): " + " #{CampOffering::OFFERING_WEEKS[week][:start].strftime("%b %d")} - #{CampOffering::OFFERING_WEEKS[week][:end].strftime("%b %d")} from " + time
     end

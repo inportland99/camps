@@ -1,38 +1,222 @@
-<!-- <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
+<% if DateTime.now < (DateTime.civil(2022,2,1,0,0,0)) %>
+  <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
   Summer camp registration opens February 1, 2020 at 12:01am
-</div> -->
-
+  </div>
+<% end %>
 <div id="headerwrap">
   <div class="row" style="overflow:hidden;">
-    <%# if params[:utm_source].present? %>
-       <!-- <div class="row">
-         <div class="col-sm-12 align-center">
-           <div class="alert alert-success text-center" style="font-size:1.5em;" >As Seen on TV: Use Coupon Code TV25 to Save $25!</div>
-         </div>
-       </div> -->
-    <%# end %>
     <div class="main">
       <div class="main-title">
-        Put The Joy Back in Learning This Summer!
+        Re-Ignite The Joy of Learning This Summer!
       </div> <!-- /.main-title -->
       <div class="main-grades">
-        Weekly Summer Camps for Ages 5-15
+        Weekly, Online Summer Camps for Ages 5-15
       </div>
-      <div class="main-buttons">
-        <%= link_to "Sign Up for Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+      <div class="main-sub-title">
+        <ul>
+          <li><strong>Fun tech and math</strong> camps<br />
+          <li><strong>Live</strong> instruction<br />
+          <li><strong>Inspiring, highly trained</strong> teachers<br />
+          <li><strong>At-home activities</strong> included<br />
+          <li><strong>Individualized attention</strong><br />
+          <li><strong>Prepare to excel</strong> in the fall<br />
+        </ul>
+        <div class="main-grades">
+            <span style="color:LawnGreen">Camps sold out in 4 weeks last year! Register Now!</span>
+        </div>
+
+        <!-- <div style="width:50%;text-align:center; margin-top:35px;">Register Below<br /><i class="fa fa-chevron-down" style="font-size:2em;color:#bbb;"></i></div> -->
+        <%= link_to "Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+
+        <%= link_to "Powell Ohio Camps", new_registration_path(location: 1), class: "btn btn-lg btn-orange main-schedule" %>
+
       </div>
     </div>
   </div><!-- row -->
 </div>
 
 <div class="container">
+    <div class="row mt centered">
+      <div class="col-lg-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="card-title">Innovation Labs</h3>
+          </div>
+          <div class="card-body" style="padding:15px;">
+            <div class="card-text">
+      				<div style="margin-bottom:15px;margin-top:15px;" class="circle_base type_1">
+      					<%= image_tag('vgd.jpg', size: '150x150')%>
+      				</div>
+      				<h3>Ignite a new interest!</h3>
+              Learn new tech skills.<br />
+              No prior experience required.<br /><br />
+
+              <% @activecamps.each do |camp| %>
+                <% if camp.title.include? "Innov" %>
+                  <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %>
+                    <% if camp.online %>
+                      <div class="badge badge-success" style="margin-bottom:15px;">Online</div>
+                    <% else %>
+                      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person</span>
+                    <% end %>
+                  <br />
+                <% end %>
+              <% end %>
+              <!-- <br /><br />Daily 90 minute sessions plus engaging at-home extensions. -->
+            </div>
+          </div><!--/col-lg-4 -->
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="card-title">Creator Studios</h3>
+          </div>
+          <div class="card-body" style="padding:15px;">
+            <div class="card-text">
+              <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
+                <%= image_tag('prealgebraprep.png', size: '150x150')%>
+              </div>
+              <h3>Spark your child's creativity!</h3>
+              Create art, videos, and more!<br />
+              No prior experience required.<br /><br />
+              <% @activecamps.each do |camp| %>
+                <% if camp.title.include? "Creator" %>
+                  <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %>
+                    <% if camp.online %>
+                      <div class="badge badge-success" style="margin-bottom:15px;">Online</div>
+                    <% else %>
+                      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person</span>
+                    <% end %>
+                  <br />
+                <% end %>
+              <% end %>
+              <!-- <br /><br />Daily 90 minute sessions plus engaging at-home extensions. -->
+            </div><!--/col-lg-4 -->
+          </div>
+        </div>
+      </div><!--/col-lg-4 -->
+    </div>
+
+    <div class="row mt centered">
+      <div class="col-lg-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="card-title">Brain Games</h3>
+          </div>
+          <div class="card-body" style="padding:15px;">
+            <div class="card-text">
+        			<div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
+        				<%= image_tag('puzzles.jpg', size: '150x150')%>
+        			</div>
+    			    <h3>Be a master problem solver!</h3>
+              Apply <em>previously learned</em> math concepts while playing with puzzles and games together.<br /><br />
+              <% @activecamps.each do |camp| %>
+                <% if camp.title.include? "Brain" %>
+                  <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %>
+                    <% if camp.online %>
+                      <div class="badge badge-success" style="margin-bottom:15px;">Online</div>
+                    <% else %>
+                      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person</span>
+                    <% end %>
+                  <br />
+                <% end %>
+              <% end %>
+              <!-- <br /><br />Two 60 minute, daily sessions plus fun at-home activities. -->
+            </div><!--/col-lg-4 -->
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card h-100">
+          <div class="card-header">
+            <h3 class="card-title">Jumpstart</h3>
+          </div>
+          <div class="card-body" style="padding:15px;">
+            <div class="card-text">
+              <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
+        				<%= image_tag('prealgebraprep.png', size: '150x150')%>
+        			</div>
+              <h3>Get ready for school.</h3>
+              Build understanding and gain mastery of grade level core curriculum.<br /><br />
+              <% @activecamps.each do |camp| %>
+                <% if camp.title.include? "Jumpstart" %>
+                  <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %>
+                    <% if camp.online %>
+                      <div class="badge badge-success" style="margin-bottom:15px;">Online</div>
+                    <% else %>
+                      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person</span>
+                    <% end %>
+                  <br />
+                <% end %>
+              <% end %>
+              <!-- <br /><br />Two 60 minute daily sessions plus at-home practice assignments. -->
+            </div><!--/col-lg-4 -->
+          </div>
+        </div>
+      </div><!--/col-lg-4 -->
+    </div><!-- /row -->
+
+    <div class="row mt centered">
+      <div class="col-lg-12">
+        <h2>Register Now</h2>
+        <%= link_to "Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+
+        <%= link_to "Powell Ohio Camps", new_registration_path(location: 1), class: "btn btn-lg btn-orange main-schedule" %>
+      </div>
+    </div>
+
+    <div class="container border border-dark rounded" style="background:WhiteSmoke;padding:15px;">
+      <div class="row mt centered">
+        <div class="col-lg-10 mx-auto">
+          <h2>What Parents Say...</h2>
+        </div>
+      </div>
+      <div class="row mt centered">
+        <div class="col-lg-3">
+          <em>"Lucas has very much enjoyed both Math Plus Academy camps he has been a part of and looks forward to another fun camp next week (Coding 101: Games). <strong>All of the instructors are definitely making it exciting to work with these programs and we’ve been very impressed.</strong>"</em><br />
+        </div>
+        <div class="col-lg-3">
+          <em>"<strong>Online Tech: Minecraft camp was literally my son’s favorite class/ camp that he’s done in life</strong> (per him) in school or out of school. Thanks!!!"</em><br />
+        </div>
+        <div class="col-lg-3">
+          <em>"Brain Games: Multiplication/Divison was great! I loved that the student to teacher ratio was small. <strong>My child was challenged and I could see him struggling with the content but in a good way.</strong> The puzzles put a lot of context around the multiplication and division concepts and he totally gets them now. Thank you to all of you for organizing an enriching course."</em><br />
+        </div>
+        <div class="col-lg-3">
+          <em>"<strong>This camp really opened my son's eyes to an entirely new field.</strong> He continues to write new programs at home. Thanks for inspiring him!"</em><br />
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding:15px;">
+      <div class="row mt centered">
+        <div class="col-lg-12 mx-auto">
+          <h2>Founder: Dr. Raj Shah</h2>
+        </div>
+      </div>
+      <div class="row mt centered">
+        <div class="col-lg-4 offset-lg-1">
+          <%= image_tag('Raj-Shah-portrait-circle.png', size: '250x250')%>
+        </div>
+        <div class="col-lg-7">
+          <strong>I'm on a mission to make math irresistible for all.</strong><br />
+          Powered by my love of math, I earned a Ph.D. in Physics in 1999 which led to a decade in R&D at Intel.
+          In 2008, I was struggling to find an effective math enrichment program for my 5 year-old son. So, I quit my job and spent three years developing a powerful curriculum and pedagogy designed to make your child think deeply about mathematics.
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container">
   <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-12">
       <h2>Don't let your child waste the summer</h2>
         <h3>...consumed by social media and video games
         <h3>...bored out of their minds
         <h3>...forgetting everything they learned<br />
-        <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+          <%= link_to "Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+
+          <%= link_to "Powell Ohio Camps", new_registration_path(location: 1), class: "btn btn-lg btn-orange main-schedule" %>
     </div>
   </div>
 </div>
@@ -43,7 +227,7 @@
 
 <div class="container">
   <div class="row mt centered" >
-    <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-12">
       <h2>Enroll in 3 Easy Steps!</h2>
     </div> <!-- /.col-lg-10 .col-lg-offset-1 -->
   </div><!-- /row -->
@@ -61,8 +245,8 @@
       <i class="fa fa-group fa-5x"></i>
       <h3>2. Choose a location</h3>
       <p>
-        Columbus: Powell and New Albany<br>
-        Cleveland: Solon
+        a) Powell, Ohio<br>
+        b) Online
       </p>
     </div><!--/col-lg-4 -->
 
@@ -70,7 +254,7 @@
       <i class="fa fa-comments-o fa-5x"></i>
       <h3>3. Tell your friends.</h3>
       <p>
-        Camps are more fun with a buddy!
+        Camps are more fun with friends!
       </p>
     </div><!--/col-lg-4 -->
   </div><!-- /row -->
@@ -81,59 +265,9 @@
 </div>
 
 <div class="container">
-  <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
-      <h2>Every Child Deserves Access to High-Quality Affordable STEM Camps</h2>
-        <div style="font-size:1.3em; color:orange;"><strong>Over 4,000 happy campers<br />97.5% of parents would recommend our camps to a friend!</strong></div>
-        <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
-    </div>
-  </div>
-</div>
-
-<div class"row">
-  <hr>
-</div>
-
-<div class="container">
-  <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
-      <h2>What Parents Say</h2>
-    </div>
-  </div>
-  <div class="row mt centered">
-    <div class="col-lg-4">
-      <em>"Every day when I picked up my son, he was glowing with excitement and joy!"</em> -- Braedon's mom
-    </div>
-    <div class="col-lg-4">
-      <em>"He LOVED it. Every day he came out excited to tell us what he had learned."</em> -- Jack's mom
-    </div>
-    <div class="col-lg-4">
-      <em>"This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!"</em> -- Zach's mom
-    </div>
-  </div>
-  <div class="row mt centered">
-    <div class="col-lg-10 offset-lg-1">
-      <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
-    </div>
-  </div>
-</div>
-<!-- <div class="row">
-    <div id="installment-offer" class="col-sm-12 centered" style="display:none;">
-      <div class="col-sm-12">
-        <h3><span style="color:green;margin-right:20px;">Now offering!</span> 3-month payment plan for registrations over $250.</h3>
-      </div>
-      <hr>
-    </div>
-</div> -->
-
-<div class"row">
-  <hr>
-</div>
-
-<div class="container">
   <!-- ** Math Plus Camp Advantage ** -->
   <div class="row mt centered" >
-    <div class="col-lg-10 offset-lg-1">
+    <div class="col-lg-12">
       <h2>The Math Plus Advantage</h2>
       <!-- <h2 class="hidden-md-up">The Math Plus Advantage.</h2> -->
       <!-- <h3 class="hidden-sm-down">We work tirelessly to find fun ways to help engage students of all ages in the fields of Mathematics and Technology.</h3> -->
@@ -193,302 +327,6 @@
   </div><!-- /row -->
 
   <%= render 'compare_button' %>
-</div>
-
-<div class"row">
-  <hr>
-</div>
-
-    <!-- <div class="row" style="margin-bottom:60px;">
-      <div class="girls_only_banner">
-        <%# image_tag "home_page/girls_only_badge.svg" %> <span>GIRLS ONLY OPTIONS!</span>
-      </div>
-    </div> -->
-    <!-- ** Camp Information ** -->
-    <div class="row mt centered">
-      <div class="col-lg-6 offset-lg-3 text-xs-center">
-        <a name="camps"></a>
-        <h1 style="padding-top:50px;">Camp Catalog</h1>
-        <!-- <h3><small>Duration:</small> 1 Week (M-F)</h3>
-        <p>Check schedule for start and end times.</p> -->
-      </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
-    </div><!-- /row -->
-
-    <div class="row mt centered">
-      <div class="col-lg-8 offset-lg-2 text-xs-center">
-      <hr>
-      <h3>Camp Options For Ages 6 - 8</h1>
-      <hr>
-      </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
-    </div><!-- /row -->
-
-    <div class="container catalog">
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp10Modal", :data => {:toggle=>"modal"}) do %>
-            <div class="circle_base type_1">
-              <%= image_tag('braingames.jpg', size: '150x150')%>
-            </div>
-            <h2>Brain Games</h2>
-            Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp10Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp33Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('hexaflexagon.jpg', size: '150x150')%>
-          </div>
-          <h2>Jr. Maker Camp</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp33Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp44Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('programming.png', size: '150x150')%>
-          </div>
-          <h2>Jr. Coding</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp44Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div><!-- /row -->
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp12Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('engineering.png', size: '150x150')%>
-          </div>
-          <h2>LEGO Engineering: Simple Machines</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp12Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp13Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('engineering.png', size: '150x150')%>
-          </div>
-          <h2>LEGO Engineering: On The Move</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp13Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp19Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('jrlego.jpg', size: '150x150')%>
-          </div>
-          <h2>Jr. LEGO Robotics</h2>
-          Ages: 6-8 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp19Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-
-
-      </div><!-- /row -->
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-8 offset-lg-2 text-xs-center">
-          <hr>
-          <h3>Camp Options For Ages 9 - 13</h3>
-          <hr>
-        </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
-      </div><!-- /row -->
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp4Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('programming.png', size: '150x150')%>
-          </div>
-          <h2>Coding 101</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp4Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp5Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('vgd.jpg', size: '150x150')%>
-          </div>
-          <h2>Video Game Design</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp5Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp2Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('STEMcraft.png', size: '150x150')%>
-          </div>
-          <h2>Minecraft &amp; STEM</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp2Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp32Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('ev3.jpg', size: '150x150')%>
-          </div>
-          <h2>LEGO Robotics</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp32Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp31Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('microbit.jpg', size: '150x150')%>
-          </div>
-          <h2>Digital Designer</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp31Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp3Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('3d-printing.jpg', size: '150x150')%>
-          </div>
-          <h2>3D Modeling & Printing</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp3Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp45Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('puzzles.jpg', size: '150x150')%>
-          </div>
-          <h2>Escape Room Design</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp45Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp41Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('smart_money.jpg', size: '150x150')%>
-          </div>
-          <h2>Smart Money</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp41Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp42Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('robothink.jpg', size: '150x150')%>
-          </div>
-          <h2>RoboThink</h2>
-          Ages: 9-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp42Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-8 offset-lg-2 text-xs-center">
-          <hr>
-          <h3>Additional Camp Options for Varying Ages</h1>
-          <hr>
-        </div> <!-- /.col-lg-6 .col-lg-offset-3 -->
-      </div><!-- /row -->
-
-      <!-- ** Row ** -->
-      <div class="row mt centered">
-        <div class="col-lg-4">
-          <%= link_to("#camp38Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('QEDmath.jpg', size: '150x150')%>
-          </div>
-          <h2>Elite Problem Solving</h2>
-          Ages: 10-14 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp38Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp18Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('bootcamp.jpg', size: '150x150')%>
-          </div>
-          <h2>SAT/ACT Math Bootcamp</h2>
-          Ages: 14-18 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp18Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-        <div class="col-lg-4">
-          <%= link_to("#camp7Modal", :data => {:toggle=>"modal"}) do %>
-          <div class="circle_base type_1">
-            <%= image_tag('chess.png', size: '150x150')%>
-          </div>
-          <h2>Chess</h2>
-          Ages: 6-13 Half-Day<br />
-          <% end %>
-          <%= link_to "Learn More", "#camp7Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-        </div><!--/col-lg-4 -->
-      </div>
-
-    <!-- ** Row ** -->
-    <div class="row mt centered">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-4">
-        <%= link_to("#camp9Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('prealgebraprep.png', size: '150x150')%>
-        </div>
-        <h2>Middle School Math Prep</h2>
-        Ages: 10-12 Half-Day<br />
-        <% end %>
-        <%= link_to "Learn More", "#camp9Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-      </div><!--/col-lg-4 -->
-      <div class="col-lg-4">
-        <%= link_to("#camp8Modal", :data => {:toggle=>"modal"}) do %>
-        <div class="circle_base type_1">
-          <%= image_tag('kickstartkindergarten.png', size: '150x150')%>
-        </div>
-        <h2>Kickstart KG</h2>
-        Ages: 4-5 Half-Day<br />
-        <% end %>
-        <%= link_to "Learn More", "#camp8Modal", :data => {:toggle=>"modal"}, :class => "btn btn-sm btn-blue" %>
-      </div><!--/col-lg-4 -->
-    </div>
-
-    <%= render '/registrations/camp_modals' %>
-    <%= render 'watch_video' %>
-</div>
-
-<!-- <div class="row">
-  <div class="main-location">
-
-  </div>
-</div> -->
-
-<div class="container" style="margin-bottom:70px;">
-  <div class="row">
-    <div class="col-sm-12 text-sm-center">
-      <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
-    </div>
-  </div>
-  <%# render 'locations/select_location' %>
 </div>
 
 <script>
