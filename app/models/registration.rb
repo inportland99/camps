@@ -23,13 +23,27 @@ class Registration < ActiveRecord::Base
         end
       end
 
-      # Create stripe customer
-      customer = Stripe::Customer.create(
-                                          source:       stripe_card_token,
-                                          email:        parent_email,
-                                          description:  "Purchased #{Date.today.year} Summer Camp."
-      )
-
+      # Search for an existing customer in stripe else create one
+      customer = nil
+      existing_customer = Registration.where("parent_email = ?", parent_email).last
+      # if reg found and stripe customer id is present then retrieve customer from stripe else create new one
+      if existing_customer.present? && existing_customer.stripe_customer_id.present?
+        customer = Stripe::Customer.retrieve(existing_customer.stripe_customer_id)
+        # check if customer deleted
+        if customer.present? && customer['deleted'].present?
+          customer = nil
+        end
+      end
+      if !customer.present?
+        # Create stripe customer
+        customer = Stripe::Customer.create(
+                                            source:       stripe_card_token,
+                                            email:        parent_email,
+                                            name:         parent_name,
+                                            description:  "#{Date.today.year} Summer Camp"
+        )
+      end
+      
       # If they elected for a payment plan charge first thrid of total and create invoices for the second installment payments
       if payment_plan
         payments = calculate_payments(total)
