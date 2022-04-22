@@ -20,7 +20,13 @@ class CampOffering < ActiveRecord::Base
                     "1-2PM & 5-6PM EST",
                     "2-3PM & 6-7PM EST",
                     "9AM-12PM EST",
-                    "1PM-4PM EST"]
+                    "1PM-4PM EST",
+                    "9-11AM EST",
+                    "10-12PM EST",
+                    "11-1PM EST",
+                    "12-2PM EST",
+                    "1-3PM EST",
+                    "2-4PM EST"]
 
   OFFERING_TIMES_PST = ["All Day","AM","PM",
                     "9-10AM & 1-2PM EST / 6-7AM & 10-11AM PST",
@@ -34,8 +40,13 @@ class CampOffering < ActiveRecord::Base
                     "1-2PM & 5-6PM EST / 10-11AM & 2-3PM PST",
                     "2-3PM & 6-7PM EST / 11-12PM & 3-4PM PST",
                     "9AM-12PM EST",
-                    "1PM-4PM EST"]
-
+                    "1PM-4PM EST",
+                    "9-11AM EST / 6-8AM PST",
+                    "10-12PM EST / 7-9AM PST",
+                    "11-1PM EST / 8-10AM PST",
+                    "12-2PM EST / 9-11AM PST",
+                    "1-3PM EST / 10-12PM PST",
+                    "2-4PM EST / 11-1PM PST"]
 
   OFFERING_WEEKS = {
                             1 => {
