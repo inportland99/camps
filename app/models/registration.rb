@@ -33,6 +33,7 @@ class Registration < ActiveRecord::Base
         if customer.present? && customer['deleted'].present?
           customer = nil
         end
+        Stripe::Customer.update(customer.id, {source: stripe_card_token} )
       end
       if !customer.present?
         # Create stripe customer
@@ -43,7 +44,7 @@ class Registration < ActiveRecord::Base
                                             description:  "#{Date.today.year} Summer Camp"
         )
       end
-      
+
       # If they elected for a payment plan charge first thrid of total and create invoices for the second installment payments
       if payment_plan
         payments = calculate_payments(total)
