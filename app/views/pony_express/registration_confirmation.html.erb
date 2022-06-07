@@ -67,7 +67,7 @@
                               <%= @registration.student_allergies ? @registration.student_allergies : "none" %>
                             </p>
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
-                              <strong>Regsitered Camps:</strong>
+                              <strong>Registered Camps:</strong>
                               <ul>
                                 <% @registration.camp_offerings.each do |offering| %>
                                 <li><%= offering.confirmation_name %></li>
@@ -77,6 +77,9 @@
                             <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
                               <strong>Total:</strong>
                               $<%= number_with_precision(@registration.total.to_f/100, precision: 2) %>
+                            </p>
+                            <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">
+                              <strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accommodate your request, however no refunds will be given.
                             </p>
                             <% if @registration.payment_plan %>
                               <p style="margin: 0;margin-bottom: 10px;color: #222222;font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif;font-weight: normal;padding: 0;text-align: left;line-height: 19px;font-size: 14px;">

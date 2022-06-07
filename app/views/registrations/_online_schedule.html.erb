@@ -17,21 +17,19 @@
   </div>
 </div>
 
-<% if !location.name.include? "Online"%>
-  <div class="row mt-3 mb-4">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Peace of Mind Guarantee</h3>
-        </div>
-        <div class="card-block m-3">
-  				We are accepting enrollments for in-person camps.<br />
-  				<strong>If we have to cancel future camps due to Covid-19, we will provide at least two weeks notice as well as a full refund.</strong><br />
-        </div>
+<div class="row mt-3 mb-4">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Satisfaction Guarantee</h3>
+      </div>
+      <div class="card-block m-3">
+        <%= image_tag('satisfaction.png', size: '100x100', class: 'float-sm-left mr-3') %>
+        If your child attends camp and you aren't satisfied, let us know. If we can't fix it, we will provide a refund. Please note, student must attend at least two days of camp for this offer to be valid.
       </div>
     </div>
   </div>
-<% end %>
+</div>
 
 <div class="accordion form-group check_boxes optional registration_camp_offerings" id="accordionSchedule" style="padding:0;">
 	<!-- Cycle through all the weeks of camp -->
