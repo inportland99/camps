@@ -4,7 +4,7 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  CURRENT_YEAR = 8
+  CURRENT_YEAR = 9
 
   YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024) # year 0 is 2014
 
@@ -50,40 +50,40 @@ class CampOffering < ActiveRecord::Base
 
   OFFERING_WEEKS = {
                             1 => {
-                                    :start => Date.new(2022,6,6),
-                                    :end => Date.new(2022,6,10)
+                                    :start => Date.new(2023,6,5),
+                                    :end => Date.new(2023,6,9)
                             },
                             2 => {
-                                    :start => Date.new(2022,6,13),
-                                    :end => Date.new(2022,6,17)
+                                    :start => Date.new(2023,6,12),
+                                    :end => Date.new(2023,6,16)
                             },
                             3 => {
-                                    :start => Date.new(2022,6,20),
-                                    :end => Date.new(2022,6,24)
+                                    :start => Date.new(2023,6,19),
+                                    :end => Date.new(2023,6,23)
                             },
                             4 => {
-                                    :start => Date.new(2022,6,27),
-                                    :end => Date.new(2021,7,1)
+                                    :start => Date.new(2022,6,26),
+                                    :end => Date.new(2021,6,30)
                             },
                             5 => {
-                                    :start => Date.new(2022,7,11),
-                                    :end => Date.new(2022,7,15)
+                                    :start => Date.new(2023,7,10),
+                                    :end => Date.new(2023,7,14)
                             },
                             6 => {
-                                    :start => Date.new(2022,7,18),
-                                    :end => Date.new(2022,7,22)
+                                    :start => Date.new(2023,7,17),
+                                    :end => Date.new(2023,7,21)
                             },
                             7 => {
-                                    :start => Date.new(2022,7,25),
-                                    :end => Date.new(2022,7,29)
+                                    :start => Date.new(2023,7,24),
+                                    :end => Date.new(2023,7,28)
                             },
                             8 => {
-                                    :start => Date.new(2022,8,1),
-                                    :end => Date.new(2022,8,5)
+                                    :start => Date.new(2023,7,31),
+                                    :end => Date.new(2023,8,4)
                             },
                             9 => {
-                                    :start => Date.new(2022,8,8),
-                                    :end => Date.new(2022,8,12)
+                                    :start => Date.new(2023,8,7),
+                                    :end => Date.new(2023,8,11)
                             }
     }
 
