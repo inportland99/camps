@@ -1,4 +1,3 @@
-source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
 ruby '2.6.6'
@@ -43,7 +42,7 @@ gem "remotipart"
 gem "nested_form", git: "https://github.com/ryanb/nested_form.git"
 gem "simple_form"
 gem "country_select"
-gem 'stripe', :source => 'https://code.stripe.com/'
+gem 'stripe'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 gem 'jquery-datatables'
