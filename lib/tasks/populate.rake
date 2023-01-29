@@ -5,13 +5,13 @@ namespace :db do
 
     make_roles
     make_users
-    if Rails.env.development?
+    # if Rails.env.development?
       make_camps
       make_camp_offerings
       make_locations
       make_registrations
       make_coupon_codes
-    end
+    # end
   end
 
   desc "Fill database with sample data"
