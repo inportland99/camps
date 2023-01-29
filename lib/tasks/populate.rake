@@ -5,6 +5,7 @@ namespace :db do
 
     make_roles
     make_users
+    # don't make a mistake
     if Rails.env.development?
       make_camps
       make_camp_offerings
