@@ -124,7 +124,7 @@
         <p class="text-center"><strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accomodate your request, however no refunds will be given.</p>
         <% if DateTime.now < (DateTime.civil(2023,2,1,0,0,0)) %>
           <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
-          Summer camp registration opens February 1, 2023 at 12:01am<
+          Summer camp registration opens February 1, 2023 at 12:01am
           </div>
           <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green", id: "registration_button", disabled: true %>
         <% else %>
