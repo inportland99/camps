@@ -41,13 +41,13 @@
 	  <div class="card">
 	    <div class="card-header" id="<%= headingId %>">
 	        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<%= collapseId %>" aria-expanded="<%= thisweek ? "true" : "false"%>" aria-controls="<%= collapseId %>">
-						<h3><i class="fa fa-plus"></i> Week <%= n+1 %>: <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %></h3>
+						<h3><i class="fa fa-plus"></i> <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %></h3>
 	        </button>
 	    </div> <!-- card header -->
 
 	    <div id="<%= collapseId %>" class="collapse <%= thisweek ? " show" : ""%>" aria-labelledby="<%= headingId %>">
 	      <div class="card-body" style="margin:20px;">
-          <strong>Camp schedule will be published on February 1, 2023</strong><br /><br />
+          <!-- <strong>Camp schedule will be published on February 1, 2023</strong><br /><br /> -->
 
 					<h4>Innovation Labs</h4>
 					<!-- cycle through all camps for this year, location, week, and classroom -->
@@ -76,14 +76,14 @@
 						<%= render 'online_camp_listing', co: co %>
 					<% end %>
 
-					<h4 class="mt-3">Jumpstart</h4>
+					<!-- <h4 class="mt-3">Jumpstart</h4> -->
 					<!-- cycle through all camps for this year, location, week, and classroom -->
-					<% if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).count == 0 %>
+					<%# if CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).count == 0 %>
 						<%# No Jumpstart camps offered this week. Please see other weeks. %>
-					<% end %>
-					<% CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).each do |co| %>
-						<%= render 'online_camp_listing', co: co %>
-					<% end %>
+					<%# end %>
+					<%# CampOffering.by_week_and_classroom(location.id, n+1, CampOffering::CURRENT_YEAR, 3).each do |co| %>
+						<%# render 'online_camp_listing', co: co %>
+					<%# end %>
 					<input name="registration[camp_offering_ids][]" type="hidden" value="">
 	      </div>
 	    </div>

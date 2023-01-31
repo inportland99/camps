@@ -7,7 +7,7 @@
   <div class="row" style="overflow:hidden;">
     <div class="main">
       <div class="main-title">
-        Inspire Future Scientists!
+        Fun STEM Camps!
       </div> <!-- /.main-title -->
       <div class="main-grades">
         Online & In-person Camps for Ages 5-15
@@ -22,10 +22,10 @@
           <li><strong>Prepare to excel</strong> in the fall<br />
         </ul> -->
         <div class="main-grades" style="color:LawnGreen;"">
-          Camps sold out in 4 weeks last year!
+          Camps fill up quickly. Act now!
         </div>
         <!-- <div style="width:50%;text-align:center; margin-top:35px;">Register Below<br /><i class="fa fa-chevron-down" style="font-size:2em;color:#bbb;"></i></div> -->
-        <%= link_to "View Online Camps (90 to 120 min/day)", new_registration_path(location: 7), class: "btn btn-orange main-schedule" %><br />
+        <%= link_to "View Online Camps (90 min/day)", new_registration_path(location: 7), class: "btn btn-orange main-schedule" %><br />
         <%= link_to "View Powell Ohio Camps (3 hrs/day)", new_registration_path(location: 1), class: "btn btn-orange main-schedule" %>
       </div>
       <div class="main-grades">
@@ -37,7 +37,7 @@
 
 <div class="container">
     <div class="row mt centered">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-header">
             <h3 class="card-title">Innovation Labs</h3>
@@ -67,7 +67,7 @@
           </div><!--/col-lg-4 -->
         </div>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-header">
             <h3 class="card-title">Creator Studios</h3>
@@ -96,10 +96,7 @@
           </div>
         </div>
       </div><!--/col-lg-4 -->
-    </div>
-
-    <div class="row mt centered">
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="card h-100">
           <div class="card-header">
             <h3 class="card-title">Brain Games</h3>
@@ -127,40 +124,12 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-        <div class="card h-100">
-          <div class="card-header">
-            <h3 class="card-title">Jumpstart</h3>
-          </div>
-          <div class="card-body" style="padding:15px;">
-            <div class="card-text">
-              <div style="margin-bottom:15px; margin-top:15px;" class="circle_base type_1">
-        				<%= image_tag('prealgebraprep.png', size: '150x150')%>
-        			</div>
-              <h3>Get ready for school.</h3>
-              Build understanding and gain mastery of grade level core curriculum.<br /><br />
-              <% @activecamps.each do |camp| %>
-                <% if camp.title.include? "Jumpstart" %>
-                  <%= link_to (camp.short_name+"<small style='color:gray;'> Ages: "+camp.age+"</small>").html_safe, "#camp#{camp.id}Modal", "data-toggle" => "modal" %>
-                    <% if camp.online %>
-                      <div class="badge badge-success" style="margin-bottom:15px;">Online</div>
-                    <% else %>
-                      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person</span>
-                    <% end %>
-                  <br />
-                <% end %>
-              <% end %>
-              <!-- <br /><br />Two 60 minute daily sessions plus at-home practice assignments. -->
-            </div><!--/col-lg-4 -->
-          </div>
-        </div>
-      </div><!--/col-lg-4 -->
     </div><!-- /row -->
 
     <div class="row mt centered">
       <div class="col-lg-12">
         <h2>Register Now</h2>
-        <%= link_to "View Online Camps (90 to 120 min/day)", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+        <%= link_to "View Online Camps (90 min/day)", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
 
         <%= link_to "View Powell Ohio Camps (3 hrs/day)", new_registration_path(location: 1), class: "btn btn-lg btn-orange main-schedule" %>
       </div>
@@ -214,7 +183,7 @@
         <h3>...consumed by social media and video games
         <h3>...bored out of their minds
         <h3>...forgetting everything they learned<br />
-          <%= link_to "View Online Camps (90 to 120 min/day)", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
+          <%= link_to "View Online Camps (90 min/day)", new_registration_path(location: 7), class: "btn btn-lg btn-orange main-schedule" %>
 
           <%= link_to "View Powell Ohio Camps (3 hrs/day)", new_registration_path(location: 1), class: "btn btn-lg btn-orange main-schedule" %>
     </div>
@@ -328,6 +297,9 @@
 
   <%# render 'compare_button' %>
 </div>
+
+<%= render 'registrations/camp_modals' %>
+
 
 <script>
   fbq('track', 'ViewContent');

@@ -6,7 +6,7 @@ class CampOffering < ActiveRecord::Base
 
   CURRENT_YEAR = 9
 
-  YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024) # year 0 is 2014
+  YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026) # year 0 is 2014
 
   OFFERING_TIMES = ["All Day","AM","PM",
                     "9-10AM & 1-2PM EST",
@@ -62,8 +62,8 @@ class CampOffering < ActiveRecord::Base
                                     :end => Date.new(2023,6,23)
                             },
                             4 => {
-                                    :start => Date.new(2022,6,26),
-                                    :end => Date.new(2021,6,30)
+                                    :start => Date.new(2023,6,26),
+                                    :end => Date.new(2023,6,30)
                             },
                             5 => {
                                     :start => Date.new(2023,7,10),
