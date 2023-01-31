@@ -117,18 +117,21 @@
     </div><!-- /#coupon_code_field .col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
   </div><!-- /.row -->
   <div class="registration_button mt-4">
-    <div class="row">
+    <div class="container-fluid">
+    <div class="row centered">
+      <div class="col-md-2">&nbsp;</div>
       <div class="col-md-8">
-        <h3>Camps you are registering for:</h3>
-        <div id="camp_registrations">
-          <ul>
-          </ul>
-        </div>
+        <p class="text-center"><strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accomodate your request, however no refunds will be given.</p>
+        <% if DateTime.now < (DateTime.civil(2023,2,1,0,0,0)) %>
+          <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
+          Summer camp registration opens February 1, 2023 at 12:01am<
+          </div>
+          <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green", id: "registration_button", disabled: true %>
+        <% else %>
+          <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green", id: "registration_button" %>
+        <% end %>
       </div>
-      <div class="col-md-4 mt-3">
-        <p><strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accomodate your request, however no refunds will be given.</p>
-        <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-green float-sm-right", id: "registration_button" %>
-      </div>
+    </div>
     </div>
   </div><!-- /.registration_button -->
 <% end %>
