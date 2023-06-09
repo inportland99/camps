@@ -22,7 +22,7 @@ def send_camp_reminder
   @registrations = Registration.joins(:camp_offerings).where("week = ?", week)
 
   @registrations.each do |r|
-    if r.parent_email && r.year == 8
+    if r.parent_email && r.year == 9
       PonyExpress.camp_reminder(r).deliver
     end
   end
