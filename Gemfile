@@ -15,7 +15,6 @@ gem "devise"
 gem "high_voltage"
 gem "httparty"
 gem "mini_racer"
-gem "compass-rails", :git => 'https://github.com/Compass/compass-rails'
 gem "has_scope"
 gem "responders"
 gem "will_paginate"
@@ -28,7 +27,7 @@ gem "timecop"
 gem "ranked-model"
 gem "rspec-rails", group: ["development", "test"]
 gem "factory_girl_rails", "~> 4.0", group: ["development", "test"]
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem "font-awesome-rails", "~> 4.0.3.1"
 gem "underscore-rails"
 gem "rails-assets-tether"

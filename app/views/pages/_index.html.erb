@@ -1,0 +1,464 @@
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+      <!-- Hero -->
+      <section class="overflow-hidden" style="background-image: url(<%= asset_path 'home_page/website_header.jpg'%>); background-size: cover;">
+        <div class="container pt-3 pt-sm-4 pt-xl-5">
+          <div class="row pt-md-2 pt-lg-5">
+            <div class="col-md-5 d-flex flex-column mt-md-4 pt-5 pb-3 pb-sm-4 py-md-5">
+              <h1 class="display-4 text-center text-white text-md-start mb-4">STEM Camps<br />Kids Love</h1>
+              <p class="fs-lg text-center text-white text-md-start pb-2 pb-md-3 mb-4 mb-lg-5">Week-long online and in-person camps where kids explore math, robotics, coding, and more. Taught by passionate, certified teachers in small groups so every child is engaged and challneged.</p>
+              <div class="position-relative d-inline-flex align-items-center justify-content-center justify-content-md-start mt-auto pt-3 pt-md-4 pb-xl-2">
+                <a href="#principles" class="btn btn-icon btn-light bg-white stretched-link rounded-circle me-3" data-scroll data-scroll-offset="120">
+                  <i class="bx bx-chevron-down"></i>
+                </a>
+                <span class="fs-sm text-white">Discover more</span>
+              </div>     
+            </div>
+            <div class="col-md-7 align-self-end">
+              <div class="position-relative overflow-hidden mt-4 pb-3 pt-4 mx-auto me-md-0" style="max-width: 632px;">
+                <div class="ratio ratio-1x1"></div>
+                <!-- 
+                <img src="assets/home_page/header_image.png" class="rellax position-absolute top-0 start-0 zindex-2"  data-rellax-speed="1.6" data-disable-parallax-down="md" alt="Phone">
+                <img src="assets/img/landing/app-showcase/hero-phone-2.png" class="rellax position-absolute top-0 start-0"  data-rellax-speed="2.8" data-disable-parallax-down="md" alt="Phone">
+                -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Camps -->
+      <section id="camps" class="container pt-5 pb-md-3 py-lg-5">
+        <div class="row align-items-center mt-2 mt-md-0 pt-5 pt-md-4 pt-lg-0 pb-md-3 pb-lg-5">
+          <div class="col-lg-8 mx-auto">
+            <h2 class="h1 text-center mb-4">Camp Offerings</h2>
+            <div class="row row-cols-1 row-cols-sm-2 pt-2 pt-sm-3 pt-xl-2">
+              <!-- Item - do hard things -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">In-Person Camps</h3>
+                    <p class="mb-0">3 hours/day, 5 days in Powell, Ohio.</p>
+                    <% @inpersoncamps.each do |camp| %>
+                      <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Item - better together -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-group fs-1 text-success' ></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Great Things are Done Together</h3>
+                    <p class="mb-0">Learning happens best when we work together, share ideas, and support each other.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - be curious -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-message-rounded-dots fs-1 text-success' ></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Be Curious</h3>
+                    <p class="mb-0">Meaningful learning starts with curiosity. Our students ask questions, explore, and wonder.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - always start simple -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-play-circle fs-1 text-success'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Start Simple, Build Up</h3>
+                    <p class="mb-0">The best way to tackle a challenge is to break it down into smaller, simpler problems.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - play experiment and have fun -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-wrench fs-1 text-success' ></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Play, Experiment, and Have Fun</h3>
+                    <p class="mb-0">Children thrive and learn through play. We have fun exploring puzzles and games.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - no mistakes only lessons -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-book fs-1 text-success'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">There are No Mistakes, Only Lessons</h3>
+                    <p class="mb-0">We promote risk taking and remind students to view mistakes as part of the learning process.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - There is always more to learn -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-infinite fs-1 text-success'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">There is Always More to Learn</h3>
+                    <p class="mb-0">Every question answered is an invitation to tackle a new question.</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Item - Answers matter less than you think -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-bullseye fs-1 text-success'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Answers Matter Less Than You Think</h3>
+                    <p class="mb-0">Answers matter, but answers in the absence of thinking are of limited value.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="position-relative" style="max-width: 348px;">
+              <%= link_to image_tag("home_page/funmath.jpg")%>
+              <!---
+              <img src="assets/img/landing/app-showcase/features/phone.png" alt="Phone">
+              <div class="rellax position-absolute top-0" data-rellax-vertical-scroll-axis="x" data-rellax-horizontal-speed="0.75" data-disable-parallax-down="lg" style="max-width: 348px; right: -2.75rem;">
+                <img src="assets/img/landing/app-showcase/features/card.png" alt="Card">
+              </div>
+              -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Every child is brilliant -->
+      <!--
+      <section id="brilliant" class="py-4 mb-md-2" style="background: radial-gradient(116.18% 118% at 50% 100%, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 41.83%, rgba(241, 244, 253, 0.07) 82.52%);">
+        <div class="container py-lg-4">
+          <div class="row py-md-3">
+            <h1 class="text-center pb-3">Every Child is Brilliant!</h1>
+            <div class="col-md-6 col-lg-5 col-xl-4 offset-lg-1 offset-xl-2 order-md-1 pb-md-4">
+              <p class="fs-lg mb-0">Unfortunately, in math there is too much focus on what students can't do. Not at Math Plus Academy!<br />
+              <strong>We believe in one fundamental truth -- Every child is brilliant.</strong><br/ >
+              As educators, we recoginize each child's unique gifts and help them use those gifts to excel at math.</p>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-4 order-md-2 mb-2 mb-md-0 pb-4 pb-md-0">
+              <div class="position-relative mx-md-0" style="max-width: 469px;">
+                <%= link_to image_tag("home_page/doingmath.png")%>
+                <img src="assets/home_page/doingmath.png" class="rellax d-block" alt="Screen" data-rellax-percentage="0.5" data-rellax-speed="-0.5" data-disable-parallax-down="md">
+                <div class="rellax position-absolute top-0 end-0 w-100 h-100" data-rellax-percentage="0.5" data-rellax-speed="0.75" data-disable-parallax-down="md">
+                  <img src="assets/img/landing/app-showcase/features/screen02.png" alt="Screen">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      -->
+
+      <!-- Features -->
+      <section id="features" class="container pt-lg-2 pt-xl-3 pb-3 pb-xl-5 mt-n2 mt-sm-0 mb-2 mb-md-4 mb-lg-5">
+        <div class="row pb-xl-3 mt-5">
+
+          <!-- Feature list -->
+          <div class="col-lg-8 mx-auto">
+            <h2 class="h1 text-center mb-4">What You Can Expect</h2>
+            <p class="fs-lg text-center mb-4 mb-xl-5">Learning happens effortlessly when we create an environment of safety and trust, where everyone is curious and excited to learn together.</p>
+            <div class="row row-cols-1 row-cols-sm-2 pt-2 pt-sm-3 pt-xl-2">
+
+              <!-- Item - engaging classes -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start ps-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-happy fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Hands-on, Minds-on</h3>
+                    <p class="mb-0">Your child will be engaged in interactive, fun puzzles, games, and projects throughout the week.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item - curriculum -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-book fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Proven Curriculum</h3>
+                    <p class="mb-0">Our curriculum focuses on critical thinking and problem-solving skills because thinking always beats memorization.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item - teachers -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start ps-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bxs-graduation fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Passionate Teachers</h3>
+                    <p class="mb-0">All of our teachers are state certified and highly trained. They love kids and they love math and technology.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item - rewards -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-trophy fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Satisfaction Guarantee</h3>
+                    <p class="mb-0">We've served over 4,000 students with 97% satisfaction. If your child attends camp and doesn't enjoy it, we will give you a full refund.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item - tutoring -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start ps-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-user fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Small Camps</h3>
+                    <p class="mb-0">Camps are limited to 8 students. This allows our teachers connect with every child to create a safe environment where everyone can learn together.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item - trust -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
+                    <i class='bx bx-check-shield fs-1 text-info'></i>
+                  </div>
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h3 class="h5 pb-1 mb-2">Trusted Community</h3>
+                    <p class="mb-0">Each class of up to 8 students becomes a team where students encourage each other and feel safe to make mistakes.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="py-5 mb-md-2" style="background: radial-gradient(116.18% 118% at 50% 100%, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 41.83%, rgba(241, 244, 253, 0.07) 82.52%);">
+        <div class="container py-lg-4">
+          <div class="row py-md-3">
+            <div class="col-xl-3 col-lg-4 pt-2">
+              <h2 class="h1 text-center text-lg-start pb-2">Clients Love Math Plus Academy</h2>
+
+              <!-- Slider prev/next buttons -->
+              <!--
+              <div class="d-flex justify-content-center justify-content-lg-start pt-lg-5">
+                <button type="button" id="prev-review" class="btn btn-prev btn-icon btn-sm me-3 carousel-control-prev">
+                  <i class="bx bx-chevron-left"></i>
+                </button>
+                <button type="button" id="next-review" class="btn btn-next btn-icon btn-sm">
+                  <i class="bx bx-chevron-right"></i>
+                </button>
+              </div>
+              -->
+            </div>
+            <div class="col-lg-8 offset-xl-1 pt-4 mt-2 mt-md-3 mt-lg-0 pt-lg-0">
+              <div class="px-2 px-sm-0">
+  <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <!-- Can't get these to display correctly yet
+    <ol class="carousel-indicators">
+      <li data-target="#testimonialCarousel" data-bs-slide-to="0" class="active"></li>
+      <li data-target="#testimonialCarousel" data-bs-slide-to="1"></li>
+      <li data-target="#testimonialCarousel" data-bs-slide-to="2"></li>
+      <li data-target="#testimonialCarousel" data-bs-slide-to="3"></li>
+    </ol>
+    -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="h-auto pt-4 pb-3 px-2">
+          <div class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+            <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+              <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                <i class="bx bxs-quote-left"></i>
+              </span>
+              <blockquote class="card-body pb-4 mb-0">
+                <div class="text-nowrap pt-1 mb-3">
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                </div>
+                <p class="fs-lg mb-0">Lucas has very much enjoyed both Math Plus Academy camps he has been a part of. All of the instructors are definitely making it exciting to work with these programs and we've been very impressed.</p>
+              </blockquote>
+              <div class="card-footer d-flex align-items-center border-0 pt-0">
+                <img src=<%= asset_path 'img/avatar/42.png' %> width="48" class="rounded-circle ms-n1" alt="Sabina Malkani">
+                <div class="ps-2 ms-1">
+                  <h6 class="fs-base fw-semibold mb-0"></h6>
+                  <span class="fs-sm text-muted">Parent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="h-auto pb-3 px-2 pt-4">
+          <div class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+            <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+              <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                <i class="bx bxs-quote-left"></i>
+              </span>
+              <blockquote class="card-body pb-4 mb-0">
+                <div class="text-nowrap pt-1 mb-3">
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                </div>
+                <p class="fs-lg mb-0">Minecraft camp was literally my son's favorite camp that he's done in life (per him) in school or out of school. Thanks!!!</p>
+              </blockquote>
+              <div class="card-footer d-flex align-items-center border-0 pt-0">
+                <img src="assets/img/avatar/43.png" width="48" class="rounded-circle ms-n1" alt="Robert Fox">
+                <div class="ps-2 ms-1">
+                  <h6 class="fs-base fw-semibold mb-0"></h6>
+                  <span class="fs-sm text-muted">Parent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="h-auto pb-3 px-2 pt-4">
+          <div class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+            <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+              <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                <i class="bx bxs-quote-left"></i>
+              </span>
+              <blockquote class="card-body pb-4 mb-0">
+                <div class="text-nowrap pt-1 mb-3">
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                </div>
+                <p class="fs-lg mb-0">I loved that the student to teacher ratio was small. My child was challenged and I could see him struggling with the content but in a good way.</p>
+              </blockquote>
+              <div class="card-footer d-flex align-items-center border-0 pt-0">
+                <img src="assets/img/avatar/44.png" width="48" class="rounded-circle ms-n1" alt="Annette Black">
+                <div class="ps-2 ms-1">
+                  <h6 class="fs-base fw-semibold mb-0"></h6>
+                  <span class="fs-sm text-muted">Parent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="h-auto pb-3 px-2 pt-4">
+          <div class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+            <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+              <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                <i class="bx bxs-quote-left"></i>
+              </span>
+              <blockquote class="card-body pb-4 mb-0">
+                <div class="text-nowrap pt-1 mb-3">
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                  <i class="bx bxs-star text-warning"></i>
+                </div>
+                <p class="fs-lg mb-0">This camp really opened my son's eyes to an entirely new field. He continues to write new programs at home. Thanks for inspiring him!</p>
+              </blockquote>
+              <div class="card-footer d-flex align-items-center border-0 pt-0">
+                <img src="assets/img/avatar/45.png" width="48" class="rounded-circle ms-n1" alt="Jerome Bell">
+                <div class="ps-2 ms-1">
+                  <h6 class="fs-base fw-semibold mb-0"></h6>
+                  <span class="fs-sm text-muted">Parent</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Can't get these to display and work yet
+    <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    -->
+  </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Founder -->
+      <section id="founder" class="container pt-5 pb-md-3 py-lg-5">
+        <div class="row align-items-center mt-2 mt-md-0 pt-5 pt-md-4 pt-lg-0 pb-md-3 pb-lg-5">
+          <h2 class="h1 text-center mb-4">Founder's Message - Dr. Raj Shah</h2>
+          <div class="col-lg-5">
+            <p class="fs-lg text-md-start mb-4 mb-xl-5"><strong>Math changed my life, partly because it opened doors to careers in science and engineering. But more importantly, math taught me how to think, how to solve problems, and how to persevere. I want to share that gift with every child.</strong></p>
+            <p class="fs-lg text-md-start mb-4 mb-xl-5">Now, I travel the country working with school districts and math teachers to help them make math irresistible for kids.</p>
+            <p class="fs-lg">Watch my TEDx to learn more.</p>
+          </div>
+          <div class="col-lg-7 d-lg-block">
+              <!-- Video button on top of the image -->
+              <div class="position-relative bg-size-cover bg-position-center py-5" style="background-image: url(<%= asset_path 'home_page/TEDxHilliardimage.jpg'%>);">
+                <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-10"></span>
+                <div class="position-relative text-center zindex-5 px-3 py-4 py-sm-5 my-lg-5">
+                  <a href="https://www.youtube.com/watch?v=HmsA0-ZvbfU" class="btn btn-video btn-icon bg-white btn-xl mb-2" data-bs-toggle="video">
+                    <i class="bx bx-play"></i>
+                  </a>
+                  <div class="fs-sm text-white opacity-75">Click to watch video</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>

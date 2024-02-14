@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/Compass/compass-rails
-  revision: f6391d0d30fa63bb9bf6cd94e0e5608012584e6e
-  specs:
-    compass-rails (4.0.0)
-      compass (~> 1.0.0)
-      sass-rails (< 5.1)
-      sprockets (< 4.0)
-
-GIT
   remote: https://github.com/ryanb/nested_form.git
   revision: 1b0689dfb4d230ceabd278eba159fcb02f23c68a
   specs:
@@ -55,13 +46,12 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
-    autoprefixer-rails (10.2.4.0)
-      execjs
+    autoprefixer-rails (10.4.16.0)
+      execjs (~> 2)
     bcrypt (3.1.16)
-    bootstrap (4.0.0.beta)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (~> 1.11.1)
-      sass (>= 3.4.19)
+    bootstrap (5.3.2)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
     bootstrap-will_paginate (1.0.0)
       will_paginate
     builder (3.2.4)
@@ -75,7 +65,6 @@ GEM
       railties (>= 3.0)
       sassc-rails (>= 2.1.2)
     chronic (0.10.2)
-    chunky_png (1.4.0)
     coderay (1.1.3)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -84,18 +73,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    compass (1.0.3)
-      chunky_png (~> 1.2)
-      compass-core (~> 1.0.2)
-      compass-import-once (~> 1.0.5)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-      sass (>= 3.3.13, < 3.5)
-    compass-core (1.0.3)
-      multi_json (~> 1.0)
-      sass (>= 3.3.0, < 3.5)
-    compass-import-once (1.0.5)
-      sass (>= 3.2, < 3.5)
     concurrent-ruby (1.1.8)
     cookieconsent (0.1.0)
     countries (3.0.1)
@@ -212,7 +189,7 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (0.21.0)
-    popper_js (1.11.1)
+    popper_js (2.11.8)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -258,9 +235,6 @@ GEM
     rake (13.0.3)
     ranked-model (0.4.7)
       activerecord (>= 4.2)
-    rb-fsevent (0.10.4)
-    rb-inotify (0.10.1)
-      ffi (~> 1.0)
     remotipart (1.4.4)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
@@ -347,14 +321,13 @@ PLATFORMS
 
 DEPENDENCIES
   active-campaign-rails
-  bootstrap (~> 4.0.0.alpha6)
+  bootstrap (~> 5.2, >= 5.2.3)
   bootstrap-will_paginate
   cancan
   carrierwave
   chosen-rails
   chronic
   coffee-rails
-  compass-rails!
   cookieconsent
   country_select
   devise

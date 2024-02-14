@@ -4,9 +4,10 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  CURRENT_YEAR = 9
-
-  YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026) # year 0 is 2014
+  # CURRENT_YEAR = 9
+  # YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026) # year 0 is 2014
+  CURRENT_YEAR = Date.today.year-2014
+  YEARS = Date.today.year
 
   OFFERING_TIMES = ["All Day","AM","PM",
                     "9-10AM & 1-2PM EST",
@@ -47,45 +48,50 @@ class CampOffering < ActiveRecord::Base
                     "12-2PM EST / 9-11AM PST",
                     "1-3PM EST / 10-12PM PST",
                     "2-4PM EST / 11-1PM PST"]
-
-  OFFERING_WEEKS = {
-                            1 => {
-                                    :start => Date.new(2023,6,5),
-                                    :end => Date.new(2023,6,9)
-                            },
-                            2 => {
-                                    :start => Date.new(2023,6,12),
-                                    :end => Date.new(2023,6,16)
-                            },
-                            3 => {
-                                    :start => Date.new(2023,6,19),
-                                    :end => Date.new(2023,6,23)
-                            },
-                            4 => {
-                                    :start => Date.new(2023,6,26),
-                                    :end => Date.new(2023,6,30)
-                            },
-                            5 => {
-                                    :start => Date.new(2023,7,10),
-                                    :end => Date.new(2023,7,14)
-                            },
-                            6 => {
-                                    :start => Date.new(2023,7,17),
-                                    :end => Date.new(2023,7,21)
-                            },
-                            7 => {
-                                    :start => Date.new(2023,7,24),
-                                    :end => Date.new(2023,7,28)
-                            },
-                            8 => {
-                                    :start => Date.new(2023,7,31),
-                                    :end => Date.new(2023,8,4)
-                            },
-                            9 => {
-                                    :start => Date.new(2023,8,7),
-                                    :end => Date.new(2023,8,11)
-                            }
-    }
+  dayone = Date.new(2024,6,3)
+  OFFERING_WEEKS = Hash.new
+  (1..10).each do |i|
+    OFFERING_WEEKS.merge!({i =>{:start=>dayone+(i-1)*7,:end=>dayone+(i-1)*7+4}})
+  end
+  
+  # OFFERING_WEEKS = {
+  #                           1 => {
+  #                                   :start => dayone,
+  #                                   :end => dayone+4.days
+  #                           },
+  #                           2 => {
+  #                                   :start => dayone+7.days,
+  #                                   :end => dayone+11.days
+  #                           },
+  #                           3 => {
+  #                                   :start => dayone+14.days,
+  #                                   :end => dayone+18.days
+  #                           },
+  #                           4 => {
+  #                                   :start => Date.new(2023,6,26),
+  #                                   :end => Date.new(2023,6,30)
+  #                           },
+  #                           5 => {
+  #                                   :start => Date.new(2023,7,10),
+  #                                   :end => Date.new(2023,7,14)
+  #                           },
+  #                           6 => {
+  #                                   :start => Date.new(2023,7,17),
+  #                                   :end => Date.new(2023,7,21)
+  #                           },
+  #                           7 => {
+  #                                   :start => Date.new(2023,7,24),
+  #                                   :end => Date.new(2023,7,28)
+  #                           },
+  #                           8 => {
+  #                                   :start => Date.new(2023,7,31),
+  #                                   :end => Date.new(2023,8,4)
+  #                           },
+  #                           9 => {
+  #                                   :start => Date.new(2023,8,7),
+  #                                   :end => Date.new(2023,8,11)
+  #                           }
+  #   }
 
   def self.accessible_attributes
    ["assistant", "camp_id", "end_date", 'location_id', "start_date", "teacher", "classroom", "time", "week", "hidden", "year", "extended_care", "zoom_link"]
