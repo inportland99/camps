@@ -13,14 +13,14 @@
         </div>
       <% end %>
 
-      <%= f.association :camp %>
-      <%= f.input :year, as: :select, collection: CampOffering::YEARS.zip((0..10).to_a) %>
+      <%= f.association :camp, collection: Camp.active %>
+      <%= f.input :year, as: :select, collection: CampOffering::YEARS.zip((0..12).to_a) %>
       <%= f.input :teacher %>
       <%= f.input :assistant %>
 
   </div>
   <div class="col-lg-4">
-    <%= f.input :week, as: :select, collection: (1..9).to_a %>
+    <%= f.input :week, as: :select, collection: (1..10).to_a %>
     <%= f.association :location, label_method: :name %>
     <%= f.input :zoom_link, label: "Zoom Link", as: :string %>
   </div>
