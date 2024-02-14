@@ -1,5 +1,5 @@
 class Camp < ActiveRecord::Base
-
+  scope :active, -> { where(active: true) }
   has_many :camp_offerings
   has_many :camp_surveys
 

@@ -14,7 +14,7 @@ class CampsController < ApplicationController
   # GET /camps
   # GET /camps.json
   def index
-    @camps = Camp.order(:id).all
+    @camps = Camp.where(active: true).order(:id).all
 
     respond_to do |format|
       format.html # index.html.erb
