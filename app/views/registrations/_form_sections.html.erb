@@ -27,18 +27,35 @@
   </div><!-- /.row -->
 
   <!-- ** Camps Your Registering For ** -->
-  <div class="row">
-    <div class="col-sm-12">
-      <h3>Selected Camps:</h3>
-      <div id="camp_registrations">
-        <ul>
-        </ul>
-      </div><!-- /#camp_registrations -->
-    </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
+  <div class="row pt-5">
+    <div class="col-sm-7">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Selected Camps</h3>
+        </div>
+        <div class="card-block m-3">
+          <div id="camp_registrations">
+            <ul>
+            </ul>
+          </div><!-- /#camp_registrations -->
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Satisfaction Guarantee</h3>
+        </div>
+        <div class="card-block m-3">
+          If your child attends camp and you aren't satisfied, let us know. If we can't fix it, we will provide a refund. Please note, student must attend at least two days of camp for this offer to be valid.
+        </div>
+      </div>
+    </div>
   </div><!-- /.row -->
+
   <div class="row mt-4 mb-4">
     <div class="col-sm-12">
-      <h2>Registration Form & Payment</h2><br />
+      <h2>Complete Enrollment</h2><br />
       <h3>Student Information</h3>
     </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
   </div>
@@ -64,7 +81,7 @@
       <h3>Parent/Gaurdian Information</h3>
     </div><!-- /.col-lg-8 .col-md-8 .col-sm-12 .col-xs-12 -->
     <div class="col-lg-4 d-none d-md-block">
-      <h3>Payment Information</h3>
+      <h3>Payment Authorization</h3>
     </div><!-- /.col-lg-4 .col-md-4 .hidden-sm-down -->
   </div><!-- /.row -->
   <div class="row">
@@ -113,7 +130,7 @@
         <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
       </div><!-- /.form-group string optional -->
       <div id="coupon_error"></div>
-      <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-white btn-xs', id: :coupon_code_button %></br>
+      <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-secondary btn-sm', id: :coupon_code_button %></br>
     </div><!-- /#coupon_code_field .col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
   </div><!-- /.row -->
   <div class="registration_button mt-4">
@@ -121,7 +138,7 @@
     <div class="row centered">
       <div class="col-md-2">&nbsp;</div>
       <div class="col-md-8">
-        <p class="text-center"><strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accomodate your request, however no refunds will be given.</p>
+        <p class="text-center"><strong>Payment Policy:</strong> Camp payments are final and non-refundable. If you wish to change a camp in the future, we will do our best to accomodate your request, however no refunds will be given.<br /><br />
         <% if DateTime.now < (DateTime.civil(2023,2,1,0,0,0)) %>
           <div class="alert centered" style="background:#f4e9a2;border-bottom:solid 1px #a8a8a8;border-top:solid 1px #a8a8a8;">
           Summer camp registration opens February 1, 2023 at 12:01am
@@ -130,6 +147,7 @@
         <% else %>
           <%= f.button :submit, "Submit Registration", class: "btn btn-lg btn-success", id: "registration_button" %>
         <% end %>
+        </p>
       </div>
     </div>
     </div>

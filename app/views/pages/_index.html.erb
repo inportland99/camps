@@ -9,141 +9,46 @@
             <div class="col-md-5 d-flex flex-column mt-md-4 pt-5 pb-3 pb-sm-4 py-md-5">
               <h1 class="display-4 text-center text-white text-md-start mb-4">STEM Camps<br />Kids Love</h1>
               <p class="fs-lg text-center text-white text-md-start pb-2 pb-md-3 mb-4 mb-lg-5">Week-long online and in-person camps where kids explore math, robotics, coding, and more. Taught by passionate, certified teachers in small groups so every child is engaged and challneged.</p>
-              <div class="position-relative d-inline-flex align-items-center justify-content-center justify-content-md-start mt-auto pt-3 pt-md-4 pb-xl-2">
-                <a href="#principles" class="btn btn-icon btn-light bg-white stretched-link rounded-circle me-3" data-scroll data-scroll-offset="120">
-                  <i class="bx bx-chevron-down"></i>
-                </a>
-                <span class="fs-sm text-white">Discover more</span>
-              </div>     
-            </div>
-            <div class="col-md-7 align-self-end">
-              <div class="position-relative overflow-hidden mt-4 pb-3 pt-4 mx-auto me-md-0" style="max-width: 632px;">
-                <div class="ratio ratio-1x1"></div>
-                <!-- 
-                <img src="assets/home_page/header_image.png" class="rellax position-absolute top-0 start-0 zindex-2"  data-rellax-speed="1.6" data-disable-parallax-down="md" alt="Phone">
-                <img src="assets/img/landing/app-showcase/hero-phone-2.png" class="rellax position-absolute top-0 start-0"  data-rellax-speed="2.8" data-disable-parallax-down="md" alt="Phone">
-                -->
-              </div>
+              <%= link_to "View In-Person Camps", new_registration_path(location: 1), class: "btn btn-success mt-3" %>
+              <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-success mt-3" %>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Camps -->
-      <section id="camps" class="container pt-5 pb-md-3 py-lg-5">
+      <section id="camps" class="container pt-5 pb-md-3 py-lg-5" style="background: radial-gradient(116.18% 118% at 50% 100%, rgba(99, 102, 241, 0.1) 0%, rgba(218, 70, 239, 0.05) 41.83%, rgba(241, 244, 253, 0.07) 82.52%);>
         <div class="row align-items-center mt-2 mt-md-0 pt-5 pt-md-4 pt-lg-0 pb-md-3 pb-lg-5">
-          <div class="col-lg-8 mx-auto">
-            <h2 class="h1 text-center mb-4">Camp Offerings</h2>
+          <div class="col-lg-10 mx-auto">
+            <h2 class="h1 text-center mb-4">Summer Camps</h2>
+            <p class="fs-lg text-center mb-4 mb-xl-5">Week-long camps offered in Powell, Ohio and online.</p>
             <div class="row row-cols-1 row-cols-sm-2 pt-2 pt-sm-3 pt-xl-2">
-              <!-- Item - do hard things -->
+              <!-- Item - In person camps -->
               <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
                 <div class="d-flex align-items-start pe-xl-3">
                   <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">In-Person Camps</h3>
-                    <p class="mb-0">3 hours/day, 5 days in Powell, Ohio.</p>
+                    <h2 class="pb-1 mb-2">In-Person Camps</h2>
+                    <p class="mb-3">3 hours/day, 5 days in Powell, Ohio.</p>
+                    <% @inpersoncamps.each do |camp| %>
+                      <%= link_to (camp.title+" <small style='color:gray;'>(Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
+                    <% end %>
+                    <%= link_to "View In-Person Camps", new_registration_path(location: 1), class: "btn btn-success mt-3" %><br />
+                  </div>
+                </div>
+              </div>
+              <!-- Item - Online camps -->
+              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
+                <div class="d-flex align-items-start pe-xl-3">
+                  <div class="ps-4 ps-sm-3 ps-md-4">
+                    <h2 class="pb-1 mb-2">Online Camps</h2>
+                    <p class="mb-3">90 min/day, 5 days via Zoom</p>
                     <% @inpersoncamps.each do |camp| %>
                       <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
                     <% end %>
-
+                    <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-success mt-3" %><br />
                   </div>
                 </div>
               </div>
-              <!-- Item - better together -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-group fs-1 text-success' ></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">Great Things are Done Together</h3>
-                    <p class="mb-0">Learning happens best when we work together, share ideas, and support each other.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - be curious -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-message-rounded-dots fs-1 text-success' ></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">Be Curious</h3>
-                    <p class="mb-0">Meaningful learning starts with curiosity. Our students ask questions, explore, and wonder.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - always start simple -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-play-circle fs-1 text-success'></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">Start Simple, Build Up</h3>
-                    <p class="mb-0">The best way to tackle a challenge is to break it down into smaller, simpler problems.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - play experiment and have fun -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-wrench fs-1 text-success' ></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">Play, Experiment, and Have Fun</h3>
-                    <p class="mb-0">Children thrive and learn through play. We have fun exploring puzzles and games.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - no mistakes only lessons -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-book fs-1 text-success'></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">There are No Mistakes, Only Lessons</h3>
-                    <p class="mb-0">We promote risk taking and remind students to view mistakes as part of the learning process.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - There is always more to learn -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-infinite fs-1 text-success'></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">There is Always More to Learn</h3>
-                    <p class="mb-0">Every question answered is an invitation to tackle a new question.</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Item - Answers matter less than you think -->
-              <div class="col pb-2 pb-xl-0 mb-4 mb-xl-5">
-                <div class="d-flex align-items-start pe-xl-3">
-                  <div class="d-table bg-secondary rounded-3 flex-shrink-0 p-3 mb-3">
-                    <i class='bx bx-bullseye fs-1 text-success'></i>
-                  </div>
-                  <div class="ps-4 ps-sm-3 ps-md-4">
-                    <h3 class="h5 pb-1 mb-2">Answers Matter Less Than You Think</h3>
-                    <p class="mb-0">Answers matter, but answers in the absence of thinking are of limited value.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class="col-lg-5 d-none d-lg-block">
-            <div class="position-relative" style="max-width: 348px;">
-              <%= link_to image_tag("home_page/funmath.jpg")%>
-              <!---
-              <img src="assets/img/landing/app-showcase/features/phone.png" alt="Phone">
-              <div class="rellax position-absolute top-0" data-rellax-vertical-scroll-axis="x" data-rellax-horizontal-speed="0.75" data-disable-parallax-down="lg" style="max-width: 348px; right: -2.75rem;">
-                <img src="assets/img/landing/app-showcase/features/card.png" alt="Card">
-              </div>
-              -->
             </div>
           </div>
         </div>

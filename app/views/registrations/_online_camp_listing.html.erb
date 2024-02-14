@@ -2,8 +2,8 @@
 <% unless co.hidden && !user_signed_in? %>
   <label class="checkbox">
     <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}", halfday: true } unless co.at_capacity? && !user_signed_in? %>
-    <%= link_to "#{co.short_name}", "#camp#{co.camp.id}Modal", "data-toggle" => "modal" %>
-    <small style='color:gray;'> <%= "#{co.est_pst}" %></small>
+    <%= link_to "#{co.short_name}", "#camp#{co.camp.id}Modal", "data-bs-toggle" => "modal" %>
+    <span style='color:gray;'> <%= "#{co.est_pst}" %></span>
     <% if co.at_capacity? %>
       <!-- Show sold out badge if capacity is zero -->
       <div class="pull-left"><span class="badge badge-pill badge-danger">Sold Out</span></div>
