@@ -1,26 +1,26 @@
 <!-- Skip all this if camp is hidden and no user signed in -->
 <% unless co.hidden && !user_signed_in? %>
-  <label class="checkbox">
+  <label class="checkbox" style="font-size: 1.1rem;line-height: 2.2rem;">
     <%= check_box_tag "registration[camp_offering_ids][]", co.id, false, id: "registration_camp_offering_ids_#{co.id}", class: "check_boxes optional", data: { price: "#{co.camp.price}", name: "#{co.confirmation_name}", halfday: true } unless co.at_capacity? && !user_signed_in? %>
-    <%= link_to "#{co.short_name}", "#camp#{co.camp.id}Modal", "data-bs-toggle" => "modal" %>
+    <%= link_to "#{co.name}", "#camp#{co.camp.id}Modal", "data-bs-toggle" => "modal" %>
     <span style='color:gray;'> <%= "#{co.est_pst}" %></span>
     <% if co.at_capacity? %>
       <!-- Show sold out badge if capacity is zero -->
-      <div class="pull-left"><span class="badge badge-pill badge-danger">Sold Out</span></div>
+      <div class="pull-left"><span class="badge badge-pill bg-danger">Sold Out</span></div>
     <% else %>
       <!-- Otherwise show price and few spots warning -->
       <div class="pull-right">
-         &nbsp;<span class="badge badge-pill badge-warning"><%= open_spots(co).html_safe %></span>
-         &nbsp;<span class="badge badge-pill badge-success">$<%= co.price %></span>
+         &nbsp;<span class="badge badge-pill bg-warning"><%= open_spots(co).html_safe %></span>
+         &nbsp;<span class="badge badge-pill bg-success">$<%= co.price %></span>
        </div>
     <% end %>
     <!-- Show hidden camps to signed in users-->
     <% if co.hidden && user_signed_in? %>
-      <div class="pull-right">&nbsp;<span class="badge badge-pill badge-warning">Hidden</span></div>
+      <div class="pull-right">&nbsp;<span class="badge badge-pill bg-warning">Hidden</span></div>
     <% end %>
     <!-- Show registration count to signed in users-->
     <% if user_signed_in? %>
-      <div class="pull-right">&nbsp;<span class="badge badge-pill badge-primary"><%= co.camp.capacity - co.open_spots.to_i %></span></div>
+      <div class="pull-right">&nbsp;<span class="badge badge-pill bg-primary"><%= co.camp.capacity - co.open_spots.to_i %></span></div>
     <% end %>
   </label>
   <br />

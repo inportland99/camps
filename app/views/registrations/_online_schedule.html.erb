@@ -5,15 +5,14 @@
 		<% headingId = "heading_#{n}" %>
 		<% collapseId = "collapse_#{n}" %>
 		<!-- One card per week -->
-	  <div class="card">
-	    <div class="card-header" id="<%= headingId %>">
-	        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>" aria-expanded="<%= thisweek ? "true" : "false"%>" aria-controls="<%= collapseId %>">
-				<h5><i class="fa fa-plus"></i> <%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%b %d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%b %d") %></h3>
+	  <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+	    <h2 class="accordion-header" id="<%= headingId %>">
+	        <button class="accordion-button shadow-none rounded-3" style="font-size:1.3rem;" type="button" data-bs-toggle="collapse" data-bs-target="#<%= collapseId %>" aria-expanded="<%= thisweek ? "true" : "false"%>" aria-controls="<%= collapseId %>">
+				<%= CampOffering::OFFERING_WEEKS[n+1][:start].strftime("%B %-d") %>  -  <%= CampOffering::OFFERING_WEEKS[n+1][:end].strftime("%B %-d") %>
 	        </button>
-	    </div> <!-- card header -->
-
-	    <div id="<%= collapseId %>" class="collapse <%= thisweek ? " show" : ""%>" aria-labelledby="<%= headingId %>">
-	      <div class="card-body">
+		</h2>
+	    <div id="<%= collapseId %>" class="accordion-collapse collapse <%= thisweek ? " show" : ""%>" aria-labelledby="<%= headingId %>">
+	      <div class="accordion-body fs-sm pt-0">
           <!-- <strong>Camp schedule will be published on February 1, 2023</strong><br /><br /> -->
 			<!-- cycle through all camps for this year, location, week, and classroom -->
 			<% if CampOffering.by_week(location.id, n+1, CampOffering::CURRENT_YEAR).count == 0 %>

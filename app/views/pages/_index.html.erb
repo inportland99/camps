@@ -42,7 +42,7 @@
                   <div class="ps-4 ps-sm-3 ps-md-4">
                     <h2 class="pb-1 mb-2">Online Camps</h2>
                     <p class="mb-3">90 min/day, 5 days via Zoom</p>
-                    <% @inpersoncamps.each do |camp| %>
+                    <% @onlinecamps.each do |camp| %>
                       <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
                     <% end %>
                     <%= link_to "View Online Camps", new_registration_path(location: 7), class: "btn btn-success mt-3" %><br />

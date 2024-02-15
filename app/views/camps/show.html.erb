@@ -1,41 +1,70 @@
-<div style="margin-top:20px;" class="container">
-
-  <h1><%= @camp.title %> <small style="font-size: 30px;">&nbsp; Ages <%= @camp.age %></small></h1>
-
-  <div class="show-camp">
-    <% if @camp.online %>
-      <div class="badge badge-success" style="margin-bottom:15px;">Online Camp</div>
-    <% else %>
-      <span class="badge badge-primary" style="margin-bottom:15px;">In-Person Camp</span>
-    <% end %>
-    <%= raw @camp.description %>
-    <% if @camp.online %>
-      <br /><br />Tuition: $<%= @camp.price %>
-      <br /><br />Includes:
-      <ul>
-        <li>Math Plus Academy Certified instructors.
-        <li>7.5 to 10 hours of live, online instruction.
-        <li>Plus >5 hours of self-paced activities.
-        <li>Guaranteed student:teacher ratio of 4 to 1 or better.
-      </ul>
-    <% else %>
-      <% unless @camp.id == 39 %>
-        <br /><br />Camp is limited to <%= @camp.capacity %> students.
-        <br /><br />Half-day Monday through Friday (9:00am-12:00pm or 1:00-4:00pm).
-        <br /><br />Tuition: $<%= @camp.price %>
+<main class="page-wrapper">
+  <section class="container px-3 py-3 mt-md-2 mt-lg-4">
+    <div class="row">
+      <h1><%= @camp.title %> <small style="font-size: 30px;">&nbsp; Ages <%= @camp.age %></small></h1>
+      <!-- Sidebar (Course summary) -->
+      <aside class="col-xl-5 col-lg-5 col-md-5 order-md-2 mb-5">
+        <div style="margin-top: -96px;"></div>
+        <div class="position-sticky top-0 pt-5">
+          <div class="pt-5 mt-md-3">
+            <div class="card shadow-sm p-sm-3">
+              <div class="card-body">
+                <h4 class="mb-2">Camp Details</h4>
+      <% if @camp.online %>
+        <span class="badge bg-success mb-3">Online Camp</span>
+      <% else %>
+        <span class="badge bg-primary mb-3">In-Person Camp</span>
       <% end %>
-    <% end %>
-  </div>
-  <hr>
-  <!-- <div class="text-center">
-    <h3>Camp Schedules:</h3>
-    <%# render '/pages/registration_buttons' %>
-  </div> -->
 
-  <% if current_user && current_user.role?("SuperAdmin") %>
-    <p>
-      <%= link_to 'Edit', edit_camp_path(@camp) %> |
-      <%= link_to 'Back', camps_path %><br>
-    </p>
-  <% end %>
-</div>
+                <ul class="list-unstyled mb-5">
+                  <li class="d-flex align-items-center mb-2">
+                    <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                    Passionate, certified teachers
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                    Activities that promote problem-solving
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                    A team of up to <%= @camp.capacity %> like-minded students
+                  </li>
+                  <li class="d-flex align-items-center mb-2">
+                    <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                    At-home activities included
+                  </li>
+                  <% if @camp.online %>
+                    <li class="d-flex align-items-center mb-2">
+                      <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                      Live, online, 90-minute sessions Monday through Friday
+                    </li>
+                  <% else %>
+                    <li class="d-flex align-items-center mb-2">
+                      <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                      In-person, half-day sessions Monday through Friday
+                    </li>
+                  <% end %>
+                  <li class="d-flex align-items-center mb-2">
+                    <i class="bx bx-up-arrow-circle text-primary fs-xl me-2"></i>
+                    Tuition: $<%= @camp.price %>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <!-- Content -->
+      <div class="col-xl-7 col-lg-7 col-md-7 order-md-1 mb-5">
+        <%= raw @camp.description %>
+      </div>
+
+      <% if current_user && current_user.role?("SuperAdmin") %>
+        <p>
+          <%= link_to 'Edit', edit_camp_path(@camp) %> |
+          <%= link_to 'Back', camps_path %><br>
+        </p>
+      <% end %>
+    </div>
+  </section>
+</main>

@@ -42,14 +42,15 @@
       </div>
     </div>
     <div class="col-sm-5">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Satisfaction Guarantee</h3>
+        <!-- Money back guarantee card -->
+        <div class="card text-white bg-success text-center">
+          <div class="card-header border-primary text-white">
+            <h4 class="text-white"><i class="bx bxs-badge-dollar fs-xl me-2"></i>Satisfaction Guarantee</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text fs-sm text-white"><strong>If your child doesn't enjoy a camp, let us know. If we can't fix it, we will provide a full refund.<br />NOTE: Student must attend at least two days of camp for this offer to be valid.</strong></p>
+          </div>
         </div>
-        <div class="card-block m-3">
-          If your child attends camp and you aren't satisfied, let us know. If we can't fix it, we will provide a refund. Please note, student must attend at least two days of camp for this offer to be valid.
-        </div>
-      </div>
     </div>
   </div><!-- /.row -->
 
@@ -125,12 +126,24 @@
     <div class="col-lg-4">
       <%= render 'credit_card_form', f: f %>
       <%= f.input :coupon_code, as: :hidden %>
-      <div id="coupon_code_field" class="form-group string optional">
-        <%= label_tag :coupon_code, "Coupon Code", class: "string optional" %>
-        <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control" %>
-      </div><!-- /.form-group string optional -->
-      <div id="coupon_error"></div>
-      <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-secondary btn-sm', id: :coupon_code_button %></br>
+      <a data-bs-toggle="collapse" href="#haveCoupon" role="button" aria-expanded="false" aria-controls="haveCoupon">
+          Have a coupon code?
+      </a>
+      <div class="collapse" id="haveCoupon">
+          <div id="coupon_code_field" class="form-group string optional">
+            <%= text_field_tag :coupon_code, nil, name: nil, class: "form-control", style: "width:50%; display:inline;" %>
+            <%= link_to "Apply", "javascript:void(0)", class: 'btn btn-primary btn-xs', id: :coupon_code_button %>
+          </div>
+          <div id="coupon_total">
+            <p>
+              <strong></strong> <span></span>
+            </p>
+          </div>
+          <div id="coupon_error"></div>
+      </div>
+
+
+
     </div><!-- /#coupon_code_field .col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
   </div><!-- /.row -->
   <div class="registration_button mt-4">
