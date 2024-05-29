@@ -30,7 +30,7 @@
                     <h2 class="pb-1 mb-2">In-Person Camps</h2>
                     <p class="mb-3">3 hours/day, 5 days in Powell, Ohio.</p>
                     <% @inpersoncamps.each do |camp| %>
-                      <%= link_to (camp.title+" <small style='color:gray;'>(Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
+                      <%= link_to (camp.title+" <small style='color:gray;'>Ages: "+camp.age+"</small>").html_safe, camp_path(camp) %><br />
                     <% end %>
                     <%= link_to "View In-Person Camps", new_registration_path(location: 1), class: "btn btn-success mt-3" %><br />
                   </div>
