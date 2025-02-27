@@ -49,7 +49,7 @@ gem 'lodash-rails'
 gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'jquery-timepicker-rails'
-gem 'infusionsoft'
+# gem 'infusionsoft'
 gem 'active-campaign-rails'
 gem 'pry-rails', group: :development
 gem 'cookieconsent'

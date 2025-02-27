@@ -211,45 +211,45 @@ class Registration < ActiveRecord::Base
     client_data
   end
 
-  def infusionsoft_actions
-    # search infusionsoft by email
-    result = Infusionsoft.contact_find_by_email(self.parent_email, [:Id])
+  # def infusionsoft_actions
+  #   # search infusionsoft by email
+  #   result = Infusionsoft.contact_find_by_email(self.parent_email, [:Id])
 
 
-    if result.empty?
-      # create new contact in not found in infusionsoft
-      # load data for infusionsoft contact
-      data = {:FirstName => self.parent_first_name,
-              :LastName => self.parent_last_name,
-              :Email => self.parent_email,
-              :Phone1 => self.parent_phone,
-              :StreetAddress1 => self.parent_address_1,
-              :StreetAddress2 => self.parent_address_2,
-              :City => self.parent_city,
-              :State => self.parent_state,
-              :PostalCode => self.parent_zip}
+  #   if result.empty?
+  #     # create new contact in not found in infusionsoft
+  #     # load data for infusionsoft contact
+  #     data = {:FirstName => self.parent_first_name,
+  #             :LastName => self.parent_last_name,
+  #             :Email => self.parent_email,
+  #             :Phone1 => self.parent_phone,
+  #             :StreetAddress1 => self.parent_address_1,
+  #             :StreetAddress2 => self.parent_address_2,
+  #             :City => self.parent_city,
+  #             :State => self.parent_state,
+  #             :PostalCode => self.parent_zip}
 
-      if contact_id = Infusionsoft.contact_add(data)
-        # if contact is added opt in email to communication
-        Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
-      end
-    else
-      # an existing record is found in infusionsoft
-      contact_id = result.first["Id"].to_i
-    end
+  #     if contact_id = Infusionsoft.contact_add(data)
+  #       # if contact is added opt in email to communication
+  #       Infusionsoft.email_optin(self.parent_email, "Program enrollment.")
+  #     end
+  #   else
+  #     # an existing record is found in infusionsoft
+  #     contact_id = result.first["Id"].to_i
+  #   end
 
-    if Rails.env.production?
-      #add to groups
-      Infusionsoft.contact_add_to_group(contact_id, 2593) # summercamp2021 tag
-      # Infusionsoft.contact_add_to_group(contact_id, 2058) if newsletter? # local marketing tag
-    elsif Rails.env.development?
-      #add to groups
-      Infusionsoft.contact_add_to_group(contact_id, 115) # purchased summer camp tag
-      Infusionsoft.contact_add_to_group(contact_id, 101) if newsletter? # local marketing tag
-    end
+  #   if Rails.env.production?
+  #     #add to groups
+  #     Infusionsoft.contact_add_to_group(contact_id, 2593) # summercamp2021 tag
+  #     # Infusionsoft.contact_add_to_group(contact_id, 2058) if newsletter? # local marketing tag
+  #   elsif Rails.env.development?
+  #     #add to groups
+  #     Infusionsoft.contact_add_to_group(contact_id, 115) # purchased summer camp tag
+  #     Infusionsoft.contact_add_to_group(contact_id, 101) if newsletter? # local marketing tag
+  #   end
 
-    self.update_attribute :infusionsoft_id, contact_id
-  end
+  #   self.update_attribute :infusionsoft_id, contact_id
+  # end
 
   def active_campaign_client
     ActiveCampaign.new(

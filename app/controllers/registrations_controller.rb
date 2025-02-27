@@ -62,7 +62,7 @@ class RegistrationsController < ApplicationController
           # @registration.active_campaign_actions
 
           # sync to infusionsoft
-          @registration.infusionsoft_actions
+          # @registration.infusionsoft_actions
 
           # send notification to slack
           @registration.send_slack_notification
@@ -122,7 +122,7 @@ class RegistrationsController < ApplicationController
           # @registration.active_campaign_actions
 
           # sync to infusionsoft
-          @registration.infusionsoft_actions
+          # @registration.infusionsoft_actions
 
           format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }

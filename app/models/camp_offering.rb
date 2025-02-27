@@ -4,7 +4,6 @@ class CampOffering < ActiveRecord::Base
   belongs_to :location
   belongs_to :camp
 
-  # CURRENT_YEAR = 9
   YEARS = %w(2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026) # year 0 is 2014
   CURRENT_YEAR = Date.today.year-2014
 
@@ -47,7 +46,8 @@ class CampOffering < ActiveRecord::Base
                     "12-2PM EST / 9-11AM PST",
                     "1-3PM EST / 10-12PM PST",
                     "2-4PM EST / 11-1PM PST"]
-  dayone = Date.new(2024,6,3)
+  # UPDATE DAYONE EACH YEAR
+  dayone = Date.new(2024,6,2)
   OFFERING_WEEKS = Hash.new
   (1..10).each do |i|
     OFFERING_WEEKS.merge!({i =>{:start=>dayone+(i-1)*7,:end=>dayone+(i-1)*7+4}})
