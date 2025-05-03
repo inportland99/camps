@@ -3,7 +3,6 @@
 //= require init
 //= require chosen-jquery
 //= require jquery.remotipart
-//= require jquery_nested_form
 //= require jquery-ui
 //= require jquery.html5-placeholder-shim
 //= require jquery.timepicker.js

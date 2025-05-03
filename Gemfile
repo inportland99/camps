@@ -38,7 +38,7 @@ gem "rack-cache", require: "rack/cache"
 gem "dragonfly", "~>1.0.2"
 gem 'dragonfly-s3_data_store'
 gem "remotipart"
-gem "nested_form", git: "https://github.com/ryanb/nested_form.git"
+# gem "nested_form", git: "https://github.com/ryanb/nested_form.git"
 gem "simple_form"
 gem "country_select"
 gem 'stripe'
@@ -53,3 +53,6 @@ gem 'jquery-timepicker-rails'
 gem 'active-campaign-rails'
 gem 'pry-rails', group: :development
 gem 'cookieconsent'
+gem 'gmail_xoauth'
+gem 'googleauth'
+gem 'mail'

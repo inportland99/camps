@@ -36,5 +36,28 @@ Camps::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    authentication:       :xoauth2,
+    user_name:            ENV['GMAIL_ADDRESS'],
+    password:             lambda {
+      require 'googleauth'
+  
+      creds = Google::Auth::UserRefreshCredentials.new(
+        client_id:     ENV['GMAIL_CLIENT_ID'],
+        client_secret: ENV['GMAIL_CLIENT_SECRET'],
+        refresh_token: ENV['GMAIL_REFRESH_TOKEN'],
+        scope:         'https://mail.google.com/'
+      )
+  
+      creds.fetch_access_token!
+      creds.access_token
+    }.call,
+    enable_starttls_auto: true
+  }    
 end
