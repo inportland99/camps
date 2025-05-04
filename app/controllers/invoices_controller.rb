@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :except => [:new, :create]
+  before_action :authenticate_user!, :except => [:new, :create]
 
   respond_to :html
 
