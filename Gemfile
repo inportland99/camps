@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '3.2.8'
 
-gem 'rails', '4.2.10'
-gem "sqlite3", "~> 1.3.6", group: :development
+# gem 'rails', '4.2.10'
+gem 'rails', '5.2.4'
+gem 'sqlite3', '~> 1.4.2', group: :development
 gem 'pg', '~> 0.20', group: :production
-gem 'sass-rails'
+# gem 'pg', '~> 1.5', group: :production
+# gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
@@ -26,9 +29,11 @@ gem "whenever", require: false
 gem "timecop"
 gem "ranked-model"
 gem "rspec-rails", group: ["development", "test"]
-gem "factory_girl_rails", "~> 4.0", group: ["development", "test"]
+# gem "factory_girl_rails", "~> 4.0", group: ["development", "test"]
+gem 'factory_bot_rails', '~> 4.11', group: ["development", "test"]
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
-gem "font-awesome-rails", "~> 4.0.3.1"
+# gem "font-awesome-rails", "~> 4.0.3.1"
+gem 'font-awesome-rails', '~> 4.7.0'
 gem "underscore-rails"
 gem "rails-assets-tether"
 gem "chosen-rails"
@@ -56,3 +61,5 @@ gem 'cookieconsent'
 gem 'gmail_xoauth'
 gem 'googleauth'
 gem 'mail'
+gem 'puma', '~> 3.12'
+gem 'rack', '~> 2.0.9'
