@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
+gem 'bootsnap', require: false
 gem 'pg', '~> 0.20', group: :production
 gem 'sassc-rails'
 gem 'coffee-rails'
