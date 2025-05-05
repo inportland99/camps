@@ -1,6 +1,6 @@
 class CampsController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:show, :descriptions]
+  before_action :authenticate_user!, except: [:show, :descriptions]
 
   def descriptions
     @camps = Camp.order(title: :asc).all

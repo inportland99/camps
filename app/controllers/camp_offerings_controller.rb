@@ -1,7 +1,7 @@
 class CampOfferingsController < ApplicationController
   # GET /camp_offerings
   # GET /camp_offerings.json
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @camp_offerings = CampOffering.order(:id).where(year: CampOffering::CURRENT_YEAR)

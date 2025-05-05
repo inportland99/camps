@@ -1,6 +1,6 @@
 class WeeklyProgramsController < ApplicationController
   before_action :set_weekly_program, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @weekly_programs = WeeklyProgram.all
