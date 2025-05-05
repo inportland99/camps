@@ -18,17 +18,22 @@
 //= require registrations
 //= require cookieconsent
 
-jQuery ->
-  $('.datatable').DataTable
-    responsive: true,
-    pagingType: 'simple'
-    order:      [[ 0, "desc" ]]
-
-  $('.datepicker').datepicker
-    dateFormat: "yy-mm-dd",
-    changeMonth: true,
-    changeYear: true
-
-  $('.chosen').chosen
-    allow_single_deselect: true
-    no_results_text: 'No results matched'
+$(document).ready(function() {
+    $('.datatable').DataTable({
+      responsive: true,
+      pagingType: 'simple',
+      order: [[0, 'desc']]
+    });
+  
+    $('.datepicker').datepicker({
+      dateFormat: 'yy-mm-dd',
+      changeMonth: true,
+      changeYear: true
+    });
+  
+    $('.chosen').chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched'
+    });
+  });
+  

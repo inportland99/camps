@@ -2,15 +2,16 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
-gem 'rails', '4.2.10'
+gem 'rails', '~> 5.0.7'
 gem "sqlite3", "~> 1.3.6", group: :development
 gem 'pg', '~> 0.20', group: :production
-gem 'sass-rails'
+# gem 'sass-rails'
+gem 'sassc-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem "cancan"
+gem "cancancan", "~> 1.15"
 gem "devise"
 gem "high_voltage"
 gem "httparty"
@@ -26,9 +27,9 @@ gem "whenever", require: false
 gem "timecop"
 gem "ranked-model"
 gem "rspec-rails", group: ["development", "test"]
-gem "factory_girl_rails", "~> 4.0", group: ["development", "test"]
+gem "factory_bot_rails", "~> 4.8", group: ["development", "test"] # Version 4.8/4.9 often works with Rails 5.0
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
-gem "font-awesome-rails", "~> 4.0.3.1"
+gem "font-awesome-rails", ">= 4.7.0"
 gem "underscore-rails"
 gem "rails-assets-tether"
 gem "chosen-rails"
@@ -56,3 +57,5 @@ gem 'cookieconsent'
 gem 'gmail_xoauth'
 gem 'googleauth'
 gem 'mail'
+gem 'nokogiri', '~> 1.13.0'
+gem 'sprockets', '~> 3.7.2'
