@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require init
 //= require chosen-jquery
-//= require jquery.remotipart
 //= require jquery-ui
 //= require jquery.html5-placeholder-shim
 //= require jquery.timepicker.js
