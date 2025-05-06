@@ -33,7 +33,6 @@ class RegistrationsController < ApplicationController
   # GET /registrations/new.json
   def new
     @registration = Registration.new
-    @extended_care = Camp.find 20
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,14 +44,12 @@ class RegistrationsController < ApplicationController
   def edit
     @registration = Registration.find(params[:id])
     @locations = Location.order(:id)
-    @extended_care = Camp.find 20
   end
 
   # POST /registrations
   # POST /registrations.json
   def create
     @registration = Registration.new(registration_params)
-    @extended_care = Camp.find 20
 
     if current_user && (current_user.role?('super_admin') || current_user.role?('admin')) && params[:process_without_payment] == "yes"
       respond_to do |format|

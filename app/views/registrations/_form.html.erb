@@ -5,7 +5,7 @@
         <span>Monthly Payment Plan!</span> Register for more than one camp and you can opt for a three-month installment plan.
       </div> -->
       <p>
-        <%= Location.find(params[:location] || params[:registration][:location_id]).directions.html_safe %>
+        <%= Location.find(params[:location] || params[:registration][:location_id]).directions&.html_safe %>
       </p>
     </div>
   </div>
@@ -19,8 +19,6 @@
   <%= render 'confirmation_modal' %>
 
   <%= render 'camp_modals' %>
-
-  <%# render 'extended_care_modal' %>
 
 <script>
   fbq('track', 'ViewContent');
