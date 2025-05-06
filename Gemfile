@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
-gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
+gem 'rails', '~> 6.1.7', '>= 6.1.7.7'
 gem 'bootsnap', require: false
-gem 'pg', '~> 0.20'
+gem 'pg', '>= 1.1', '< 2.0'
 gem 'sassc-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
@@ -58,7 +58,6 @@ group :development do
     gem 'pry-rails'
     gem "letter_opener"
     gem "nifty-generators"
-    # gem "sqlite3", "~> 1.5.0"
 end
   
 group :development, :test do
