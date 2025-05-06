@@ -16,6 +16,7 @@ Rails.application.configure do
   # Run rails dev:cache to toggle caching.
   if Rails.root.join('tmp', 'caching-dev.txt').exist?
     config.action_controller.perform_caching = true
+    config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
@@ -27,7 +28,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
+  # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
@@ -53,7 +54,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # Raises error for missing translations
+  # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
@@ -61,27 +62,29 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
-    domain:               'gmail.com',
-    authentication:       :xoauth2,
-    user_name:            ENV['GMAIL_ADDRESS'],
-    password:             lambda {
-      require 'googleauth'
-  
-      creds = Google::Auth::UserRefreshCredentials.new(
-        client_id:     ENV['GMAIL_CLIENT_ID'],
-        client_secret: ENV['GMAIL_CLIENT_SECRET'],
-        refresh_token: ENV['GMAIL_REFRESH_TOKEN'],
-        scope:         'https://mail.google.com/'
-      )
-  
-      creds.fetch_access_token!
-      creds.access_token
-    }.call,
-    enable_starttls_auto: true
-  }    
+  unless defined?(Rails::Console) || File.split($PROGRAM_NAME).last == 'rake' || Rails.const_defined?(:Generators)
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      domain:               'gmail.com',
+      authentication:       :xoauth2,
+      user_name:            ENV['GMAIL_ADDRESS'],
+      password:             lambda {
+        require 'googleauth'
+    
+        creds = Google::Auth::UserRefreshCredentials.new(
+          client_id:     ENV['GMAIL_CLIENT_ID'],
+          client_secret: ENV['GMAIL_CLIENT_SECRET'],
+          refresh_token: ENV['GMAIL_REFRESH_TOKEN'],
+          scope:         'https://mail.google.com/'
+        )
+    
+        creds.fetch_access_token!
+        creds.access_token
+      }.call,
+      enable_starttls_auto: true
+    }    
+  end
 end

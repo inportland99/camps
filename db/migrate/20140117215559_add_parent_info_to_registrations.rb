@@ -1,4 +1,4 @@
-class AddParentInfoToRegistrations < ActiveRecord::Migration
+class AddParentInfoToRegistrations < ActiveRecord::Migration[6.0]
   def change
     add_column :registrations, :parent_city, :string
     add_column :registrations, :parent_state, :string

@@ -1,4 +1,4 @@
-class CreateCampOfferings < ActiveRecord::Migration
+class CreateCampOfferings < ActiveRecord::Migration[6.0]
   def change
     create_table :camp_offerings do |t|
       t.integer :camp_id

@@ -1,4 +1,4 @@
-class CreateRegistrations < ActiveRecord::Migration
+class CreateRegistrations < ActiveRecord::Migration[6.0]
   def change
     create_table :registrations do |t|
       t.string :parent_first_name

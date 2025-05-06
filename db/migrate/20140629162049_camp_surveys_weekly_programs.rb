@@ -1,4 +1,4 @@
-class CampSurveysWeeklyPrograms < ActiveRecord::Migration
+class CampSurveysWeeklyPrograms < ActiveRecord::Migration[6.0]
   def change
     create_table :camp_surveys_weekly_programs, :id => false do |t|
        t.references :camp_survey, :null => false

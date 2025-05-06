@@ -1,4 +1,4 @@
-class CampOfferingsRegistrationsJoinTable < ActiveRecord::Migration
+class CampOfferingsRegistrationsJoinTable < ActiveRecord::Migration[6.0]
   create_table :camp_offerings_registrations, :id => false do |t|
    t.references :camp_offering, :null => false
    t.references :registration, :null => false

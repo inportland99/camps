@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.6.6'
 
-gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
+gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
 gem 'bootsnap', require: false
-gem 'pg', '~> 0.20', group: :production
+gem 'pg', '~> 0.20'
 gem 'sassc-rails'
 gem 'coffee-rails'
 gem 'uglifier', '>= 1.0.3'
@@ -51,13 +51,14 @@ gem 'googleauth'
 gem 'mail'
 gem 'nokogiri', '~> 1.13.0'
 gem 'sprockets', '~> 3.7.2'
+gem 'net-protocol', require: false
 
 group :development do
     gem 'listen', '~> 3.0.5'
     gem 'pry-rails'
     gem "letter_opener"
     gem "nifty-generators"
-    gem "sqlite3", "~> 1.3.6"
+    # gem "sqlite3", "~> 1.5.0"
 end
   
 group :development, :test do

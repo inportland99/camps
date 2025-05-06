@@ -1,4 +1,4 @@
-class RemoveTypeFromCouponCode < ActiveRecord::Migration
+class RemoveTypeFromCouponCode < ActiveRecord::Migration[6.0]
   def up
     remove_column :coupon_codes, :type
   end

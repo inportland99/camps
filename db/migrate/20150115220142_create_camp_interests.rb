@@ -1,4 +1,4 @@
-class CreateCampInterests < ActiveRecord::Migration
+class CreateCampInterests < ActiveRecord::Migration[6.0]
   def change
     create_table :camp_interests do |t|
       t.string :name

@@ -1,4 +1,4 @@
-class CreateWeeklyPrograms < ActiveRecord::Migration
+class CreateWeeklyPrograms < ActiveRecord::Migration[6.0]
   def change
     create_table :weekly_programs do |t|
       t.string :name

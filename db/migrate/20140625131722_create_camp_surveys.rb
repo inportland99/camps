@@ -1,4 +1,4 @@
-class CreateCampSurveys < ActiveRecord::Migration
+class CreateCampSurveys < ActiveRecord::Migration[6.0]
   def change
     create_table :camp_surveys do |t|
       t.integer :staisfaction

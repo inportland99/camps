@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!({:email=>"info@mathplusacademy.com", :password=>"mathplus", :password_confirmation => "mathplus"})
+
+Location.create({:name=>"Online", :email=>"info@mathplusacademy.com", :telephone=>"614-792-6284"})
