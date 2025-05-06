@@ -72,7 +72,7 @@ class CampsController < ApplicationController
     @camp = Camp.find(params[:id])
 
     respond_to do |format|
-      if @camp.update_attributes(camp_params)
+      if @camp.update(camp_params)
         format.html { redirect_to @camp, notice: 'Camp was successfully updated.' }
         format.json { head :no_content }
       else

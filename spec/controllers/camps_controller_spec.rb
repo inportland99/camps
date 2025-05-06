@@ -104,9 +104,9 @@ describe CampsController do
         camp = Camp.create! valid_attributes
         # Assuming there are no other camps in the database, this
         # specifies that the Camp created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        Camp.any_instance.should_receive(:update_attributes).with({ "title" => "MyString" })
+        Camp.any_instance.should_receive(:update).with({ "title" => "MyString" })
         put :update, {:id => camp.to_param, :camp => { "title" => "MyString" }}, valid_session
       end
 

@@ -104,7 +104,7 @@ describe WeeklyProgramsController do
         weekly_program = WeeklyProgram.create! valid_attributes
         # Assuming there are no other weekly_programs in the database, this
         # specifies that the WeeklyProgram created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
         WeeklyProgram.any_instance.should_receive(:update).with({ "name" => "MyString" })
         put :update, {:id => weekly_program.to_param, :weekly_program => { "name" => "MyString" }}, valid_session

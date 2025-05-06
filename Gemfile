@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '3.1.4'
 
 gem 'rails', '~> 6.1.7', '>= 6.1.7.7'
+gem 'puma', '~> 5.0'
 gem 'bootsnap', require: false
 gem 'pg', '>= 1.1', '< 2.0'
 gem 'sassc-rails'
@@ -26,7 +27,7 @@ gem "ranked-model"
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem "font-awesome-rails", ">= 4.7.0"
 gem "underscore-rails"
-gem "rails-assets-tether"
+# gem "rails-assets-tether"
 gem "chosen-rails"
 gem "carrierwave"
 gem "faker"

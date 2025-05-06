@@ -104,9 +104,9 @@ describe RegistrationsController do
         registration = Registration.create! valid_attributes
         # Assuming there are no other registrations in the database, this
         # specifies that the Registration created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        Registration.any_instance.should_receive(:update_attributes).with({ "parent_first_name" => "MyString" })
+        Registration.any_instance.should_receive(:update).with({ "parent_first_name" => "MyString" })
         put :update, {:id => registration.to_param, :registration => { "parent_first_name" => "MyString" }}, valid_session
       end
 

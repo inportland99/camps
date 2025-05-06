@@ -104,9 +104,9 @@ describe CouponCodesController do
         coupon_code = CouponCode.create! valid_attributes
         # Assuming there are no other coupon_codes in the database, this
         # specifies that the CouponCode created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        CouponCode.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+        CouponCode.any_instance.should_receive(:update).with({ "name" => "MyString" })
         put :update, {:id => coupon_code.to_param, :coupon_code => { "name" => "MyString" }}, valid_session
       end
 

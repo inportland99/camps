@@ -2,8 +2,13 @@
   <div class="row">
     <div class="col-lg-4">
       <% if @registration.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@registration.errors.count, "error") %> prohibited this registration from being saved:</h2>
+        <div class="alert alert-danger">
+          <h4>There were errors with your submission:</h4>
+          <ul>
+            <% @registration.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
     </div>
@@ -11,17 +16,7 @@
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div id="camp_offerings">
-        <% if user_signed_in? && current_user.roles.any?{ |role| role.name == "Guest"} %>
-          <% if params[:location] == '6' %>
-            <%= render 'location_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
-          <% end %>
-        <% else %>
-          <% if params[:location] == '7' %>
-            <%= render 'online_schedule' , location: Location.find(params[:location] || params[:registration][:location_id]) %>
-          <% else %>
-            <%= render 'online_schedule', location: Location.find(params[:location] || params[:registration][:location_id]) %>
-          <% end %>
-        <% end %>
+        <%= render 'online_schedule' , location: Location.find(params[:location] || params[:registration][:location_id]) %>
       </div><!-- /#camp_offerings -->
     </div><!-- /.col-lg-12 .col-md-12 .col-sm-12 .col-xs-12 -->
   </div><!-- /.row -->
@@ -96,7 +91,7 @@
       </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
       <div class="col-lg-4">
         <%= f.input :parent_state, collection: Registration::US_STATES, label: "State", input_html: {value: params[:registration][:parent_state]} %>
-        <%= f.input :parent_zip, as: :string, label: "Zip", input_html: {value: params[:registration][:parent_zip]} %>
+        <%= f.input :parent_zip, as: :string, label: "Zip", input_html: {value: params[:registration][:parent_zip], maxlength: 10} %>
         <%= f.input :parent_email, label: "Email", input_html: {value: params[:registration][:parent_email]} %>
         <%= f.input :parent_phone, label: "Phone", input_html: {value: params[:registration][:parent_phone]} %>
         <%= f.input :referred_by, label: "Referred By", input_html: {value: params[:registration][:referred_by]} %>
@@ -114,7 +109,7 @@
       </div><!-- /.col-lg-4 .col-md-4 .col-sm-12 .col-xs-12 -->
       <div class="col-lg-4">
         <%= f.input :parent_state, collection: Registration::US_STATES, label: "State" %>
-        <%= f.input :parent_zip, as: :string, label: "Zip" %>
+        <%= f.input :parent_zip, as: :string, label: "Zip", input_html: { maxlength: 10 } %>
         <%= f.input :parent_email, label: "Email" %>
         <%= f.input :parent_phone, label: "Phone" %>
         <%= f.input :referred_by, label: "Referred By" %>

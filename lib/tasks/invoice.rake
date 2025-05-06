@@ -22,11 +22,11 @@ def charge_invoices
                                         description: "2016 Summer Camp Registration id #{registration.id}. Payment #{invoice.payment_order} of 3"
                                       )
         if charge
-          invoice.update_attributes paid: true, payment_date: date
+          invoice.update paid: true, payment_date: date
           success_count += 1
         end
       rescue Stripe::CardError => e
-        invoice.update_attributes paid: false, payment_declined:true, charge_description: e.to_s
+        invoice.update paid: false, payment_declined:true, charge_description: e.to_s
         decline_count += 1
       end
     end

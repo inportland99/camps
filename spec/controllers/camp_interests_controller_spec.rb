@@ -104,7 +104,7 @@ describe CampInterestsController do
         camp_interest = CampInterest.create! valid_attributes
         # Assuming there are no other camp_interests in the database, this
         # specifies that the CampInterest created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
         CampInterest.any_instance.should_receive(:update).with({ "name" => "MyString" })
         put :update, {:id => camp_interest.to_param, :camp_interest => { "name" => "MyString" }}, valid_session

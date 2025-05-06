@@ -104,7 +104,7 @@ describe CampSurveysController do
         camp_survey = CampSurvey.create! valid_attributes
         # Assuming there are no other camp_surveys in the database, this
         # specifies that the CampSurvey created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
         CampSurvey.any_instance.should_receive(:update).with({ "staisfaction" => "1" })
         put :update, {:id => camp_survey.to_param, :camp_survey => { "staisfaction" => "1" }}, valid_session

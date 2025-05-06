@@ -76,7 +76,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # config.action_mailer.delivery_method = :letter_opener
-  unless defined?(Rails::Console) || File.split($PROGRAM_NAME).last == 'rake' || Rails.const_defined?(:Generators)
+  # unless defined?(Rails::Console) || File.split($PROGRAM_NAME).last == 'rake' || Rails.const_defined?(:Generators)
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
@@ -100,5 +100,5 @@ Rails.application.configure do
       }.call,
       enable_starttls_auto: true
     }    
-  end
+  # end
 end

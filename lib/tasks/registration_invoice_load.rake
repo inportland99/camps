@@ -105,12 +105,12 @@ def test_registration_invoice_processes
                                     )
 
       if charge
-        first_invoice.update_attributes paid: true, stripe_charge_id: charge.id
+        first_invoice.update paid: true, stripe_charge_id: charge.id
         registration.update_attribute :stripe_charge_token, charge.id
       end
 
     rescue Stripe::CardError => e
-      first_invoice.update_attributes paid: false, charge_description: e.to_s
+      first_invoice.update paid: false, charge_description: e.to_s
     end
 
   end

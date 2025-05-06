@@ -184,7 +184,7 @@ class RegistrationsController < ApplicationController
     @registration = Registration.find(params[:id])
 
     respond_to do |format|
-      if @registration.update_attributes(registration_params)
+      if @registration.update(registration_params)
         format.html { redirect_to @registration, notice: 'Registration was successfully updated.' }
         format.json { head :no_content }
       else

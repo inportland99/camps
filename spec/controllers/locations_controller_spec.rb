@@ -104,9 +104,9 @@ describe LocationsController do
         location = Location.create! valid_attributes
         # Assuming there are no other locations in the database, this
         # specifies that the Location created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        Location.any_instance.should_receive(:update_attributes).with({ "name" => "MyString" })
+        Location.any_instance.should_receive(:update).with({ "name" => "MyString" })
         put :update, {:id => location.to_param, :location => { "name" => "MyString" }}, valid_session
       end
 

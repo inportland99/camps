@@ -62,7 +62,7 @@ class CouponCodesController < ApplicationController
     @coupon_code = CouponCode.find(params[:id])
 
     respond_to do |format|
-      if @coupon_code.update_attributes(coupon_code_params)
+      if @coupon_code.update(coupon_code_params)
         format.html { redirect_to @coupon_code, notice: 'Coupon code was successfully updated.' }
         format.json { head :no_content }
       else

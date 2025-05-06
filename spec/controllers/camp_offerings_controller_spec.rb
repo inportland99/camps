@@ -104,9 +104,9 @@ describe CampOfferingsController do
         camp_offering = CampOffering.create! valid_attributes
         # Assuming there are no other camp_offerings in the database, this
         # specifies that the CampOffering created on the previous line
-        # receives the :update_attributes message with whatever params are
+        # receives the :update message with whatever params are
         # submitted in the request.
-        CampOffering.any_instance.should_receive(:update_attributes).with({ "camp_id" => "1" })
+        CampOffering.any_instance.should_receive(:update).with({ "camp_id" => "1" })
         put :update, {:id => camp_offering.to_param, :camp_offering => { "camp_id" => "1" }}, valid_session
       end
 
