@@ -8,7 +8,7 @@ gem 'bootsnap', require: false
 gem 'pg', '>= 1.1', '< 2.0'
 gem 'sassc-rails'
 gem 'coffee-rails'
-gem 'uglifier', '>= 1.0.3'
+# gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem "cancancan", "~> 1.15"
@@ -22,7 +22,7 @@ gem "will_paginate"
 gem "bootstrap-will_paginate"
 gem "chronic"
 gem "whenever", require: false
-gem "timecop"
+# gem "timecop"
 gem "ranked-model"
 gem 'bootstrap', '~> 5.2', '>= 5.2.3'
 gem "font-awesome-rails", ">= 4.7.0"
@@ -34,15 +34,15 @@ gem "faker"
 gem "rack-cache", require: "rack/cache"
 gem "dragonfly", "~>1.0.2"
 gem 'dragonfly-s3_data_store'
-gem "remotipart"
+# gem "remotipart"
 gem "simple_form"
 gem "country_select"
 gem 'stripe'
-gem 'wkhtmltopdf-binary'
-gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
+# gem 'wicked_pdf'
 gem 'jquery-datatables'
 gem 'lodash-rails'
-gem 'rails_12factor', group: :production
+# gem 'rails_12factor', group: :production
 gem 'momentjs-rails', '~> 2.5.0'
 gem 'jquery-timepicker-rails'
 gem 'active-campaign-rails'
