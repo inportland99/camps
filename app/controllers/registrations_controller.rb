@@ -98,12 +98,16 @@ class RegistrationsController < ApplicationController
       respond_to do |format|
         if @registration.save_with_payment
 
-          # send notification to slack
-          @registration.send_slack_notification
-
           # send email confirmation
-          PonyExpress.registration_confirmation(@registration).deliver
-
+          notice = nil
+          begin
+            PonyExpress.registration_confirmation(@registration).deliver
+          rescue => e
+            notice = "Registration confirmation email failed: #{e.message}"
+            Rails.logger.error "Registration confirmation email failed: #{e.message}"
+            flash[:alert] = "There was an error sending your confirmation email. You should receive it within 24 hours."\
+          end
+          
           # send reminder if camp scheduled between friday before and monday of camp
           send_reminder = false
           @registration.camp_offerings.each do |offering|
@@ -111,15 +115,13 @@ class RegistrationsController < ApplicationController
               send_reminder = true
             end
           end
+          
           if send_reminder
             PonyExpress.camp_reminder(@registration).deliver
           end
 
-          # sync to active campaign
-          # @registration.active_campaign_actions
-
-          # sync to infusionsoft
-          # @registration.infusionsoft_actions
+          # send notification to slack
+          @registration.send_slack_notification(notice)
 
           format.html { redirect_to confirmation_registrations_path(:id => @registration.id, :token => @registration.stripe_charge_token) }
           format.json { render json: @registration, status: :created, location: @registration }
@@ -137,7 +139,7 @@ class RegistrationsController < ApplicationController
       redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps." }
   end
 
-  def confirmation
+def confirmation
     @registration = Registration.find(params[:id])
 
     unless params[:token] == @registration.stripe_charge_token
@@ -149,9 +151,17 @@ class RegistrationsController < ApplicationController
     if params[:id]
       @registration = Registration.find(params[:id])
 
-      if PonyExpress.registration_confirmation(@registration).deliver
-        redirect_to root_url, notice: "Confirmation Sent"
+      begin
+        PonyExpress.registration_confirmation(@registration).deliver
+      rescue => e
+        Rails.logger.error "Registration confirmation email failed: #{e.message}"
+        redirect_to @registration, alert: "Reminder failed to send. Please try again later."
+        # Optionally notify admin or error tracking service here
       end
+      
+      # if PonyExpress.registration_confirmation(@registration).deliver
+      #   redirect_to root_url, notice: "Confirmation Sent"
+      # end
     else
       redirect_to root_url
     end
