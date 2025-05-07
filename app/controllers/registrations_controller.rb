@@ -159,9 +159,8 @@ def confirmation
         # Optionally notify admin or error tracking service here
       end
       
-      # if PonyExpress.registration_confirmation(@registration).deliver
-      #   redirect_to root_url, notice: "Confirmation Sent"
-      # end
+      redirect_to @registration, notice: "Confirmation Sent"
+      
     else
       redirect_to root_url
     end
