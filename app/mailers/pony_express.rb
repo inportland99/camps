@@ -1,5 +1,7 @@
 class PonyExpress < ActionMailer::Base
-  default from: "info@mathplusacademy.com"
+  default from: ENV['GMAIL_ADDRESS']
+
+  before_action :refresh_gmail_token
 
   def registration_confirmation(registration)
     @registration = registration
@@ -81,4 +83,10 @@ class PonyExpress < ActionMailer::Base
       to: @admins_emails
       )
   end
+
+  def refresh_gmail_token
+    Rails.logger.info "[ApplicationMailer] Refreshing Gmail token..."
+    ActionMailer::Base.smtp_settings[:password] = GmailOauth2.access_token
+  end
+
 end
