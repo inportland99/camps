@@ -3,7 +3,7 @@
   <head>
     <title>Math Plus Summer Camps | Columbus Ohio's #1 Tech Camps</title>
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= render 'layouts/nextdoor_pixel_script' if Rails.env.production? && !current_user %>
+    <%= render 'layouts/nextdoor_pixel_code' if Rails.env.production? && !current_user %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
     <%= render 'layouts/gtm_head' if Rails.env.production? && !current_user %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
