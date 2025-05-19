@@ -3,14 +3,14 @@
   <head>
     <title>Math Plus Summer Camps | Columbus Ohio's #1 Tech Camps</title>
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= render 'layouts/facebook_pixel_script' if Rails.env.production? && !current_user %>
+    <%= render 'layouts/nextdoor_pixel_script' if Rails.env.production? && !current_user %>
     <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
     <%= render 'layouts/gtm_head' if Rails.env.production? && !current_user %>
     <%= tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="google-site-verification" content="vgW06OQ-xxKcGshIrouAKNY2yvRl7KxGrS2KPW7UwFc" />
-    <%= render 'layouts/facebook_meta_tags' %>
+    <%# render 'layouts/facebook_meta_tags' %>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script>
     window.addEventListener("load", function(){
@@ -37,9 +37,9 @@
   <body>
     <%= render 'layouts/gtm_body' if Rails.env.production? && !current_user %>
 
-    <%= render 'layouts/facebook_SDK' %>
+    <%# render 'layouts/facebook_SDK' %>
 
-    <%= render 'layouts/twitter_SDK' %>
+    <%# render 'layouts/twitter_SDK' %>
 
     <%= render 'layouts/navbar' %>
 
@@ -61,6 +61,6 @@
     <%= render 'layouts/footer' %>
 
     <%# render 'layouts/ga' if Rails.env.production? %>
-    <%= render '/pages/help_modal' %>
+    <%# render '/pages/help_modal' %>
   </body>
 </html>
