@@ -1,5 +1,5 @@
 class PonyExpress < ActionMailer::Base
-  default from: ENV['GMAIL_ADDRESS']
+  default from: "Math Plus Academy <#{ENV['GMAIL_ADDRESS']}>" 
 
   before_action :refresh_gmail_token
 
