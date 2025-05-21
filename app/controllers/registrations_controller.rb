@@ -133,7 +133,7 @@ class RegistrationsController < ApplicationController
     end
 
     rescue Stripe::CardError => e
-      redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps. If you keep experiencing this issue please call 614-792-6284 or email info@mathplusacademy.com." }
+      redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps. If you keep experiencing this issue please call 614-792-6284 or email help@mathplusacademy.com." }
 
     rescue Stripe::InvalidRequestError => e
       redirect_to :back, :flash => { :error => e.message + " Please enter a valid credit card and reselect your camps." }
